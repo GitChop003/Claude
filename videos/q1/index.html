@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="UTF-8"/><meta name="viewport" content="width=1920, height=1080"/>
+<script src="assets/gsap.min.js"></script>
+<style>
+@font-face{font-family:Inter;font-weight:400;src:url(assets/fonts/Inter-400-latin.woff2) format('woff2')}
+@font-face{font-family:Inter;font-weight:700;src:url(assets/fonts/Inter-700-latin.woff2) format('woff2')}
+:root{--neon:#3CFF9A;--pink:#FF4FA3;--ink:#0b0d10;--white:#fff}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#000;font-family:Inter,sans-serif}
+#root{position:relative;width:1920px;height:1080px;overflow:hidden}
+#vw{position:absolute;inset:0;transform-origin:56% 32%}
+#vw video{width:100%;height:100%;object-fit:cover;display:block}
+#vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 55% 40%,transparent 55%,rgba(0,0,0,.45) 100%)}
+#dim{position:absolute;inset:0;background:#05070a;opacity:0}
+#flash{position:absolute;inset:0;background:#fff;opacity:0}
+#bar{position:absolute;left:0;top:0;height:8px;width:1920px;background:var(--neon);transform-origin:0 50%;box-shadow:0 0 18px var(--neon)}
+.cap{position:absolute;left:0;right:0;bottom:92px;text-align:center;font-weight:700;font-size:66px;line-height:1.1;color:#fff;
+  letter-spacing:-.01em;opacity:0;text-shadow:0 4px 0 #000,0 0 14px rgba(0,0,0,.9);-webkit-text-stroke:2px #000;paint-order:stroke fill}
+.cap span.on{color:var(--neon)}
+.cap.q{font-weight:400;font-style:italic;font-size:54px;color:#f2f2f2}
+.cap.q span.on{color:var(--pink)}
+.glass{background:rgba(10,12,16,.72);border:2px solid rgba(255,255,255,.12);border-radius:28px;backdrop-filter:blur(8px)}
+#qcard{position:absolute;left:80px;top:90px;width:820px;padding:40px 48px;opacity:0}
+#qcard .k{font-size:28px;font-weight:700;letter-spacing:.28em;color:var(--pink)}
+#qcard .k b{color:#fff}
+#qcard .t{margin-top:18px;font-size:58px;font-weight:700;line-height:1.08;color:#fff}
+#qcard .u{margin-top:26px;height:8px;width:0;background:var(--pink);border-radius:4px}
+.chip{position:absolute;padding:20px 34px;border-radius:999px;font-weight:700;font-size:44px;color:var(--ink);background:var(--neon);
+  opacity:0;box-shadow:0 12px 40px rgba(0,0,0,.45);letter-spacing:.02em}
+.chip.alt{background:#fff}
+#big{position:absolute;left:0;right:0;top:330px;text-align:center;font-weight:700;font-size:190px;letter-spacing:-.03em;color:#fff;opacity:0;
+  text-shadow:0 10px 50px rgba(0,0,0,.7)}
+#big em{font-style:normal;color:var(--neon)}
+#stamp{position:absolute;right:60px;top:420px;padding:18px 40px;border:10px solid #ff3b3b;color:#ff3b3b;font-weight:700;font-size:96px;
+  border-radius:18px;transform:rotate(-12deg);opacity:0;letter-spacing:.06em;background:rgba(255,255,255,.08)}
+#lt{position:absolute;left:80px;bottom:260px;padding:26px 40px 28px 34px;opacity:0;border-left:10px solid var(--neon);border-radius:0 24px 24px 0}
+#lt .a{font-size:30px;font-weight:700;letter-spacing:.2em;color:var(--neon)}
+#lt .b{font-size:52px;font-weight:700;color:#fff;margin-top:6px}
+#lt .c{font-size:40px;font-style:italic;color:#ddd;margin-top:8px;opacity:0}
+#panel{position:absolute;right:80px;top:110px;width:640px;padding:40px 46px;opacity:0}
+#panel h3{font-size:30px;letter-spacing:.24em;color:var(--pink);font-weight:700}
+#panel ul{list-style:none;margin-top:22px}
+#panel li{position:relative;font-size:46px;font-weight:700;color:#fff;padding:12px 0 12px 44px;opacity:0}
+#panel li .dot{position:absolute;left:0;top:30px;width:20px;height:20px;border-radius:50%;background:var(--neon)}
+#panel li .s{position:absolute;left:36px;right:-10px;top:50%;height:7px;margin-top:-3px;background:var(--pink);transform-origin:0 50%;border-radius:5px}
+#quote{position:absolute;left:90px;top:170px;width:860px;opacity:0}
+#quote .m{font-size:220px;line-height:.6;color:var(--neon);font-weight:700}
+#quote p{font-size:68px;line-height:1.12;font-weight:700;color:#fff;margin-top:10px;text-shadow:0 6px 30px rgba(0,0,0,.8)}
+#quote p span{opacity:.15}
+#quote .who{margin-top:24px;font-size:32px;color:#cfcfcf;letter-spacing:.12em;opacity:0}
+#end{position:absolute;left:0;right:0;top:380px;text-align:center;opacity:0}
+#end .l1{font-size:64px;font-weight:700;color:#fff;letter-spacing:.3em}
+#end .l2{font-size:200px;font-weight:700;color:var(--neon);letter-spacing:-.03em;line-height:1}
+</style></head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="59.059" data-width="1920" data-height="1080">
+  <div id="vw"><video id="v" class="clip" data-start="0" data-duration="59.059" data-has-audio="true" src="assets/q1_cut.mp4" playsinline></video></div>
+  <div id="vignette"></div><div id="dim"></div>
+  <div id="qcard" class="glass"><div class="k">QUESTION <b>1</b> / 3</div><div class="t">Quel genre d'accompagnement proposes-tu&nbsp;?</div><div class="u"></div></div>
+  <div class="chip" id="chip-biz" style="right:150px;top:250px">BUSINESS EN LIGNE</div>
+  <div class="chip" id="chip-phys" style="right:330px;top:230px">PHYSIQUE</div>
+  <div class="chip alt" id="chip-virt" style="right:150px;top:360px">OU VIRTUELLE</div>
+  <div id="stamp">BAC RATÉ</div>
+  <div id="lt" class="glass"><div class="a">LE DÉBUT</div><div class="b">Mon 1er élève français</div><div class="c">« il m'a payé cher »</div></div>
+  <div id="panel" class="glass"><h3>AVANT, JE VENDAIS</h3><ul><li id="li0"><span class="dot"></span>Comptes Netflix<i class="s"></i></li><li id="li1"><span class="dot"></span>Comptes MyCanal<i class="s"></i></li><li id="li2"><span class="dot"></span>Pages de vente<i class="s"></i></li><li id="li3"><span class="dot"></span>Petits sites web<i class="s"></i></li><li id="li4"><span class="dot"></span>Boostage de comptes<i class="s"></i></li></ul></div>
+  <div id="quote"><div class="m">“</div><p id="qp"><span id="q1">Je ne veux pas acheter un service.</span> <span id="q2">Je veux que tu me formes.</span></p><div class="who">— SON PREMIER ÉLÈVE</div></div>
+  <div class="cap q" id="c0"><span id="w0_0">Quel</span> <span id="w0_1">genre</span> <span id="w0_2">d&#x27;accompagnement</span></div><div class="cap q" id="c1"><span id="w1_0">est-ce</span> <span id="w1_1">que</span> <span id="w1_2">tu</span> <span id="w1_3">proposes ?</span></div><div class="cap q" id="c2"><span id="w2_0">Est-ce</span> <span id="w2_1">que</span> <span id="w2_2">tu</span> <span id="w2_3">proposes</span></div><div class="cap q" id="c3"><span id="w3_0">tes</span> <span id="w3_1">accompagnements pour...</span></div><div class="cap q" id="c4"><span id="w4_0">développer</span> <span id="w4_1">une</span> <span id="w4_2">activité</span> <span id="w4_3">ou</span></div><div class="cap q" id="c5"><span id="w5_0">alors,</span></div><div class="cap q" id="c6"><span id="w6_0">Tu</span> <span id="w6_1">peux</span> <span id="w6_2">accompagner</span> <span id="w6_3">quelqu&#x27;un</span></div><div class="cap q" id="c7"><span id="w7_0">qui</span> <span id="w7_1">lui</span> <span id="w7_2">aussi</span> <span id="w7_3">veut</span></div><div class="cap q" id="c8"><span id="w8_0">être</span> <span id="w8_1">comme</span> <span id="w8_2">toi</span> <span id="w8_3">et</span></div><div class="cap q" id="c9"><span id="w9_0">veut</span> <span id="w9_1">pouvoir</span> <span id="w9_2">accompagner</span></div><div class="cap q" id="c10"><span id="w10_0">d&#x27;autres</span> <span id="w10_1">personnes.</span></div><div class="cap" id="c11"><span id="w11_0">Les</span> <span id="w11_1">deux,</span></div><div class="cap" id="c12"><span id="w12_0">oui.</span></div><div class="cap" id="c13"><span id="w13_0">J&#x27;accompagne</span> <span id="w13_1">des</span> <span id="w13_2">personnes</span></div><div class="cap" id="c14"><span id="w14_0">qui</span> <span id="w14_1">veulent</span> <span id="w14_2">être</span> <span id="w14_3">comme</span></div><div class="cap" id="c15"><span id="w15_0">moi,</span></div><div class="cap" id="c16"><span id="w16_0">mais</span> <span id="w16_1">qui</span> <span id="w16_2">ont</span> <span id="w16_3">déjà</span></div><div class="cap" id="c17"><span id="w17_0">un</span> <span id="w17_1">business</span> <span id="w17_2">en</span> <span id="w17_3">ligne.</span></div><div class="cap" id="c18"><span id="w18_0">C&#x27;est-à-dire</span> <span id="w18_1">qu&#x27;il</span> <span id="w18_2">faut</span> <span id="w18_3">déjà</span></div><div class="cap" id="c19"><span id="w19_0">que</span> <span id="w19_1">tu</span> <span id="w19_2">aies</span> <span id="w19_3">un</span></div><div class="cap" id="c20"><span id="w20_0">business</span> <span id="w20_1">en</span> <span id="w20_2">ligne,</span></div><div class="cap" id="c21"><span id="w21_0">il</span> <span id="w21_1">faut</span> <span id="w21_2">déjà</span> <span id="w21_3">que</span></div><div class="cap" id="c22"><span id="w22_0">tu</span> <span id="w22_1">aies</span> <span id="w22_2">une</span> <span id="w22_3">activité,</span></div><div class="cap" id="c23"><span id="w23_0">que</span> <span id="w23_1">ce</span> <span id="w23_2">soit</span> <span id="w23_3">physique</span></div><div class="cap" id="c24"><span id="w24_0">ou</span> <span id="w24_1">virtuelle.</span></div><div class="cap" id="c25"><span id="w25_0">Je</span> <span id="w25_1">me</span> <span id="w25_2">rappelle</span> <span id="w25_3">le</span></div><div class="cap" id="c26"><span id="w26_0">déclic,</span></div><div class="cap" id="c27"><span id="w27_0">ce</span> <span id="w27_1">qui</span> <span id="w27_2">a</span> <span id="w27_3">fait</span></div><div class="cap" id="c28"><span id="w28_0">en</span> <span id="w28_1">sorte</span> <span id="w28_2">que</span> <span id="w28_3">je</span></div><div class="cap" id="c29"><span id="w29_0">fais</span> <span id="w29_1">ce</span> <span id="w29_2">que</span> <span id="w29_3">je</span></div><div class="cap" id="c30"><span id="w30_0">fais</span> <span id="w30_1">aujourd&#x27;hui,</span></div><div class="cap" id="c31"><span id="w31_0">c&#x27;est</span> <span id="w31_1">quand</span> <span id="w31_2">j&#x27;avais</span> <span id="w31_3">raté</span></div><div class="cap" id="c32"><span id="w32_0">le</span> <span id="w32_1">bac.</span></div><div class="cap" id="c33"><span id="w33_0">J&#x27;avais</span> <span id="w33_1">un</span> <span id="w33_2">élève</span> <span id="w33_3">français,</span></div><div class="cap" id="c34"><span id="w34_0">mon</span> <span id="w34_1">premier</span> <span id="w34_2">élève</span> <span id="w34_3">français,</span></div><div class="cap" id="c35"><span id="w35_0">la</span> <span id="w35_1">personne</span> <span id="w35_2">qui</span> <span id="w35_3">m&#x27;a</span></div><div class="cap" id="c36"><span id="w36_0">payé</span> <span id="w36_1">cher</span> <span id="w36_2">jusqu&#x27;à</span> <span id="w36_3">aujourd&#x27;hui.</span></div><div class="cap" id="c37"><span id="w37_0">Je</span> <span id="w37_1">me</span> <span id="w37_2">suis</span> <span id="w37_3">dit,</span></div><div class="cap" id="c38"><span id="w38_0">wow,</span></div><div class="cap" id="c39"><span id="w39_0">donc</span> <span id="w39_1">une</span> <span id="w39_2">personne</span> <span id="w39_3">m&#x27;a</span></div><div class="cap" id="c40"><span id="w40_0">payé</span> <span id="w40_1">cher</span> <span id="w40_2">comme</span> <span id="w40_3">ça.</span></div><div class="cap" id="c41"><span id="w41_0">Parce</span> <span id="w41_1">que</span> <span id="w41_2">je ne</span> <span id="w41_3">proposais</span></div><div class="cap" id="c42"><span id="w42_0">pas</span> <span id="w42_1">les</span> <span id="w42_2">accompagnements.</span></div><div class="cap" id="c43"><span id="w43_0">Je</span> <span id="w43_1">proposais</span> <span id="w43_2">à</span> <span id="w43_3">vendre</span></div><div class="cap" id="c44"><span id="w44_0">des</span> <span id="w44_1">comptes</span> <span id="w44_2">de</span> <span id="w44_3">Netflix,</span></div><div class="cap" id="c45"><span id="w45_0">vendre</span> <span id="w45_1">des</span> <span id="w45_2">comptes</span> <span id="w45_3">de</span></div><div class="cap" id="c46"><span id="w46_0">MyCanal,</span></div><div class="cap" id="c47"><span id="w47_0">création</span> <span id="w47_1">des</span> <span id="w47_2">pages</span> <span id="w47_3">de</span></div><div class="cap" id="c48"><span id="w48_0">vente,</span></div><div class="cap" id="c49"><span id="w49_0">création</span> <span id="w49_1">des</span> <span id="w49_2">petits</span> <span id="w49_3">sites</span></div><div class="cap" id="c50"><span id="w50_0">web,</span></div><div class="cap" id="c51"><span id="w51_0">boostage</span> <span id="w51_1">des</span> <span id="w51_2">comptes,</span></div><div class="cap" id="c52"><span id="w52_0">des</span> <span id="w52_1">pages</span> <span id="w52_2">et</span> <span id="w52_3">consorts.</span></div><div class="cap" id="c53"><span id="w53_0">Et</span> <span id="w53_1">quand</span> <span id="w53_2">il</span> <span id="w53_3">était</span></div><div class="cap" id="c54"><span id="w54_0">venu</span> <span id="w54_1">vers</span> <span id="w54_2">moi,</span></div><div class="cap" id="c55"><span id="w55_0">il</span> <span id="w55_1">m&#x27;a</span> <span id="w55_2">dit,</span></div><div class="cap" id="c56"><span id="w56_0">Je</span> <span id="w56_1">vais</span> <span id="w56_2">être</span> <span id="w56_3">comme</span></div><div class="cap" id="c57"><span id="w57_0">toi.</span></div>
+  <div id="big">LE <em>DÉCLIC</em></div>
+  <div id="end"><div class="l1">C'ÉTAIT ÇA</div><div class="l2">LE DÉCLIC.</div></div>
+  <div id="flash"></div><div id="bar"></div>
+</div>
+<script>
+const tl = gsap.timeline({paused:true});
+function show(id,a,b){tl.set(id,{opacity:1},a);tl.set(id,{opacity:0},b);}
+function hl(id,a){tl.set(id,{className:'on'},a);}
+const pop=(id,a,b,from)=>{tl.fromTo(id,Object.assign({autoAlpha:0,scale:.6},from||{}),{autoAlpha:1,scale:1,x:0,y:0,duration:.35,ease:'back.out(2.2)'},a);tl.to(id,{autoAlpha:0,scale:.9,duration:.25,ease:'power2.in'},b);};
+tl.fromTo('#bar',{scaleX:0},{scaleX:1,duration:59.059,ease:'none'},0);
+tl.set('#vw',{scale:1.0},0.000);tl.set('#vw',{scale:1.12},2.202);tl.set('#vw',{scale:1.04},4.438);tl.set('#vw',{scale:1.15},5.305);tl.set('#vw',{scale:1.0},6.673);tl.set('#vw',{scale:1.12},9.009);tl.set('#vw',{scale:1.04},12.546);tl.set('#vw',{scale:1.15},13.547);tl.set('#vw',{scale:1.0},25.459);tl.set('#vw',{scale:1.12},32.065);tl.set('#vw',{scale:1.04},37.804);tl.set('#vw',{scale:1.15},39.306);tl.set('#vw',{scale:1.0},39.706);tl.set('#vw',{scale:1.12},44.511);tl.set('#vw',{scale:1.04},50.617);tl.set('#vw',{scale:1.15},54.988);tl.set('#vw',{scale:1.0},56.023);tl.set('#vw',{scale:1.12},57.724);
+// Question card
+tl.fromTo('#qcard',{autoAlpha:0,x:-60},{autoAlpha:1,x:0,duration:.6,ease:'power3.out'},0.05);
+tl.to('#qcard .u',{width:260,duration:.6,ease:'power2.out'},0.5);
+tl.to('#qcard',{autoAlpha:0,x:-60,duration:.4,ease:'power2.in'},12.250);
+// keyword inserts
+pop('#chip-biz',17.581,20.181,{y:30});
+pop('#chip-phys',23.821,25.541,{x:60});
+pop('#chip-virt',24.541,25.541,{x:60});
+// "le déclic" : flash + kinetic word + punch-in
+tl.set('#flash',{opacity:.85},26.573);tl.to('#flash',{opacity:0,duration:.35,ease:'power2.out'},26.573);
+tl.fromTo('#big',{autoAlpha:0,scale:1.6},{autoAlpha:1,scale:1,duration:.3,ease:'power4.out'},26.573);
+tl.to('#big',{autoAlpha:0,duration:.25},27.673);
+tl.to('#dim',{opacity:.35,duration:.2},26.573);tl.to('#dim',{opacity:0,duration:.3},27.673);
+// bac raté stamp
+tl.fromTo('#stamp',{autoAlpha:0,scale:2.4,rotation:-4},{autoAlpha:1,scale:1,rotation:-12,duration:.22,ease:'power4.in'},31.373);
+tl.to('#stamp',{autoAlpha:0,duration:.25},32.873);
+// lower third
+tl.fromTo('#lt',{autoAlpha:0,x:-80},{autoAlpha:1,x:0,duration:.45,ease:'power3.out'},33.615);
+tl.fromTo('#lt .c',{autoAlpha:0,y:12},{autoAlpha:1,y:0,duration:.3},38.121);
+tl.to('#lt',{autoAlpha:0,x:-80,duration:.35,ease:'power2.in'},39.721);
+// list panel
+tl.fromTo('#panel',{autoAlpha:0,x:80},{autoAlpha:1,x:0,duration:.45,ease:'power3.out'},41.786);
+tl.fromTo('#li0',{autoAlpha:0,x:40},{autoAlpha:1,x:0,duration:.35,ease:'back.out(2)'},42.286);tl.fromTo('#li1',{autoAlpha:0,x:40},{autoAlpha:1,x:0,duration:.35,ease:'back.out(2)'},43.566);tl.fromTo('#li2',{autoAlpha:0,x:40},{autoAlpha:1,x:0,duration:.35,ease:'back.out(2)'},45.331);tl.fromTo('#li3',{autoAlpha:0,x:40},{autoAlpha:1,x:0,duration:.35,ease:'back.out(2)'},46.851);tl.fromTo('#li4',{autoAlpha:0,x:40},{autoAlpha:1,x:0,duration:.35,ease:'back.out(2)'},47.491);
+tl.to('#panel li',{opacity:.55,duration:.3,stagger:.08},50.291);
+tl.fromTo('#panel li .s',{scaleX:0},{scaleX:1,duration:.25,stagger:.08,ease:'power2.out'},50.291);
+tl.to('#panel',{autoAlpha:0,x:80,duration:.35,ease:'power2.in'},52.050);
+// quote
+tl.fromTo('#quote',{autoAlpha:0,y:30},{autoAlpha:1,y:0,duration:.45,ease:'power3.out'},52.350);
+tl.to('#q1',{opacity:1,duration:.4},52.991);
+tl.to('#q2',{opacity:1,duration:.4},54.264);
+tl.to('#quote .who',{opacity:1,duration:.4},54.964);
+tl.to('#dim',{opacity:.45,duration:.5},52.350);
+tl.to('#dim',{opacity:0,duration:.4},56.000);
+tl.to('#quote',{autoAlpha:0,duration:.35},56.000);
+// final title
+tl.set('#flash',{opacity:.9},57.650);tl.to('#flash',{opacity:0,duration:.4},57.650);
+tl.to('#dim',{opacity:.6,duration:.3},57.650);
+tl.fromTo('#end',{autoAlpha:0,scale:1.3},{autoAlpha:1,scale:1,duration:.4,ease:'power4.out'},57.650);
+tl.fromTo('#vw',{scale:1.04},{scale:1.14,duration:1.409,ease:'none'},57.650);
+show('#c0',0.070,1.270);hl('#w0_0',0.070);hl('#w0_1',0.310);hl('#w0_2',0.550);show('#c1',1.270,2.232);hl('#w1_0',1.270);hl('#w1_1',1.430);hl('#w1_2',1.590);hl('#w1_3',1.750);show('#c2',2.232,3.032);hl('#w2_0',2.232);hl('#w2_1',2.392);hl('#w2_2',2.472);hl('#w2_3',2.632);show('#c3',3.032,4.538);hl('#w3_0',3.032);hl('#w3_1',3.352);show('#c4',4.538,6.285);hl('#w4_0',4.538);hl('#w4_1',5.405);hl('#w4_2',5.645);hl('#w4_3',6.045);show('#c5',6.285,6.773);hl('#w5_0',6.285);show('#c6',6.773,8.133);hl('#w6_0',6.773);hl('#w6_1',7.013);hl('#w6_2',7.173);hl('#w6_3',7.733);show('#c7',8.133,9.429);hl('#w7_0',8.133);hl('#w7_1',8.373);hl('#w7_2',8.693);hl('#w7_3',9.109);show('#c8',9.429,10.309);hl('#w8_0',9.429);hl('#w8_1',9.589);hl('#w8_2',9.749);hl('#w8_3',10.069);show('#c9',10.309,11.669);hl('#w9_0',10.309);hl('#w9_1',10.629);hl('#w9_2',11.029);show('#c10',11.669,12.608);hl('#w10_0',11.669);hl('#w10_1',12.069);show('#c11',12.608,13.088);hl('#w11_0',12.608);hl('#w11_1',12.848);show('#c12',13.088,13.581);hl('#w12_0',13.088);show('#c13',13.581,14.621);hl('#w13_0',13.581);hl('#w13_1',14.221);hl('#w13_2',14.381);show('#c14',14.621,15.661);hl('#w14_0',14.621);hl('#w14_1',14.781);hl('#w14_2',15.181);hl('#w14_3',15.421);show('#c15',15.661,16.301);hl('#w15_0',15.661);show('#c16',16.301,17.341);hl('#w16_0',16.301);hl('#w16_1',16.541);hl('#w16_2',16.781);hl('#w16_3',17.021);show('#c17',17.341,18.701);hl('#w17_0',17.341);hl('#w17_1',17.581);hl('#w17_2',17.981);hl('#w17_3',18.141);show('#c18',18.701,19.741);hl('#w18_0',18.701);hl('#w18_1',19.181);hl('#w18_2',19.341);hl('#w18_3',19.501);show('#c19',19.741,20.461);hl('#w19_0',19.741);hl('#w19_1',19.901);hl('#w19_2',19.981);hl('#w19_3',20.301);show('#c20',20.461,21.261);hl('#w20_0',20.461);hl('#w20_1',20.781);hl('#w20_2',20.941);show('#c21',21.261,21.821);hl('#w21_0',21.261);hl('#w21_1',21.341);hl('#w21_2',21.501);hl('#w21_3',21.741);show('#c22',21.821,23.101);hl('#w22_0',21.821);hl('#w22_1',21.981);hl('#w22_2',22.221);hl('#w22_3',22.381);show('#c23',23.101,24.301);hl('#w23_0',23.101);hl('#w23_1',23.341);hl('#w23_2',23.501);hl('#w23_3',23.821);show('#c24',24.301,25.533);hl('#w24_0',24.301);hl('#w24_1',24.541);show('#c25',25.533,26.573);hl('#w25_0',25.533);hl('#w25_1',25.693);hl('#w25_2',25.853);hl('#w25_3',26.333);show('#c26',26.573,27.213);hl('#w26_0',26.573);show('#c27',27.213,27.773);hl('#w27_0',27.213);hl('#w27_1',27.373);hl('#w27_2',27.453);hl('#w27_3',27.613);show('#c28',27.773,28.253);hl('#w28_0',27.773);hl('#w28_1',27.853);hl('#w28_2',28.013);hl('#w28_3',28.093);show('#c29',28.253,28.733);hl('#w29_0',28.253);hl('#w29_1',28.413);hl('#w29_2',28.493);hl('#w29_3',28.653);show('#c30',28.733,29.533);hl('#w30_0',28.733);hl('#w30_1',28.973);show('#c31',29.533,31.213);hl('#w31_0',29.533);hl('#w31_1',29.853);hl('#w31_2',30.173);hl('#w31_3',30.653);show('#c32',31.213,32.155);hl('#w32_0',31.213);hl('#w32_1',31.373);show('#c33',32.155,33.755);hl('#w33_0',32.155);hl('#w33_1',32.715);hl('#w33_2',32.875);hl('#w33_3',33.275);show('#c34',33.755,34.955);hl('#w34_0',33.755);hl('#w34_1',33.915);hl('#w34_2',34.155);hl('#w34_3',34.555);show('#c35',34.955,35.595);hl('#w35_0',34.955);hl('#w35_1',35.115);hl('#w35_2',35.275);hl('#w35_3',35.355);show('#c36',35.595,36.395);hl('#w36_0',35.595);hl('#w36_1',35.835);hl('#w36_2',36.075);hl('#w36_3',36.315);show('#c37',36.395,36.955);hl('#w37_0',36.395);hl('#w37_1',36.555);hl('#w37_2',36.635);hl('#w37_3',36.795);show('#c38',36.955,37.275);hl('#w38_0',36.955);show('#c39',37.275,37.938);hl('#w39_0',37.275);hl('#w39_1',37.458);hl('#w39_2',37.641);hl('#w39_3',37.804);show('#c40',37.938,39.316);hl('#w40_0',37.938);hl('#w40_1',38.121);hl('#w40_2',38.464);hl('#w40_3',38.624);show('#c41',39.316,40.126);hl('#w41_0',39.316);hl('#w41_1',39.476);hl('#w41_2',39.706);hl('#w41_3',39.806);show('#c42',40.126,41.006);hl('#w42_0',40.126);hl('#w42_1',40.206);hl('#w42_2',40.366);show('#c43',41.006,41.886);hl('#w43_0',41.006);hl('#w43_1',41.166);hl('#w43_2',41.486);hl('#w43_3',41.566);show('#c44',41.886,42.766);hl('#w44_0',41.886);hl('#w44_1',41.966);hl('#w44_2',42.046);hl('#w44_3',42.286);show('#c45',42.766,43.566);hl('#w45_0',42.766);hl('#w45_1',43.086);hl('#w45_2',43.246);hl('#w45_3',43.326);show('#c46',43.566,44.611);hl('#w46_0',43.566);show('#c47',44.611,45.651);hl('#w47_0',44.611);hl('#w47_1',45.171);hl('#w47_2',45.331);hl('#w47_3',45.571);show('#c48',45.651,46.211);hl('#w48_0',45.651);show('#c49',46.211,47.091);hl('#w49_0',46.211);hl('#w49_1',46.531);hl('#w49_2',46.691);hl('#w49_3',46.851);show('#c50',47.091,47.491);hl('#w50_0',47.091);show('#c51',47.491,49.171);hl('#w51_0',47.491);hl('#w51_1',48.371);hl('#w51_2',48.611);show('#c52',49.171,50.687);hl('#w52_0',49.171);hl('#w52_1',49.411);hl('#w52_2',49.731);hl('#w52_3',49.891);show('#c53',50.687,51.487);hl('#w53_0',50.687);hl('#w53_1',50.927);hl('#w53_2',51.167);hl('#w53_3',51.327);show('#c54',51.487,52.127);hl('#w54_0',51.487);hl('#w54_1',51.727);hl('#w54_2',51.887);show('#c55',52.127,52.350);hl('#w55_0',52.127);hl('#w55_1',52.207);hl('#w55_2',52.447);show('#c56',56.123,57.003);hl('#w56_0',56.123);hl('#w56_1',56.283);hl('#w56_2',56.523);hl('#w56_3',56.763);show('#c57',57.003,57.650);hl('#w57_0',57.003);
+window.__timelines = window.__timelines || {};
+window.__timelines["main"] = tl;
+tl.seek(0);
+</script>
+</body></html>
