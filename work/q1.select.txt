@@ -1,0 +1,1 @@
+select='between(t,3.2866,5.4888)+between(t,5.4888,7.9580)+between(t,8.3583,17.8345)+between(t,21.8719,22.8728)+between(t,23.7404,35.6857)+between(t,39.9900,46.5966)+between(t,48.7987,56.2729)+between(t,58.3750,70.3870)+between(t,70.4871,78.0280)+between(t,80.3970,86.3029)+between(t,87.0370,101.9185)',setpts=N/FRAME_RATE/TB
