@@ -11,3 +11,4 @@
 | Animation | GSAP (fourni avec HyperFrames) | Licence standard GSAP « no charge » |
 | Débruitage | Modèle RNNoise `sh.rnnn` ([GregorR/rnnoise-models](https://github.com/GregorR/rnnoise-models)) | BSD |
 | Transcription | Parakeet TDT 0.6B v3 + Whisper turbo via [sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx) | CC-BY-4.0 / MIT |
+| Détourage (flou d'arrière-plan des shorts) | [RobustVideoMatting](https://github.com/PeterL1n/RobustVideoMatting) `rvm_mobilenetv3` | GPL-3.0 (outil ; les vidéos produites ne sont pas concernées) |
