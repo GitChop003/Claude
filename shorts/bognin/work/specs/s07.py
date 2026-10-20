@@ -30,7 +30,7 @@ def inserts(c, T, port, VOICE_D, DUR):
     t = T("filmait", 497.40); c.chip("JAMAIS FILMÉ", t - 0.2, t + 1.3, icon="camera", cls="dark")
     t = T("visage", 499.32); c.emoji("seeno", T("honte", 498.68) - 0.1, t + 1.2, side="r", rot=-4)
     t = T("photogénique", 501.16); c.chip("« PAS PHOTOGÉNIQUE »", t - 0.3, t + 1.3, icon="cross", cls="red")
-    t = T("parler", 503.64); c.emoji("mic", t - 0.2, t + 1.4, side="l", rot=6)
+    t = T("parler", 503.64); c.emoji("mic", t - 0.2, min(t + 1.4, T("J'ai", 507.08) - 0.2), side="l", rot=6)
     a = T("J'ai", 507.08); c.big("MES PREMIÈRES<br><em>VIDÉOS</em>" if not port else "MES<br>PREMIÈRES<br><em>VIDÉOS</em>",
                                  a - 0.05, VOICE_D - 0.05, small="ET POURTANT…")
     c.endcard("ET TOI ?", "QU'EST-CE QUI<br>TE BLOQUE ?", "Abonne-toi pour la suite", VOICE_D + 0.05)

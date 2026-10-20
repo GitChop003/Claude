@@ -3160,6 +3160,835 @@
 ]
 },
 {
+"a": 385.9,
+"b": 388.4,
+"words": [
+{
+"text": "Mais",
+"start": 386.06,
+"end": 386.22
+},
+{
+"text": "j'avais",
+"start": 386.22,
+"end": 386.46
+},
+{
+"text": "encore",
+"start": 386.46,
+"end": 386.62
+},
+{
+"text": "peur",
+"start": 386.62,
+"end": 386.78
+},
+{
+"text": "de",
+"start": 386.78,
+"end": 386.86
+},
+{
+"text": "me",
+"start": 386.86,
+"end": 387.02
+},
+{
+"text": "lancer,",
+"start": 387.02,
+"end": 387.66
+},
+{
+"text": "c'est",
+"start": 387.66,
+"end": 387.74
+},
+{
+"text": "le",
+"start": 387.74,
+"end": 387.9
+},
+{
+"text": "mot.",
+"start": 387.9,
+"end": 388.35
+}
+]
+},
+{
+"a": 388.8,
+"b": 392.6,
+"words": [
+{
+"text": "j'attendais",
+"start": 389.34,
+"end": 389.9
+},
+{
+"text": "et",
+"start": 389.9,
+"end": 391.0
+},
+{
+"text": "Mamanes",
+"start": 391.0,
+"end": 391.56
+},
+{
+"text": "Supreme.",
+"start": 391.56,
+"end": 392.01
+}
+]
+},
+{
+"a": 393.4,
+"b": 397.4,
+"words": [
+{
+"text": "J'avais",
+"start": 393.68,
+"end": 394.0
+},
+{
+"text": "un",
+"start": 394.0,
+"end": 394.08
+},
+{
+"text": "voyage",
+"start": 394.08,
+"end": 394.4
+},
+{
+"text": "d'affaires",
+"start": 394.4,
+"end": 394.88
+},
+{
+"text": "que",
+"start": 394.88,
+"end": 395.04
+},
+{
+"text": "je",
+"start": 395.04,
+"end": 395.2
+},
+{
+"text": "devais",
+"start": 395.2,
+"end": 395.44
+},
+{
+"text": "faire",
+"start": 395.44,
+"end": 395.6
+},
+{
+"text": "et",
+"start": 395.6,
+"end": 395.76
+},
+{
+"text": "j'ai",
+"start": 395.76,
+"end": 396.08
+},
+{
+"text": "raté",
+"start": 396.08,
+"end": 396.48
+},
+{
+"text": "mon",
+"start": 396.48,
+"end": 396.56
+},
+{
+"text": "voyage.",
+"start": 396.56,
+"end": 397.01
+}
+]
+},
+{
+"a": 397.6,
+"b": 402.2,
+"words": [
+{
+"text": "à",
+"start": 398.14,
+"end": 398.3
+},
+{
+"text": "une",
+"start": 398.3,
+"end": 398.38
+},
+{
+"text": "personne",
+"start": 398.38,
+"end": 398.54
+},
+{
+"text": "qui",
+"start": 398.54,
+"end": 398.7
+},
+{
+"text": "avait",
+"start": 398.7,
+"end": 398.86
+},
+{
+"text": "fait",
+"start": 398.86,
+"end": 399.02
+},
+{
+"text": "une",
+"start": 399.02,
+"end": 399.1
+},
+{
+"text": "heureuse,",
+"start": 399.1,
+"end": 399.5
+},
+{
+"text": "mais",
+"start": 399.5,
+"end": 399.74
+},
+{
+"text": "la",
+"start": 399.74,
+"end": 399.82
+},
+{
+"text": "personne",
+"start": 399.82,
+"end": 399.98
+},
+{
+"text": "qui",
+"start": 399.98,
+"end": 400.06
+},
+{
+"text": "s'occupait",
+"start": 400.06,
+"end": 400.54
+},
+{
+"text": "de",
+"start": 400.54,
+"end": 400.62
+},
+{
+"text": "mes",
+"start": 400.62,
+"end": 400.78
+},
+{
+"text": "dossiers",
+"start": 400.78,
+"end": 401.1
+},
+{
+"text": "avait",
+"start": 401.1,
+"end": 401.34
+},
+{
+"text": "fait",
+"start": 401.34,
+"end": 401.5
+},
+{
+"text": "une",
+"start": 401.5,
+"end": 401.66
+},
+{
+"text": "heureuse.",
+"start": 401.66,
+"end": 402.11
+}
+]
+},
+{
+"a": 402.2,
+"b": 405.4,
+"words": [
+{
+"text": "See",
+"start": 402.4,
+"end": 402.56
+},
+{
+"text": "my",
+"start": 402.56,
+"end": 402.72
+},
+{
+"text": "document.",
+"start": 402.72,
+"end": 404.0
+},
+{
+"text": "Une",
+"start": 404.0,
+"end": 404.16
+},
+{
+"text": "semaine",
+"start": 404.16,
+"end": 404.48
+},
+{
+"text": "après.",
+"start": 404.48,
+"end": 404.93
+}
+]
+},
+{
+"a": 406.8,
+"b": 408.8,
+"words": [
+{
+"text": "Et",
+"start": 406.99,
+"end": 407.07
+},
+{
+"text": "je",
+"start": 407.07,
+"end": 407.23
+},
+{
+"text": "suis",
+"start": 407.23,
+"end": 407.39
+},
+{
+"text": "encore",
+"start": 407.39,
+"end": 407.55
+},
+{
+"text": "mon",
+"start": 407.55,
+"end": 407.71
+},
+{
+"text": "examen,",
+"start": 407.71,
+"end": 408.11
+},
+{
+"text": "c'est-à-dire",
+"start": 408.11,
+"end": 408.43
+},
+{
+"text": "le",
+"start": 408.43,
+"end": 408.51
+},
+{
+"text": "bas.",
+"start": 408.51,
+"end": 408.8
+}
+]
+},
+{
+"a": 408.8,
+"b": 410.8,
+"words": [
+{
+"text": "Du",
+"start": 408.96,
+"end": 409.12
+},
+{
+"text": "coup,",
+"start": 409.12,
+"end": 409.28
+},
+{
+"text": "je",
+"start": 409.28,
+"end": 409.36
+},
+{
+"text": "suis",
+"start": 409.36,
+"end": 409.52
+},
+{
+"text": "ancré",
+"start": 409.52,
+"end": 410.0
+},
+{
+"text": "dans",
+"start": 410.0,
+"end": 410.24
+},
+{
+"text": "une...",
+"start": 410.24,
+"end": 410.69
+}
+]
+},
+{
+"a": 410.8,
+"b": 415.6,
+"words": [
+{
+"text": "une",
+"start": 411.23,
+"end": 411.31
+},
+{
+"text": "dépression",
+"start": 411.31,
+"end": 411.71
+},
+{
+"text": "pas",
+"start": 411.71,
+"end": 411.87
+},
+{
+"text": "possible",
+"start": 411.87,
+"end": 412.11
+},
+{
+"text": "je",
+"start": 412.11,
+"end": 412.27
+},
+{
+"text": "sais",
+"start": 412.27,
+"end": 412.35
+},
+{
+"text": "pas",
+"start": 412.35,
+"end": 412.43
+},
+{
+"text": "si",
+"start": 412.43,
+"end": 412.59
+},
+{
+"text": "je",
+"start": 412.59,
+"end": 412.67
+},
+{
+"text": "vais",
+"start": 412.67,
+"end": 412.83
+},
+{
+"text": "appeler",
+"start": 412.83,
+"end": 413.07
+},
+{
+"text": "dépression",
+"start": 413.07,
+"end": 413.47
+},
+{
+"text": "je",
+"start": 413.47,
+"end": 413.63
+},
+{
+"text": "me",
+"start": 413.63,
+"end": 413.71
+},
+{
+"text": "suis",
+"start": 413.71,
+"end": 413.87
+},
+{
+"text": "informé",
+"start": 413.87,
+"end": 414.27
+},
+{
+"text": "dans",
+"start": 414.27,
+"end": 414.35
+},
+{
+"text": "ma",
+"start": 414.35,
+"end": 414.43
+},
+{
+"text": "chambre",
+"start": 414.43,
+"end": 414.75
+},
+{
+"text": "deux",
+"start": 414.75,
+"end": 414.91
+},
+{
+"text": "semaines",
+"start": 414.91,
+"end": 415.36
+}
+]
+},
+{
+"a": 415.7,
+"b": 418.3,
+"words": [
+{
+"text": "me",
+"start": 416.02,
+"end": 416.1
+},
+{
+"text": "poser",
+"start": 416.1,
+"end": 416.34
+},
+{
+"text": "la",
+"start": 416.34,
+"end": 416.42
+},
+{
+"text": "question",
+"start": 416.42,
+"end": 416.82
+},
+{
+"text": "qu'est",
+"start": 416.82,
+"end": 417.06
+},
+{
+"text": "ce",
+"start": 417.06,
+"end": 417.06
+},
+{
+"text": "que",
+"start": 417.06,
+"end": 417.14
+},
+{
+"text": "je",
+"start": 417.14,
+"end": 417.22
+},
+{
+"text": "veux",
+"start": 417.22,
+"end": 417.38
+},
+{
+"text": "faire",
+"start": 417.38,
+"end": 417.54
+},
+{
+"text": "de",
+"start": 417.54,
+"end": 417.62
+},
+{
+"text": "ma",
+"start": 417.62,
+"end": 417.7
+},
+{
+"text": "vie.",
+"start": 417.7,
+"end": 418.15
+}
+]
+},
+{
+"a": 419.4,
+"b": 422.4,
+"words": [
+{
+"text": "que",
+"start": 419.78,
+"end": 420.02
+},
+{
+"text": "actuellement",
+"start": 420.02,
+"end": 420.5
+},
+{
+"text": "je",
+"start": 420.5,
+"end": 420.66
+},
+{
+"text": "viens",
+"start": 420.66,
+"end": 420.9
+},
+{
+"text": "pratiquement",
+"start": 420.9,
+"end": 421.14
+},
+{
+"text": "de",
+"start": 421.14,
+"end": 421.3
+},
+{
+"text": "tout",
+"start": 421.3,
+"end": 421.46
+},
+{
+"text": "perdre.",
+"start": 421.46,
+"end": 421.91
+}
+]
+},
+{
+"a": 422.4,
+"b": 424.6,
+"words": [
+{
+"text": "Ok,",
+"start": 422.59,
+"end": 422.91
+},
+{
+"text": "maintenant,",
+"start": 422.91,
+"end": 423.31
+},
+{
+"text": "qu'est-ce",
+"start": 423.31,
+"end": 423.55
+},
+{
+"text": "que",
+"start": 423.55,
+"end": 423.63
+},
+{
+"text": "je",
+"start": 423.63,
+"end": 423.79
+},
+{
+"text": "dois",
+"start": 423.79,
+"end": 424.03
+},
+{
+"text": "faire",
+"start": 424.03,
+"end": 424.11
+},
+{
+"text": "?",
+"start": 424.11,
+"end": 424.56
+}
+]
+},
+{
+"a": 425.9,
+"b": 430.3,
+"words": [
+{
+"text": "Cet",
+"start": 426.09,
+"end": 426.33
+},
+{
+"text": "élève",
+"start": 426.33,
+"end": 426.73
+},
+{
+"text": "français",
+"start": 426.73,
+"end": 426.97
+},
+{
+"text": "encore",
+"start": 426.97,
+"end": 427.21
+},
+{
+"text": "qui",
+"start": 427.21,
+"end": 427.29
+},
+{
+"text": "était",
+"start": 427.29,
+"end": 427.53
+},
+{
+"text": "dans",
+"start": 427.53,
+"end": 427.61
+},
+{
+"text": "mes",
+"start": 427.61,
+"end": 427.69
+},
+{
+"text": "oreilles",
+"start": 427.69,
+"end": 427.93
+},
+{
+"text": "entre",
+"start": 427.93,
+"end": 428.25
+},
+{
+"text": "me",
+"start": 428.25,
+"end": 428.41
+},
+{
+"text": "dit",
+"start": 428.41,
+"end": 428.65
+},
+{
+"text": "vas-y",
+"start": 428.65,
+"end": 428.97
+},
+{
+"text": "professionnalise",
+"start": 428.97,
+"end": 429.61
+},
+{
+"text": "toi.",
+"start": 429.61,
+"end": 430.06
+}
+]
+},
+{
+"a": 430.4,
+"b": 433.5,
+"words": [
+{
+"text": "Je",
+"start": 431.0,
+"end": 431.08
+},
+{
+"text": "me",
+"start": 431.08,
+"end": 431.16
+},
+{
+"text": "suis",
+"start": 431.16,
+"end": 431.32
+},
+{
+"text": "enfermé",
+"start": 431.32,
+"end": 431.8
+},
+{
+"text": "deux",
+"start": 431.8,
+"end": 431.96
+},
+{
+"text": "semaines",
+"start": 431.96,
+"end": 432.28
+},
+{
+"text": "à",
+"start": 432.28,
+"end": 432.44
+},
+{
+"text": "réfléchir.",
+"start": 432.44,
+"end": 432.89
+}
+]
+},
+{
+"a": 434.0,
+"b": 435.8,
+"words": [
+{
+"text": "Qu'est-ce",
+"start": 434.36,
+"end": 434.52
+},
+{
+"text": "que",
+"start": 434.52,
+"end": 434.6
+},
+{
+"text": "ma",
+"start": 434.6,
+"end": 434.68
+},
+{
+"text": "vie",
+"start": 434.68,
+"end": 434.84
+},
+{
+"text": "devient",
+"start": 434.84,
+"end": 435.08
+},
+{
+"text": "en",
+"start": 435.08,
+"end": 435.16
+},
+{
+"text": "fait?",
+"start": 435.16,
+"end": 435.61
+}
+]
+},
+{
 "a": 670.0,
 "b": 673.6,
 "words": [
