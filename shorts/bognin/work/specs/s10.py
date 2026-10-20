@@ -32,7 +32,7 @@ def inserts(c, T, port, VOICE_D, DUR):
                                   ("En vues", T("vues", 1649.26) - 0.1, "eyes"),
                                   ("En ventes / semaine", T("ventes", 1650.70) - 0.1, "money")],
             pa - 0.3, T("Il", 1651.66) + 0.3)
-    t = T("aucune", 1646.22); c.chip("AUCUNE COMPÉTENCE", t - 0.15, T("mais", 1646.78) + 0.6, icon="cross", cls="dark")
+    t = T("aucune", 1646.22); c.chip("AUCUNE COMPÉTENCE", t - 0.15, T("dépassé", 1647.74) - 0.65, icon="cross", cls="dark")
     t = T("rien", 1653.34); c.chip("PARTIS DE RIEN", t - 0.3, t + 1.4, icon="sparkles", cls="white")
     t = T("trois", 1664.63); c.chip("3 000 ABONNÉS EN < 1 MOIS", t - 0.2, T("Ils", 1667.48) - 0.05, icon="trophy", cls="sun")
     t = T("closé", 1667.80); c.chip("1ER CLOSING EN < 2 SEMAINES", t - 0.2, t + 1.7, icon="handshake", cls="sun")

@@ -15,6 +15,7 @@ flou d'arrière-plan léger, effet « 4K » dosé, sous-titres mot par mot, inse
 | 07 | J'étais timide, j'avais peur de la caméra | 7:56 → 8:28 | 28 s | [vertical](s07/port/renders/s07_port.mp4) | [horizontal](s07/land/renders/s07_land.mp4) |
 | 08 | Le vrai facteur : j'aime ce que je fais | 40:06 → 40:45 | 25 s | [vertical](s08/port/renders/s08_port.mp4) | [horizontal](s08/land/renders/s08_land.mp4) |
 | 09 | De 10 € à 2 000 € | 5:00 → 5:41 | 32 s | [vertical](s09/port/renders/s09_port.mp4) | [horizontal](s09/land/renders/s09_land.mp4) |
+| 10 | Un degré de chance existe | 27:16 → 28:40 | 46 s | [vertical](s10/port/renders/s10_port.mp4) | [horizontal](s10/land/renders/s10_land.mp4) |
 
 ## Méthode
 
