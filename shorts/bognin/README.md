@@ -12,6 +12,7 @@ flou d'arrière-plan léger, effet « 4K » dosé, sous-titres mot par mot, inse
 | 04 | 3 mois catastrophiques, puis le déclic | 11:07 → 13:19 | 82 s | [vertical](s04/port/renders/s04_port.mp4) | [horizontal](s04/land/renders/s04_land.mp4) |
 | 05 | 800 000 vues, presque 0 client | 20:41 → 21:37 | 35 s | [vertical](s05/port/renders/s05_port.mp4) | [horizontal](s05/land/renders/s05_land.mp4) |
 | 06 | Ma pire erreur : recruter mes amis | 13:54 → 16:46 | 65 s | [vertical](s06/port/renders/s06_port.mp4) | [horizontal](s06/land/renders/s06_land.mp4) |
+| 07 | J'étais timide, j'avais peur de la caméra | 7:56 → 8:28 | 28 s | [vertical](s07/port/renders/s07_port.mp4) | [horizontal](s07/land/renders/s07_land.mp4) |
 
 ## Méthode
 
