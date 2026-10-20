@@ -28,8 +28,9 @@ def load_env(a, b, sr=16000):
     return db - np.percentile(db, 95)          # dB relative to loud speech
 
 
-def make_edl(keep, gap_db=-21, min_gap=0.18, pre=0.09, post=0.08, beats=None):
-    """keep: [(a, b)] source seconds. beats: {source_time: pause_to_keep} for dramatic pauses."""
+def make_edl(keep, gap_db=-21, min_gap=0.18, pre=0.09, post=0.08, beats=None, trim=False):
+    """keep: [(a, b)] source seconds. beats: {source_time: pause_to_keep} for dramatic pauses.
+    trim: also tighten each range's own edges onto the speech (leading/trailing silence -> padding)."""
     beats = beats or {}
     a0, b0 = min(k[0] for k in keep) - 1, max(k[1] for k in keep) + 1
     db = load_env(a0, b0)
@@ -47,8 +48,20 @@ def make_edl(keep, gap_db=-21, min_gap=0.18, pre=0.09, post=0.08, beats=None):
             i = j
         else:
             i += 1
+    if trim:
+        tk = []
+        for a, b in keep:
+            i0, i1 = int(round((a - a0) / 0.01)), int(round((b - a0) / 0.01))
+            sp = np.where(~sil[i0:i1])[0]
+            if len(sp):
+                s_on, s_off = t_of(i0 + sp[0]), t_of(i0 + sp[-1] + 1)
+                a = max(a, s_on - post) if s_on - a > post else a
+                b = min(b, s_off + pre) if b - s_off > pre else b
+            tk.append((a, b))
+        keep = tk
     segs = []
     for a, b in keep:
+        rs = []                                      # segments of this range
         cur = a
         for g0, g1 in gaps:
             if g0 > a + 0.05 and g1 < b - 0.05:
@@ -58,9 +71,15 @@ def make_edl(keep, gap_db=-21, min_gap=0.18, pre=0.09, post=0.08, beats=None):
                 else:
                     cut0, cut1 = g0 + pre, g1 - post
                 if cut1 - cut0 > 0.08:
-                    segs.append([cur, cut0])
+                    rs.append([cur, cut0])
                     cur = cut1
-        segs.append([cur, b])
+        rs.append([cur, b])
+        # breath / car-noise blips left alone at a range edge are not speech
+        while len(rs) > 1 and rs[-1][1] - rs[-1][0] < 0.3:
+            rs.pop()
+        while len(rs) > 1 and rs[0][1] - rs[0][0] < 0.3:
+            rs.pop(0)
+        segs += rs
 
     def energy(t):
         k = int(round((t - a0) / 0.01))

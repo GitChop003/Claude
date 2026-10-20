@@ -12,7 +12,7 @@ LAYOUT = {
     "land": dict(W=1920, H=1080, cap_top=250, cap_size=66, cap_max_chars=24, cap_max_words=4,
                  chip_y=78, chip_x=80, emo_x=1470, emo_y=360, emo_alt_x=200, emo_alt_y=430, panel_top=440, panel_left=80,
                  title_css="left:80px;top:470px;width:920px", name_css="left:80px;bottom:110px",
-                 big_size=124, origin="60% 75%", stamp_x=110, stamp_y=440),
+                 big_size=124, origin="60% 75%", stamp_x=100, stamp_y=90),
     "port": dict(W=1080, H=1920, cap_top=585, cap_size=80, cap_max_chars=17, cap_max_words=3,
                  chip_y=400, chip_x=0, emo_x=820, emo_y=740, emo_alt_x=40, emo_alt_y=720, panel_top=150, panel_left=90,
                  title_css="left:60px;right:60px;top:140px", name_css="left:50%;top:405px",
@@ -57,15 +57,19 @@ html,body{width:__W__px;height:__H__px;overflow:hidden;background:#000;font-fami
 .emo{position:absolute;opacity:0;filter:drop-shadow(0 14px 26px rgba(0,0,0,.5))}
 .stamp{position:absolute;padding:12px 34px;border:9px solid var(--red);color:var(--red);font-family:Mont;font-weight:900;font-size:76px;
   border-radius:16px;opacity:0;letter-spacing:.03em;background:rgba(255,255,255,.12);white-space:nowrap}
-.panel{position:absolute;padding:30px 40px 24px;opacity:0;min-width:560px}
+.panel{position:absolute;padding:28px 36px 22px;opacity:0;min-width:480px}
 .panel h3{font-size:26px;letter-spacing:.24em;color:var(--pink);font-weight:800}
 .panel ul{list-style:none;margin-top:10px}
-.panel li{display:flex;align-items:center;gap:20px;font-family:Mont;font-size:50px;font-weight:900;color:#fff;padding:8px 0;opacity:0;text-transform:uppercase}
-.panel li img{width:62px;height:62px}
+.panel li{display:flex;align-items:center;gap:18px;font-family:Mont;font-size:__PANELFS__px;font-weight:900;color:#fff;padding:8px 0;opacity:0;text-transform:uppercase}
+.panel li img{width:__PANELIMG__px;height:__PANELIMG__px}
 .big{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;font-family:Mont;font-weight:900;font-size:__BIG__px;letter-spacing:-.02em;
   color:#fff;opacity:0;text-shadow:0 10px 50px rgba(0,0,0,.7);line-height:.98;text-transform:uppercase}
 .big em{font-style:normal;color:var(--red)}
 .big small{display:block;font-family:Inter;font-size:40px;font-weight:800;letter-spacing:.3em;color:#fff;margin-bottom:22px}
+.logos{position:absolute;display:flex;gap:24px}
+.logo{width:124px;height:124px;border-radius:32px;display:flex;align-items:center;justify-content:center;opacity:0;box-shadow:0 16px 40px rgba(0,0,0,.5)}
+.logo svg{width:72px;height:72px;fill:#fff}
+.logo .in{font-family:Inter;font-weight:900;font-size:78px;color:#fff;letter-spacing:-.04em;line-height:1}
 .end{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;text-align:center;padding:0 60px}
 .end .l1{font-size:46px;font-weight:800;color:#fff;letter-spacing:.32em}
 .end .l2{font-family:Mont;font-size:__END__px;font-weight:900;color:var(--neon);letter-spacing:-.02em;line-height:1;margin-top:16px}
@@ -74,12 +78,18 @@ html,body{width:__W__px;height:__H__px;overflow:hidden;background:#000;font-fami
 
 
 class Comp:
-    def __init__(self, name, orient, dur, video, caps, keywords=()):
+    def __init__(self, name, orient, dur, video, caps, keywords=(), face=None):
         self.name, self.o, self.L, self.dur, self.video = name, orient, LAYOUT[orient], dur, video
         self.caps, self.keywords = caps, {k.lower() for k in keywords}
         self.html, self.js, self.sfx, self.hide, self.dims, self.zoom = [], [], [], [], [], []
         self.n = 0
         self.title_hide = []
+        self.face = face or (lambda t: 0.5)        # speaker's horizontal centre (0..1 of the 16:9 frame) at output time t
+
+    def free_side(self, a, b):
+        """Landscape: the side away from the speaker's face over [a, b]."""
+        xs = [self.face(a + k * (b - a) / 8) for k in range(9)]
+        return "right" if sum(xs) / len(xs) < 0.5 else "left"
 
     def id(self, p):
         self.n += 1
@@ -120,6 +130,11 @@ class Comp:
         i = self.id("emo")
         L = self.L
         size = size or (170 if self.o == "land" else 190)
+        if self.o == "land":
+            fx = self.face(a + 0.3) * L["W"]
+            ex = (L["emo_x"] if side == "r" else L["emo_alt_x"]) + size / 2
+            if abs(fx - ex) < 330:
+                side = "l" if side == "r" else "r"
         x, y = (L["emo_x"], L["emo_y"]) if side == "r" else (L["emo_alt_x"], L["emo_alt_y"])
         if self.o == "port" and side == "r":
             x = L["W"] - size - 50
@@ -135,7 +150,7 @@ class Comp:
     def stamp(self, text, a, b, rot=-8):
         i = self.id("stamp")
         L = self.L
-        pos = f"left:{L['stamp_x']}px;top:{L['stamp_y']}px" if self.o == "land" else f"left:50%;top:{L['stamp_y']}px"
+        pos = f"right:{L['stamp_x']}px;top:{L['stamp_y']}px" if self.o == "land" else f"left:50%;top:{L['stamp_y']}px"
         self.html.append(f'<div class="stamp" id="{i}" style="{pos}">{html.escape(text)}</div>')
         if self.o == "port":
             self.js.append(f"(function(){{const e=document.querySelector('#{i}');e.style.marginLeft=(-e.offsetWidth/2)+'px';}})();")
@@ -147,16 +162,42 @@ class Comp:
         """items: [(text, t, icon)] revealed one by one."""
         i = self.id("panel")
         L = self.L
-        pos = f"left:{L['panel_left']}px;top:{L['panel_top']}px" if self.o == "land" else f"left:{L['panel_left']}px;right:{L['panel_left']}px;top:{L['panel_top']}px"
+        side = self.free_side(a, b) if self.o == "land" else "left"
+        pos = (f"{side}:{L['panel_left']}px;top:{L['panel_top']}px" if self.o == "land"
+               else f"left:{L['panel_left']}px;right:{L['panel_left']}px;top:{L['panel_top']}px")
+        dx = -80 if side == "left" else 80
         lis = "".join(f'<li id="{i}l{k}"><img src="assets/img/{ic}.svg"/><span>{html.escape(tx)}</span></li>' for k, (tx, t, ic) in enumerate(items))
         self.html.append(f'<div class="panel glass" id="{i}" style="{pos}"><h3>{html.escape(kicker)}</h3><ul>{lis}</ul></div>')
-        self.js.append(f"tl.fromTo('#{i}',{{autoAlpha:0,x:-80}},{{autoAlpha:1,x:0,duration:.55,ease:'power3.out'}},{a:.3f});")
+        self.js.append(f"tl.fromTo('#{i}',{{autoAlpha:0,x:{dx}}},{{autoAlpha:1,x:0,duration:.55,ease:'power3.out'}},{a:.3f});")
         for k, (tx, t, ic) in enumerate(items):
             self.js.append(f"tl.fromTo('#{i}l{k}',{{autoAlpha:0,x:34}},{{autoAlpha:1,x:0,duration:.45,ease:'back.out(1.8)'}},{t:.3f});")
             self.add_sfx("click-soft", t, 0.26)
-        self.js.append(f"tl.to('#{i}',{{autoAlpha:0,x:-80,duration:.4,ease:'power2.in'}},{b:.3f});")
+        self.js.append(f"tl.to('#{i}',{{autoAlpha:0,x:{dx},duration:.4,ease:'power2.in'}},{b:.3f});")
         if self.o == "port":
             self.title_hide.append((a - 0.3, b + 0.45))
+
+    LOGO_BG = {"linkedin": "#0A66C2", "instagram": "linear-gradient(45deg,#f9ce34,#ee2a7b 50%,#6228d7)", "facebook": "#0866FF",
+               "tiktok": "#111", "youtube": "#FF0000", "whatsapp": "#25D366"}
+
+    def logos(self, items, b, y=None):
+        """items: [(platform, t)] — badges popping one by one (row centred in portrait, right side in landscape)."""
+        i = self.id("logos")
+        inner = []
+        for n, (k, t) in enumerate(items):
+            if k == "linkedin":
+                body = '<span class="in">in</span>'
+            else:
+                body = open(f"{SHARED}/logos/{k}.svg").read().replace("<svg ", '<svg fill="#fff" ', 1)
+            inner.append(f'<div class="logo" id="{i}g{n}" style="background:{self.LOGO_BG[k]}">{body}</div>')
+        if self.o == "port":
+            pos = f"left:0;right:0;justify-content:center;top:{y or 400}px"
+        else:
+            pos = f"right:110px;top:{y or 420}px"
+        self.html.append(f'<div class="logos" id="{i}" style="{pos}">{"".join(inner)}</div>')
+        for n, (k, t) in enumerate(items):
+            self.js.append(f"tl.fromTo('#{i}g{n}',{{autoAlpha:0,y:40,scale:.5}},{{autoAlpha:1,y:0,scale:1,duration:.45,ease:'back.out(2.2)'}},{t:.3f});")
+            self.add_sfx("pop", t, 0.18)
+        self.js.append(f"tl.to('#{i} .logo',{{autoAlpha:0,y:-30,duration:.35,stagger:.05,ease:'power2.in'}},{b:.3f});")
 
     def big(self, inner, a, b, small=None):
         i = self.id("big")
@@ -180,6 +221,7 @@ class Comp:
 
     def endcard(self, l1, l2, l3, a):
         i = self.id("end")
+        l2 = l2.replace(" ?", "&nbsp;?").replace(" !", "&nbsp;!")
         self.html.append(f'<div class="end" id="{i}"><div class="l1">{html.escape(l1)}</div><div class="l2">{l2}</div><div class="l3">{html.escape(l3)}</div></div>')
         self.js.append(f"tl.fromTo('#{i}',{{autoAlpha:0,scale:1.2}},{{autoAlpha:1,scale:1,duration:.5,ease:'power4.out'}},{a:.3f});")
         self.js.append(f"tl.fromTo('#{i} .l3',{{autoAlpha:0,y:16}},{{autoAlpha:1,y:0,duration:.45,ease:'back.out(2)',immediateRender:false}},{a + 0.5:.3f});")
@@ -239,7 +281,13 @@ class Comp:
         th = []
         if hasattr(self, "title_window"):
             ta, tb = self.title_window
+            merged_th = []                 # back-to-back hides (panels in a row) must not flash the title in between
             for a, b in sorted(self.title_hide):
+                if merged_th and a <= merged_th[-1][1] + 1.0:
+                    merged_th[-1][1] = max(merged_th[-1][1], b)
+                else:
+                    merged_th.append([a, b])
+            for a, b in merged_th:
                 if a >= tb:
                     continue
                 th.append(f"tl.to('#title',{{autoAlpha:0,y:-20,duration:.3,ease:'power2.in'}},{max(a, 0.8):.3f});")
@@ -258,7 +306,7 @@ class Comp:
             sfx_html.append(f'<audio id="sfx{k}" data-start="{t:.3f}" data-duration="{min(ln, self.dur - t):.3f}" data-volume="{vol}" src="assets/sfx/{nm}.mp3"></audio>')
         css = (CSS.replace("__W__", str(L["W"])).replace("__H__", str(L["H"])).replace("__ORIGIN__", L["origin"])
                .replace("__CAPTOP__", str(L["cap_top"])).replace("__CAPSIZE__", str(L["cap_size"]))
-               .replace("__BIG__", str(L["big_size"])).replace("__END__", "150" if self.o == "land" else "130"))
+               .replace("__BIG__", str(L["big_size"])).replace("__PANELFS__", "40" if self.o == "land" else "50").replace("__PANELIMG__", "50" if self.o == "land" else "62").replace("__END__", "150" if self.o == "land" else "130"))
         D = self.dur
         page = f"""<!doctype html>
 <html lang="fr"><head><meta charset="UTF-8"/><meta name="viewport" content="width={L['W']}, height={L['H']}"/>

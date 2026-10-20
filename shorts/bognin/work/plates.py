@@ -20,7 +20,7 @@ rec = [np.zeros((1, 1, 1, 1), np.float32)] * 4
 dsr = np.array([0.4], np.float32)
 
 dec = subprocess.Popen(["ffmpeg", "-v", "error", "-i", src, "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], stdout=subprocess.PIPE)
-frames, alphas = [], []
+frames, alphas = [], []   # pass 1: matte only
 t0 = time.time()
 while True:
     buf = dec.stdout.read(W * H * 3)
@@ -32,7 +32,7 @@ while True:
         for _ in range(8):
             _, _, *rec = sess.run(None, {"src": x, "r1i": rec[0], "r2i": rec[1], "r3i": rec[2], "r4i": rec[3], "downsample_ratio": dsr})
     fgr, pha, *rec = sess.run(None, {"src": x, "r1i": rec[0], "r2i": rec[1], "r3i": rec[2], "r4i": rec[3], "downsample_ratio": dsr})
-    frames.append(f)
+    frames.append(None)                  # frames are re-decoded in pass 2 (keeps RAM flat on long shorts)
     alphas.append((pha[0, 0] * 255).round().astype(np.uint8))   # uint8 to keep RAM low
     if len(frames) % 100 == 0:
         print(f"matte {len(frames)} frames, {time.time() - t0:.0f}s", flush=True)
@@ -56,13 +56,15 @@ json.dump({"cx": sm.round(1).tolist(), "left": left.tolist()}, open(f"{outdir}/{
 
 def enc(path, w, h, iw, ih):
     return subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{iw}x{ih}", "-r", str(FPS),
-                             "-i", "-", "-vf", FINISH.format(w=w, h=h) + ",format=yuv420p", "-c:v", "libx264", "-preset", "slow",
-                             "-crf", "14", path], stdin=subprocess.PIPE)
+                             "-i", "-", "-vf", FINISH.format(w=w, h=h) + ",format=yuv420p", "-c:v", "libx264", "-preset", "veryfast",
+                             "-crf", "13", path], stdin=subprocess.PIPE)
 
 
 land = enc(f"{outdir}/{name}_land.mp4", 1920, 1080, W, H)
 port = enc(f"{outdir}/{name}_port.mp4", 1080, 1920, PW, H)
-for i, (f, a) in enumerate(zip(frames, alphas)):
+dec2 = subprocess.Popen(["ffmpeg", "-v", "error", "-i", src, "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], stdout=subprocess.PIPE)
+for i, a in enumerate(alphas):
+    f = np.frombuffer(dec2.stdout.read(W * H * 3), np.uint8).reshape(H, W, 3)
     a = cv2.GaussianBlur(a.astype(np.float32) / 255, (0, 0), 1.0)[..., None]                   # soften matte edge
     bg_w = 1 - a
     ff = f.astype(np.float32)

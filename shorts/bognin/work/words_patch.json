@@ -1,0 +1,4635 @@
+[
+{
+"a": 299.9,
+"b": 312.2,
+"words": [
+{
+"text": "Mais",
+"start": 300.36,
+"end": 300.44
+},
+{
+"text": "lorsque",
+"start": 300.44,
+"end": 300.76
+},
+{
+"text": "j'ai",
+"start": 300.76,
+"end": 300.92
+},
+{
+"text": "vu.",
+"start": 300.92,
+"end": 301.82
+},
+{
+"text": "Comment",
+"start": 301.82,
+"end": 302.06
+},
+{
+"text": "il",
+"start": 302.06,
+"end": 302.22
+},
+{
+"text": "me",
+"start": 302.22,
+"end": 302.3
+},
+{
+"text": "payait,",
+"start": 302.3,
+"end": 302.62
+},
+{
+"text": "je",
+"start": 302.62,
+"end": 302.7
+},
+{
+"text": "me",
+"start": 302.7,
+"end": 302.86
+},
+{
+"text": "suis",
+"start": 302.86,
+"end": 303.02
+},
+{
+"text": "dit,",
+"start": 303.02,
+"end": 303.18
+},
+{
+"text": "mais",
+"start": 303.18,
+"end": 303.34
+},
+{
+"text": "pourquoi",
+"start": 303.34,
+"end": 303.66
+},
+{
+"text": "pas",
+"start": 303.66,
+"end": 303.74
+},
+{
+"text": "?",
+"start": 303.74,
+"end": 304.82
+},
+{
+"text": "Pourquoi",
+"start": 304.82,
+"end": 305.14
+},
+{
+"text": "pas",
+"start": 305.14,
+"end": 305.3
+},
+{
+"text": "essayer",
+"start": 305.3,
+"end": 305.54
+},
+{
+"text": "?",
+"start": 305.54,
+"end": 305.7
+},
+{
+"text": "Pourquoi",
+"start": 305.7,
+"end": 306.1
+},
+{
+"text": "pas",
+"start": 306.1,
+"end": 306.34
+},
+{
+"text": "le",
+"start": 306.34,
+"end": 306.5
+},
+{
+"text": "faire",
+"start": 306.5,
+"end": 306.74
+},
+{
+"text": "en",
+"start": 306.74,
+"end": 306.9
+},
+{
+"text": "fait",
+"start": 306.9,
+"end": 306.98
+},
+{
+"text": "?",
+"start": 306.98,
+"end": 308.97
+},
+{
+"text": "Du",
+"start": 308.97,
+"end": 309.13
+},
+{
+"text": "coup",
+"start": 309.13,
+"end": 309.29
+},
+{
+"text": "let's",
+"start": 309.29,
+"end": 309.53
+},
+{
+"text": "go.",
+"start": 309.53,
+"end": 310.25
+},
+{
+"text": "Je",
+"start": 310.25,
+"end": 310.73
+},
+{
+"text": "je",
+"start": 310.73,
+"end": 311.29
+},
+{
+"text": "l'ai",
+"start": 311.29,
+"end": 311.53
+},
+{
+"text": "fait.",
+"start": 311.53,
+"end": 311.98
+}
+]
+},
+{
+"a": 312.9,
+"b": 324.9,
+"words": [
+{
+"text": "Je",
+"start": 313.22,
+"end": 313.38
+},
+{
+"text": "l'ai",
+"start": 313.38,
+"end": 313.62
+},
+{
+"text": "fait,",
+"start": 313.62,
+"end": 313.94
+},
+{
+"text": "j'ai",
+"start": 313.94,
+"end": 314.26
+},
+{
+"text": "pris",
+"start": 314.26,
+"end": 314.58
+},
+{
+"text": "l'accompagnement",
+"start": 314.58,
+"end": 315.38
+},
+{
+"text": "en",
+"start": 315.38,
+"end": 315.54
+},
+{
+"text": "question.",
+"start": 315.54,
+"end": 316.32
+},
+{
+"text": "J'avais",
+"start": 316.32,
+"end": 316.72
+},
+{
+"text": "encore",
+"start": 316.72,
+"end": 317.04
+},
+{
+"text": "peur,",
+"start": 317.04,
+"end": 317.44
+},
+{
+"text": "j'avais",
+"start": 317.44,
+"end": 317.84
+},
+{
+"text": "énormément",
+"start": 317.84,
+"end": 318.32
+},
+{
+"text": "peur,",
+"start": 318.32,
+"end": 318.56
+},
+{
+"text": "mais",
+"start": 318.56,
+"end": 318.8
+},
+{
+"text": "lorsque",
+"start": 318.8,
+"end": 319.12
+},
+{
+"text": "j'ai",
+"start": 319.12,
+"end": 319.28
+},
+{
+"text": "vu",
+"start": 319.28,
+"end": 320.16
+},
+{
+"text": "la",
+"start": 320.16,
+"end": 320.32
+},
+{
+"text": "somme",
+"start": 320.32,
+"end": 320.48
+},
+{
+"text": "qui",
+"start": 320.48,
+"end": 320.64
+},
+{
+"text": "m'a",
+"start": 320.64,
+"end": 320.8
+},
+{
+"text": "payé",
+"start": 320.8,
+"end": 321.04
+},
+{
+"text": "parce",
+"start": 321.04,
+"end": 321.2
+},
+{
+"text": "que",
+"start": 321.2,
+"end": 321.28
+},
+{
+"text": "j'étais",
+"start": 321.28,
+"end": 321.52
+},
+{
+"text": "habitué",
+"start": 321.52,
+"end": 321.84
+},
+{
+"text": "à",
+"start": 321.84,
+"end": 321.92
+},
+{
+"text": "vendre",
+"start": 321.92,
+"end": 322.16
+},
+{
+"text": "les",
+"start": 322.16,
+"end": 322.24
+},
+{
+"text": "trucs",
+"start": 322.24,
+"end": 322.4
+},
+{
+"text": "à",
+"start": 322.4,
+"end": 322.48
+},
+{
+"text": "200",
+"start": 322.48,
+"end": 322.96
+},
+{
+"text": "euros.",
+"start": 322.96,
+"end": 324.16
+},
+{
+"text": "Maximum.",
+"start": 324.16,
+"end": 324.61
+}
+]
+},
+{
+"a": 325.1,
+"b": 341.3,
+"words": [
+{
+"text": "En",
+"start": 325.35,
+"end": 325.51
+},
+{
+"text": "fait,",
+"start": 325.51,
+"end": 325.91
+},
+{
+"text": "vu",
+"start": 325.91,
+"end": 326.15
+},
+{
+"text": "que",
+"start": 326.15,
+"end": 326.31
+},
+{
+"text": "je",
+"start": 326.31,
+"end": 326.47
+},
+{
+"text": "proposais",
+"start": 326.47,
+"end": 326.87
+},
+{
+"text": "juste",
+"start": 326.87,
+"end": 327.11
+},
+{
+"text": "les",
+"start": 327.11,
+"end": 327.27
+},
+{
+"text": "services,",
+"start": 327.27,
+"end": 327.83
+},
+{
+"text": "je",
+"start": 327.83,
+"end": 327.99
+},
+{
+"text": "vendais",
+"start": 327.99,
+"end": 328.55
+},
+{
+"text": "les",
+"start": 328.55,
+"end": 328.71
+},
+{
+"text": "trucs",
+"start": 328.71,
+"end": 328.95
+},
+{
+"text": "à",
+"start": 328.95,
+"end": 329.11
+},
+{
+"text": "10",
+"start": 329.11,
+"end": 329.43
+},
+{
+"text": "euros,",
+"start": 329.43,
+"end": 329.99
+},
+{
+"text": "5",
+"start": 329.99,
+"end": 330.23
+},
+{
+"text": "euros,",
+"start": 330.23,
+"end": 330.55
+},
+{
+"text": "les",
+"start": 330.55,
+"end": 330.71
+},
+{
+"text": "compte",
+"start": 330.71,
+"end": 331.03
+},
+{
+"text": "Netflix,",
+"start": 331.03,
+"end": 331.51
+},
+{
+"text": "compte",
+"start": 331.51,
+"end": 331.75
+},
+{
+"text": "MyCanal,",
+"start": 331.75,
+"end": 332.15
+},
+{
+"text": "création",
+"start": 332.15,
+"end": 332.47
+},
+{
+"text": "des",
+"start": 332.47,
+"end": 332.63
+},
+{
+"text": "pages,",
+"start": 332.63,
+"end": 333.11
+},
+{
+"text": "5",
+"start": 333.11,
+"end": 333.35
+},
+{
+"text": "euros,",
+"start": 333.35,
+"end": 333.67
+},
+{
+"text": "50",
+"start": 333.67,
+"end": 334.07
+},
+{
+"text": "euros.",
+"start": 334.07,
+"end": 334.79
+},
+{
+"text": "Bref,",
+"start": 334.79,
+"end": 335.03
+},
+{
+"text": "j'étais",
+"start": 335.03,
+"end": 335.27
+},
+{
+"text": "habitué",
+"start": 335.27,
+"end": 335.59
+},
+{
+"text": "à",
+"start": 335.59,
+"end": 335.67
+},
+{
+"text": "recevoir",
+"start": 335.67,
+"end": 336.07
+},
+{
+"text": "l'argent",
+"start": 336.07,
+"end": 336.39
+},
+{
+"text": "petit",
+"start": 336.39,
+"end": 336.63
+},
+{
+"text": "petit,",
+"start": 336.63,
+"end": 336.95
+},
+{
+"text": "je",
+"start": 336.95,
+"end": 337.11
+},
+{
+"text": "savais",
+"start": 337.11,
+"end": 337.35
+},
+{
+"text": "pas",
+"start": 337.35,
+"end": 337.43
+},
+{
+"text": "qu'on",
+"start": 337.43,
+"end": 337.67
+},
+{
+"text": "pouvait",
+"start": 337.67,
+"end": 337.91
+},
+{
+"text": "me",
+"start": 337.91,
+"end": 338.07
+},
+{
+"text": "payer.",
+"start": 338.07,
+"end": 339.0
+},
+{
+"text": "Une",
+"start": 339.0,
+"end": 339.16
+},
+{
+"text": "grosse",
+"start": 339.16,
+"end": 339.32
+},
+{
+"text": "somme",
+"start": 339.32,
+"end": 339.64
+},
+{
+"text": "d'un",
+"start": 339.64,
+"end": 339.96
+},
+{
+"text": "coup",
+"start": 339.96,
+"end": 340.2
+},
+{
+"text": "de",
+"start": 340.2,
+"end": 340.28
+},
+{
+"text": "cette",
+"start": 340.28,
+"end": 340.44
+},
+{
+"text": "façon.",
+"start": 340.44,
+"end": 340.89
+}
+]
+},
+{
+"a": 670.0,
+"b": 673.6,
+"words": [
+{
+"text": "Déjà",
+"start": 670.41,
+"end": 670.73
+},
+{
+"text": "mes",
+"start": 670.73,
+"end": 670.81
+},
+{
+"text": "vidéos",
+"start": 670.81,
+"end": 670.97
+},
+{
+"text": "n'est",
+"start": 670.97,
+"end": 671.21
+},
+{
+"text": "pas...",
+"start": 671.21,
+"end": 671.68
+},
+{
+"text": "Mais",
+"start": 671.68,
+"end": 671.84
+},
+{
+"text": "faut",
+"start": 671.84,
+"end": 672.08
+},
+{
+"text": "mais",
+"start": 672.08,
+"end": 672.24
+},
+{
+"text": "pas",
+"start": 672.24,
+"end": 672.4
+},
+{
+"text": "vraiment.",
+"start": 672.4,
+"end": 672.85
+}
+]
+},
+{
+"a": 676.5,
+"b": 683.3,
+"words": [
+{
+"text": "financier,",
+"start": 676.75,
+"end": 677.23
+},
+{
+"text": "que",
+"start": 677.23,
+"end": 677.39
+},
+{
+"text": "ce",
+"start": 677.39,
+"end": 677.55
+},
+{
+"text": "soit",
+"start": 677.55,
+"end": 677.71
+},
+{
+"text": "émotionnel,",
+"start": 677.71,
+"end": 678.27
+},
+{
+"text": "que",
+"start": 678.27,
+"end": 678.43
+},
+{
+"text": "ce",
+"start": 678.43,
+"end": 678.59
+},
+{
+"text": "soit",
+"start": 678.59,
+"end": 678.83
+},
+{
+"text": "morale.",
+"start": 678.83,
+"end": 679.66
+},
+{
+"text": "Même",
+"start": 679.66,
+"end": 679.9
+},
+{
+"text": "avec",
+"start": 679.9,
+"end": 680.06
+},
+{
+"text": "mon",
+"start": 680.06,
+"end": 680.14
+},
+{
+"text": "siècle",
+"start": 680.14,
+"end": 680.62
+},
+{
+"text": "restreint,",
+"start": 680.62,
+"end": 681.02
+},
+{
+"text": "que",
+"start": 681.02,
+"end": 681.18
+},
+{
+"text": "ce",
+"start": 681.18,
+"end": 681.26
+},
+{
+"text": "soit",
+"start": 681.26,
+"end": 681.5
+},
+{
+"text": "ma",
+"start": 681.5,
+"end": 681.58
+},
+{
+"text": "famille",
+"start": 681.58,
+"end": 681.74
+},
+{
+"text": "ou",
+"start": 681.74,
+"end": 681.9
+},
+{
+"text": "autre,",
+"start": 681.9,
+"end": 682.14
+},
+{
+"text": "ça",
+"start": 682.14,
+"end": 682.3
+},
+{
+"text": "n'allait",
+"start": 682.3,
+"end": 682.62
+},
+{
+"text": "pas.",
+"start": 682.62,
+"end": 683.07
+}
+]
+},
+{
+"a": 683.3,
+"b": 686.6,
+"words": [
+{
+"text": "Du",
+"start": 683.39,
+"end": 683.47
+},
+{
+"text": "coup",
+"start": 683.47,
+"end": 683.63
+},
+{
+"text": "j'ai",
+"start": 683.63,
+"end": 683.79
+},
+{
+"text": "dû",
+"start": 683.79,
+"end": 683.95
+},
+{
+"text": "me",
+"start": 683.95,
+"end": 684.03
+},
+{
+"text": "battre",
+"start": 684.03,
+"end": 684.43
+},
+{
+"text": "contre",
+"start": 684.43,
+"end": 684.67
+},
+{
+"text": "moi-même.",
+"start": 684.67,
+"end": 685.12
+}
+]
+},
+{
+"a": 708.9,
+"b": 713.6,
+"words": [
+{
+"text": "Be",
+"start": 709.1,
+"end": 709.18
+},
+{
+"text": "young.",
+"start": 709.18,
+"end": 709.92
+},
+{
+"text": "J'ai",
+"start": 709.92,
+"end": 710.16
+},
+{
+"text": "refait",
+"start": 710.16,
+"end": 710.56
+},
+{
+"text": "ma",
+"start": 710.56,
+"end": 710.64
+},
+{
+"text": "promesse,",
+"start": 710.64,
+"end": 711.04
+},
+{
+"text": "j'ai",
+"start": 711.04,
+"end": 711.28
+},
+{
+"text": "refait",
+"start": 711.28,
+"end": 711.68
+},
+{
+"text": "mon",
+"start": 711.68,
+"end": 711.84
+},
+{
+"text": "positionnement",
+"start": 711.84,
+"end": 712.48
+},
+{
+"text": "et",
+"start": 712.48,
+"end": 712.64
+},
+{
+"text": "autres.",
+"start": 712.64,
+"end": 713.09
+}
+]
+},
+{
+"a": 713.6,
+"b": 721.2,
+"words": [
+{
+"text": "Après,",
+"start": 714.11,
+"end": 714.35
+},
+{
+"text": "j'ai",
+"start": 714.35,
+"end": 714.51
+},
+{
+"text": "compris",
+"start": 714.51,
+"end": 714.75
+},
+{
+"text": "que",
+"start": 714.75,
+"end": 714.83
+},
+{
+"text": "le",
+"start": 714.83,
+"end": 714.91
+},
+{
+"text": "problème,",
+"start": 714.91,
+"end": 715.15
+},
+{
+"text": "c'était",
+"start": 715.15,
+"end": 715.39
+},
+{
+"text": "pas",
+"start": 715.39,
+"end": 715.55
+},
+{
+"text": "forcément",
+"start": 715.55,
+"end": 715.95
+},
+{
+"text": "moi,",
+"start": 715.95,
+"end": 716.27
+},
+{
+"text": "c'était",
+"start": 716.27,
+"end": 716.51
+},
+{
+"text": "plutôt",
+"start": 716.51,
+"end": 716.75
+},
+{
+"text": "la",
+"start": 716.75,
+"end": 716.83
+},
+{
+"text": "façon",
+"start": 716.83,
+"end": 717.15
+},
+{
+"text": "de",
+"start": 717.15,
+"end": 717.31
+},
+{
+"text": "faire,",
+"start": 717.31,
+"end": 717.63
+},
+{
+"text": "la",
+"start": 717.63,
+"end": 717.71
+},
+{
+"text": "façon",
+"start": 717.71,
+"end": 717.95
+},
+{
+"text": "de",
+"start": 717.95,
+"end": 718.11
+},
+{
+"text": "travailler",
+"start": 718.11,
+"end": 718.59
+},
+{
+"text": "autre",
+"start": 718.59,
+"end": 718.91
+},
+{
+"text": "chose.",
+"start": 718.91,
+"end": 719.39
+},
+{
+"text": "Il",
+"start": 719.39,
+"end": 719.55
+},
+{
+"text": "y",
+"start": 719.55,
+"end": 719.63
+},
+{
+"text": "avait",
+"start": 719.63,
+"end": 719.79
+},
+{
+"text": "un",
+"start": 719.79,
+"end": 719.95
+},
+{
+"text": "problème.",
+"start": 719.95,
+"end": 720.4
+}
+]
+},
+{
+"a": 736.9,
+"b": 741.8,
+"words": [
+{
+"text": "L'indicine",
+"start": 737.1,
+"end": 737.74
+},
+{
+"text": "que",
+"start": 737.74,
+"end": 737.9
+},
+{
+"text": "j'ai",
+"start": 737.9,
+"end": 739.22
+},
+{
+"text": "pratiquement",
+"start": 739.22,
+"end": 739.62
+},
+{
+"text": "un",
+"start": 739.62,
+"end": 739.78
+},
+{
+"text": "mois",
+"start": 739.78,
+"end": 740.02
+},
+{
+"text": "avec",
+"start": 740.02,
+"end": 740.26
+},
+{
+"text": "pratiquement",
+"start": 740.26,
+"end": 740.66
+},
+{
+"text": "un",
+"start": 740.66,
+"end": 740.82
+},
+{
+"text": "like.",
+"start": 740.82,
+"end": 741.27
+}
+]
+},
+{
+"a": 770.0,
+"b": 772.2,
+"words": [
+{
+"text": "Je",
+"start": 770.52,
+"end": 770.6
+},
+{
+"text": "ne",
+"start": 770.6,
+"end": 770.68
+},
+{
+"text": "comprenais",
+"start": 770.68,
+"end": 771.0
+},
+{
+"text": "pas,",
+"start": 771.0,
+"end": 771.16
+},
+{
+"text": "je",
+"start": 771.16,
+"end": 771.32
+},
+{
+"text": "voulais",
+"start": 771.32,
+"end": 771.64
+},
+{
+"text": "abandonner.",
+"start": 771.64,
+"end": 772.09
+}
+]
+},
+{
+"a": 1124.6,
+"b": 1127.8,
+"words": [
+{
+"text": "Je",
+"start": 1124.95,
+"end": 1125.11
+},
+{
+"text": "vous",
+"start": 1125.11,
+"end": 1125.27
+},
+{
+"text": "dis,",
+"start": 1125.27,
+"end": 1125.43
+},
+{
+"text": "il",
+"start": 1125.43,
+"end": 1125.51
+},
+{
+"text": "y",
+"start": 1125.51,
+"end": 1125.59
+},
+{
+"text": "a",
+"start": 1125.59,
+"end": 1125.67
+},
+{
+"text": "plusieurs",
+"start": 1125.67,
+"end": 1125.99
+},
+{
+"text": "moments",
+"start": 1125.99,
+"end": 1126.15
+},
+{
+"text": "où",
+"start": 1126.15,
+"end": 1126.31
+},
+{
+"text": "j'ai",
+"start": 1126.31,
+"end": 1126.47
+},
+{
+"text": "failli",
+"start": 1126.47,
+"end": 1126.79
+},
+{
+"text": "abandonner.",
+"start": 1126.79,
+"end": 1127.24
+}
+]
+},
+{
+"a": 1128.3,
+"b": 1148.6,
+"words": [
+{
+"text": "J'ai",
+"start": 1128.58,
+"end": 1128.82
+},
+{
+"text": "eu",
+"start": 1128.82,
+"end": 1128.9
+},
+{
+"text": "plusieurs",
+"start": 1128.9,
+"end": 1129.22
+},
+{
+"text": "déceptions.",
+"start": 1129.22,
+"end": 1130.54
+},
+{
+"text": "J'ai",
+"start": 1130.54,
+"end": 1130.78
+},
+{
+"text": "eu",
+"start": 1130.78,
+"end": 1130.94
+},
+{
+"text": "des",
+"start": 1130.94,
+"end": 1131.02
+},
+{
+"text": "clientes",
+"start": 1131.02,
+"end": 1131.58
+},
+{
+"text": "qui",
+"start": 1131.58,
+"end": 1131.66
+},
+{
+"text": "ne",
+"start": 1131.66,
+"end": 1131.82
+},
+{
+"text": "voulaient",
+"start": 1131.82,
+"end": 1132.06
+},
+{
+"text": "pas",
+"start": 1132.06,
+"end": 1132.22
+},
+{
+"text": "payer.",
+"start": 1132.22,
+"end": 1132.9
+},
+{
+"text": "C'est-à-dire",
+"start": 1132.9,
+"end": 1133.14
+},
+{
+"text": "que",
+"start": 1133.14,
+"end": 1133.22
+},
+{
+"text": "tu",
+"start": 1133.22,
+"end": 1133.38
+},
+{
+"text": "leur",
+"start": 1133.38,
+"end": 1133.54
+},
+{
+"text": "formes",
+"start": 1133.54,
+"end": 1133.78
+},
+{
+"text": "et",
+"start": 1133.78,
+"end": 1133.94
+},
+{
+"text": "ils",
+"start": 1133.94,
+"end": 1134.1
+},
+{
+"text": "ont",
+"start": 1134.1,
+"end": 1134.18
+},
+{
+"text": "des",
+"start": 1134.18,
+"end": 1134.26
+},
+{
+"text": "résultats,",
+"start": 1134.26,
+"end": 1134.58
+},
+{
+"text": "mais",
+"start": 1134.58,
+"end": 1134.74
+},
+{
+"text": "ils",
+"start": 1134.74,
+"end": 1134.82
+},
+{
+"text": "ne",
+"start": 1134.82,
+"end": 1134.9
+},
+{
+"text": "veulent",
+"start": 1134.9,
+"end": 1135.14
+},
+{
+"text": "pas",
+"start": 1135.14,
+"end": 1135.3
+},
+{
+"text": "payer.",
+"start": 1135.3,
+"end": 1136.54
+},
+{
+"text": "des",
+"start": 1136.54,
+"end": 1136.7
+},
+{
+"text": "clientes",
+"start": 1136.7,
+"end": 1137.18
+},
+{
+"text": "que",
+"start": 1137.18,
+"end": 1137.26
+},
+{
+"text": "tu",
+"start": 1137.26,
+"end": 1137.42
+},
+{
+"text": "formes",
+"start": 1137.42,
+"end": 1137.82
+},
+{
+"text": "bien",
+"start": 1137.82,
+"end": 1138.06
+},
+{
+"text": "vous",
+"start": 1138.06,
+"end": 1138.22
+},
+{
+"text": "vous",
+"start": 1138.22,
+"end": 1138.38
+},
+{
+"text": "entendez",
+"start": 1138.38,
+"end": 1138.86
+},
+{
+"text": "mais",
+"start": 1138.86,
+"end": 1138.94
+},
+{
+"text": "à",
+"start": 1138.94,
+"end": 1139.02
+},
+{
+"text": "la",
+"start": 1139.02,
+"end": 1139.1
+},
+{
+"text": "fin",
+"start": 1139.1,
+"end": 1139.26
+},
+{
+"text": "de",
+"start": 1139.26,
+"end": 1139.34
+},
+{
+"text": "l'accompagnement",
+"start": 1139.34,
+"end": 1139.98
+},
+{
+"text": "ils",
+"start": 1139.98,
+"end": 1140.14
+},
+{
+"text": "ont",
+"start": 1140.14,
+"end": 1140.22
+},
+{
+"text": "même",
+"start": 1140.22,
+"end": 1140.38
+},
+{
+"text": "des",
+"start": 1140.38,
+"end": 1140.54
+},
+{
+"text": "résultats",
+"start": 1140.54,
+"end": 1140.86
+},
+{
+"text": "mais",
+"start": 1140.86,
+"end": 1140.94
+},
+{
+"text": "ils",
+"start": 1140.94,
+"end": 1141.1
+},
+{
+"text": "ne",
+"start": 1141.1,
+"end": 1141.18
+},
+{
+"text": "veulent",
+"start": 1141.18,
+"end": 1141.42
+},
+{
+"text": "pas",
+"start": 1141.42,
+"end": 1141.5
+},
+{
+"text": "payer",
+"start": 1141.5,
+"end": 1143.24
+},
+{
+"text": "J'ai",
+"start": 1143.24,
+"end": 1143.48
+},
+{
+"text": "eu",
+"start": 1143.48,
+"end": 1143.64
+},
+{
+"text": "des",
+"start": 1143.64,
+"end": 1143.8
+},
+{
+"text": "clients",
+"start": 1143.8,
+"end": 1144.2
+},
+{
+"text": "qui",
+"start": 1144.2,
+"end": 1144.36
+},
+{
+"text": "te",
+"start": 1144.36,
+"end": 1144.6
+},
+{
+"text": "dérangent",
+"start": 1144.6,
+"end": 1145.32
+},
+{
+"text": "en",
+"start": 1145.32,
+"end": 1145.4
+},
+{
+"text": "fait.",
+"start": 1145.4,
+"end": 1146.5
+},
+{
+"text": "Bref,",
+"start": 1146.5,
+"end": 1146.9
+},
+{
+"text": "j'ai",
+"start": 1146.9,
+"end": 1147.3
+},
+{
+"text": "pas",
+"start": 1147.3,
+"end": 1147.46
+},
+{
+"text": "eu",
+"start": 1147.46,
+"end": 1147.7
+},
+{
+"text": "quoi.",
+"start": 1147.7,
+"end": 1148.15
+}
+]
+},
+{
+"a": 1149.2,
+"b": 1170.2,
+"words": [
+{
+"text": "Je",
+"start": 1149.45,
+"end": 1149.53
+},
+{
+"text": "suis",
+"start": 1149.53,
+"end": 1149.69
+},
+{
+"text": "resté",
+"start": 1149.69,
+"end": 1149.93
+},
+{
+"text": "jusqu'au",
+"start": 1149.93,
+"end": 1150.25
+},
+{
+"text": "moment",
+"start": 1150.25,
+"end": 1150.33
+},
+{
+"text": "où",
+"start": 1150.33,
+"end": 1150.41
+},
+{
+"text": "je",
+"start": 1150.41,
+"end": 1150.57
+},
+{
+"text": "me",
+"start": 1150.57,
+"end": 1150.65
+},
+{
+"text": "demandais",
+"start": 1150.65,
+"end": 1150.89
+},
+{
+"text": "si",
+"start": 1150.89,
+"end": 1151.05
+},
+{
+"text": "on",
+"start": 1151.05,
+"end": 1151.13
+},
+{
+"text": "m'avait",
+"start": 1151.13,
+"end": 1151.37
+},
+{
+"text": "maudit.",
+"start": 1151.37,
+"end": 1152.08
+},
+{
+"text": "Parce",
+"start": 1152.08,
+"end": 1152.24
+},
+{
+"text": "que",
+"start": 1152.24,
+"end": 1152.32
+},
+{
+"text": "je",
+"start": 1152.32,
+"end": 1152.48
+},
+{
+"text": "postais",
+"start": 1152.48,
+"end": 1152.88
+},
+{
+"text": "mes",
+"start": 1152.88,
+"end": 1152.96
+},
+{
+"text": "postes,",
+"start": 1152.96,
+"end": 1153.36
+},
+{
+"text": "j'avais",
+"start": 1153.36,
+"end": 1153.6
+},
+{
+"text": "l'impression",
+"start": 1153.6,
+"end": 1154.0
+},
+{
+"text": "que",
+"start": 1154.0,
+"end": 1154.16
+},
+{
+"text": "personne",
+"start": 1154.16,
+"end": 1154.4
+},
+{
+"text": "ne",
+"start": 1154.4,
+"end": 1154.56
+},
+{
+"text": "voyait,",
+"start": 1154.56,
+"end": 1154.88
+},
+{
+"text": "j'avais",
+"start": 1154.88,
+"end": 1155.2
+},
+{
+"text": "l'impression",
+"start": 1155.2,
+"end": 1155.52
+},
+{
+"text": "que",
+"start": 1155.52,
+"end": 1155.68
+},
+{
+"text": "personne",
+"start": 1155.68,
+"end": 1155.92
+},
+{
+"text": "ne",
+"start": 1155.92,
+"end": 1156.08
+},
+{
+"text": "m'écouttait.",
+"start": 1156.08,
+"end": 1158.03
+},
+{
+"text": "J'avais",
+"start": 1158.03,
+"end": 1158.27
+},
+{
+"text": "l'impression",
+"start": 1158.27,
+"end": 1158.59
+},
+{
+"text": "que",
+"start": 1158.59,
+"end": 1158.67
+},
+{
+"text": "je",
+"start": 1158.67,
+"end": 1158.83
+},
+{
+"text": "parlais",
+"start": 1158.83,
+"end": 1159.07
+},
+{
+"text": "dans",
+"start": 1159.07,
+"end": 1159.15
+},
+{
+"text": "le",
+"start": 1159.15,
+"end": 1159.23
+},
+{
+"text": "vide,",
+"start": 1159.23,
+"end": 1159.63
+},
+{
+"text": "c'est-à-dire",
+"start": 1159.63,
+"end": 1159.95
+},
+{
+"text": "tu",
+"start": 1159.95,
+"end": 1160.11
+},
+{
+"text": "postes",
+"start": 1160.11,
+"end": 1160.35
+},
+{
+"text": "une",
+"start": 1160.35,
+"end": 1160.43
+},
+{
+"text": "vidéo,",
+"start": 1160.43,
+"end": 1160.67
+},
+{
+"text": "tu",
+"start": 1160.67,
+"end": 1160.75
+},
+{
+"text": "vois,",
+"start": 1160.75,
+"end": 1160.99
+},
+{
+"text": "tu",
+"start": 1160.99,
+"end": 1161.07
+},
+{
+"text": "cal",
+"start": 1161.07,
+"end": 1161.39
+},
+{
+"text": "à",
+"start": 1161.39,
+"end": 1161.47
+},
+{
+"text": "200",
+"start": 1161.47,
+"end": 1161.79
+},
+{
+"text": "likes,",
+"start": 1161.79,
+"end": 1162.19
+},
+{
+"text": "tu",
+"start": 1162.19,
+"end": 1162.35
+},
+{
+"text": "cales",
+"start": 1162.35,
+"end": 1162.59
+},
+{
+"text": "à",
+"start": 1162.59,
+"end": 1162.75
+},
+{
+"text": "300",
+"start": 1162.75,
+"end": 1163.07
+},
+{
+"text": "likes.",
+"start": 1163.07,
+"end": 1164.24
+},
+{
+"text": "Et",
+"start": 1164.24,
+"end": 1164.48
+},
+{
+"text": "j'étais",
+"start": 1164.48,
+"end": 1164.8
+},
+{
+"text": "encore",
+"start": 1164.8,
+"end": 1165.12
+},
+{
+"text": "matrixée",
+"start": 1165.12,
+"end": 1165.84
+},
+{
+"text": "par",
+"start": 1165.84,
+"end": 1165.92
+},
+{
+"text": "ça,",
+"start": 1165.92,
+"end": 1166.16
+},
+{
+"text": "je",
+"start": 1166.16,
+"end": 1166.32
+},
+{
+"text": "t'ai",
+"start": 1166.32,
+"end": 1166.48
+},
+{
+"text": "dit",
+"start": 1166.48,
+"end": 1166.64
+},
+{
+"text": "j'étais",
+"start": 1166.64,
+"end": 1166.96
+},
+{
+"text": "attirée",
+"start": 1166.96,
+"end": 1167.44
+},
+{
+"text": "par",
+"start": 1167.44,
+"end": 1167.6
+},
+{
+"text": "le",
+"start": 1167.6,
+"end": 1167.68
+},
+{
+"text": "nombre",
+"start": 1167.68,
+"end": 1167.84
+},
+{
+"text": "de",
+"start": 1167.84,
+"end": 1168.0
+},
+{
+"text": "likes",
+"start": 1168.0,
+"end": 1168.32
+},
+{
+"text": "et",
+"start": 1168.32,
+"end": 1168.56
+},
+{
+"text": "par",
+"start": 1168.56,
+"end": 1168.72
+},
+{
+"text": "le",
+"start": 1168.72,
+"end": 1168.8
+},
+{
+"text": "nombre",
+"start": 1168.8,
+"end": 1168.96
+},
+{
+"text": "de",
+"start": 1168.96,
+"end": 1169.12
+},
+{
+"text": "vues.",
+"start": 1169.12,
+"end": 1169.57
+}
+]
+},
+{
+"a": 1170.2,
+"b": 1179.5,
+"words": [
+{
+"text": "Lorsqu'une",
+"start": 1170.45,
+"end": 1170.93
+},
+{
+"text": "vidéo",
+"start": 1170.93,
+"end": 1171.09
+},
+{
+"text": "ne",
+"start": 1171.09,
+"end": 1171.17
+},
+{
+"text": "faisait",
+"start": 1171.17,
+"end": 1171.49
+},
+{
+"text": "pas",
+"start": 1171.49,
+"end": 1171.57
+},
+{
+"text": "le",
+"start": 1171.57,
+"end": 1171.65
+},
+{
+"text": "like,",
+"start": 1171.65,
+"end": 1171.89
+},
+{
+"text": "je",
+"start": 1171.89,
+"end": 1171.97
+},
+{
+"text": "me",
+"start": 1171.97,
+"end": 1172.13
+},
+{
+"text": "disais",
+"start": 1172.13,
+"end": 1172.37
+},
+{
+"text": "forcément",
+"start": 1172.37,
+"end": 1172.85
+},
+{
+"text": "c'est",
+"start": 1172.85,
+"end": 1173.01
+},
+{
+"text": "moi",
+"start": 1173.01,
+"end": 1173.25
+},
+{
+"text": "le",
+"start": 1173.25,
+"end": 1173.33
+},
+{
+"text": "problème.",
+"start": 1173.33,
+"end": 1174.69
+},
+{
+"text": "C'est",
+"start": 1174.69,
+"end": 1174.93
+},
+{
+"text": "pas",
+"start": 1174.93,
+"end": 1175.09
+},
+{
+"text": "toi",
+"start": 1175.09,
+"end": 1175.41
+},
+{
+"text": "le",
+"start": 1175.41,
+"end": 1175.49
+},
+{
+"text": "problème.",
+"start": 1175.49,
+"end": 1175.89
+},
+{
+"text": "Toute",
+"start": 1175.89,
+"end": 1176.13
+},
+{
+"text": "vidéo",
+"start": 1176.13,
+"end": 1176.37
+},
+{
+"text": "ne",
+"start": 1176.37,
+"end": 1176.53
+},
+{
+"text": "doit",
+"start": 1176.53,
+"end": 1176.77
+},
+{
+"text": "pas",
+"start": 1176.77,
+"end": 1176.93
+},
+{
+"text": "performer.",
+"start": 1176.93,
+"end": 1177.49
+},
+{
+"text": "C'est",
+"start": 1177.49,
+"end": 1177.73
+},
+{
+"text": "une",
+"start": 1177.73,
+"end": 1177.81
+},
+{
+"text": "chose",
+"start": 1177.81,
+"end": 1177.97
+},
+{
+"text": "que",
+"start": 1177.97,
+"end": 1178.05
+},
+{
+"text": "je",
+"start": 1178.05,
+"end": 1178.21
+},
+{
+"text": "ne",
+"start": 1178.21,
+"end": 1178.29
+},
+{
+"text": "connaissais",
+"start": 1178.29,
+"end": 1178.69
+},
+{
+"text": "pas",
+"start": 1178.69,
+"end": 1178.85
+},
+{
+"text": "en",
+"start": 1178.85,
+"end": 1178.93
+},
+{
+"text": "fait.",
+"start": 1178.93,
+"end": 1179.38
+}
+]
+},
+{
+"a": 1204.0,
+"b": 1216.5,
+"words": [
+{
+"text": "Lorsqu'on",
+"start": 1204.12,
+"end": 1204.44
+},
+{
+"text": "parle",
+"start": 1204.44,
+"end": 1204.68
+},
+{
+"text": "déjà",
+"start": 1204.68,
+"end": 1204.92
+},
+{
+"text": "d'éduquer",
+"start": 1204.92,
+"end": 1205.48
+},
+{
+"text": "une",
+"start": 1205.48,
+"end": 1205.64
+},
+{
+"text": "personne,",
+"start": 1205.64,
+"end": 1205.96
+},
+{
+"text": "c'est",
+"start": 1205.96,
+"end": 1206.12
+},
+{
+"text": "normal",
+"start": 1206.12,
+"end": 1206.36
+},
+{
+"text": "que",
+"start": 1206.36,
+"end": 1206.44
+},
+{
+"text": "vous",
+"start": 1206.44,
+"end": 1206.52
+},
+{
+"text": "fassiez",
+"start": 1206.52,
+"end": 1206.76
+},
+{
+"text": "mon",
+"start": 1206.76,
+"end": 1207.08
+},
+{
+"text": "de",
+"start": 1207.08,
+"end": 1207.16
+},
+{
+"text": "vue",
+"start": 1207.16,
+"end": 1207.4
+},
+{
+"text": "parce",
+"start": 1207.4,
+"end": 1207.48
+},
+{
+"text": "que",
+"start": 1207.48,
+"end": 1207.64
+},
+{
+"text": "vous",
+"start": 1207.64,
+"end": 1207.72
+},
+{
+"text": "parlez",
+"start": 1207.72,
+"end": 1208.04
+},
+{
+"text": "à",
+"start": 1208.04,
+"end": 1208.2
+},
+{
+"text": "une",
+"start": 1208.2,
+"end": 1208.28
+},
+{
+"text": "personne",
+"start": 1208.28,
+"end": 1208.52
+},
+{
+"text": "précise",
+"start": 1208.52,
+"end": 1208.84
+},
+{
+"text": "qui",
+"start": 1208.84,
+"end": 1209.0
+},
+{
+"text": "a",
+"start": 1209.0,
+"end": 1209.08
+},
+{
+"text": "un",
+"start": 1209.08,
+"end": 1210.56
+},
+{
+"text": "un",
+"start": 1210.56,
+"end": 1210.72
+},
+{
+"text": "problème",
+"start": 1210.72,
+"end": 1211.04
+},
+{
+"text": "précis",
+"start": 1211.04,
+"end": 1211.52
+},
+{
+"text": "et",
+"start": 1211.52,
+"end": 1211.68
+},
+{
+"text": "vous",
+"start": 1211.68,
+"end": 1211.84
+},
+{
+"text": "avez",
+"start": 1211.84,
+"end": 1212.08
+},
+{
+"text": "une",
+"start": 1212.08,
+"end": 1212.16
+},
+{
+"text": "solution",
+"start": 1212.16,
+"end": 1212.56
+},
+{
+"text": "précis",
+"start": 1212.56,
+"end": 1212.88
+},
+{
+"text": "à",
+"start": 1212.88,
+"end": 1213.04
+},
+{
+"text": "le",
+"start": 1213.04,
+"end": 1213.2
+},
+{
+"text": "présenter.",
+"start": 1213.2,
+"end": 1213.76
+},
+{
+"text": "C'est-à-dire",
+"start": 1213.76,
+"end": 1214.16
+},
+{
+"text": "que",
+"start": 1214.16,
+"end": 1214.32
+},
+{
+"text": "si",
+"start": 1214.32,
+"end": 1214.48
+},
+{
+"text": "d'autres",
+"start": 1214.48,
+"end": 1214.8
+},
+{
+"text": "personnes",
+"start": 1214.8,
+"end": 1215.04
+},
+{
+"text": "ne",
+"start": 1215.04,
+"end": 1215.12
+},
+{
+"text": "se",
+"start": 1215.12,
+"end": 1215.28
+},
+{
+"text": "retrouvent",
+"start": 1215.28,
+"end": 1215.6
+},
+{
+"text": "pas",
+"start": 1215.6,
+"end": 1215.68
+},
+{
+"text": "dans",
+"start": 1215.68,
+"end": 1215.76
+},
+{
+"text": "la",
+"start": 1215.76,
+"end": 1215.84
+},
+{
+"text": "même",
+"start": 1215.84,
+"end": 1216.0
+},
+{
+"text": "catégorie.",
+"start": 1216.0,
+"end": 1216.45
+}
+]
+},
+{
+"a": 1216.5,
+"b": 1238.0,
+"words": [
+{
+"text": "C'est",
+"start": 1216.62,
+"end": 1216.78
+},
+{
+"text": "normal",
+"start": 1216.78,
+"end": 1217.02
+},
+{
+"text": "qu'ils",
+"start": 1217.02,
+"end": 1217.18
+},
+{
+"text": "ne",
+"start": 1217.18,
+"end": 1217.26
+},
+{
+"text": "suivent",
+"start": 1217.26,
+"end": 1217.5
+},
+{
+"text": "pas",
+"start": 1217.5,
+"end": 1217.58
+},
+{
+"text": "la",
+"start": 1217.58,
+"end": 1217.66
+},
+{
+"text": "vidéo",
+"start": 1217.66,
+"end": 1217.9
+},
+{
+"text": "et",
+"start": 1217.9,
+"end": 1218.06
+},
+{
+"text": "ça",
+"start": 1218.06,
+"end": 1218.3
+},
+{
+"text": "je",
+"start": 1218.3,
+"end": 1218.46
+},
+{
+"text": "comprenais",
+"start": 1218.46,
+"end": 1218.78
+},
+{
+"text": "pas.",
+"start": 1218.78,
+"end": 1219.6
+},
+{
+"text": "Et",
+"start": 1219.6,
+"end": 1219.76
+},
+{
+"text": "encore",
+"start": 1219.76,
+"end": 1220.0
+},
+{
+"text": "le",
+"start": 1220.0,
+"end": 1220.08
+},
+{
+"text": "plus",
+"start": 1220.08,
+"end": 1220.32
+},
+{
+"text": "pire",
+"start": 1220.32,
+"end": 1220.64
+},
+{
+"text": "encore,",
+"start": 1220.64,
+"end": 1220.96
+},
+{
+"text": "il",
+"start": 1220.96,
+"end": 1221.04
+},
+{
+"text": "y",
+"start": 1221.04,
+"end": 1221.04
+},
+{
+"text": "a",
+"start": 1221.04,
+"end": 1221.12
+},
+{
+"text": "des",
+"start": 1221.12,
+"end": 1221.2
+},
+{
+"text": "vidéos",
+"start": 1221.2,
+"end": 1221.44
+},
+{
+"text": "qui",
+"start": 1221.44,
+"end": 1221.6
+},
+{
+"text": "sont",
+"start": 1221.6,
+"end": 1221.76
+},
+{
+"text": "faites",
+"start": 1221.76,
+"end": 1222.0
+},
+{
+"text": "pour",
+"start": 1222.0,
+"end": 1222.16
+},
+{
+"text": "convertir.",
+"start": 1222.16,
+"end": 1222.72
+},
+{
+"text": "Et",
+"start": 1222.72,
+"end": 1222.8
+},
+{
+"text": "ce",
+"start": 1222.8,
+"end": 1222.96
+},
+{
+"text": "type",
+"start": 1222.96,
+"end": 1223.12
+},
+{
+"text": "de",
+"start": 1223.12,
+"end": 1223.28
+},
+{
+"text": "vidéos",
+"start": 1223.28,
+"end": 1223.52
+},
+{
+"text": "c'est",
+"start": 1223.52,
+"end": 1223.68
+},
+{
+"text": "la",
+"start": 1223.68,
+"end": 1223.76
+},
+{
+"text": "catastrophe.",
+"start": 1223.76,
+"end": 1224.32
+},
+{
+"text": "Je",
+"start": 1224.32,
+"end": 1224.48
+},
+{
+"text": "dis",
+"start": 1224.48,
+"end": 1224.64
+},
+{
+"text": "bien",
+"start": 1224.64,
+"end": 1224.8
+},
+{
+"text": "que",
+"start": 1224.8,
+"end": 1224.96
+},
+{
+"text": "c'est",
+"start": 1224.96,
+"end": 1225.12
+},
+{
+"text": "la",
+"start": 1225.12,
+"end": 1225.2
+},
+{
+"text": "catastrophe.",
+"start": 1225.2,
+"end": 1225.76
+},
+{
+"text": "Le",
+"start": 1225.76,
+"end": 1225.84
+},
+{
+"text": "plus",
+"start": 1225.84,
+"end": 1226.0
+},
+{
+"text": "souvent,",
+"start": 1226.0,
+"end": 1226.24
+},
+{
+"text": "ce",
+"start": 1226.24,
+"end": 1226.32
+},
+{
+"text": "type",
+"start": 1226.32,
+"end": 1226.48
+},
+{
+"text": "de",
+"start": 1226.48,
+"end": 1226.56
+},
+{
+"text": "vidéo",
+"start": 1226.56,
+"end": 1226.8
+},
+{
+"text": "ne",
+"start": 1226.8,
+"end": 1226.88
+},
+{
+"text": "font",
+"start": 1226.88,
+"end": 1227.2
+},
+{
+"text": "pas",
+"start": 1227.2,
+"end": 1227.36
+},
+{
+"text": "beaucoup",
+"start": 1227.36,
+"end": 1227.52
+},
+{
+"text": "de",
+"start": 1227.52,
+"end": 1227.6
+},
+{
+"text": "vues.",
+"start": 1227.6,
+"end": 1228.08
+},
+{
+"text": "Parce",
+"start": 1228.08,
+"end": 1228.32
+},
+{
+"text": "que",
+"start": 1228.32,
+"end": 1228.4
+},
+{
+"text": "vous",
+"start": 1228.4,
+"end": 1228.56
+},
+{
+"text": "vendez",
+"start": 1228.56,
+"end": 1229.12
+},
+{
+"text": "directement.",
+"start": 1229.12,
+"end": 1230.0
+},
+{
+"text": "Oui,",
+"start": 1230.0,
+"end": 1230.32
+},
+{
+"text": "vu",
+"start": 1230.32,
+"end": 1230.64
+},
+{
+"text": "que",
+"start": 1230.64,
+"end": 1230.72
+},
+{
+"text": "vous",
+"start": 1230.72,
+"end": 1230.8
+},
+{
+"text": "avez",
+"start": 1230.8,
+"end": 1231.04
+},
+{
+"text": "déjà",
+"start": 1231.04,
+"end": 1231.2
+},
+{
+"text": "attiré,",
+"start": 1231.2,
+"end": 1231.76
+},
+{
+"text": "vous",
+"start": 1231.76,
+"end": 1231.92
+},
+{
+"text": "avez",
+"start": 1231.92,
+"end": 1232.08
+},
+{
+"text": "déjà",
+"start": 1232.08,
+"end": 1232.32
+},
+{
+"text": "qualifié,",
+"start": 1232.32,
+"end": 1232.8
+},
+{
+"text": "éduqué,",
+"start": 1232.8,
+"end": 1233.2
+},
+{
+"text": "mais",
+"start": 1233.2,
+"end": 1233.52
+},
+{
+"text": "il",
+"start": 1233.52,
+"end": 1233.6
+},
+{
+"text": "faut",
+"start": 1233.6,
+"end": 1233.84
+},
+{
+"text": "convertir.",
+"start": 1233.84,
+"end": 1235.18
+},
+{
+"text": "Mais",
+"start": 1235.18,
+"end": 1235.42
+},
+{
+"text": "que",
+"start": 1235.42,
+"end": 1235.5
+},
+{
+"text": "je",
+"start": 1235.5,
+"end": 1235.66
+},
+{
+"text": "connaissais,",
+"start": 1235.66,
+"end": 1236.06
+},
+{
+"text": "je",
+"start": 1236.06,
+"end": 1236.22
+},
+{
+"text": "connaissais",
+"start": 1236.22,
+"end": 1236.62
+},
+{
+"text": "pas.",
+"start": 1236.62,
+"end": 1236.94
+},
+{
+"text": "Je",
+"start": 1236.94,
+"end": 1237.02
+},
+{
+"text": "n'avais",
+"start": 1237.02,
+"end": 1237.42
+},
+{
+"text": "pas",
+"start": 1237.42,
+"end": 1237.5
+},
+{
+"text": "de",
+"start": 1237.5,
+"end": 1237.66
+},
+{
+"text": "sistema.",
+"start": 1237.66,
+"end": 1238.0
+}
+]
+},
+{
+"a": 1239.5,
+"b": 1247.5,
+"words": [
+{
+"text": "Mon",
+"start": 1241.35,
+"end": 1241.51
+},
+{
+"text": "post",
+"start": 1241.51,
+"end": 1241.91
+},
+{
+"text": "qui",
+"start": 1241.91,
+"end": 1241.99
+},
+{
+"text": "a",
+"start": 1241.99,
+"end": 1242.15
+},
+{
+"text": "fait",
+"start": 1242.15,
+"end": 1242.31
+},
+{
+"text": "le",
+"start": 1242.31,
+"end": 1242.39
+},
+{
+"text": "plus",
+"start": 1242.39,
+"end": 1242.55
+},
+{
+"text": "de",
+"start": 1242.55,
+"end": 1242.71
+},
+{
+"text": "vues",
+"start": 1242.71,
+"end": 1243.03
+},
+{
+"text": "sur",
+"start": 1243.03,
+"end": 1243.19
+},
+{
+"text": "Instagram",
+"start": 1243.19,
+"end": 1243.91
+},
+{
+"text": "a",
+"start": 1243.91,
+"end": 1244.07
+},
+{
+"text": "pratiquement",
+"start": 1244.07,
+"end": 1244.47
+},
+{
+"text": "800",
+"start": 1244.47,
+"end": 1244.79
+},
+{
+"text": "000",
+"start": 1244.79,
+"end": 1245.03
+},
+{
+"text": "vues.",
+"start": 1245.03,
+"end": 1245.99
+},
+{
+"text": "Mais",
+"start": 1245.99,
+"end": 1246.15
+},
+{
+"text": "après",
+"start": 1246.15,
+"end": 1246.39
+},
+{
+"text": "combien",
+"start": 1246.39,
+"end": 1246.63
+},
+{
+"text": "de",
+"start": 1246.63,
+"end": 1246.79
+},
+{
+"text": "temps",
+"start": 1246.79,
+"end": 1246.87
+},
+{
+"text": "?",
+"start": 1246.87,
+"end": 1247.32
+}
+]
+},
+{
+"a": 1262.6,
+"b": 1267.4,
+"words": [
+{
+"text": "Pourtant,",
+"start": 1262.88,
+"end": 1263.12
+},
+{
+"text": "le",
+"start": 1263.12,
+"end": 1263.2
+},
+{
+"text": "poste",
+"start": 1263.2,
+"end": 1263.6
+},
+{
+"text": "qui",
+"start": 1263.6,
+"end": 1263.68
+},
+{
+"text": "avait",
+"start": 1263.68,
+"end": 1263.92
+},
+{
+"text": "fait",
+"start": 1263.92,
+"end": 1264.16
+},
+{
+"text": "pratiquement",
+"start": 1264.16,
+"end": 1264.56
+},
+{
+"text": "800",
+"start": 1264.56,
+"end": 1264.96
+},
+{
+"text": "000",
+"start": 1264.96,
+"end": 1265.2
+},
+{
+"text": "vues",
+"start": 1265.2,
+"end": 1265.44
+},
+{
+"text": "ne",
+"start": 1265.44,
+"end": 1265.52
+},
+{
+"text": "m'a",
+"start": 1265.52,
+"end": 1265.68
+},
+{
+"text": "rapporté,",
+"start": 1265.68,
+"end": 1266.16
+},
+{
+"text": "ne",
+"start": 1266.16,
+"end": 1266.32
+},
+{
+"text": "m'a",
+"start": 1266.32,
+"end": 1266.48
+},
+{
+"text": "même",
+"start": 1266.48,
+"end": 1266.64
+},
+{
+"text": "pas",
+"start": 1266.64,
+"end": 1266.8
+},
+{
+"text": "rapporté.",
+"start": 1266.8,
+"end": 1267.25
+}
+]
+},
+{
+"a": 1286.8,
+"b": 1293.2,
+"words": [
+{
+"text": "le",
+"start": 1287.12,
+"end": 1287.28
+},
+{
+"text": "nombre",
+"start": 1287.28,
+"end": 1287.52
+},
+{
+"text": "de",
+"start": 1287.52,
+"end": 1287.6
+},
+{
+"text": "conversations",
+"start": 1287.6,
+"end": 1288.16
+},
+{
+"text": "démarrées,",
+"start": 1288.16,
+"end": 1288.88
+},
+{
+"text": "le",
+"start": 1288.88,
+"end": 1289.04
+},
+{
+"text": "nombre",
+"start": 1289.04,
+"end": 1289.2
+},
+{
+"text": "de",
+"start": 1289.2,
+"end": 1289.36
+},
+{
+"text": "call",
+"start": 1289.36,
+"end": 1289.68
+},
+{
+"text": "bouclés,",
+"start": 1289.68,
+"end": 1290.24
+},
+{
+"text": "le",
+"start": 1290.24,
+"end": 1290.32
+},
+{
+"text": "ratio",
+"start": 1290.32,
+"end": 1290.72
+},
+{
+"text": "entre",
+"start": 1290.72,
+"end": 1290.88
+},
+{
+"text": "le",
+"start": 1290.88,
+"end": 1290.96
+},
+{
+"text": "nombre",
+"start": 1290.96,
+"end": 1291.12
+},
+{
+"text": "de",
+"start": 1291.12,
+"end": 1291.28
+},
+{
+"text": "vues",
+"start": 1291.28,
+"end": 1291.52
+},
+{
+"text": "et",
+"start": 1291.52,
+"end": 1291.6
+},
+{
+"text": "le",
+"start": 1291.6,
+"end": 1291.76
+},
+{
+"text": "cash",
+"start": 1291.76,
+"end": 1292.08
+},
+{
+"text": "collecté.",
+"start": 1292.08,
+"end": 1292.53
+}
+]
+},
+{
+"a": 1636.2,
+"b": 1643.0,
+"words": [
+{
+"text": "Et",
+"start": 1636.42,
+"end": 1636.5
+},
+{
+"text": "j'ai",
+"start": 1636.5,
+"end": 1636.66
+},
+{
+"text": "aussi",
+"start": 1636.66,
+"end": 1636.82
+},
+{
+"text": "compris",
+"start": 1636.82,
+"end": 1637.06
+},
+{
+"text": "un",
+"start": 1637.06,
+"end": 1637.22
+},
+{
+"text": "truc",
+"start": 1637.22,
+"end": 1637.46
+},
+{
+"text": "dans",
+"start": 1637.46,
+"end": 1637.54
+},
+{
+"text": "l'accompagnement,",
+"start": 1637.54,
+"end": 1638.1
+},
+{
+"text": "après",
+"start": 1638.1,
+"end": 1638.34
+},
+{
+"text": "avoir",
+"start": 1638.34,
+"end": 1638.58
+},
+{
+"text": "accompagné",
+"start": 1638.58,
+"end": 1639.22
+},
+{
+"text": "plusieurs",
+"start": 1639.22,
+"end": 1639.46
+},
+{
+"text": "personnes,",
+"start": 1639.46,
+"end": 1639.7
+},
+{
+"text": "j'ai",
+"start": 1639.7,
+"end": 1639.86
+},
+{
+"text": "compris",
+"start": 1639.86,
+"end": 1640.1
+},
+{
+"text": "que",
+"start": 1640.1,
+"end": 1640.42
+},
+{
+"text": "l'accompagnement",
+"start": 1640.42,
+"end": 1641.06
+},
+{
+"text": "aussi",
+"start": 1641.06,
+"end": 1641.3
+},
+{
+"text": "c'est",
+"start": 1641.3,
+"end": 1641.46
+},
+{
+"text": "un",
+"start": 1641.46,
+"end": 1641.54
+},
+{
+"text": "degré",
+"start": 1641.54,
+"end": 1641.94
+},
+{
+"text": "chanceux.",
+"start": 1641.94,
+"end": 1642.39
+}
+]
+},
+{
+"a": 1644.5,
+"b": 1655.0,
+"words": [
+{
+"text": "Il",
+"start": 1644.78,
+"end": 1644.86
+},
+{
+"text": "y",
+"start": 1644.86,
+"end": 1644.86
+},
+{
+"text": "a",
+"start": 1644.86,
+"end": 1644.94
+},
+{
+"text": "des",
+"start": 1644.94,
+"end": 1645.02
+},
+{
+"text": "personnes",
+"start": 1645.02,
+"end": 1645.18
+},
+{
+"text": "que",
+"start": 1645.18,
+"end": 1645.26
+},
+{
+"text": "j'accompagnais",
+"start": 1645.26,
+"end": 1645.82
+},
+{
+"text": "qui",
+"start": 1645.82,
+"end": 1645.9
+},
+{
+"text": "n'avaient",
+"start": 1645.9,
+"end": 1646.22
+},
+{
+"text": "aucune",
+"start": 1646.22,
+"end": 1646.46
+},
+{
+"text": "compétence,",
+"start": 1646.46,
+"end": 1646.78
+},
+{
+"text": "mais",
+"start": 1646.78,
+"end": 1646.86
+},
+{
+"text": "qui",
+"start": 1646.86,
+"end": 1647.02
+},
+{
+"text": "en",
+"start": 1647.02,
+"end": 1647.18
+},
+{
+"text": "un",
+"start": 1647.18,
+"end": 1647.42
+},
+{
+"text": "moment",
+"start": 1647.42,
+"end": 1647.58
+},
+{
+"text": "m'a",
+"start": 1647.58,
+"end": 1647.74
+},
+{
+"text": "dépassé",
+"start": 1647.74,
+"end": 1648.06
+},
+{
+"text": "avec",
+"start": 1648.06,
+"end": 1648.22
+},
+{
+"text": "le",
+"start": 1648.22,
+"end": 1648.3
+},
+{
+"text": "nombre",
+"start": 1648.3,
+"end": 1648.46
+},
+{
+"text": "d'abonnés,",
+"start": 1648.46,
+"end": 1648.86
+},
+{
+"text": "le",
+"start": 1648.86,
+"end": 1648.94
+},
+{
+"text": "nombre",
+"start": 1648.94,
+"end": 1649.18
+},
+{
+"text": "de",
+"start": 1649.18,
+"end": 1649.26
+},
+{
+"text": "vues.",
+"start": 1649.26,
+"end": 1650.06
+},
+{
+"text": "même",
+"start": 1650.06,
+"end": 1650.22
+},
+{
+"text": "un",
+"start": 1650.22,
+"end": 1650.38
+},
+{
+"text": "nombre",
+"start": 1650.38,
+"end": 1650.62
+},
+{
+"text": "de",
+"start": 1650.62,
+"end": 1650.7
+},
+{
+"text": "ventes",
+"start": 1650.7,
+"end": 1651.1
+},
+{
+"text": "par",
+"start": 1651.1,
+"end": 1651.26
+},
+{
+"text": "semaine.",
+"start": 1651.26,
+"end": 1651.66
+},
+{
+"text": "Il",
+"start": 1651.66,
+"end": 1651.74
+},
+{
+"text": "y",
+"start": 1651.74,
+"end": 1651.82
+},
+{
+"text": "a",
+"start": 1651.82,
+"end": 1651.82
+},
+{
+"text": "des",
+"start": 1651.82,
+"end": 1651.9
+},
+{
+"text": "personnes",
+"start": 1651.9,
+"end": 1652.06
+},
+{
+"text": "que",
+"start": 1652.06,
+"end": 1652.14
+},
+{
+"text": "j'ai",
+"start": 1652.14,
+"end": 1652.3
+},
+{
+"text": "accompagnées",
+"start": 1652.3,
+"end": 1652.7
+},
+{
+"text": "qui",
+"start": 1652.7,
+"end": 1652.86
+},
+{
+"text": "parlaient",
+"start": 1652.86,
+"end": 1653.26
+},
+{
+"text": "de",
+"start": 1653.26,
+"end": 1653.34
+},
+{
+"text": "rien,",
+"start": 1653.34,
+"end": 1653.66
+},
+{
+"text": "les",
+"start": 1653.66,
+"end": 1653.82
+},
+{
+"text": "mamans",
+"start": 1653.82,
+"end": 1654.14
+},
+{
+"text": "même.",
+"start": 1654.14,
+"end": 1654.59
+}
+]
+},
+{
+"a": 1663.5,
+"b": 1670.0,
+"words": [
+{
+"text": "Ils",
+"start": 1663.75,
+"end": 1663.91
+},
+{
+"text": "ont",
+"start": 1663.91,
+"end": 1664.07
+},
+{
+"text": "eu",
+"start": 1664.07,
+"end": 1664.23
+},
+{
+"text": "pratiquement",
+"start": 1664.23,
+"end": 1664.47
+},
+{
+"text": "les",
+"start": 1664.47,
+"end": 1664.63
+},
+{
+"text": "trois",
+"start": 1664.63,
+"end": 1664.87
+},
+{
+"text": "mille",
+"start": 1664.87,
+"end": 1665.11
+},
+{
+"text": "abonnés",
+"start": 1665.11,
+"end": 1665.51
+},
+{
+"text": "en",
+"start": 1665.51,
+"end": 1665.59
+},
+{
+"text": "moins",
+"start": 1665.59,
+"end": 1665.75
+},
+{
+"text": "de",
+"start": 1665.75,
+"end": 1665.91
+},
+{
+"text": "un",
+"start": 1665.91,
+"end": 1666.07
+},
+{
+"text": "mois.",
+"start": 1666.07,
+"end": 1667.51
+},
+{
+"text": "Ils",
+"start": 1667.51,
+"end": 1667.67
+},
+{
+"text": "ont",
+"start": 1667.67,
+"end": 1667.83
+},
+{
+"text": "closé",
+"start": 1667.83,
+"end": 1668.31
+},
+{
+"text": "à",
+"start": 1668.31,
+"end": 1668.47
+},
+{
+"text": "moins",
+"start": 1668.47,
+"end": 1668.71
+},
+{
+"text": "de",
+"start": 1668.71,
+"end": 1668.79
+},
+{
+"text": "deux",
+"start": 1668.79,
+"end": 1668.95
+},
+{
+"text": "semaines.",
+"start": 1668.95,
+"end": 1669.4
+}
+]
+},
+{
+"a": 1673.0,
+"b": 1679.2,
+"words": [
+{
+"text": "Je",
+"start": 1673.49,
+"end": 1673.65
+},
+{
+"text": "pense",
+"start": 1673.65,
+"end": 1673.97
+},
+{
+"text": "que",
+"start": 1673.97,
+"end": 1674.13
+},
+{
+"text": "si",
+"start": 1674.13,
+"end": 1674.45
+},
+{
+"text": "les",
+"start": 1674.45,
+"end": 1674.61
+},
+{
+"text": "réseaux",
+"start": 1674.61,
+"end": 1674.93
+},
+{
+"text": "sociaux,",
+"start": 1674.93,
+"end": 1675.33
+},
+{
+"text": "que",
+"start": 1675.33,
+"end": 1675.49
+},
+{
+"text": "ce",
+"start": 1675.49,
+"end": 1675.57
+},
+{
+"text": "soit",
+"start": 1675.57,
+"end": 1675.73
+},
+{
+"text": "les",
+"start": 1675.73,
+"end": 1675.89
+},
+{
+"text": "réseaux",
+"start": 1675.89,
+"end": 1676.13
+},
+{
+"text": "sociaux,",
+"start": 1676.13,
+"end": 1676.37
+},
+{
+"text": "que",
+"start": 1676.37,
+"end": 1676.53
+},
+{
+"text": "ce",
+"start": 1676.53,
+"end": 1676.61
+},
+{
+"text": "soit",
+"start": 1676.61,
+"end": 1676.77
+},
+{
+"text": "le",
+"start": 1676.77,
+"end": 1676.85
+},
+{
+"text": "business",
+"start": 1676.85,
+"end": 1677.09
+},
+{
+"text": "en",
+"start": 1677.09,
+"end": 1677.25
+},
+{
+"text": "ligne,",
+"start": 1677.25,
+"end": 1677.49
+},
+{
+"text": "ils",
+"start": 1677.49,
+"end": 1677.65
+},
+{
+"text": "aussi",
+"start": 1677.65,
+"end": 1677.73
+},
+{
+"text": "ont",
+"start": 1677.73,
+"end": 1677.89
+},
+{
+"text": "des",
+"start": 1677.89,
+"end": 1677.97
+},
+{
+"text": "grilles",
+"start": 1677.97,
+"end": 1678.21
+},
+{
+"text": "chances.",
+"start": 1678.21,
+"end": 1678.66
+}
+]
+},
+{
+"a": 1679.5,
+"b": 1684.6,
+"words": [
+{
+"text": "Mais",
+"start": 1681.7,
+"end": 1681.95
+},
+{
+"text": "cette",
+"start": 1681.95,
+"end": 1682.2
+},
+{
+"text": "chance-là,",
+"start": 1682.2,
+"end": 1683.21
+},
+{
+"text": "vous",
+"start": 1683.21,
+"end": 1683.37
+},
+{
+"text": "devez",
+"start": 1683.37,
+"end": 1683.53
+},
+{
+"text": "la",
+"start": 1683.53,
+"end": 1683.69
+},
+{
+"text": "provoquer.",
+"start": 1683.69,
+"end": 1684.2
+}
+]
+},
+{
+"a": 1684.8,
+"b": 1697.0,
+"words": [
+{
+"text": "Et",
+"start": 1684.99,
+"end": 1685.15
+},
+{
+"text": "aussi",
+"start": 1685.15,
+"end": 1685.39
+},
+{
+"text": "une",
+"start": 1685.39,
+"end": 1685.55
+},
+{
+"text": "chose,",
+"start": 1685.55,
+"end": 1685.87
+},
+{
+"text": "c'est",
+"start": 1685.87,
+"end": 1686.03
+},
+{
+"text": "que",
+"start": 1686.03,
+"end": 1686.19
+},
+{
+"text": "vous",
+"start": 1686.19,
+"end": 1686.27
+},
+{
+"text": "devez",
+"start": 1686.27,
+"end": 1686.59
+},
+{
+"text": "normaliser",
+"start": 1686.59,
+"end": 1687.15
+},
+{
+"text": "le",
+"start": 1687.15,
+"end": 1687.23
+},
+{
+"text": "fait",
+"start": 1687.23,
+"end": 1687.47
+},
+{
+"text": "que",
+"start": 1687.47,
+"end": 1687.55
+},
+{
+"text": "vous",
+"start": 1687.55,
+"end": 1687.71
+},
+{
+"text": "pouvez",
+"start": 1687.71,
+"end": 1687.95
+},
+{
+"text": "faire",
+"start": 1687.95,
+"end": 1688.11
+},
+{
+"text": "des",
+"start": 1688.11,
+"end": 1688.27
+},
+{
+"text": "choses",
+"start": 1688.27,
+"end": 1688.51
+},
+{
+"text": "bien,",
+"start": 1688.51,
+"end": 1688.83
+},
+{
+"text": "mais",
+"start": 1688.83,
+"end": 1688.99
+},
+{
+"text": "ça",
+"start": 1688.99,
+"end": 1689.15
+},
+{
+"text": "ne",
+"start": 1689.15,
+"end": 1689.31
+},
+{
+"text": "prend",
+"start": 1689.31,
+"end": 1689.63
+},
+{
+"text": "pas.",
+"start": 1689.63,
+"end": 1692.32
+},
+{
+"text": "les",
+"start": 1692.32,
+"end": 1692.48
+},
+{
+"text": "choses",
+"start": 1692.48,
+"end": 1692.8
+},
+{
+"text": "de",
+"start": 1692.8,
+"end": 1692.96
+},
+{
+"text": "la",
+"start": 1692.96,
+"end": 1693.04
+},
+{
+"text": "bonne",
+"start": 1693.04,
+"end": 1693.28
+},
+{
+"text": "façon",
+"start": 1693.28,
+"end": 1693.76
+},
+{
+"text": "mais",
+"start": 1693.76,
+"end": 1694.08
+},
+{
+"text": "ça",
+"start": 1694.08,
+"end": 1694.32
+},
+{
+"text": "ne",
+"start": 1694.32,
+"end": 1694.56
+},
+{
+"text": "réussit",
+"start": 1694.56,
+"end": 1695.2
+},
+{
+"text": "pas",
+"start": 1695.2,
+"end": 1695.36
+},
+{
+"text": "comme",
+"start": 1695.36,
+"end": 1695.52
+},
+{
+"text": "vous",
+"start": 1695.52,
+"end": 1695.6
+},
+{
+"text": "voulez.",
+"start": 1695.6,
+"end": 1696.05
+}
+]
+},
+{
+"a": 1710.9,
+"b": 1721.6,
+"words": [
+{
+"text": "Mais",
+"start": 1711.18,
+"end": 1711.26
+},
+{
+"text": "comme",
+"start": 1711.26,
+"end": 1711.42
+},
+{
+"text": "je",
+"start": 1711.42,
+"end": 1711.5
+},
+{
+"text": "l'ai",
+"start": 1711.5,
+"end": 1711.66
+},
+{
+"text": "dit,",
+"start": 1711.66,
+"end": 1711.82
+},
+{
+"text": "les",
+"start": 1711.82,
+"end": 1711.9
+},
+{
+"text": "bonnes",
+"start": 1711.9,
+"end": 1712.06
+},
+{
+"text": "choses",
+"start": 1712.06,
+"end": 1712.38
+},
+{
+"text": "prennent",
+"start": 1712.38,
+"end": 1712.62
+},
+{
+"text": "du",
+"start": 1712.62,
+"end": 1712.7
+},
+{
+"text": "temps.",
+"start": 1712.7,
+"end": 1713.33
+},
+{
+"text": "Vous",
+"start": 1713.33,
+"end": 1713.57
+},
+{
+"text": "devez",
+"start": 1713.57,
+"end": 1713.81
+},
+{
+"text": "accepter",
+"start": 1713.81,
+"end": 1714.21
+},
+{
+"text": "le",
+"start": 1714.21,
+"end": 1714.29
+},
+{
+"text": "fait",
+"start": 1714.29,
+"end": 1714.53
+},
+{
+"text": "que",
+"start": 1714.53,
+"end": 1714.69
+},
+{
+"text": "parfois",
+"start": 1714.69,
+"end": 1715.01
+},
+{
+"text": "vous",
+"start": 1715.01,
+"end": 1715.09
+},
+{
+"text": "êtes",
+"start": 1715.09,
+"end": 1715.25
+},
+{
+"text": "dans",
+"start": 1715.25,
+"end": 1715.41
+},
+{
+"text": "un",
+"start": 1715.41,
+"end": 1715.57
+},
+{
+"text": "processus,",
+"start": 1715.57,
+"end": 1716.13
+},
+{
+"text": "est-ce",
+"start": 1716.13,
+"end": 1716.29
+},
+{
+"text": "que",
+"start": 1716.29,
+"end": 1716.45
+},
+{
+"text": "ça",
+"start": 1716.45,
+"end": 1716.61
+},
+{
+"text": "peut",
+"start": 1716.61,
+"end": 1716.77
+},
+{
+"text": "prendre",
+"start": 1716.77,
+"end": 1717.17
+},
+{
+"text": "du",
+"start": 1717.17,
+"end": 1717.33
+},
+{
+"text": "temps",
+"start": 1717.33,
+"end": 1717.57
+},
+{
+"text": "avant",
+"start": 1717.57,
+"end": 1717.97
+},
+{
+"text": "?",
+"start": 1717.97,
+"end": 1719.65
+},
+{
+"text": "D'arriver",
+"start": 1719.65,
+"end": 1720.05
+},
+{
+"text": "où",
+"start": 1720.05,
+"end": 1720.21
+},
+{
+"text": "vous",
+"start": 1720.21,
+"end": 1720.29
+},
+{
+"text": "voulez",
+"start": 1720.29,
+"end": 1720.61
+},
+{
+"text": "être.",
+"start": 1720.61,
+"end": 1721.06
+}
+]
+},
+{
+"a": 2424.7,
+"b": 2434.2,
+"words": [
+{
+"text": "Je",
+"start": 2424.98,
+"end": 2425.14
+},
+{
+"text": "suis",
+"start": 2425.14,
+"end": 2425.3
+},
+{
+"text": "maudit",
+"start": 2425.3,
+"end": 2425.78
+},
+{
+"text": "parce",
+"start": 2425.78,
+"end": 2425.86
+},
+{
+"text": "que",
+"start": 2425.86,
+"end": 2426.18
+},
+{
+"text": "je",
+"start": 2426.18,
+"end": 2426.34
+},
+{
+"text": "le",
+"start": 2426.34,
+"end": 2426.5
+},
+{
+"text": "disais.",
+"start": 2426.5,
+"end": 2427.42
+},
+{
+"text": "Je",
+"start": 2427.42,
+"end": 2427.58
+},
+{
+"text": "le",
+"start": 2427.58,
+"end": 2427.66
+},
+{
+"text": "disais.",
+"start": 2427.66,
+"end": 2428.41
+},
+{
+"text": "Je",
+"start": 2428.41,
+"end": 2428.49
+},
+{
+"text": "les",
+"start": 2428.49,
+"end": 2428.57
+},
+{
+"text": "disais",
+"start": 2428.57,
+"end": 2428.73
+},
+{
+"text": "que",
+"start": 2428.73,
+"end": 2428.81
+},
+{
+"text": "j'étais",
+"start": 2428.81,
+"end": 2429.05
+},
+{
+"text": "maudit",
+"start": 2429.05,
+"end": 2429.37
+},
+{
+"text": "parce",
+"start": 2429.37,
+"end": 2429.45
+},
+{
+"text": "que",
+"start": 2429.45,
+"end": 2429.53
+},
+{
+"text": "mes",
+"start": 2429.53,
+"end": 2429.61
+},
+{
+"text": "vidéos",
+"start": 2429.61,
+"end": 2429.77
+},
+{
+"text": "TikTok",
+"start": 2429.77,
+"end": 2430.09
+},
+{
+"text": "ne",
+"start": 2430.09,
+"end": 2430.17
+},
+{
+"text": "faisaient",
+"start": 2430.17,
+"end": 2430.41
+},
+{
+"text": "pas",
+"start": 2430.41,
+"end": 2430.49
+},
+{
+"text": "de",
+"start": 2430.49,
+"end": 2430.57
+},
+{
+"text": "vues,",
+"start": 2430.57,
+"end": 2430.73
+},
+{
+"text": "mes",
+"start": 2430.73,
+"end": 2430.81
+},
+{
+"text": "vidéos",
+"start": 2430.81,
+"end": 2431.05
+},
+{
+"text": "Instagram",
+"start": 2431.05,
+"end": 2431.37
+},
+{
+"text": "ne",
+"start": 2431.37,
+"end": 2431.45
+},
+{
+"text": "faisaient",
+"start": 2431.45,
+"end": 2431.69
+},
+{
+"text": "pas",
+"start": 2431.69,
+"end": 2431.85
+},
+{
+"text": "de",
+"start": 2431.85,
+"end": 2431.93
+},
+{
+"text": "vues,",
+"start": 2431.93,
+"end": 2432.33
+},
+{
+"text": "YouTube,",
+"start": 2432.33,
+"end": 2432.81
+},
+{
+"text": "LinkedIn",
+"start": 2432.81,
+"end": 2433.45
+},
+{
+"text": "et",
+"start": 2433.45,
+"end": 2433.53
+},
+{
+"text": "autres.",
+"start": 2433.53,
+"end": 2433.98
+}
+]
+},
+{
+"a": 2434.4,
+"b": 2444.3,
+"words": [
+{
+"text": "Je",
+"start": 2434.59,
+"end": 2434.75
+},
+{
+"text": "commandais",
+"start": 2434.75,
+"end": 2435.15
+},
+{
+"text": "mes",
+"start": 2435.15,
+"end": 2435.23
+},
+{
+"text": "appareils,",
+"start": 2435.23,
+"end": 2435.63
+},
+{
+"text": "ça",
+"start": 2435.63,
+"end": 2435.71
+},
+{
+"text": "n'arrivait",
+"start": 2435.71,
+"end": 2436.19
+},
+{
+"text": "pas,",
+"start": 2436.19,
+"end": 2436.43
+},
+{
+"text": "j'avais",
+"start": 2436.43,
+"end": 2436.75
+},
+{
+"text": "énormément",
+"start": 2436.75,
+"end": 2437.15
+},
+{
+"text": "de",
+"start": 2437.15,
+"end": 2437.23
+},
+{
+"text": "problèmes,",
+"start": 2437.23,
+"end": 2437.55
+},
+{
+"text": "je",
+"start": 2437.55,
+"end": 2437.63
+},
+{
+"text": "me",
+"start": 2437.63,
+"end": 2437.71
+},
+{
+"text": "disais",
+"start": 2437.71,
+"end": 2438.03
+},
+{
+"text": "ah.",
+"start": 2438.03,
+"end": 2439.13
+},
+{
+"text": "Du",
+"start": 2439.13,
+"end": 2439.21
+},
+{
+"text": "coup",
+"start": 2439.21,
+"end": 2439.37
+},
+{
+"text": "je",
+"start": 2439.37,
+"end": 2439.45
+},
+{
+"text": "me",
+"start": 2439.45,
+"end": 2439.53
+},
+{
+"text": "disais",
+"start": 2439.53,
+"end": 2439.85
+},
+{
+"text": "oui,",
+"start": 2439.85,
+"end": 2440.17
+},
+{
+"text": "je",
+"start": 2440.17,
+"end": 2440.25
+},
+{
+"text": "suis",
+"start": 2440.25,
+"end": 2440.41
+},
+{
+"text": "maudit",
+"start": 2440.41,
+"end": 2440.89
+},
+{
+"text": "et",
+"start": 2440.89,
+"end": 2440.97
+},
+{
+"text": "tout.",
+"start": 2440.97,
+"end": 2441.69
+},
+{
+"text": "Mais",
+"start": 2441.69,
+"end": 2441.85
+},
+{
+"text": "c'est",
+"start": 2441.85,
+"end": 2442.01
+},
+{
+"text": "m'empêcher",
+"start": 2442.01,
+"end": 2442.41
+},
+{
+"text": "pour",
+"start": 2442.41,
+"end": 2442.65
+},
+{
+"text": "continuer",
+"start": 2442.65,
+"end": 2442.89
+},
+{
+"text": "parce",
+"start": 2442.89,
+"end": 2442.97
+},
+{
+"text": "que",
+"start": 2442.97,
+"end": 2443.13
+},
+{
+"text": "j'ai",
+"start": 2443.13,
+"end": 2443.29
+},
+{
+"text": "mis",
+"start": 2443.29,
+"end": 2443.45
+},
+{
+"text": "ce",
+"start": 2443.45,
+"end": 2443.53
+},
+{
+"text": "que",
+"start": 2443.53,
+"end": 2443.61
+},
+{
+"text": "je",
+"start": 2443.61,
+"end": 2443.77
+},
+{
+"text": "faisais.",
+"start": 2443.77,
+"end": 2444.22
+}
+]
+}
+]
