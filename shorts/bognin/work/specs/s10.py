@@ -2,6 +2,7 @@
 NAME = "s10"
 TITLE = "Un degré de chance existe"
 TRIM = True
+LOCAL_REF = True
 KEEP = [
     (1636.30, 1642.30),   # « Et j'ai aussi compris un truc dans l'accompagnement… c'est un degré de chance. »
     (1644.65, 1654.40),   # « Il y a des personnes que j'accompagnais… des mamans même. »

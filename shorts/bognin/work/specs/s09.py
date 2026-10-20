@@ -2,6 +2,7 @@
 NAME = "s09"
 TITLE = "De 10 € à 2 000 €"
 TRIM = True
+LOCAL_REF = True
 KEEP = [
     (300.25, 303.85),   # « Mais lorsque j'ai vu comment il me payait, je me suis dit : mais pourquoi pas ? »
     (304.70, 307.15),   # « Pourquoi pas essayer ? Pourquoi pas le faire, en fait ? »

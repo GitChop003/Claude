@@ -11,8 +11,8 @@ SHARED = f"{REPO}/videos/_shared"
 LAYOUT = {
     "land": dict(W=1920, H=1080, cap_top=250, cap_size=66, cap_max_chars=24, cap_max_words=4,
                  chip_y=78, chip_x=80, emo_x=1470, emo_y=360, emo_alt_x=200, emo_alt_y=430, panel_top=440, panel_left=80,
-                 title_css="left:80px;top:470px;width:920px", name_css="left:80px;bottom:110px",
-                 big_size=124, origin="60% 75%", stamp_x=100, stamp_y=90),
+                 title_css="left:80px;top:470px;width:max-content;max-width:820px", name_css="left:80px;bottom:110px",
+                 big_size=124, origin="60% 75%", stamp_x=100, stamp_y=60),
     "port": dict(W=1080, H=1920, cap_top=585, cap_size=80, cap_max_chars=17, cap_max_words=3,
                  chip_y=400, chip_x=0, emo_x=820, emo_y=740, emo_alt_x=40, emo_alt_y=720, panel_top=150, panel_left=90,
                  title_css="left:60px;right:60px;top:140px", name_css="left:50%;top:405px",
@@ -57,11 +57,12 @@ html,body{width:__W__px;height:__H__px;overflow:hidden;background:#000;font-fami
 .emo{position:absolute;opacity:0;filter:drop-shadow(0 14px 26px rgba(0,0,0,.5))}
 .stamp{position:absolute;padding:12px 34px;border:9px solid var(--red);color:var(--red);font-family:Mont;font-weight:900;font-size:76px;
   border-radius:16px;opacity:0;letter-spacing:.03em;background:rgba(255,255,255,.12);white-space:nowrap}
-.panel{position:absolute;padding:28px 36px 22px;opacity:0;min-width:480px}
+.panel{position:absolute;padding:28px 36px 22px;opacity:0;min-width:440px;max-width:__PANELMAX__}
 .panel h3{font-size:26px;letter-spacing:.24em;color:var(--pink);font-weight:800}
 .panel ul{list-style:none;margin-top:10px}
 .panel li{display:flex;align-items:center;gap:18px;font-family:Mont;font-size:__PANELFS__px;font-weight:900;color:#fff;padding:8px 0;opacity:0;text-transform:uppercase}
-.panel li img{width:__PANELIMG__px;height:__PANELIMG__px}
+.panel li span{line-height:1.05}
+.panel li img{flex:none;width:__PANELIMG__px;height:__PANELIMG__px}
 .big{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;font-family:Mont;font-weight:900;font-size:__BIG__px;letter-spacing:-.02em;
   color:#fff;opacity:0;text-shadow:0 10px 50px rgba(0,0,0,.7);line-height:.98;text-transform:uppercase}
 .big em{font-style:normal;color:var(--red)}
@@ -101,7 +102,10 @@ class Comp:
     # ------------------------------------------------------------- components
     def title(self, kicker, text_html, a, b, hold=True):
         i = "title"
-        self.html.append(f'<div class="title glass" id="{i}" style="{self.L["title_css"]}"><div class="k">{html.escape(kicker)}</div><div class="t">{text_html}</div></div>')
+        css = self.L["title_css"]
+        if self.o == "land" and self.free_side(a, min(b, a + 3)) == "right":
+            css = css.replace("left:80px", "right:80px")
+        self.html.append(f'<div class="title glass" id="{i}" style="{css}"><div class="k">{html.escape(kicker)}</div><div class="t">{text_html}</div></div>')
         self.js.append(f"tl.fromTo('#{i}',{{autoAlpha:0,y:-30}},{{autoAlpha:1,y:0,duration:.6,ease:'power3.out'}},{a:.3f});")
         self.title_window = (a, b)
 
@@ -306,7 +310,7 @@ class Comp:
             sfx_html.append(f'<audio id="sfx{k}" data-start="{t:.3f}" data-duration="{min(ln, self.dur - t):.3f}" data-volume="{vol}" src="assets/sfx/{nm}.mp3"></audio>')
         css = (CSS.replace("__W__", str(L["W"])).replace("__H__", str(L["H"])).replace("__ORIGIN__", L["origin"])
                .replace("__CAPTOP__", str(L["cap_top"])).replace("__CAPSIZE__", str(L["cap_size"]))
-               .replace("__BIG__", str(L["big_size"])).replace("__PANELFS__", "40" if self.o == "land" else "50").replace("__PANELIMG__", "50" if self.o == "land" else "62").replace("__END__", "150" if self.o == "land" else "130"))
+               .replace("__BIG__", str(L["big_size"])).replace("__PANELFS__", "36" if self.o == "land" else "50").replace("__PANELIMG__", "46" if self.o == "land" else "62").replace("__PANELMAX__", "640px" if self.o == "land" else "none").replace("__END__", "150" if self.o == "land" else "130"))
         D = self.dur
         page = f"""<!doctype html>
 <html lang="fr"><head><meta charset="UTF-8"/><meta name="viewport" content="width={L['W']}, height={L['H']}"/>
@@ -323,7 +327,7 @@ class Comp:
 </div>
 <script>
 const tl = gsap.timeline({{paused:true}});
-function cap(id,a,b){{tl.fromTo(id,{{opacity:0,y:16,scale:.94}},{{opacity:1,y:0,scale:1,duration:.14,ease:'back.out(2)',immediateRender:false}},a);tl.to(id,{{opacity:0,duration:.1}},b);}}
+function cap(id,a,b){{tl.fromTo(id,{{opacity:0,y:16,scale:.94}},{{opacity:1,y:0,scale:1,duration:.14,ease:'back.out(2)',immediateRender:false}},a);tl.to(id,{{opacity:0,duration:.06}},Math.max(a+.16,b-.07));}}
 function hl(id,a,k){{tl.fromTo(id,{{scale:1}},{{scale:1.06,color:k?'#FFD23F':'#3CFF9A',duration:.08,immediateRender:false}},a);tl.to(id,{{scale:1,duration:.18}},a+.22);if(!k)tl.to(id,{{color:'#ffffff',duration:.12}},a+.38);}}
 function flash(a,v){{tl.fromTo('#flash',{{opacity:v}},{{opacity:0,duration:.4,ease:'power2.out',immediateRender:false}},a);}}
 const pop=(id,a,b,from)=>{{tl.fromTo(id,Object.assign({{autoAlpha:0,scale:.55}},from||{{}}),{{autoAlpha:1,scale:1,x:0,y:0,duration:.42,ease:'back.out(2)'}},a);tl.to(id,{{autoAlpha:0,scale:.9,y:-10,duration:.28,ease:'power2.in'}},b);}};

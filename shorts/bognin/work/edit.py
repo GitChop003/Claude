@@ -18,22 +18,31 @@ FPS = 25.0
 FR = 1 / FPS
 
 
-def load_env(a, b, sr=16000):
+def load_env(a, b, sr=16000, raw=False):
     pcm = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{a}", "-to", f"{b}", "-i", SRC, "-ac", "1", "-ar", str(sr),
                           "-f", "s16le", "-"], capture_output=True, check=True).stdout
     x = np.frombuffer(pcm, np.int16).astype(np.float32) / 32768
     hop = int(0.01 * sr)
     n = len(x) // hop
     db = 20 * np.log10(np.sqrt(np.mean(x[:n * hop].reshape(n, hop) ** 2, axis=1)) + 1e-6)
-    return db - np.percentile(db, 95)          # dB relative to loud speech
+    return db if raw else db - np.percentile(db, 95)          # dB relative to loud speech
 
 
-def make_edl(keep, gap_db=-21, min_gap=0.18, pre=0.09, post=0.08, beats=None, trim=False):
+def make_edl(keep, gap_db=-21, min_gap=0.18, pre=0.09, post=0.08, beats=None, trim=False, local=False):
     """keep: [(a, b)] source seconds. beats: {source_time: pause_to_keep} for dramatic pauses.
     trim: also tighten each range's own edges onto the speech (leading/trailing silence -> padding)."""
     beats = beats or {}
     a0, b0 = min(k[0] for k in keep) - 1, max(k[1] for k in keep) + 1
-    db = load_env(a0, b0)
+    if local:   # loudness reference per range (±3 s): the voice level drifts over a long span
+        rawdb = load_env(a0 - 3, b0 + 3, raw=True)
+        off = 300
+        db = rawdb[off:off + int(round((b0 - a0) / 0.01)) + 1].copy()
+        for a, b in keep:
+            i0, i1 = int(round((a - a0) / 0.01)), int(round((b - a0) / 0.01))
+            ref = np.percentile(rawdb[off + i0 - 300:off + i1 + 300], 95)
+            db[max(0, i0 - 100):i1 + 100] = rawdb[off + max(0, i0 - 100):off + i1 + 100] - ref
+    else:
+        db = load_env(a0, b0)
     t_of = lambda i: a0 + i * 0.01
     smooth = np.convolve(db, np.ones(5) / 5, "same")      # 50 ms: one stray frame doesn't break a pause
     sil = smooth < gap_db
@@ -74,10 +83,13 @@ def make_edl(keep, gap_db=-21, min_gap=0.18, pre=0.09, post=0.08, beats=None, tr
                     rs.append([cur, cut0])
                     cur = cut1
         rs.append([cur, b])
-        # breath / car-noise blips left alone at a range edge are not speech
-        while len(rs) > 1 and rs[-1][1] - rs[-1][0] < 0.3:
+        # breath / car-noise blips left alone at a range edge are not speech: short AND weak (soft speech is kept)
+        def weak(seg):
+            i0, i1 = int(round((seg[0] - a0) / 0.01)), int(round((seg[1] - a0) / 0.01))
+            return np.percentile(db[i0:max(i1, i0 + 1)], 90) < -15
+        while len(rs) > 1 and rs[-1][1] - rs[-1][0] < 0.3 and weak(rs[-1]):
             rs.pop()
-        while len(rs) > 1 and rs[0][1] - rs[0][0] < 0.3:
+        while len(rs) > 1 and rs[0][1] - rs[0][0] < 0.3 and weak(rs[0]):
             rs.pop(0)
         segs += rs
 

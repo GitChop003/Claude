@@ -2,6 +2,7 @@
 NAME = "s07"
 TITLE = "J'étais timide, j'avais peur de la caméra"
 TRIM = True
+LOCAL_REF = True
 KEEP = [
     (476.20, 504.90),   # « J'ai lancé mon activité. Les trois premiers mois… honte de parler devant les gens. »
     (506.90, 508.75),   # « J'ai commencé à faire mes premières vidéos. »   (drops the « Mm » before it)

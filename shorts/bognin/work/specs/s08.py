@@ -2,6 +2,7 @@
 NAME = "s08"
 TITLE = "Le vrai facteur : j'aime ce que je fais"
 TRIM = True
+LOCAL_REF = True
 KEEP = [
     (2406.75, 2413.95),   # « Mais le véritable facteur… c'est parce que j'aime ce que je fais. »
     (2414.95, 2422.72),   # « J'adore ce que je fais. C'est-à-dire quoi ? Même quand… même quand je me disais »

@@ -23,15 +23,19 @@ def inserts(c, T, port, VOICE_D, DUR):
     c.title("LA VÉRITÉ SUR LES VUES", "800 000 vues,<br>presque <em>0 client</em>", 0.15, DUR if port else T("Mais", 1245.99) - 0.2)
     c.name_tag("PARFAIT BOGNIN", "" if port else "· entrepreneur", 0.5, 2.9)
     c.add_sfx("whoosh", 0.05, 0.2)
-    t = T("Instagram", 1243.19); c.logos([("instagram", t - 0.1)], t + 2.2, y=520 if port else None)
+    t = T("Instagram", 1243.19)
+    if not port:
+        c.logos([("instagram", t - 0.1)], t + 2.2)
     t = T("800", 1244.47); c.chip("800 000 VUES", t - 0.15, t + 1.6, icon="eyes", cls="white")
     t = T("combien", 1246.39); c.emoji("clock", t - 0.2, t + 1.8, side="l", rot=-6)
     t = T("clients", 1251.16); c.emoji("thinking", T("rapporté", 1250.36) - 0.1, t + 1.0, side="r", rot=6)
-    t = T("LinkedIn", 1254.76); c.logos([("linkedin", t - 0.1)], T("500", 1255.96) + 1.4, y=520 if port else None)
+    t = T("LinkedIn", 1254.76)
+    if not port:
+        c.logos([("linkedin", t - 0.1)], T("500", 1255.96) + 1.4)
     t = T("500", 1255.96); c.chip("500 VUES = MES MEILLEURS CLIENTS", t - 0.1, t + 1.8, icon="trophy", cls="sun")
     pa = T("Pourtant", 1262.88)
-    c.panel("LE BILAN", [("800 000 vues → pas 3 DM", T("trois", 1267.58) - 0.15, "cross"),
-                         ("500 vues → mes meilleurs clients", T("conversations", 1268.06) + 0.5, "check")],
+    c.panel("LE BILAN", [("800 000 vues → pas 3 DM", pa + 0.35, "cross"),
+                         ("500 vues → mes meilleurs clients", T("trois", 1267.58), "check")],
             pa - 0.15, T("Une", 1272.11) - 0.1)
     t = T("mauvaises", 1276.11); c.stamp("MAUVAISES MÉTRIQUES", t - 0.15, t + 1.3)
     pa = T("Le", 1276.83)

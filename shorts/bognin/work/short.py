@@ -30,7 +30,7 @@ class Short:
         self.name = name
         self.out = f"{SCR}/{name}"
         self.proj = {o: f"{REPO}/shorts/bognin/{name}/{o}" for o in ("land", "port")}
-        self.mp, self.voice_d = make_edl(self.spec.KEEP, beats=getattr(self.spec, "BEATS", None), trim=getattr(self.spec, "TRIM", False))
+        self.mp, self.voice_d = make_edl(self.spec.KEEP, beats=getattr(self.spec, "BEATS", None), trim=getattr(self.spec, "TRIM", False), local=getattr(self.spec, "LOCAL_REF", False))
         self.dur = round(self.voice_d + HOLD, 3)
         wf = f"{WORK}/{name}.words.json"
         words = json.load(open(wf if os.path.exists(wf) else f"{WORK}/full.words.json"))
@@ -52,7 +52,7 @@ class Short:
                 if (s - 0.05 <= w["start"] < e - 0.06 or ov >= 0.15) if strict else ov >= 0.03:
                     st = src2out(self.mp, max(w["start"], s))
                     en = src2out(self.mp, min(w["end"], e) - 1e-3)
-                    t = fix.get((w["text"], round(w["start"])), fix.get(w["text"], w["text"]))
+                    t = self.fixed(fix, w)
                     if t:
                         caps.append({"text": t, "src": w["start"], "start": round(st, 3), "end": round(max(en, st + 0.06), 3)})
                     break
@@ -62,7 +62,7 @@ class Short:
                     in_keep = any(ka <= w["start"] < kb for ka, kb in self.spec.KEEP)   # inside a range = a shortened pause
                     for (s0, e0, o0, d0), (s1, e1, o1, d1) in zip(self.mp, self.mp[1:]):
                         if e0 - 0.06 <= w["start"] < s1 and (s1 - e0 < 0.45 or in_keep) and w["end"] > s1 - 0.3:
-                            t = fix.get((w["text"], round(w["start"])), fix.get(w["text"], w["text"]))
+                            t = self.fixed(fix, w)
                             if t:
                                 en = src2out(self.mp, min(w["end"], e1) - 1e-3)
                                 caps.append({"text": t, "src": w["start"], "start": round(o1, 3), "end": round(max(en, o1 + 0.06), 3)})
@@ -74,6 +74,14 @@ class Short:
                 if p_["text"][-1:] in ".?!" and c_["text"][:1].islower():
                     c_["text"] = c_["text"][0].upper() + c_["text"][1:]
         self.caps = caps
+
+    @staticmethod
+    def fixed(fix, w):
+        """Caption text for word w. FIX keys: "word", ("word", second) or ("word", exact_start_float)."""
+        for k, v in fix.items():
+            if isinstance(k, tuple) and k[0] == w["text"] and isinstance(k[1], float) and abs(k[1] - w["start"]) < 0.06:
+                return v
+        return fix.get((w["text"], round(w["start"])), fix.get(w["text"], w["text"]))
 
     def T(self, word, near):
         lw = word.lower().strip(",.?!")

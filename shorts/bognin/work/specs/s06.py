@@ -20,7 +20,7 @@ KEEP = [
 FIX = {"Setsine": "setting", "bloquer": "booker", "col,": "call,", "l'apprendre": "lui apprendre", "payez": "payiez",
        ("Pourquoi", 851): "Pourquoi ?", ("?", 852): None, "ok.": "OK,", ("recruter", 837): "recruter ?", "Avoir": "avoir",
        ("compétence", 1006): "compétence.", ("très", 838): "Très", ("Pourquoi", 837): "pourquoi", ("temps.", 862): "temps",
-       ("Pour", 863): "pour", ("ils", 870): "Ils", ("mois.", 985): "mois,", ("Ou", 986): "ou", "donc": None}
+       ("Pour", 863): "pour", ("ils", 870): "Ils", ("mois.", 985): "mois,", ("Ou", 986): "ou", "donc": None, ("c'est", 843.80): "Et c'est"}
 KEY = ("erreur.", "cher", "amis.", "ami.", "compétences", "setting.", "problèmes.", "démoralisaient.", "team.", "démoralisé.",
        "poster.", "amis", "maîtrise")
 
@@ -30,7 +30,7 @@ def inserts(c, T, port, VOICE_D, DUR):
     c.name_tag("PARFAIT BOGNIN", "" if port else "· entrepreneur", 0.4, 1.9)
     c.add_sfx("whoosh", 0.05, 0.2)
     t = T("recruter", 837.43); c.emoji("bulb", t - 0.15, t + 1.3, side="r", rot=-6)
-    t = T("grosse", 838.71); c.stamp("GROSSE ERREUR", t - 0.1, T("c'est", 843.80) - 0.1)
+    t = T("grosse", 838.71); c.stamp("GROSSE ERREUR", t - 0.1, T("Et", 843.80) - 0.1)
     t = T("cher", 845.32); c.chip("L'ERREUR LA PLUS CHÈRE", t - 0.2, t + 2.0, icon="money", cls="red")
     t = T("tous", 849.61); c.logos([("tiktok", t - 0.1), ("instagram", t + 0.05), ("linkedin", t + 0.2)], t + 1.6)
     t = T("débutant", 852.14); c.emoji("grad", t - 0.1, t + 1.6, side="l", rot=-8)
@@ -43,7 +43,7 @@ def inserts(c, T, port, VOICE_D, DUR):
     t = T("partir", 897.90); c.chip("APRÈS 1 MOIS…", t - 0.2, t + 2.2, icon="calendar", cls="white")
     pa = T("prospects", 908.06)
     c.panel("LES PROBLÈMES", [("Prospects sans réponse", T("répondaient", 908.94) - 0.1, "seeno"),
-                              ("Aucun call booké", T("bloquer", 911.66) - 0.1, "call"),
+                              ("Aucun call booké", T("booker", 911.66) - 0.1, "call"),
                               ("Aucun nouveau client", T("signer", 913.02) - 0.1, "cross"),
                               ("Équipe démoralisée", T("démoralisaient", 914.86) - 0.1, "sob")],
             pa - 0.3, T("On", 929.96) - 0.15)
@@ -57,5 +57,5 @@ def inserts(c, T, port, VOICE_D, DUR):
     t = T("trois", 984.43); c.chip("2 À 3 MOIS SANS POSTER", t - 0.2, T("poster", 987.16) + 0.6, icon="calendar", cls="dark")
     a = T("ne", 999.40); b = T("Je", 1002.35) - 0.1
     c.big("NE COMPTEZ PAS<br>SUR VOS <em>AMIS</em>" if not port else "NE COMPTEZ<br>PAS SUR<br>VOS <em>AMIS</em>", a - 0.1, b, small="LANCER EN LIGNE ?")
-    t = T("payez", 1003.55); c.chip("PAYEZ CHER UN EXPERT", t - 0.15, VOICE_D - 0.05, icon="money", cls="sun")
+    t = T("payiez", 1003.55); c.chip("PAYEZ CHER UN EXPERT", t - 0.15, VOICE_D - 0.05, icon="money", cls="sun")
     c.endcard("ET TOI ?", "TU AS RECRUTÉ<br>TES AMIS ?", "Abonne-toi pour la suite", VOICE_D + 0.05)
