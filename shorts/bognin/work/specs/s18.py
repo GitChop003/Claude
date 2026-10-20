@@ -12,7 +12,7 @@ KEEP = [
     (2511.20, 2521.70),   # « Apprenez une compétence avant de la déléguer… avant de la déléguer. »
     (2522.80, 2525.10),   # « Et vous allez voir, ça va faire toute la différence. »
 ]
-FIX = {("Vous", 2494): "Soyez", "obsédé": "obsédés", "cherchant": "cherchez", ("ça", 2503.82): "pourquoi ça n'a", "essayer": "essayez",
+FIX = {("Vous", 2494): "Bossez, soyez", "obsédé": "obsédés", "cherchant": "cherchez", ("ça", 2503.82): "pourquoi ça n'a", "essayer": "essayez",
        "Apprenons": "Apprenez", ("ça", 2515.03): "à", "100%.": "100 %.", ("quatre", 2516.82): "80 %", ("vingt", 2516.98): None,
        ("pour", 2517.22): None, ("cent", 2517.38): None, ("les", 2520.82): "la", ("les", 2512.79): "la", ("marché.", 2502.20): "marché,", ("marché", 2504.14): "marché,",
        ("d'ajuster", 2504.78): "d'ajuster,", "d'améliorer": "d'améliorer.", ("essayer", 2504.46): "essayez", ("essayer", 2505.58): "essayez"}

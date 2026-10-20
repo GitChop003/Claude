@@ -10,7 +10,7 @@ KEEP = [
     (2327.50, 2329.80),   # « Créer une communauté ou créer des fans, c'est pas la même chose. »
     (2331.70, 2338.10),   # « Une audience, une communauté achète. Les fans vous admirent juste. Maintenant, il faut… les convertir. »
 ]
-FIX = {("encore.", 2311.03): None, ("Vous", 2318.91): "vous", "prise.": "précise.", ("voulez.", 2312.95): "voulez…", ("vous", 2313.78): "vous", ("fait", 2316.58): "faire", ("les", 2317.46): "des",
+FIX = {("encore.", 2311.03): None, ("Vous", 2318.91): "vous", "prise.": "précise.", ("Si", 2312.79): None, ("vous", 2312.87): None, ("voulez.", 2312.95): None, ("vous", 2313.78): "Vous", ("fait", 2316.58): "faire", ("les", 2317.46): "des",
        ("clients", 2317.62): "clients,", ("vous", 2319.15): None, "abonnés,": "abonnés ?", ("fans.", 2326.22): "fans ?",
        "community": "Créer une communauté", "créiste": "ou créer", "achète": "achète.", ("les", 2333.52): "Les", "accueilli": "admirent",
        "juste": "juste", ("juste", 2334.48): "juste.", "eux.": None, "d'errée": "derrière", ("le", 2337.64): "les"}

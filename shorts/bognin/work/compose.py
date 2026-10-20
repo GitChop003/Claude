@@ -11,7 +11,7 @@ SHARED = f"{REPO}/videos/_shared"
 LAYOUT = {
     "land": dict(W=1920, H=1080, cap_top=250, cap_size=66, cap_max_chars=24, cap_max_words=4,
                  chip_y=78, chip_x=80, emo_x=1470, emo_y=360, emo_alt_x=200, emo_alt_y=430, panel_top=440, panel_left=80,
-                 title_css="left:80px;top:470px;width:max-content;max-width:820px", name_css="left:80px;bottom:110px",
+                 title_css="left:80px;top:470px;width:max-content;max-width:920px", name_css="left:80px;bottom:110px",
                  big_size=124, origin="60% 75%", stamp_x=100, stamp_y=60),
     "port": dict(W=1080, H=1920, cap_top=585, cap_size=80, cap_max_chars=17, cap_max_words=3,
                  chip_y=400, chip_x=0, emo_x=820, emo_y=740, emo_alt_x=40, emo_alt_y=720, panel_top=150, panel_left=90,
@@ -29,7 +29,7 @@ CSS = """
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:__W__px;height:__H__px;overflow:hidden;background:#000;font-family:Inter,sans-serif}
 #root{position:relative;width:__W__px;height:__H__px;overflow:hidden}
-#vw{position:absolute;inset:0;transform-origin:__ORIGIN__}
+#vw{position:absolute;inset:0;transform-origin:__ORIGIN__;filter:grayscale(0) contrast(1) brightness(1)}
 #vw video{width:100%;height:100%;object-fit:cover;display:block}
 #grade{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 60%,rgba(0,0,0,0) 50%,rgba(0,0,0,.40) 100%)}
 #mood{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 62%,rgba(0,0,0,0) 30%,rgba(5,8,14,.62) 100%);opacity:0}

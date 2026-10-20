@@ -11,7 +11,7 @@ KEEP = [
     (2387.00, 2391.60),   # « C'est vrai, de temps en temps, j'avais quand même d'autres services… vu que je suis quand même informaticien. »
     (2395.75, 2401.00),   # « vu que la vente, quand même, je maîtrise. J'ai vendu avant de venir sur le marché, en fait. »
 ]
-FIX = {("Je", 2365): None, ("je", 2366): "Je", ("sur", 2368): None, ("But", 2380): "Mais", ("you", 2381): "je", "continue.": "continuais.",
+FIX = {("Pour", 2369.85): "Trois", ("moi,", 2370.09): "mois,", ("Je", 2365): None, ("je", 2366): "Je", ("sur", 2368): None, ("But", 2380): "Mais", ("you", 2381): "je", "continue.": "continuais.",
        "postes.": "posts.", ("deux", 2375): "200", ("cents", 2376): None, ("informaticien.", 2391): "informaticien,", ("vu", 2396): "et",
        ("maîtrise", 2397): "maîtrise."}
 KEY = ("instagram", "cinq", "200", "abonnés.", "vues", "continuais.", "continuer", "services", "informaticien,", "vente", "vendu")

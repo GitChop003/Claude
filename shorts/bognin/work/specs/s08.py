@@ -21,17 +21,18 @@ def inserts(c, T, port, VOICE_D, DUR):
     c.add_sfx("whoosh", 0.05, 0.2)
     t = T("facteur", 2408.18); c.chip("LE VRAI FACTEUR", t - 0.15, t + 2.0, icon="target", cls="sun")
     t = T("j'aime", 2412.84); c.emoji("heart", t - 0.1, t + 2.2, side="r", rot=-6)
-    t = T("J'adore", 2415.05); c.chip("J'ADORE ÇA", t - 0.1, t + 1.4, icon="heart", cls="white")
+    t = T("J'adore", 2415.05); c.chip("J'ADORE ÇA", t - 0.1, T("même", 2416.67) - 0.45, icon="heart", cls="white")
     a = T("même", 2416.67); c.mood(a - 0.2, T("Mais", 2441.69) - 0.1, gray=0.85)
     c.panel("MÊME QUAND…", [("J'avais des problèmes", T("problèmes", 2417.31) - 0.1, "warning"),
                             ("Je me sentais mal", T("mal", 2418.51) - 0.1, "sob"),
                             ("J'étais en dépression", T("dépression", 2421.24) - 0.1, "moon"),
                             ("Je me croyais maudit", T("maudit", 2429.05) - 0.1, "angry")],
-            a - 0.2, T("TikTok", 2429.77) - 0.15)
+            a - 0.2, T("TikTok", 2429.77) - 0.5)
     t = T("TikTok", 2429.77)
     c.logos([("tiktok", t - 0.1), ("instagram", T("Instagram", 2431.05) - 0.1), ("youtube", T("YouTube", 2432.33) - 0.1),
              ("linkedin", T("LinkedIn", 2432.81) - 0.1)], T("Je", 2434.59) - 0.1)
-    t = T("vues", 2430.57); c.chip("PAS DE VUES", t - 0.1, T("Je", 2434.59) - 0.1, icon="eyes", cls="red", y=(1500 if port else 170))
+    if not port:
+        t = T("vues", 2430.57); c.chip("PAS DE VUES", t - 0.1, T("Je", 2434.59) - 0.1, icon="eyes", cls="red", y=170)
     t = T("appareils", 2435.23); c.emoji("package", t - 0.15, t + 1.8, side="l", rot=-6)
     t = T("n'arrivait", 2435.71); c.chip("COLIS JAMAIS ARRIVÉS", t - 0.15, T("Mais", 2441.69) - 0.2, icon="cross", cls="dark")
     a = T("Mais", 2441.69)

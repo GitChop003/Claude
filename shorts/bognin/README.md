@@ -13,6 +13,8 @@ flou d'arrière-plan léger, effet « 4K » dosé, sous-titres mot par mot, inse
 | 05 | 800 000 vues, presque 0 client | 20:41 → 21:37 | 35 s | [vertical](s05/port/renders/s05_port.mp4) | [horizontal](s05/land/renders/s05_land.mp4) |
 | 06 | Ma pire erreur : recruter mes amis | 13:54 → 16:46 | 65 s | [vertical](s06/port/renders/s06_port.mp4) | [horizontal](s06/land/renders/s06_land.mp4) |
 | 07 | J'étais timide, j'avais peur de la caméra | 7:56 → 8:28 | 28 s | [vertical](s07/port/renders/s07_port.mp4) | [horizontal](s07/land/renders/s07_land.mp4) |
+| 08 | Le vrai facteur : j'aime ce que je fais | 40:06 → 40:45 | 25 s | [vertical](s08/port/renders/s08_port.mp4) | [horizontal](s08/land/renders/s08_land.mp4) |
+| 09 | De 10 € à 2 000 € | 5:00 → 5:41 | 32 s | [vertical](s09/port/renders/s09_port.mp4) | [horizontal](s09/land/renders/s09_land.mp4) |
 
 ## Méthode
 

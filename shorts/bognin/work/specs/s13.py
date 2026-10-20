@@ -18,7 +18,7 @@ FIX = {"lorsqu'on": "lorsque vous", ("vous", 2203): "vous", "lance": "lancez", (
        ("5.", 2209): "5. Peut-être que vous pouvez", "cette": "ce type de", "depuis": "plus", ("leur", 2229): "leur Rolex, leur",
        "loup": "luxe,", ("achetez", 2239): "Vous achetez", ("leurs", 2228): "leur", ("voiture", 2231): "voiture,", "Bref,": "bref,", "que": "que", ("que", 2240.48): "d'avoir", ("vous", 2240.56): None,
        ("avez", 2240.64): None, ("numéro", 2241): "numéro.", ("vous", 2241.44): "vous", ("Du", 2253): "du", "suitez": "suivez", ("la", 2259): "le",
-       "couche": "coach-là", ("là.", 2263): "prend", "ancrer": "s'ancrer", ("comprendre", 2265): "comprendre.", ("il", 2275): "Il",
+       "couche": "coach-là", ("là.", 2263): "prend", "ancrer": "entrer", ("comprendre", 2265): "comprendre.", ("il", 2275): "Il",
        "images": "image,", "blasé": "blasés", ("le", 2246): "leur", ("Parce", 2222): "Parce", ("personne,", 2216): "personne,"}
 KEY = ("niveau", "5.", "cinq", "dix.", "base", "image,", "rolex,", "luxe,", "lifestyle.", "process.", "méthode,", "expertise,", "comprendre.", "activité.")
 

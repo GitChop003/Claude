@@ -13,8 +13,8 @@ KEEP = [
     (419.45, 424.60),   # « qu'actuellement je viens pratiquement de tout perdre. OK, maintenant, qu'est-ce que je dois faire ? »
     (425.95, 430.30),   # « Cet élève français encore, qui était dans mes oreilles, me dit : vas-y, professionnalise-toi. »
 ]
-FIX = {"heureuse.": "erreur.", ("personne", 399.82): "La personne", ("après.", 404.48): "après,", ("Et", 406.99): None,
-       ("suis", 407.23): "rate", "bas.": "bac.", "ancré": "entré", "une...": "une…", "informé": "enfermé", ("entre", 427.93): None,
+FIX = {("lancer,", 387.02): "lancer,", ("c'est", 387.66): "officiellement.", ("le", 387.74): None, ("mot.", 387.90): None, "heureuse.": "erreur.", ("personne", 399.82): "La personne", ("après.", 404.48): "après,", ("Et", 406.99): None,
+       ("suis", 407.23): "échoué", ("je", 407.07): "j'ai", "bas.": "bac.", "ancré": "entré", "une...": "une…", "informé": "enfermé", ("entre", 427.93): None,
        "professionnalise": "professionnalise-toi.", "toi.": None, ("que", 419.78): "vu", "actuellement": "qu'actuellement",
        "Ok,": "OK,", "vie.": "vie,", ("dépression", 413.07): "dépression,", ("semaines", 414.91): "semaines,", "faire": "faire",
        ("faire", 424.03): "faire ?", ("?", 424.11): None, ("qu'est", 416.82): "qu'est-ce", ("ce", 417.06): None, ("possible", 411.87): "possible,"}
