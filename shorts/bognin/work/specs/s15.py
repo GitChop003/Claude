@@ -24,17 +24,16 @@ def inserts(c, T, port, VOICE_D, DUR):
     t = T("intention", 2311.99); c.emoji("target", t - 0.2, t + 1.6, side="r", rot=-6)
     pa = T("influenceur", 2314.18)
     c.panel("VOUS VOULEZ QUOI ?", [("Être influenceur", pa - 0.1, "star"), ("Être entrepreneur", T("entrepreneur", 2315.22) - 0.1, "rocket"),
-                                   ("Des vues, des likes", T("vues", 2316.26) - 0.1, "heart"), ("Des clients", T("clients", 2317.62) - 0.1, "money"),
-                                   ("Des abonnés", T("abonnés", 2320.11) - 0.15, "chart")],
-            pa - 0.4, T("Ce", 2322.78) - 0.1)
+                                   ("Des vues, des likes", T("vues", 2316.26) - 0.1, "heart"), ("Clients ou abonnés ?", T("clients", 2317.62) - 0.1, "money")],
+            pa - 0.4, T("Ce", 2322.78) - 0.27)
     a = T("Ce", 2322.78)
     c.big("CE N'EST PAS<br>LA <em style=\"color:var(--neon)\">MÊME CHOSE</em>" if not port else "CE N'EST<br>PAS LA<br><em style=\"color:var(--neon)\">MÊME CHOSE</em>",
-          a - 0.05, T("Vous", 2323.82) - 0.1)
+          a + 0.15, T("Vous", 2323.82) - 0.1)
     t = T("audience", 2324.70); c.chip("AUDIENCE", t - 0.15, T("fans", 2326.22) - 0.1, icon="handshake", cls="sun")
     t = T("fans", 2326.22); c.chip("OU JUSTE DES FANS ?", t - 0.15, t + 1.4, icon="heart", cls="white", y=(490 if port else 170))
     pa = T("Une", 2331.92)
     c.panel("LA DIFFÉRENCE", [("Une communauté achète", T("achète", 2333.12) - 0.2, "money"),
-                              ("Les fans admirent… juste", T("admirent", 2334.08) - 0.1, "heart")],
+                              ("Les fans admirent, c'est tout", T("admirent", 2334.08) - 0.1, "heart")],
             pa - 0.2, T("Maintenant", 2335.24) + 0.2)
     t = T("système", 2336.60); c.chip("UN SYSTÈME POUR CONVERTIR", t - 0.2, VOICE_D - 0.05, icon="bulb", cls="sun")
     c.endcard("ET TOI ?", "AUDIENCE<br>OU FANS ?", "Abonne-toi pour la suite", VOICE_D + 0.05)
