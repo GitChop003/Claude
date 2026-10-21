@@ -23,6 +23,7 @@ flou d'arrière-plan léger, effet « 4K » dosé, sous-titres mot par mot, inse
 | 18 | Bossez, puis maîtrisez avant de déléguer | 41:31 → 42:05 | 27 s | [vertical](s18/port/renders/s18_port.mp4) | [horizontal](s18/land/renders/s18_land.mp4) |
 | 21 | Je n'aimais pas l'école (mais elle m'a appris) | 2:34 → 3:23 | 30 s | [vertical](s21/port/renders/s21_port.mp4) | [horizontal](s21/land/renders/s21_land.mp4) |
 | 22 | J'ai tout perdu, puis j'ai décidé de me lancer | 6:25 → 7:10 | 28 s | [vertical](s22/port/renders/s22_port.mp4) | [horizontal](s22/land/renders/s22_land.mp4) |
+| 24 | Mon premier client en accompagnement | 3:27 → 4:54 | 53 s | [vertical](s24/port/renders/s24_port.mp4) | [horizontal](s24/land/renders/s24_land.mp4) |
 
 ## Méthode
 

@@ -32,9 +32,14 @@ def inserts(c, T, port, VOICE_D, DUR):
     c.name_tag("PARFAIT BOGNIN", "" if port else "· entrepreneur", 0.3, 1.6)
     c.add_sfx("whoosh", 0.05, 0.2)
     pa = T("projets", 214.0)
-    c.panel("J'AI TOUT ESSAYÉ", [("Connexion Internet", T("connexion", 216.0) - 0.2, "globe"), ("Sites web", T("sites", 220.0) - 0.2, "laptop"),
-                                 ("E-commerce", T("e-commerce", 226.95) - 0.3, "cart"), ("Former en ligne", T("formé", 232.0) - 0.3, "grad"),
-                                 ("Trading", T("trading", 234.88) - 0.3, "chart"), ("Crypto", T("crypto", 236.8) - 0.3, "money")],
+    if port:      # 4 lines max in 9:16 so the panel clears the captions
+        items = [("Connexion Internet", T("connexion", 216.0) - 0.2, "globe"), ("Sites web, formations", T("sites", 220.0) - 0.2, "laptop"),
+                 ("E-commerce", T("e-commerce", 226.95) - 0.3, "cart"), ("Trading, crypto", T("trading", 234.88) - 0.3, "chart")]
+    else:
+        items = [("Connexion Internet", T("connexion", 216.0) - 0.2, "globe"), ("Sites web", T("sites", 220.0) - 0.2, "laptop"),
+                 ("E-commerce", T("e-commerce", 226.95) - 0.3, "cart"), ("Former en ligne", T("formé", 232.0) - 0.3, "grad"),
+                 ("Trading", T("trading", 234.88) - 0.3, "chart"), ("Crypto", T("crypto", 236.8) - 0.3, "money")]
+    c.panel("J'AI TOUT ESSAYÉ", items,
             pa - 0.3, T("En", 237.99) + 0.5)
     t = T("échoué", 241.43); c.stamp("ÉCHEC", t - 0.1, t + 1.2)
     t = T("professionnalises", 249.85); c.chip("« PROFESSIONNALISE-TOI »", t - 0.3, t + 1.6, icon="speech", cls="white")
@@ -48,4 +53,5 @@ def inserts(c, T, port, VOICE_D, DUR):
     t = T("pense", 271.24); c.emoji("bulb", t - 0.2, t + 1.5, side="r", rot=-6)
     t = T("potentiel", 292.84); c.chip("TU AS UN TRÈS GROS POTENTIEL", T("tu", 291.72) - 0.1, VOICE_D - 0.05, icon="rocket", cls="sun")
     c.emoji("sparkles", T("professionnalise-toi", 289.88) - 0.1, VOICE_D - 0.05, side="r", rot=6)
-    c.endcard("ET TOI ?", "TU TE<br>PROFESSIONNALISES ?", "Abonne-toi pour la suite", VOICE_D + 0.05)
+    c.endcard("ET TOI ?", "TU TE<br>PROFESSIONNALISES ?" if not port else "TU TE<br><span style=\"font-size:.55em\">PROFESSIONNALISES ?</span>",
+              "Abonne-toi pour la suite", VOICE_D + 0.05)
