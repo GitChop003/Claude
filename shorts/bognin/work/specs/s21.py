@@ -22,7 +22,7 @@ def inserts(c, T, port, VOICE_D, DUR):
     c.title("SANS FILTRE", "Je n'aimais pas<br><em>l'école</em>", 0.15, DUR if port else 2.4)
     c.name_tag("PARFAIT BOGNIN", "" if port else "· entrepreneur", 0.4, 1.7)
     c.add_sfx("whoosh", 0.05, 0.2)
-    t = T("l'école", 155.70); c.emoji("grad", t - 0.2, t + 1.8, side="r", rot=-6)
+    t = T("l'école", 155.70); c.emoji("grad", t - 0.2, t + 1.8, side=("r" if port else "l"), rot=-6)
     t = T("plaît", 159.09); c.emoji("sweat", t - 0.2, t + 1.3, side="l", rot=6)
     t = T("conseille", 165.83); c.chip("CE N'EST PAS UN CONSEIL", T("Ce", 164.87) - 0.1, T("Impossible", 168.38) + 0.6, icon="warning", cls="white")
     t = T("forçais", 170.70); c.stamp("JE FORÇAIS", t - 0.1, t + 1.2)
