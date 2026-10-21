@@ -25,6 +25,7 @@ flou d'arrière-plan léger, effet « 4K » dosé, sous-titres mot par mot, inse
 | 22 | J'ai tout perdu, puis j'ai décidé de me lancer | 6:25 → 7:10 | 28 s | [vertical](s22/port/renders/s22_port.mp4) | [horizontal](s22/land/renders/s22_land.mp4) |
 | 24 | Mon premier client en accompagnement | 3:27 → 4:54 | 53 s | [vertical](s24/port/renders/s24_port.mp4) | [horizontal](s24/land/renders/s24_land.mp4) |
 | 26 | 5 mois sur Instagram, même pas 200 abonnés | 39:25 → 40:01 | 24 s | [vertical](s26/port/renders/s26_port.mp4) | [horizontal](s26/land/renders/s26_land.mp4) |
+| 29 | 90 % de mes prospects viennent en DM | 42:56 → 43:30 | 27 s | [vertical](s29/port/renders/s29_port.mp4) | [horizontal](s29/land/renders/s29_land.mp4) |
 
 ## Méthode
 

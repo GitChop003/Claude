@@ -6,12 +6,13 @@ LOCAL_REF = True
 KEEP = [
     (1179.55, 1183.70),   # « Lorsque vous lancez les réseaux sociaux, comprenez déjà que toute vidéo n'est pas faite pour performer. »
     (1186.25, 1203.00),   # « Il y a des vidéos qui sont faites pour attirer… parce qu'on parle à un public très large. »
-    (1204.00, 1217.95),   # « Lorsqu'on parle déjà d'éduquer une personne… c'est normal qu'ils ne suivent pas la vidéo »
+    (1204.00, 1208.93),   # « Lorsqu'on parle déjà d'éduquer une personne… à une personne précise »
+    (1210.21, 1217.95),   # « qui a un problème précis… c'est normal qu'ils ne suivent pas la vidéo »  (drops the stutter « qui a un… »)
     (1219.45, 1224.22),   # « Et encore, le plus pire encore, il y a des vidéos qui sont faites pour convertir. Et ce type de vidéos, c'est la catastrophe. »
     (1225.66, 1229.70),   # « Le plus souvent, ce type de vidéo ne fait pas beaucoup de vues, parce que vous vendez directement. »  (drops « Je dis bien que c'est la catastrophe »)
     (1229.85, 1234.50),   # « Oui, vu que vous avez déjà attiré, vous avez déjà qualifié, éduqué, mais il faut convertir. »
 ]
-FIX = {"Tofu,": "TOFU,", "mon": "moins", "vue": "vues,", ("précis", 1213): "précise", ("le", 1213): "lui", ("un", 1211): "un", "font": "fait",
+FIX = {("un", 1210.56): "a un", "Tofu,": "TOFU,", "mon": "moins", "vue": "vues,", ("précis", 1213): "précise", ("le", 1213): "lui", ("un", 1211): "un", "font": "fait",
        ("un", 1201): "à un", ("vidéo", 1218): "vidéo.", "Oui,": "Oui,", ("un", 1209): None, ("catégorie.", 1216): "catégorie,", ("C'est", 1217): "c'est"}
 KEY = ("performer.", "attirer.", "qualifier,", "éduquer,", "convertir.", "viralité.", "vues.", "large.", "précise", "précis", "catastrophe.",
        "directement.", "convertir.")

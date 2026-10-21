@@ -27,7 +27,8 @@ def inserts(c, T, port, VOICE_D, DUR):
     c.add_sfx("whoosh", 0.05, 0.2)
     t = T("30", 2578.32); c.chip("30 APPELS / MOIS MINIMUM", t - 0.2, t + 1.8, icon="call", cls="sun")
     a = T("90", 2583.32)
-    c.big("<em style=\"color:var(--neon)\">90 %</em>", a - 0.1, T("90", 2586.33) + 0.9, small="DE NOS PROSPECTS VIENNENT EN DM")
+    c.big("<em style=\"color:var(--neon)\">90 %</em><br><span style=\"display:block;font-size:.42em;line-height:1.1;margin-top:14px;letter-spacing:.02em\">DE NOS PROSPECTS<br>VIENNENT EN DM</span>",
+          a - 0.1, T("90", 2586.33) + 0.9)
     t = T("setting", 2591.34); c.chip("LE SETTING : DEPUIS 2 SEMAINES", T("semaines", 2589.82) - 0.4, t + 1.0, icon="calendar", cls="white")
     t = T("clients", 2597.40); c.emoji("handshake", T("compte", 2595.75) - 0.2, t + 1.2, side="r", rot=-6)
     pa = T("stratégie", 2600.63)
