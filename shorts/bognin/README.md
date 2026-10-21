@@ -27,6 +27,7 @@ flou d'arrière-plan léger, effet « 4K » dosé, sous-titres mot par mot, inse
 | 26 | 5 mois sur Instagram, même pas 200 abonnés | 39:25 → 40:01 | 24 s | [vertical](s26/port/renders/s26_port.mp4) | [horizontal](s26/land/renders/s26_land.mp4) |
 | 27 | Toute vidéo n'est pas faite pour performer | 19:39 → 20:34 | 47 s | [vertical](s27/port/renders/s27_port.mp4) | [horizontal](s27/land/renders/s27_land.mp4) |
 | 29 | 90 % de mes prospects viennent en DM | 42:56 → 43:30 | 27 s | [vertical](s29/port/renders/s29_port.mp4) | [horizontal](s29/land/renders/s29_land.mp4) |
+| 32 | J'ai failli abandonner plusieurs fois | 18:44 → 19:37 | 38 s | [vertical](s32/port/renders/s32_port.mp4) | [horizontal](s32/land/renders/s32_land.mp4) |
 
 ## Méthode
 
