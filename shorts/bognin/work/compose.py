@@ -162,11 +162,11 @@ class Comp:
         self.js.append(f"tl.to('#{i}',{{autoAlpha:0,duration:.3}},{b:.3f});")
         self.add_sfx("impact-bass-1", a + 0.2, 0.24)
 
-    def panel(self, kicker, items, a, b):
-        """items: [(text, t, icon)] revealed one by one."""
+    def panel(self, kicker, items, a, b, side=None):
+        """items: [(text, t, icon)] revealed one by one.  side: force 'left'/'right' in 16:9 (default: away from the face)."""
         i = self.id("panel")
         L = self.L
-        side = self.free_side(a, b) if self.o == "land" else "left"
+        side = (side or self.free_side(a, b)) if self.o == "land" else "left"
         pos = (f"{side}:{L['panel_left']}px;top:{L['panel_top']}px" if self.o == "land"
                else f"left:{L['panel_left']}px;right:{L['panel_left']}px;top:{L['panel_top']}px")
         dx = -80 if side == "left" else 80

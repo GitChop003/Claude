@@ -31,8 +31,8 @@ def inserts(c, T, port, VOICE_D, DUR):
                                           ("Pourquoi ça n'a pas marché ?", T("pourquoi", 2503.82) - 0.1, "cross"),
                                           ("Ajuster, améliorer", T("d'ajuster", 2504.6) - 0.2, "target")],
             pa - 0.2, T("Et", 2507.58) - 0.1)
-    t = T("vite", 2508.46); c.stamp("NE DÉLÉGUEZ PAS TROP VITE", T("déléguez", 2507.82) - 0.1, t + 1.6)
-    t = T("Maîtrisez", 2513.51); c.chip("MAÎTRISEZ D'ABORD", t - 0.15, t + 1.6, icon="target", cls="sun")
+    t = T("vite", 2508.46); c.stamp("PAS TROP VITE !", T("déléguez", 2507.82) - 0.1, t + 1.6)
+    t = T("Maîtrisez", 2513.51); c.chip("MAÎTRISEZ D'ABORD", t - 0.15, min(t + 1.6, T("100", 2515.27) - 0.65), icon="target", cls="sun")
     t = T("100", 2515.27); c.chip("PAS À 100 %, PAS MÊME À 80 %", t - 0.3, T("mais", 2518.5) - 0.1, icon="chart", cls="white")
     a = T("différence", 2524.3)
     c.big("TOUTE LA<br><em style=\"color:var(--neon)\">DIFFÉRENCE</em>", T("toute", 2524.0) - 0.15, VOICE_D - 0.05, small="VOUS ALLEZ VOIR")

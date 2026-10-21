@@ -19,6 +19,7 @@ flou d'arrière-plan léger, effet « 4K » dosé, sous-titres mot par mot, inse
 | 11 | Banni 4 fois sur LinkedIn | 12:06 → 12:53 | 30 s | [vertical](s11/port/renders/s11_port.mp4) | [horizontal](s11/land/renders/s11_land.mp4) |
 | 13 | Coach niveau 5 ou niveau 100 ? | 36:42 → 37:57 | 49 s | [vertical](s13/port/renders/s13_port.mp4) | [horizontal](s13/land/renders/s13_land.mp4) |
 | 15 | Audience ou fans ? Ayez une intention précise | 38:31 → 38:58 | 22 s | [vertical](s15/port/renders/s15_port.mp4) | [horizontal](s15/land/renders/s15_land.mp4) |
+| 17 | « Grâce à toi, j'ai closé » | 40:47 → 41:28 | 35 s | [vertical](s17/port/renders/s17_port.mp4) | [horizontal](s17/land/renders/s17_land.mp4) |
 
 ## Méthode
 

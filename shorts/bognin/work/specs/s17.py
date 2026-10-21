@@ -27,7 +27,7 @@ def inserts(c, T, port, VOICE_D, DUR):
     c.panel("« GRÂCE À TOI… »", [("J'ai closé", pa - 0.1, "check"), ("J'ai eu un client", T("client", 2460.0) - 0.15, "handshake"),
                                  ("J'ai voyagé", T("voyagé", 2461.0) - 0.15, "globe"),
                                  ("J'ai doublé mon CA", T("doublé", 2463.0) - 0.15, "chart")],
-            pa - 0.4, T("C'est", 2468.48) - 0.1)
+            pa - 0.4, T("C'est", 2468.48) - 0.1, side="left")   # the source shows client testimonials on the right
     t = T("immense", 2468.88); c.emoji("heart", t - 0.2, t + 1.4, side="l", rot=6)
     t = T("motivation", 2471.36); c.chip("UNE ÉNORME MOTIVATION", T("énormément", 2470.88) - 0.2, t + 0.9, icon="fire", cls="white")
     a = T("dépasse", 2474.40)
@@ -36,6 +36,8 @@ def inserts(c, T, port, VOICE_D, DUR):
     pa = T("lancé", 2478.0)
     c.panel("« GRÂCE À TOI… »", [("J'ai lancé mon business", pa - 0.2, "rocket"), ("Je vis du business en ligne", T("vis", 2479.6) - 0.2, "laptop"),
                                  ("Je gagne de l'argent en ligne", T("gagner", 2481.5) - 0.4, "money")],
-            pa - 0.5, T("C'est", 2484.5) - 0.1)
+            pa - 0.5, T("C'est", 2484.5) - 0.1, side="left")
+    if not port:      # a client testimonial banner sits at the top of the source frame here; the panel already carries the words
+        c.hide.append((25.75, 28.85))
     t = T("immense", 2487.4); c.chip("UN PLAISIR IMMENSE", T("plaisir", 2487.0) - 0.2, VOICE_D - 0.05, icon="heart", cls="sun")
     c.endcard("ET TOI ?", "QUI AS-TU<br>DÉJÀ AIDÉ ?", "Abonne-toi pour la suite", VOICE_D + 0.05)
