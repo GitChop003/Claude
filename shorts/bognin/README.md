@@ -20,6 +20,7 @@ flou d'arrière-plan léger, effet « 4K » dosé, sous-titres mot par mot, inse
 | 13 | Coach niveau 5 ou niveau 100 ? | 36:42 → 37:57 | 49 s | [vertical](s13/port/renders/s13_port.mp4) | [horizontal](s13/land/renders/s13_land.mp4) |
 | 15 | Audience ou fans ? Ayez une intention précise | 38:31 → 38:58 | 22 s | [vertical](s15/port/renders/s15_port.mp4) | [horizontal](s15/land/renders/s15_land.mp4) |
 | 17 | « Grâce à toi, j'ai closé » | 40:47 → 41:28 | 35 s | [vertical](s17/port/renders/s17_port.mp4) | [horizontal](s17/land/renders/s17_land.mp4) |
+| 18 | Bossez, puis maîtrisez avant de déléguer | 41:31 → 42:05 | 27 s | [vertical](s18/port/renders/s18_port.mp4) | [horizontal](s18/land/renders/s18_land.mp4) |
 
 ## Méthode
 
