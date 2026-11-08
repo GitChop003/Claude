@@ -171,7 +171,7 @@ def main(spec_path, rt_dir, rush_dir, out_dir, grade):
            f"[vx][mx]amix=inputs=2:normalize=0:duration=first,aformat=channel_layouts=stereo,loudnorm=I=-14:TP=-1.5:LRA=9,alimiter=limit=0.89[ao]")
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", f"{tmp}/list.txt", "-i", music,
                     "-filter_complex", fcx, "-map", "[vo]", "-map", "[ao]",
-                    "-c:v", "libx264", "-crf", "18", "-preset", "medium", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
+                    "-c:v", "libx264", "-crf", "18", "-preset", "medium", "-g", "30", "-keyint_min", "30", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
                     "-movflags", "+faststart", "-threads", "3", f"{out_dir}/cut.mp4"], check=True)
     n = len(pieces)
     json.dump({"dur": round(t, 3), "tail": TAIL, "cuts": cuts, "words": out_words}, open(f"{out_dir}/words.json", "w"), ensure_ascii=False, indent=0)
