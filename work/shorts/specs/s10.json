@@ -1,0 +1,165 @@
+{
+ "id": "s10",
+ "title": "1 question = 1 vidéo",
+ "rush_note": "0763 : passages mal captés (148-163 s, 184-190 s) écartés ; « chaque question est égale à une vidéo » dit deux fois, 2e prise gardée",
+ "clips": [
+  {
+   "rush": "0763",
+   "in": 309.3,
+   "out": 311.1
+  },
+  {
+   "rush": "0763",
+   "in": 318.4,
+   "out": 321.1
+  },
+  {
+   "rush": "0763",
+   "in": 323.7,
+   "out": 327.45
+  },
+  {
+   "rush": "0763",
+   "in": 120.2,
+   "out": 122.15
+  },
+  {
+   "rush": "0763",
+   "in": 123.6,
+   "out": 129.15
+  },
+  {
+   "rush": "0763",
+   "in": 138.6,
+   "out": 140.15
+  },
+  {
+   "rush": "0763",
+   "in": 140.4,
+   "out": 146.85
+  },
+  {
+   "rush": "0763",
+   "in": 174.9,
+   "out": 181.0
+  },
+  {
+   "rush": "0763",
+   "in": 192.85,
+   "out": 196.4
+  },
+  {
+   "rush": "0763",
+   "in": 197.95,
+   "out": 204.4
+  },
+  {
+   "rush": "0763",
+   "in": 220.1,
+   "out": 230.4
+  }
+ ],
+ "hook": [
+  "À court d'idées ?",
+  "1 question = 1 vidéo."
+ ],
+ "topic": [
+  "1 question",
+  "= 1 vidéo."
+ ],
+ "keywords": [
+  "simple.",
+  "questions",
+  "Claude,",
+  "vidéo.",
+  "10",
+  "précis.",
+  "abonnés"
+ ],
+ "replace": {
+  "Prends": "Je prends",
+  "que": "que",
+  "FAQ,": "FAQ,",
+  "abonnés.": "abonnés"
+ },
+ "replace_n": [
+  [
+   "Ça",
+   1,
+   "ça"
+  ]
+ ],
+ "tags": [
+  {
+   "t": {
+    "word": "Je prends"
+   },
+   "text": "ma méthode",
+   "d": 2.6
+  }
+ ],
+ "lists": [
+  {
+   "t": {
+    "word": "transcriptions"
+   },
+   "title": "Où je trouve les questions",
+   "items": [
+    {
+     "text": "Appels de coaching",
+     "at": {
+      "word": "coaching,"
+     }
+    },
+    {
+     "text": "Appels de vente",
+     "at": {
+      "word": "vente,"
+     }
+    },
+    {
+     "text": "Claude les extrait",
+     "at": {
+      "word": "questions.",
+      "n": 1
+     }
+    }
+   ],
+   "hold": 1.0
+  }
+ ],
+ "flash": [
+  {
+   "t": {
+    "word": "Chaque",
+    "off": 0.0
+   },
+   "lab": "",
+   "a": "1 question",
+   "b": "= 1 vidéo.",
+   "d": 1.4
+  }
+ ],
+ "ui": [
+  {
+   "t": {
+    "word": "Ces"
+   },
+   "d": 3.6,
+   "icon": "dm",
+   "t1": "Story · FAQ",
+   "t2": "« Pose-moi tes questions »",
+   "t3": "Je réponds, puis j'en fais une vidéo",
+   "top": 600
+  }
+ ],
+ "choc": {
+  "at": {
+   "word": "vidéos.",
+   "n": 1
+  },
+  "text": "10 VIDÉOS",
+  "d": 1.3
+ },
+ "cta": "QUESTION"
+}

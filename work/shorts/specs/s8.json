@@ -1,0 +1,180 @@
+{
+ "id": "s8",
+ "title": "Il faut souffrir pour réussir ? Faux.",
+ "rush_note": "0773 : passages mal captés (94-120 s) écartés ; « normalise le fait que… » dit deux fois, on garde la version complète",
+ "clips": [
+  {
+   "rush": "0773",
+   "in": 7.2,
+   "out": 10.1
+  },
+  {
+   "rush": "0773",
+   "in": 10.9,
+   "out": 14.95
+  },
+  {
+   "rush": "0773",
+   "in": 19.35,
+   "out": 23.45,
+   "drop": [
+    [
+     20.15,
+     21.05
+    ]
+   ]
+  },
+  {
+   "rush": "0773",
+   "in": 24.8,
+   "out": 28.2
+  },
+  {
+   "rush": "0773",
+   "in": 29.1,
+   "out": 35.5
+  },
+  {
+   "rush": "0773",
+   "in": 37.3,
+   "out": 38.95
+  },
+  {
+   "rush": "0773",
+   "in": 41.5,
+   "out": 46.8
+  },
+  {
+   "rush": "0773",
+   "in": 61.8,
+   "out": 62.1
+  },
+  {
+   "rush": "0773",
+   "in": 69.9,
+   "out": 84.85
+  },
+  {
+   "rush": "0773",
+   "in": 88.1,
+   "out": 92.3
+  },
+  {
+   "rush": "0773",
+   "in": 137.7,
+   "out": 143.2
+  }
+ ],
+ "hook": [
+  "Il faut souffrir",
+  "pour réussir ?"
+ ],
+ "topic": [
+  "Souffrir pour réussir ?",
+  "Faux."
+ ],
+ "keywords": [
+  "souffrir",
+  "justifier",
+  "stagne",
+  "temps.",
+  "processus.",
+  "intérieure.",
+  "concrets.",
+  "micro-actions"
+ ],
+ "replace": {
+  "normalise": "normalisé",
+  "time": "stagne",
+  "micros-actions": "micro-actions",
+  "Normaliser": "Normalise",
+  "resultats": "résultats"
+ },
+ "replace_n": [
+  [
+   "se",
+   2,
+   ""
+  ]
+ ],
+ "choc": {
+  "at": {
+   "word": "justifier",
+   "n": 1
+  },
+  "text": "JUSTIFIER",
+  "d": 1.3
+ },
+ "tags": [
+  {
+   "t": {
+    "word": "Lorsque"
+   },
+   "text": "l'excuse classique",
+   "d": 2.6
+  }
+ ],
+ "method": {
+  "t": {
+   "word": "Je",
+   "n": 1
+  },
+  "d": 3.8,
+  "on": 1,
+  "here": "tout commence ici"
+ },
+ "flash": [
+  {
+   "t": {
+    "word": "processus.",
+    "off": 0.25
+   },
+   "lab": "",
+   "a": "Ça prend du temps ?",
+   "b": "Aime le processus.",
+   "d": 1.1
+  }
+ ],
+ "lists": [
+  {
+   "t": {
+    "word": "aimes",
+    "n": 2
+   },
+   "title": "Ce qui change déjà",
+   "items": [
+    {
+     "text": "Ce que tu fais",
+     "at": {
+      "word": "fais.",
+      "n": 1
+     }
+    },
+    {
+     "text": "Tes actions",
+     "at": {
+      "word": "place."
+     }
+    },
+    {
+     "text": "Ta paix intérieure",
+     "at": {
+      "word": "intérieure."
+     }
+    },
+    {
+     "text": "Ta façon de faire",
+     "at": {
+      "word": "faire,",
+      "n": 1
+     }
+    }
+   ],
+   "hold": 1.4
+  }
+ ],
+ "reveal": {
+  "word": "Non."
+ },
+ "cta": "PROCESSUS"
+}

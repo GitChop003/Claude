@@ -1,0 +1,139 @@
+{
+ "id": "s7",
+ "title": "Une idée ? Fais-la maintenant",
+ "rush_note": "0766 : passages mal captés (16-29 s, 80-84 s, 136-146 s) écartés ; la phrase « plus je me donne du temps… » dite deux fois, on garde la plus complète",
+ "clips": [
+  {
+   "rush": "0766",
+   "in": 56.6,
+   "out": 59.95
+  },
+  {
+   "rush": "0766",
+   "in": 60.9,
+   "out": 75.4
+  },
+  {
+   "rush": "0766",
+   "in": 85.8,
+   "out": 94.3
+  },
+  {
+   "rush": "0766",
+   "in": 95.0,
+   "out": 105.1
+  },
+  {
+   "rush": "0766",
+   "in": 107.4,
+   "out": 111.0
+  },
+  {
+   "rush": "0766",
+   "in": 162.3,
+   "out": 176.0
+  }
+ ],
+ "hook": [
+  "Une idée ?",
+  "Fais-la maintenant."
+ ],
+ "topic": [
+  "Une idée ?",
+  "Fais-la maintenant."
+ ],
+ "keywords": [
+  "waouh,",
+  "disparu.",
+  "mauvaise,",
+  "diminue.",
+  "l'instant.",
+  "j'exécute.",
+  "justifications"
+ ],
+ "replace": {
+  "constitué,": "constaté,",
+  "à": "à",
+  "diminue.": "diminue",
+  "plus": "plus"
+ },
+ "replace_n": [],
+ "tags": [
+  {
+   "t": {
+    "word": "Ce",
+    "n": 1
+   },
+   "text": "mon constat",
+   "d": 2.6
+  }
+ ],
+ "ui": [
+  {
+   "t": {
+    "word": "Maintenant,",
+    "n": 1
+   },
+   "d": 3.6,
+   "icon": "draft",
+   "t1": "Notes",
+   "t2": "Idée : vidéo sur la prospection",
+   "t3": "Créée il y a 3 heures",
+   "top": 600
+  }
+ ],
+ "lists": [
+  {
+   "t": {
+    "word": "C'est",
+    "n": 1
+   },
+   "title": "Une idée de…",
+   "items": [
+    {
+     "text": "vidéo",
+     "at": {
+      "word": "vidéo"
+     }
+    },
+    {
+     "text": "message",
+     "at": {
+      "word": "message"
+     }
+    },
+    {
+     "text": "story",
+     "at": {
+      "word": "story"
+     }
+    }
+   ],
+   "until": {
+    "word": "Donc",
+    "n": 1,
+    "off": -0.1
+   }
+  }
+ ],
+ "inserts": {
+  "3": [
+   {
+    "word": "d'envoyer",
+    "off": -0.2
+   },
+   2.6
+  ]
+ },
+ "insert_titles": {
+  "3": "<span>Tu</span> <span class=\"a\">envoies.</span>"
+ },
+ "choc": {
+  "at": {
+   "word": "j'exécute."
+  },
+  "text": "J'EXÉCUTE",
+  "d": 1.3
+ },
+ "cta": "ACTION"
+}

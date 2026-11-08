@@ -1,0 +1,185 @@
+{
+ "id": "s9",
+ "title": "Le gratuit t'embrouille",
+ "rush_note": "0786 : passage mal capté (7-20 s) écarté ; phrases dites deux fois : 1re prise gardée pour « où mettre la tête », meilleure prise pour « les tonnes de guides »",
+ "clips": [
+  {
+   "rush": "0786",
+   "in": 2.85,
+   "out": 6.85
+  },
+  {
+   "rush": "0786",
+   "in": 21.45,
+   "out": 25.6
+  },
+  {
+   "rush": "0786",
+   "in": 27.9,
+   "out": 32.95
+  },
+  {
+   "rush": "0786",
+   "in": 33.55,
+   "out": 38.3
+  },
+  {
+   "rush": "0786",
+   "in": 43.95,
+   "out": 50.9
+  },
+  {
+   "rush": "0786",
+   "in": 51.5,
+   "out": 58.7
+  },
+  {
+   "rush": "0786",
+   "in": 73.2,
+   "out": 80.2
+  },
+  {
+   "rush": "0786",
+   "in": 81.15,
+   "out": 85.55
+  },
+  {
+   "rush": "0786",
+   "in": 90.05,
+   "out": 93.75
+  },
+  {
+   "rush": "0786",
+   "in": 106.3,
+   "out": 111.1,
+   "drop": [
+    [
+     106.85,
+     107.02
+    ]
+   ]
+  }
+ ],
+ "hook": [
+  "Trop de gratuit ?",
+  "Ça t'embrouille."
+ ],
+ "topic": [
+  "Gratuit ?",
+  "Ça t'embrouille."
+ ],
+ "keywords": [
+  "gratuit,",
+  "t'embrouille.",
+  "direction",
+  "précise.",
+  "seul,",
+  "tourner.",
+  "avances."
+ ],
+ "replace": {
+  "Avant": "« Avant,",
+  "bouffe": "bouffeuse",
+  "précises.": "précise.",
+  "gras,": "gratuit",
+  "reçu": "reçus",
+  "donnes": "donne"
+ },
+ "replace_n": [
+  [
+   "que",
+   1,
+   ""
+  ],
+  [
+   "gratuit,",
+   1,
+   "gratuit »,"
+  ],
+  [
+   "les",
+   1,
+   "Les"
+  ]
+ ],
+ "tags": [
+  {
+   "t": {
+    "word": "Une"
+   },
+   "text": "ce qu'une élève m'a dit",
+   "d": 2.6
+  }
+ ],
+ "flash": [
+  {
+   "t": {
+    "word": "t'embrouille.",
+    "off": 0.25
+   },
+   "lab": "",
+   "a": "Le gratuit",
+   "b": "t'embrouille.",
+   "d": 1.1
+  }
+ ],
+ "lists": [
+  {
+   "t": {
+    "word": "tellement",
+    "n": 1
+   },
+   "title": "Ce que tu accumules",
+   "items": [
+    {
+     "text": "Des PDF",
+     "at": {
+      "word": "PDF."
+     }
+    },
+    {
+     "text": "Des guides",
+     "at": {
+      "word": "guides.",
+      "n": 1
+     }
+    },
+    {
+     "text": "Une direction",
+     "at": {
+      "word": "précise.",
+      "n": 1
+     },
+     "mark": "x"
+    }
+   ],
+   "until": {
+    "word": "Du",
+    "n": 1,
+    "off": -0.1
+   }
+  }
+ ],
+ "ui": [
+  {
+   "t": {
+    "word": "dorment"
+   },
+   "d": 3.0,
+   "icon": "draft",
+   "t1": "Téléchargements",
+   "t2": "PDF et guides jamais ouverts",
+   "t3": "Checklist ultime, template, méthode…",
+   "top": 600
+  }
+ ],
+ "method": {
+  "t": {
+   "word": "seul,"
+  },
+  "d": 3.8,
+  "on": 1,
+  "here": "commence ici"
+ },
+ "cta": "DIRECTION"
+}
