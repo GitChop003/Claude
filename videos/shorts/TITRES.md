@@ -56,3 +56,66 @@ Dans chaque dossier `sN/renders/` : `*_reel_v1_livraison.mp4` (9:16, version lé
 - s3 dure 70 s (avec 3 s de fin : CTA lisible puis carte de fin) : au-dessus de la cible de 25 à 60 s, sous le maximum de 75 s.
 - Cartes DM et Calendly de s2 marquées « Reconstitution » (son vrai échange, remis en forme).
 - Palette « nuancée » : elle sort de la charte V3 (fond papier, cyan profond, sable).
+
+---
+
+# Lot 2 (6 shorts)
+
+| # | Fichier | Rush source | Douleur visée |
+|---|---|---|---|
+| s6 | `2026-11-08_JANVIER_reel_v1.mp4` | 0781 + 0782 | Repousser le lancement, peur de commencer |
+| s7 | `2026-11-08_ACTION_reel_v1.mp4` | 0766 | Procrastination, les excuses qui s'installent |
+| s8 | `2026-11-08_PROCESSUS_reel_v1.mp4` | 0773 | Stagnation, « il faut souffrir » |
+| s9 | `2026-11-08_DIRECTION_reel_v1.mp4` | 0786 | Formations gratuites qui embrouillent, pas de direction |
+| s10 | `2026-11-08_QUESTION_reel_v1.mp4` | 0763 | À court d'idées, contenu sans DM |
+| s11 | `2026-11-08_STRATEGIE_reel_v1.mp4` | 0788 | Tout réinventer, contenu qui ne performe pas |
+
+## s6 · N'attends pas janvier
+- **Texte écran** : « Tu attends janvier ? / Mauvaise idée. »
+- **Accroches alternatives** : « Moins de 60 jours / avant 2027. » · « « Je commence en janvier » ? / Rien ne se passe. »
+- **Titre de publication** : N'attends pas janvier pour lancer ton projet
+- **Légende proposée** : Nouvelle année, nouvelle méthode… et le plus souvent, en janvier, rien ne se passe. J'ai raté mon bac, j'ai perdu ma source de revenus, je n'avais pas toutes les réponses. J'ai commencé avec ce que j'avais. Commente JANVIER.
+- **CTA** : Commente JANVIER
+- **À noter** : vidéo datée, à publier avant fin décembre.
+
+## s7 · Une idée ? Fais-la maintenant
+- **Texte écran** : « Une idée ? / Fais-la maintenant. »
+- **Accroches alternatives** : « Demain, tu l'auras oubliée. » · « Plus tu attends, / plus tu trouves d'excuses. »
+- **Titre de publication** : Plus tu attends, plus tu te trouves des excuses
+- **Légende proposée** : Une idée de vidéo, de message, de story ? Deux heures plus tard, l'émotion a disparu et les justifications arrivent. Ma règle : j'exécute à l'instant. Commente ACTION.
+- **CTA** : Commente ACTION
+
+## s8 · Il faut souffrir pour réussir ? Faux.
+- **Texte écran** : « Il faut souffrir / pour réussir ? »
+- **Accroches alternatives** : « Tu stagnes depuis un an ? / Ce n'est pas normal. » · « « Tout ce qui est bien / prend du temps » ? »
+- **Titre de publication** : Ça peut prendre du temps. Mais tu n'as pas à souffrir.
+- **Légende proposée** : « Il faut souffrir avant de réussir » sert surtout à se justifier. Ça peut prendre du temps, mais tu aimes le processus, et tu vois des micro-résultats. Commente PROCESSUS.
+- **CTA** : Commente PROCESSUS
+
+## s9 · Le gratuit t'embrouille
+- **Texte écran** : « Trop de gratuit ? / Ça t'embrouille. »
+- **Accroches alternatives** : « Des dizaines de PDF / et toujours 0 client ? » · « Le problème du gratuit / (que personne ne dit). »
+- **Titre de publication** : Le gratuit te donne des informations, pas une direction
+- **Légende proposée** : Tellement de PDF, tellement de guides… et personne pour te dire par où commencer. Le gratuit te donne l'impression d'évoluer, en réalité il t'embrouille. Commente DIRECTION.
+- **CTA** : Commente DIRECTION
+
+## s10 · 1 question = 1 vidéo
+- **Texte écran** : « À court d'idées ? / 1 question = 1 vidéo. »
+- **Accroches alternatives** : « 10 questions de clients / = 10 vidéos. » · « Mes idées de contenu / viennent de mes appels. »
+- **Titre de publication** : Où je trouve mes idées de contenu (et pourquoi elles convertissent)
+- **Légende proposée** : Je prends les transcriptions de mes appels, j'en extrais les questions, et chaque question devient une vidéo. Ces vidéos ne font pas forcément beaucoup de vues, mais elles répondent à un problème précis. Commente QUESTION.
+- **CTA** : Commente QUESTION
+
+## s11 · Ce n'est pas de la triche
+- **Texte écran** : « Tout réinventer ? / Erreur. »
+- **Accroches alternatives** : « S'inspirer d'un concurrent, / c'est tricher ? » · « Pas de la triche : / de la stratégie. »
+- **Titre de publication** : S'inspirer de ce qui marche : pas de la triche, de la stratégie
+- **Légende proposée** : Analyse un créateur de ta niche : ses sujets, ses hooks, ses accroches qui performent. Puis refais à ta façon. Tu gagnes du temps et tu pars de ce qui marche. Commente STRATÉGIE.
+- **CTA** : Commente STRATÉGIE
+
+## À valider par Bognin (lot 2)
+- Les 6 mots-clés de CTA.
+- s6 : dates (« moins de 60 jours », « 2027 ») et passage personnel (bac raté, revenus perdus).
+- s9 : la citation de son élève (« bouffeuse de gratuit »), sans nom ni visage.
+- s10 : mention de Claude comme outil, et chiffres d'exemple (« 10 questions = 10 vidéos »).
+- s11 : la carte « Les 10 vidéos les plus vues » est un exemple d'outil de veille.
