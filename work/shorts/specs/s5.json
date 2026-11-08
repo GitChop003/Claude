@@ -1,19 +1,106 @@
-{"id": "s5", "title": "J'étais le plus timide de mon quartier",
+{
+ "id": "s5",
+ "title": "J'étais le plus timide de mon quartier",
  "rush_note": "0784 : la phrase sur la voix est dite deux fois (1re prise gardée), chiffre « plus de 1000 posts » retiré (non prouvé)",
- "clips": [{"rush": "0784", "in": 0.1, "out": 3.2},
-           {"rush": "0784", "in": 3.7, "out": 6.7},
-           {"rush": "0784", "in": 11.9, "out": 17.2},
-           {"rush": "0784", "in": 19.0, "out": 20.9},
-           {"rush": "0784", "in": 34.35, "out": 38.7},
-           {"rush": "0784", "in": 45.75, "out": 49.2},
-           {"rush": "0784", "in": 59.15, "out": 61.8},
-           {"rush": "0784", "in": 73.05, "out": 76.9},
-           {"rush": "0784", "in": 86.2, "out": 102.2, "drop": [[98.3, 99.65]]},
-           {"rush": "0784", "in": 102.9, "out": 112.6}],
- "hook": ["Peur de déranger ?", "J'étais le plus timide."],
- "topic": ["Peur de déranger ?", "Moi aussi."],
- "keywords": ["timide", "voix,", "déranger", "prospecter,", "vas-y."],
- "replace": {"la": "la", "bêtise.": "bêtise.", "veux": "vas", "?": ""},
- "replace_n": [["la", 1, "une"], ["ce", 1, "ça"]],
- "inserts": {"3": [{"word": "vas-y.", "off": -0.2}, 1.45]},
- "cta": "TIMIDE"}
+ "clips": [
+  {
+   "rush": "0784",
+   "in": 0.1,
+   "out": 3.2
+  },
+  {
+   "rush": "0784",
+   "in": 3.7,
+   "out": 6.7
+  },
+  {
+   "rush": "0784",
+   "in": 11.9,
+   "out": 17.2
+  },
+  {
+   "rush": "0784",
+   "in": 19.0,
+   "out": 20.9
+  },
+  {
+   "rush": "0784",
+   "in": 34.35,
+   "out": 38.7
+  },
+  {
+   "rush": "0784",
+   "in": 45.75,
+   "out": 49.2
+  },
+  {
+   "rush": "0784",
+   "in": 59.15,
+   "out": 61.8
+  },
+  {
+   "rush": "0784",
+   "in": 73.05,
+   "out": 76.9
+  },
+  {
+   "rush": "0784",
+   "in": 86.2,
+   "out": 102.2,
+   "drop": [
+    [
+     98.3,
+     99.65
+    ]
+   ]
+  },
+  {
+   "rush": "0784",
+   "in": 102.9,
+   "out": 112.6
+  }
+ ],
+ "hook": [
+  "Peur de déranger ?",
+  "J'étais pareil."
+ ],
+ "topic": [
+  "Peur de déranger ?",
+  "Moi aussi."
+ ],
+ "keywords": [
+  "timide",
+  "voix,",
+  "déranger",
+  "prospecter,",
+  "vas-y."
+ ],
+ "replace": {
+  "la": "la",
+  "bêtise.": "bêtise.",
+  "veux": "vas",
+  "?": ""
+ },
+ "replace_n": [
+  [
+   "la",
+   1,
+   "une"
+  ],
+  [
+   "ce",
+   1,
+   "ça"
+  ]
+ ],
+ "inserts": {
+  "3": [
+   {
+    "word": "vas-y.",
+    "off": -0.2
+   },
+   1.45
+  ]
+ },
+ "cta": "TIMIDE"
+}

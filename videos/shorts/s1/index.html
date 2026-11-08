@@ -264,7 +264,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
 .flashc .thread{height:4px;width:400px;background:var(--cyan-p);margin:34px 0 0 110px;transform-origin:0 50%;border-radius:2px}
 #end{background:rgba(10,18,32,.0)}
 #hook{right:96px}
-#hook .l{white-space:nowrap}
+#hook .l{white-space:nowrap;font-size:77px}
 #choc span{display:inline-block;margin:0 .02em}
 #choc.behind{left:0;width:1080px;top:452px;font-size:156px;letter-spacing:-.03em;text-shadow:none}
 #ctaw .lab{color:#fff;text-shadow:0 2px 14px rgba(10,18,32,.6)}
@@ -348,9 +348,6 @@ const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const IN='expo.out',OUT='power2.in',MOVE='power3.inOut',k=1,D_IN=.5,D_OUT=.28;
 const cfg={ins:true,insDur:200};const INS={};let INSWIN=[];
 $$('.ins .d').forEach(p=>{const L=Math.ceil(p.getTotalLength());p._L=L;p.setAttribute('stroke-dasharray',L);});
-/* Accroche : 2 lignes max (charte) → on réduit la taille (84 → 64 px) jusqu'à ce que chaque ligne tienne */
-(function(){const h=$('#hook');let fs=84;$$('#hook .l').forEach(l=>l.style.fontSize=fs+'px');
-  while(fs>64&&$$('#hook .l').some(l=>l.scrollWidth>h.clientWidth)){fs-=2;$$('#hook .l').forEach(l=>l.style.fontSize=fs+'px');}})();
 const tl=gsap.timeline({paused:true});
 function cap(id,a,b){const sp=$$(id+' > span');tl.set(id,{opacity:1},a);
   tl.fromTo(sp,{opacity:0,y:14,filter:'blur(6px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.3,ease:IN,stagger:.07,immediateRender:false},a);
@@ -375,7 +372,7 @@ tl.set(['#sigr','#sigc'],{attr:{stroke:'#fff'}},.7);tl.set('#sigd',{attr:{fill:'
 tl.set('#vw',{scale:1.08},3.810);tl.set('#vw',{scale:1.0},7.976);tl.set('#vw',{scale:1.08},15.814);tl.set('#vw',{scale:1.0},22.026);tl.set('#vw',{scale:1.08},31.764);
 flash('#f0',21.900,1.1);
 
-cap('#c0',0.012,0.862);cap('#c1',0.812,1.902);cap('#c2',1.852,3.102);cap('#c3',3.052,3.960);cap('#c4',3.910,4.680);cap('#c5',4.630,5.160);cap('#c6',5.110,6.200);cap('#c7',6.150,6.600);cap('#c8',6.550,7.160);cap('#c9',7.110,8.088);cap('#c10',8.038,8.728);cap('#c11',8.678,9.768);cap('#c12',9.718,10.568);cap('#c13',10.518,11.528);cap('#c14',11.478,13.048);cap('#c15',12.998,13.848);cap('#c16',13.798,14.488);cap('#c17',14.438,14.808);cap('#c18',14.758,15.128);cap('#c19',15.078,15.608);cap('#c20',15.558,16.124);cap('#c21',16.074,16.364);cap('#c22',16.314,16.844);cap('#c23',16.794,17.644);cap('#c24',17.594,18.684);cap('#c25',18.634,19.404);cap('#c26',19.354,19.930);cap('#c27',19.880,20.570);cap('#c28',20.520,20.890);cap('#c29',20.840,21.690);cap('#c30',21.640,22.176);cap('#c33',23.576,24.426);cap('#c34',24.376,25.146);cap('#c35',25.096,26.186);cap('#c36',26.136,27.526);cap('#c37',27.864,28.714);cap('#c38',28.664,29.434);cap('#c39',29.384,29.914);cap('#c40',29.864,30.794);cap('#c41',30.744,31.914);cap('#c42',31.864,32.816);cap('#c43',32.766,32.976);cap('#c44',32.926,33.936);cap('#c45',33.886,34.416);cap('#c46',34.366,35.136);cap('#c47',35.086,35.696);cap('#c48',35.646,36.656);cap('#c49',36.606,36.896);cap('#c50',36.846,37.376);cap('#c51',37.326,37.612);
+cap('#c0',0.012,0.812);cap('#c1',0.812,1.852);cap('#c2',1.852,3.052);cap('#c3',3.052,3.910);cap('#c4',3.910,4.630);cap('#c5',4.630,5.110);cap('#c6',5.110,6.150);cap('#c7',6.150,6.550);cap('#c8',6.550,7.110);cap('#c9',7.110,8.038);cap('#c10',8.038,8.678);cap('#c11',8.678,9.718);cap('#c12',9.718,10.518);cap('#c13',10.518,11.478);cap('#c14',11.478,12.998);cap('#c15',12.998,13.798);cap('#c16',13.798,14.438);cap('#c17',14.438,14.758);cap('#c18',14.758,15.078);cap('#c19',15.078,15.558);cap('#c20',15.558,16.074);cap('#c21',16.074,16.314);cap('#c22',16.314,16.794);cap('#c23',16.794,17.594);cap('#c24',17.594,18.634);cap('#c25',18.634,19.354);cap('#c26',19.354,19.880);cap('#c27',19.880,20.520);cap('#c28',20.520,20.840);cap('#c29',20.840,21.640);cap('#c30',21.640,22.126);cap('#c33',23.576,24.376);cap('#c34',24.376,25.096);cap('#c35',25.096,26.136);cap('#c36',26.136,27.526);cap('#c37',27.864,28.664);cap('#c38',28.664,29.384);cap('#c39',29.384,29.864);cap('#c40',29.864,30.744);cap('#c41',30.744,31.864);cap('#c42',31.864,32.766);cap('#c43',32.766,32.926);cap('#c44',32.926,33.886);cap('#c45',33.886,34.366);cap('#c46',34.366,35.086);cap('#c47',35.086,35.646);cap('#c48',35.646,36.606);cap('#c49',36.606,36.846);cap('#c50',36.846,37.326);cap('#c51',37.326,37.612);
   /* Inserts illustrés */
   INSWIN=[];
   if(cfg.ins){

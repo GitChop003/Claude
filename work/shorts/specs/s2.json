@@ -56,12 +56,12 @@
   }
  ],
  "hook": [
-  "Des vues, mais 0 DM ?",
-  "Ils regardent en silence."
+  "Des vues.",
+  "Mais 0 DM."
  ],
  "topic": [
-  "0 DM ?",
-  "Ils te regardent."
+  "Des vues,",
+  "mais 0 DM."
  ],
  "keywords": [
   "voit",

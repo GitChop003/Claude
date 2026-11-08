@@ -69,7 +69,8 @@ def main(spec_path, words_path, out_dir):
         oi = " oi" if any(a <= c["s"] < b for a, b in insw) else ""
         spans = " ".join(f'<span class="kw">{esc(w)}</span>' if k else f"<span>{esc(w)}</span>" for w, k in c["w"])
         cap_html.append(f'<div class="cap{oi}" id="c{i}">{spans}</div>')
-        cap_js.append(f"cap('#c{i}',{c['s']:.3f},{min(c['e']+0.05, W['dur']):.3f});")
+        nxt = caps[i + 1]["s"] if i + 1 < len(caps) else W["dur"]
+        cap_js.append(f"cap('#c{i}',{c['s']:.3f},{min(c['e']+0.05, nxt, W['dur']):.3f});")
     # punch-in : à une coupe, au plus toutes les 4 s, alterne 1,00 / 1,08
     zoom_js, last, z = [], -9, 1.0
     for t in W["cuts"][:-1]:
@@ -105,6 +106,10 @@ def main(spec_path, words_path, out_dir):
         inserts_html = re.sub(rf'(<div class="ins" id="ins{n}"><div class="it">).*?(</div>)', rf"\g<1>{t}\g<2>", inserts_html, count=1)
     inserts_js = open(f"{KIT}/inserts.js").read()
     hook = sp["hook"]  # [ligne1, ligne2]
+    # 2 lignes max (charte) : taille calculée pour que la plus longue ligne tienne dans 888 px (Montserrat Black ≈ 0,64 em/caractère)
+    hook_fs = int(max(64, min(84, 888 / (0.64 * max(len(l) for l in hook)))))
+    if hook_fs * 0.64 * max(len(l) for l in hook) > 900:
+        raise SystemExit(f"accroche trop longue pour 2 lignes : {hook}")
     cta = sp["cta"]; T_END = W["dur"]
     obj = sp.get("objection")
     topic_html = (f'<div id="objection" style="opacity:1"><b>OBJECTION :</b> « {esc(obj)} »</div>' if obj else
@@ -128,7 +133,7 @@ def main(spec_path, words_path, out_dir):
 .flashc .thread{{height:4px;width:400px;background:var(--cyan-p);margin:34px 0 0 110px;transform-origin:0 50%;border-radius:2px}}
 #end{{background:rgba(10,18,32,.0)}}
 #hook{{right:96px}}
-#hook .l{{white-space:nowrap}}
+#hook .l{{white-space:nowrap;font-size:{hook_fs}px}}
 #choc span{{display:inline-block;margin:0 .02em}}
 #choc.behind{{left:0;width:1080px;top:452px;font-size:156px;letter-spacing:-.03em;text-shadow:none}}
 #ctaw .lab{{color:#fff;text-shadow:0 2px 14px rgba(10,18,32,.6)}}
@@ -156,9 +161,6 @@ const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const IN='expo.out',OUT='power2.in',MOVE='power3.inOut',k=1,D_IN=.5,D_OUT=.28;
 const cfg={{ins:true,insDur:200}};const INS={json.dumps({int(n): v for n, v in ins.items()})};let INSWIN=[];
 $$('.ins .d').forEach(p=>{{const L=Math.ceil(p.getTotalLength());p._L=L;p.setAttribute('stroke-dasharray',L);}});
-/* Accroche : 2 lignes max (charte) → on réduit la taille (84 → 64 px) jusqu'à ce que chaque ligne tienne */
-(function(){{const h=$('#hook');let fs=84;$$('#hook .l').forEach(l=>l.style.fontSize=fs+'px');
-  while(fs>64&&$$('#hook .l').some(l=>l.scrollWidth>h.clientWidth)){{fs-=2;$$('#hook .l').forEach(l=>l.style.fontSize=fs+'px');}}}})();
 const tl=gsap.timeline({{paused:true}});
 function cap(id,a,b){{const sp=$$(id+' > span');tl.set(id,{{opacity:1}},a);
   tl.fromTo(sp,{{opacity:0,y:14,filter:'blur(6px)'}},{{opacity:1,y:0,filter:'blur(0px)',duration:.3,ease:IN,stagger:.07,immediateRender:false}},a);

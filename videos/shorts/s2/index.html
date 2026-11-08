@@ -264,7 +264,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
 .flashc .thread{height:4px;width:400px;background:var(--cyan-p);margin:34px 0 0 110px;transform-origin:0 50%;border-radius:2px}
 #end{background:rgba(10,18,32,.0)}
 #hook{right:96px}
-#hook .l{white-space:nowrap}
+#hook .l{white-space:nowrap;font-size:84px}
 #choc span{display:inline-block;margin:0 .02em}
 #choc.behind{left:0;width:1080px;top:452px;font-size:156px;letter-spacing:-.03em;text-shadow:none}
 #ctaw .lab{color:#fff;text-shadow:0 2px 14px rgba(10,18,32,.6)}
@@ -330,9 +330,9 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
         <div id="hookbg"></div>
         <div id="hook"><div class="k"><span>Tu postes. Personne n'écrit.</span></div><div class="l"><span>200 likes.</span></div><div class="l c"><span>0 client.</span></div></div>
 
-  <div class="glass" id="topic"><span>0 DM ?</span><b>Ils te regardent.</b></div>
+  <div class="glass" id="topic"><span>Des vues,</span><b>mais 0 DM.</b></div>
   <div id="hookbg"></div>
-  <div id="hook"><div class="l"><span>Des vues, mais 0 DM ?</span></div><div class="l c"><span>Ils regardent en silence.</span></div></div>
+  <div id="hook"><div class="l"><span>Des vues.</span></div><div class="l c"><span>Mais 0 DM.</span></div></div>
   <div id="sig"><svg viewBox="0 0 32 32" fill="none"><rect id="sigr" x="2.5" y="2.5" width="27" height="27" rx="8" stroke="#fff" stroke-width="2.6"/><circle id="sigc" cx="16" cy="16" r="6.2" stroke="#fff" stroke-width="2.6"/><circle id="sigd" cx="23.6" cy="8.4" r="1.8" fill="#fff"/></svg><span>@the_process.io</span></div>
   
   
@@ -348,9 +348,6 @@ const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const IN='expo.out',OUT='power2.in',MOVE='power3.inOut',k=1,D_IN=.5,D_OUT=.28;
 const cfg={ins:true,insDur:200};const INS={"1": [15.658, 2.0]};let INSWIN=[];
 $$('.ins .d').forEach(p=>{const L=Math.ceil(p.getTotalLength());p._L=L;p.setAttribute('stroke-dasharray',L);});
-/* Accroche : 2 lignes max (charte) → on réduit la taille (84 → 64 px) jusqu'à ce que chaque ligne tienne */
-(function(){const h=$('#hook');let fs=84;$$('#hook .l').forEach(l=>l.style.fontSize=fs+'px');
-  while(fs>64&&$$('#hook .l').some(l=>l.scrollWidth>h.clientWidth)){fs-=2;$$('#hook .l').forEach(l=>l.style.fontSize=fs+'px');}})();
 const tl=gsap.timeline({paused:true});
 function cap(id,a,b){const sp=$$(id+' > span');tl.set(id,{opacity:1},a);
   tl.fromTo(sp,{opacity:0,y:14,filter:'blur(6px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.3,ease:IN,stagger:.07,immediateRender:false},a);
@@ -375,7 +372,7 @@ tl.set(['#sigr','#sigc'],{attr:{stroke:'#fff'}},.7);tl.set('#sigd',{attr:{fill:'
 tl.set('#vw',{scale:1.08},7.400);tl.set('#vw',{scale:1.0},13.318);tl.set('#vw',{scale:1.08},17.340);tl.set('#vw',{scale:1.0},21.950);tl.set('#vw',{scale:1.08},27.308);tl.set('#vw',{scale:1.0},32.358);tl.set('#vw',{scale:1.08},41.386);
 
 
-cap('#c0',0.090,0.780);cap('#c1',0.730,1.660);cap('#c2',1.610,2.780);cap('#c3',2.730,3.500);cap('#c4',3.450,4.300);cap('#c5',4.250,5.260);cap('#c6',5.210,6.140);cap('#c7',6.090,7.100);cap('#c8',7.050,8.008);cap('#c9',7.958,8.808);cap('#c10',8.758,9.288);cap('#c11',9.238,10.108);cap('#c12',10.058,11.548);cap('#c13',11.498,11.788);cap('#c14',11.738,12.508);cap('#c15',12.458,13.468);cap('#c16',13.418,14.028);cap('#c17',13.978,14.908);cap('#c18',14.858,15.708);cap('#c19',15.658,16.268);cap('#c20',16.218,17.148);cap('#c21',17.098,17.490);cap('#c22',17.440,18.412);cap('#c23',18.362,19.372);cap('#c24',19.322,20.020);cap('#c25',19.970,20.580);cap('#c26',20.530,22.100);cap('#c27',22.050,22.728);cap('#c28',22.678,23.528);cap('#c29',23.478,24.008);cap('#c30',23.958,25.208);cap('#c31',25.158,26.168);cap('#c32',26.118,27.048);cap('#c33',26.998,27.442);cap('#c34',27.392,28.002);cap('#c35',27.952,28.402);cap('#c36',28.352,28.802);cap('#c37',28.752,29.522);cap('#c38',29.472,30.382);cap('#c39',30.752,31.362);cap('#c40',31.312,31.762);cap('#c41',31.712,32.162);cap('#c42',32.112,32.508);cap('#c43',32.458,33.388);cap('#c44',33.338,34.428);cap('#c45',34.378,35.148);cap('#c46',35.098,35.696);cap('#c47',35.646,36.336);cap('#c48',36.286,36.976);cap('#c49',36.926,37.696);cap('#c50',37.646,38.656);cap('#c51',38.606,39.056);cap('#c52',39.006,39.456);cap('#c53',39.406,40.416);cap('#c54',40.366,41.536);cap('#c55',41.486,42.176);cap('#c56',42.126,42.896);cap('#c57',42.846,43.376);cap('#c58',43.326,44.016);cap('#c59',43.966,44.656);cap('#c60',44.606,45.536);cap('#c61',45.486,45.752);
+cap('#c0',0.090,0.730);cap('#c1',0.730,1.610);cap('#c2',1.610,2.730);cap('#c3',2.730,3.450);cap('#c4',3.450,4.250);cap('#c5',4.250,5.210);cap('#c6',5.210,6.090);cap('#c7',6.090,7.050);cap('#c8',7.050,7.958);cap('#c9',7.958,8.758);cap('#c10',8.758,9.238);cap('#c11',9.238,10.058);cap('#c12',10.058,11.498);cap('#c13',11.498,11.738);cap('#c14',11.738,12.458);cap('#c15',12.458,13.418);cap('#c16',13.418,13.978);cap('#c17',13.978,14.858);cap('#c18',14.858,15.658);cap('#c19',15.658,16.218);cap('#c20',16.218,17.098);cap('#c21',17.098,17.440);cap('#c22',17.440,18.362);cap('#c23',18.362,19.322);cap('#c24',19.322,19.970);cap('#c25',19.970,20.530);cap('#c26',20.530,22.050);cap('#c27',22.050,22.678);cap('#c28',22.678,23.478);cap('#c29',23.478,23.958);cap('#c30',23.958,25.158);cap('#c31',25.158,26.118);cap('#c32',26.118,26.998);cap('#c33',26.998,27.392);cap('#c34',27.392,27.952);cap('#c35',27.952,28.352);cap('#c36',28.352,28.752);cap('#c37',28.752,29.472);cap('#c38',29.472,30.382);cap('#c39',30.752,31.312);cap('#c40',31.312,31.712);cap('#c41',31.712,32.112);cap('#c42',32.112,32.458);cap('#c43',32.458,33.338);cap('#c44',33.338,34.378);cap('#c45',34.378,35.098);cap('#c46',35.098,35.646);cap('#c47',35.646,36.286);cap('#c48',36.286,36.926);cap('#c49',36.926,37.646);cap('#c50',37.646,38.606);cap('#c51',38.606,39.006);cap('#c52',39.006,39.406);cap('#c53',39.406,40.366);cap('#c54',40.366,41.486);cap('#c55',41.486,42.126);cap('#c56',42.126,42.846);cap('#c57',42.846,43.326);cap('#c58',43.326,43.966);cap('#c59',43.966,44.606);cap('#c60',44.606,45.486);cap('#c61',45.486,45.752);
   /* Inserts illustrés */
   INSWIN=[];
   if(cfg.ins){

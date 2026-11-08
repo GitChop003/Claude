@@ -1,19 +1,100 @@
-{"id": "s4", "title": "Les meilleures idées sont au cimetière",
+{
+ "id": "s4",
+ "title": "Les meilleures idées sont au cimetière",
  "rush_note": "0772 : un passage mal capté (7-14 s) écarté, la question posée deux fois : on garde la 2e formulation",
- "clips": [{"rush": "0772", "in": 0.1, "out": 4.2},
-           {"rush": "0772", "in": 14.9, "out": 24.9},
-           {"rush": "0772", "in": 29.4, "out": 32.5},
-           {"rush": "0772", "in": 35.0, "out": 38.0},
-           {"rush": "0772", "in": 44.35, "out": 49.7},
-           {"rush": "0772", "in": 50.5, "out": 58.8},
-           {"rush": "0772", "in": 63.4, "out": 67.1},
-           {"rush": "0772", "in": 67.75, "out": 71.2},
-           {"rush": "0772", "in": 82.1, "out": 84.8}],
- "hook": ["Le regard des autres", "tue tes projets."],
- "topic": ["Le regard des autres", "tue tes projets."],
- "keywords": ["détruit", "peur.", "cimetières.", "courage", "mourir"],
- "replace": {"le": "les", "parent": "parents", "have": "avaient", "crée.": "crée.", "d'échouer.": "d'échouer,"},
- "replace_n": [["le", 2, "le"]],
- "flash": [{"t": {"word": "cimetières.", "off": 0.75}, "lab": "", "a": "Les meilleures idées", "b": "sont au cimetière.", "d": 1.1}],
- "choc": {"at": {"word": "courage"}, "text": "COURAGE", "d": 1.4},
- "cta": "COURAGE"}
+ "clips": [
+  {
+   "rush": "0772",
+   "in": 0.1,
+   "out": 4.2
+  },
+  {
+   "rush": "0772",
+   "in": 14.9,
+   "out": 24.9
+  },
+  {
+   "rush": "0772",
+   "in": 29.4,
+   "out": 32.5
+  },
+  {
+   "rush": "0772",
+   "in": 35.0,
+   "out": 38.0
+  },
+  {
+   "rush": "0772",
+   "in": 44.35,
+   "out": 49.7
+  },
+  {
+   "rush": "0772",
+   "in": 50.5,
+   "out": 58.8
+  },
+  {
+   "rush": "0772",
+   "in": 63.4,
+   "out": 67.1
+  },
+  {
+   "rush": "0772",
+   "in": 67.75,
+   "out": 71.2
+  },
+  {
+   "rush": "0772",
+   "in": 82.1,
+   "out": 84.8
+  }
+ ],
+ "hook": [
+  "Peur du regard",
+  "des autres ?"
+ ],
+ "topic": [
+  "Peur du regard",
+  "des autres ?"
+ ],
+ "keywords": [
+  "détruit",
+  "peur.",
+  "cimetières.",
+  "courage",
+  "mourir"
+ ],
+ "replace": {
+  "parent": "parents",
+  "have": "avaient",
+  "crée.": "crée.",
+  "d'échouer.": "d'échouer,"
+ },
+ "replace_n": [
+  [
+   "le",
+   2,
+   "les"
+  ]
+ ],
+ "flash": [
+  {
+   "t": {
+    "word": "cimetières.",
+    "off": 0.75
+   },
+   "lab": "",
+   "a": "Les meilleures idées",
+   "b": "sont au cimetière.",
+   "d": 1.1
+  }
+ ],
+ "choc": {
+  "at": {
+   "word": "courage"
+  },
+  "text": "COURAGE",
+  "d": 1.4
+ },
+ "cta": "COURAGE"
+}
