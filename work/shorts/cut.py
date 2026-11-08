@@ -70,6 +70,21 @@ def speech_start(rms, thr, t_from, t_floor):
     return t_floor
 
 
+def tts_words(path, rt_dir):
+    """Mots + horodatages d'un fichier de voix (même modèle de transcription que les rushes)."""
+    import numpy as np, sherpa_onnx
+    M = os.path.join(os.path.dirname(rt_dir), "models", "sherpa-onnx-nemo-parakeet-tdt-0.6b-v3-int8")
+    r = sherpa_onnx.OfflineRecognizer.from_transducer(encoder=f"{M}/encoder.int8.onnx", decoder=f"{M}/decoder.int8.onnx",
+                                                      joiner=f"{M}/joiner.int8.onnx", tokens=f"{M}/tokens.txt",
+                                                      num_threads=4, model_type="nemo_transducer")
+    a = np.frombuffer(subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-ac", "1", "-ar", "16000", "-f", "f32le", "-"],
+                                     capture_output=True).stdout, np.float32)
+    st = r.create_stream(); st.accept_waveform(16000, a); r.decode_stream(st)
+    tmp = {"segs": [{"tokens": list(st.result.tokens), "ts": list(st.result.timestamps)}]}
+    p = path + ".words.json"; json.dump(tmp, open(p, "w"))
+    return words_of(p)
+
+
 def islands(words, a, b, drops, env=None):
     ws = [w for w in words if w["s"] >= a - 0.05 and w["s"] < b
           and not any(x <= w["s"] < y for x, y in drops)
@@ -115,9 +130,19 @@ def main(spec_path, rt_dir, rush_dir, out_dir, grade):
     spec = json.load(open(spec_path)); os.makedirs(out_dir, exist_ok=True)
     pieces = []  # (input_index, s, e, words)
     inputs = []
+    tts_of = {}  # index du morceau → fichier de voix corrigée
     for c in spec["clips"]:
         f = glob.glob(f"{rush_dir}/*_{c['rush']}_D_MP4*.mp4")[0]
         if f not in inputs: inputs.append(f)
+        if "tts" in c:
+            # Phrase corrigée (voix clonée, accord de Bognin) : l'image vient du rush à partir de c["in"],
+            # le son du fichier corrigé. Les mots sont retranscrits pour les sous-titres.
+            tp = os.path.join(os.path.dirname(os.path.abspath(spec_path)), c["tts"])
+            d = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", tp],
+                                     capture_output=True, text=True).stdout)
+            tts_of[len(pieces)] = tp
+            pieces.append((inputs.index(f), c["in"], c["in"] + d, [dict(w, s=w["s"] + c["in"], e=w["e"] + c["in"]) for w in tts_words(tp, rt_dir)]))
+            continue
         W = words_of(f"{rt_dir}/{c['rush']}.json")
         if c["rush"] not in ENV: ENV[c["rush"]] = envelope(f)
         for isl in islands(W, c["in"], c["out"], c.get("drop", []), ENV[c["rush"]]):
@@ -127,9 +152,10 @@ def main(spec_path, rt_dir, rush_dir, out_dir, grade):
     for k, (i, s, e, ws) in enumerate(pieces):
         d = e - s; pf = f"{tmp}/p{k:02d}.mp4"
         # chaque morceau est décodé seul (-ss avant -i) : mémoire minimale
-        subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{s:.3f}", "-t", f"{d:.3f}", "-i", inputs[i],
+        extra = ["-i", tts_of[k], "-map", "0:v:0", "-map", "1:a:0"] if k in tts_of else []
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{s:.3f}", "-t", f"{d:.3f}", "-i", inputs[i], *extra,
                         "-vf", f"{grade},fps=30", "-af", f"afade=t=in:d=0.025,afade=t=out:st={max(0,d-0.03):.3f}:d=0.03",
-                        "-c:v", "libx264", "-crf", "16", "-preset", "fast", "-pix_fmt", "yuv420p", "-c:a", "pcm_s16le", "-ar", "48000",
+                        "-c:v", "libx264", "-crf", "16", "-preset", "fast", "-pix_fmt", "yuv420p", "-c:a", "pcm_s16le", "-ar", "48000", "-ac", "1",
                         "-threads", "2", pf.replace(".mp4", ".mov")], check=True)
         lst.append(pf.replace(".mp4", ".mov"))
         for w in ws:

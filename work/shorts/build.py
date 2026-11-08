@@ -237,7 +237,7 @@ def main(spec_path, words_path, out_dir):
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const IN='expo.out',OUT='power2.in',MOVE='power3.inOut',k=1,D_IN=.5,D_OUT=.28;
-const cfg={{ins:true,insDur:300}};const INS={json.dumps({int(n): v for n, v in ins.items()})};let INSWIN=[];
+const cfg={{ins:true,insDur:450}};const INS={json.dumps({int(n): v for n, v in ins.items()})};let INSWIN=[];
 $$('.ins .d').forEach(p=>{{const L=Math.ceil(p.getTotalLength());p._L=L;p.setAttribute('stroke-dasharray',L);}});
 const tl=gsap.timeline({{paused:true}});
 function cap(id,a,b){{const sp=$$(id+' > span');tl.set(id,{{opacity:1}},a);

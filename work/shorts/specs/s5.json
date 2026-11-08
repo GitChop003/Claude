@@ -1,7 +1,7 @@
 {
  "id": "s5",
  "title": "J'étais le plus timide de mon quartier",
- "rush_note": "0784 : la phrase sur la voix est dite deux fois (1re prise gardée), chiffre « plus de 1000 posts » retiré (non prouvé) ; phrase « la vitesse avec lequel… » retirée (faute à l'oral, aucun « laquelle » ailleurs dans les rushes pour la remplacer)",
+ "rush_note": "0784 : la phrase sur la voix est dite deux fois (1re prise gardée), chiffre « plus de 1000 posts » retiré (non prouvé) ; phrase « avec lequel » remplacée par sa voix clonée (« à laquelle »), couverte par l'insert de conversation",
  "clips": [
   {
    "rush": "0784",
@@ -57,13 +57,13 @@
   {
    "rush": "0784",
    "in": 102.9,
-   "out": 112.6,
-   "drop": [
-    [
-     103.3,
-     107.3
-    ]
-   ]
+   "tts": "../../voice/s5_laquelle.wav",
+   "note": "phrase corrigée « à laquelle », voix clonée XTTS-v2, accord de Bognin"
+  },
+  {
+   "rush": "0784",
+   "in": 107.3,
+   "out": 112.6
   }
  ],
  "hook": [
@@ -102,10 +102,10 @@
  "inserts": {
   "3": [
    {
-    "word": "vas-y.",
-    "off": -0.2
+    "word": "Vas-y,",
+    "off": -0.1
    },
-   2.6
+   4.4
   ]
  },
  "cta": "TIMIDE",
