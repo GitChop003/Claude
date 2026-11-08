@@ -268,6 +268,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
 #choc span{display:inline-block;margin:0 .02em}
 #choc.behind{left:0;width:1080px;top:520px;font-size:156px;letter-spacing:-.03em;text-shadow:none}
 #ctaw .lab{color:#fff;text-shadow:0 2px 14px rgba(10,18,32,.6)}
+#ctaw{top:700px}
 #prog{position:absolute;left:64px;top:298px;width:876px;height:5px;border-radius:3px;background:rgba(255,255,255,.3);overflow:hidden;opacity:0}
 #prog i{display:block;height:100%;width:100%;background:var(--cyan);transform-origin:0 50%;transform:scaleX(0)}
 .ui .t3:empty{display:none}
@@ -284,8 +285,8 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
 .lst .mk.on svg{opacity:1}
 </style></head>
 <body>
-<div id="root" class="pal-n lite" data-composition-id="main" data-start="0" data-duration="51.328" data-width="1080" data-height="1920">
-  <div id="vw"><video id="v" data-start="0" data-duration="51.328" data-has-audio="true" src="assets/cut.mp4" playsinline></video></div>
+<div id="root" class="pal-n lite" data-composition-id="main" data-start="0" data-duration="52.928" data-width="1080" data-height="1920">
+  <div id="vw"><video id="v" data-start="0" data-duration="52.928" data-has-audio="true" src="assets/cut.mp4" playsinline></video></div>
   <div id="dimfix"></div><div id="dim"></div>
         <div class="ins" id="ins1"><div class="it"><span>Vu.</span> <span class="a">Pas de DM.</span></div>
           <div class="stage">
@@ -363,7 +364,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const IN='expo.out',OUT='power2.in',MOVE='power3.inOut',k=1,D_IN=.5,D_OUT=.28;
-const cfg={ins:true,insDur:200};const INS={"1": [16.388, 2.0]};let INSWIN=[];
+const cfg={ins:true,insDur:300};const INS={"1": [16.388, 2.0]};let INSWIN=[];
 $$('.ins .d').forEach(p=>{const L=Math.ceil(p.getTotalLength());p._L=L;p.setAttribute('stroke-dasharray',L);});
 const tl=gsap.timeline({paused:true});
 function cap(id,a,b){const sp=$$(id+' > span');tl.set(id,{opacity:1},a);
@@ -423,7 +424,7 @@ cap('#c0',0.390,1.030);cap('#c1',1.030,1.910);cap('#c2',1.910,3.030);cap('#c3',3
       tl.fromTo('#ins2 .offer',{opacity:0,y:140,rotateX:18,rotateY:-12},{opacity:1,y:0,rotateX:4,rotateY:-6,duration:.6*k,ease:IN,immediateRender:false},a+.6*q);
       tl.to('#ins2 .offer',{rotateX:2,rotateY:-2,duration:Math.max(.2,d-1.2*q),ease:'none'},a+.6*q+.6*k);
       $$('#ins2 .ck').forEach((c,i)=>{tl.set(c,{className:'ck on'},a+(.95+i*.14)*q);tl.fromTo(c,{scale:.7},{scale:1,duration:.3,ease:IN,immediateRender:false},a+(.95+i*.14)*q);});});
-    INS[3]&&insert('#ins3',INS[3][0],INS[3][1],(a,d)=>{const q=Math.min(1,d/1.45);
+    INS[3]&&insert('#ins3',INS[3][0],INS[3][1],(a,d)=>{const q=Math.max(1,d/1.45);
       tl.fromTo('#ins3 .chat',{opacity:0,y:120,rotateX:14,rotateY:10},{opacity:1,y:0,rotateX:3,rotateY:3,duration:.5*k,ease:IN,immediateRender:false},a);
       tl.to('#ins3 .chat',{rotateX:1,rotateY:0,duration:Math.max(.2,d-.5*k),ease:'none'},a+.5*k);
       const txt="Salut Inès, ton post sur la régularité m'a parlé…";const o={n:0};const el=$('#draftTxt');el.textContent='';
@@ -440,13 +441,13 @@ cap('#c0',0.390,1.030);cap('#c1',1.030,1.910);cap('#c2',1.910,3.030);cap('#c3',3
 
 /* CTA : barre de recherche dans les 2,6 dernières secondes de parole, puis carte de fin */
 tl.set('#vw',{scale:1.0},47.228);
-tl.to('#dim',{opacity:.3,duration:D_IN},47.228);
+tl.to('#dim',{opacity:.18,duration:D_IN},47.228);
 tl.fromTo('#ctaw',{opacity:0,y:60},{opacity:1,y:0,duration:.6,ease:IN,immediateRender:false},47.278);
 (function(){const el=$('#ctat'),w="SILENCE",o={n:0};tl.to(o,{n:w.length,duration:1.1,ease:'none',onUpdate:()=>{el.textContent=w.slice(0,Math.round(o.n));}},47.828);})();
-tl.to('#cta .go',{scale:.88,duration:.12},49.328);tl.to('#cta .go',{scale:1,duration:.3,ease:IN},49.448);
-tl.to('#ctaw',{opacity:0,duration:D_OUT,ease:OUT},49.978);
-tl.to('#dim',{opacity:.74,duration:.4,ease:IN},49.928);
-tl.to(['#topic','#objection','#sig'].filter(s=>$(s)),{opacity:0,duration:.3},49.928);
-tl.fromTo('#end',{opacity:0,y:16},{opacity:1,y:0,duration:D_IN,ease:IN,immediateRender:false},50.028);
+tl.to('#cta .go',{scale:.88,duration:.12},50.328);tl.to('#cta .go',{scale:1,duration:.3,ease:IN},50.448);
+tl.to('#ctaw',{opacity:0,duration:D_OUT,ease:OUT},51.578);
+tl.to('#dim',{opacity:.74,duration:.4,ease:IN},51.578);
+tl.to(['#topic','#objection','#sig'].filter(s=>$(s)),{opacity:0,duration:.3},51.578);
+tl.fromTo('#end',{opacity:0,y:16},{opacity:1,y:0,duration:D_IN,ease:IN,immediateRender:false},51.678);
 window.__timelines=window.__timelines||{};window.__timelines["main"]=tl;tl.seek(0);
 </script></body></html>
