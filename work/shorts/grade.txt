@@ -1,1 +1,1 @@
-scale=1080:1920:flags=lanczos,format=gbrpf32,grayworld,format=yuv420p,huesaturation=saturation=-0.9:colors=g+c+m+b:strength=1,huesaturation=saturation=-0.12,curves=all='0/0 0.25/0.18 0.6/0.5 1/0.84',colorbalance=rm=0.04:bm=-0.04:gm=-0.02:rh=0.02:bh=-0.03,vignette=PI/4.5
+scale=1080:1920:flags=lanczos,format=gbrpf32,grayworld,format=yuv420p,huesaturation=saturation=-0.85:colors=g+c+m+b:strength=1,huesaturation=saturation=-0.08,curves=all='0/0 0.25/0.25 0.6/0.62 1/0.97',colorbalance=rm=0.03:bm=-0.03:rh=0.015:bh=-0.02,vignette=PI/7

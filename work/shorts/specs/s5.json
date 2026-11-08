@@ -102,5 +102,62 @@
    1.45
   ]
  },
- "cta": "TIMIDE"
+ "cta": "TIMIDE",
+ "tags": [
+  {
+   "t": {
+    "word": "Lorsque"
+   },
+   "text": "mon histoire",
+   "d": 2.6
+  }
+ ],
+ "choc": {
+  "at": {
+   "word": "timide",
+   "n": 1
+  },
+  "text": "TIMIDE",
+  "d": 1.4
+ },
+ "lists": [
+  {
+   "t": {
+    "word": "toi",
+    "n": 2
+   },
+   "title": "Toi qui as peur…",
+   "items": [
+    {
+     "text": "de créer du contenu",
+     "at": {
+      "word": "créer",
+      "n": 2
+     }
+    },
+    {
+     "text": "d'aller prospecter",
+     "at": {
+      "word": "prospecter,"
+     }
+    },
+    {
+     "text": "de lancer ton offre",
+     "at": {
+      "word": "offre,"
+     }
+    },
+    {
+     "text": "de débuter ton business",
+     "at": {
+      "word": "débuter"
+     }
+    }
+   ],
+   "until": {
+    "word": "vas-y.",
+    "off": -0.3
+   }
+  }
+ ]
 }

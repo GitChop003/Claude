@@ -12,6 +12,7 @@ Sortie : <out>/cut.mp4 (1080×1920, étalonné, voix -14 LUFS) + <out>/words.jso
 import json, os, subprocess, sys, glob
 
 PAD_IN, PAD_OUT, MAX_GAP = 0.10, 0.16, 0.45
+ENV = {}
 FILLERS = {"euh", "heu", "hum", "hmm", "bah", "euh,", "heu,"}
 
 
@@ -35,7 +36,40 @@ def words_of(rt_json):
     return [w for w in W if w["w"]]
 
 
-def islands(words, a, b, drops):
+def envelope(rush_file):
+    """Énergie de la voix par tranches de 10 ms (16 kHz mono) + seuil voix/silence propre au rush."""
+    import numpy as np
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", rush_file, "-map", "0:a:0", "-ac", "1", "-ar", "16000",
+                          "-f", "f32le", "-"], capture_output=True).stdout
+    a = np.frombuffer(raw, np.float32)
+    n = len(a) // 160
+    rms = np.sqrt((a[:n * 160].reshape(n, 160) ** 2).mean(1) + 1e-12)
+    floor, speech = np.percentile(rms, 10), np.percentile(rms, 70)
+    thr = max(floor * 2.5, speech * 0.10)
+    return rms, thr
+
+
+def speech_end(rms, thr, t_from, t_cap):
+    """Premier instant après t_from où la voix reste sous le seuil 80 ms d'affilée (fin réelle du mot)."""
+    i = int(t_from * 100); cap = int(t_cap * 100); quiet = 0
+    while i < min(cap, len(rms)):
+        quiet = quiet + 1 if rms[i] < thr else 0
+        if quiet >= 8: return (i - 7) / 100
+        i += 1
+    return t_cap
+
+
+def speech_start(rms, thr, t_from, t_floor):
+    """En remontant depuis t_from : début réel de l'attaque (voix sous le seuil 50 ms d'affilée)."""
+    i = int(t_from * 100); fl = int(t_floor * 100); quiet = 0
+    while i > max(fl, 0):
+        quiet = quiet + 1 if rms[i] < thr else 0
+        if quiet >= 5: return (i + 5) / 100
+        i -= 1
+    return t_floor
+
+
+def islands(words, a, b, drops, env=None):
     ws = [w for w in words if w["s"] >= a - 0.05 and w["s"] < b
           and not any(x <= w["s"] < y for x, y in drops)
           and w["w"].lower().strip(".,!?") not in FILLERS]
@@ -45,6 +79,27 @@ def islands(words, a, b, drops):
             out[-1]["e"] = w["e"]; out[-1]["words"].append(w)
         else:
             out.append({"s": w["s"], "e": w["e"], "words": [w]})
+    if env is not None:
+        # Bornes calées sur le son réel : on laisse finir la dernière syllabe (les horodatages du modèle
+        # marquent le DÉBUT des mots), sans jamais mordre sur le mot suivant non retenu.
+        rms, thr = env
+        idx = {id(w): k for k, w in enumerate(words)}
+        for isl in out:
+            first, last = isl["words"][0], isl["words"][-1]
+            k1, k2 = idx[id(first)], idx[id(last)]
+            nxt = words[k2 + 1]["s"] - 0.04 if k2 + 1 < len(words) else last["s"] + 1.2
+            prv = words[k1 - 1]["s"] + 0.25 if k1 > 0 else max(0, first["s"] - 0.4)
+            e_real = speech_end(rms, thr, last["s"] + 0.12, min(nxt, last["s"] + 1.1))
+            s_real = speech_start(rms, thr, first["s"], max(prv, first["s"] - 0.35))
+            isl["e"] = min(nxt, max(e_real + 0.12, isl["e"] + 0.10))  # jamais plus court qu'avant
+            isl["s"] = max(prv, s_real - 0.06)
+        res = []
+        for isl in out:
+            if res and isl["s"] <= res[-1]["e"]:
+                res[-1]["e"] = isl["e"]; res[-1]["words"] += isl["words"]
+            else:
+                res.append(dict(isl))
+        return res
     res = []
     for isl in out:
         s = max(a, isl["s"] - PAD_IN); e = min(b, isl["e"] + PAD_OUT)
@@ -63,7 +118,8 @@ def main(spec_path, rt_dir, rush_dir, out_dir, grade):
         f = glob.glob(f"{rush_dir}/*_{c['rush']}_D_MP4*.mp4")[0]
         if f not in inputs: inputs.append(f)
         W = words_of(f"{rt_dir}/{c['rush']}.json")
-        for isl in islands(W, c["in"], c["out"], c.get("drop", [])):
+        if c["rush"] not in ENV: ENV[c["rush"]] = envelope(f)
+        for isl in islands(W, c["in"], c["out"], c.get("drop", []), ENV[c["rush"]]):
             pieces.append((inputs.index(f), isl["s"], isl["e"], isl["words"]))
     tmp = f"{out_dir}/_pieces"; os.makedirs(tmp, exist_ok=True)
     t, out_words, cuts, lst = 0.0, [], [], []
@@ -79,9 +135,15 @@ def main(spec_path, rt_dir, rush_dir, out_dir, grade):
             out_words.append({"w": w["w"], "s": round(t + w["s"] - s, 3), "e": round(t + w["e"] - s, 3)})
         t += d; cuts.append(round(t, 3))
     open(f"{tmp}/list.txt", "w").write("".join(f"file '{os.path.abspath(x)}'\n" for x in lst))
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", f"{tmp}/list.txt",
-                    "-vf", "tpad=stop_mode=clone:stop_duration=1.4",
-                    "-af", "apad=pad_dur=1.4,highpass=f=70,afftdn=nr=8:nf=-40,acompressor=threshold=-20dB:ratio=2.5:attack=8:release=120,loudnorm=I=-14:TP=-1.5:LRA=9",
+    T = t + 1.4
+    music = os.path.join(os.path.dirname(os.path.abspath(__file__)), "music_bed.wav")  # nappe originale à -39 LUFS
+    fcx = (f"[0:v]tpad=stop_mode=clone:stop_duration=1.4[vo];"
+           f"[0:a]apad=pad_dur=1.4,highpass=f=70,afftdn=nr=8:nf=-40,acompressor=threshold=-20dB:ratio=2.5:attack=8:release=120,"
+           f"loudnorm=I=-14:TP=-1.5:LRA=9[vx];"
+           f"[1:a]atrim=0:{T:.3f},asetpts=PTS-STARTPTS,afade=t=in:d=1.2,afade=t=out:st={T-2.2:.3f}:d=2.2[mx];"
+           f"[vx][mx]amix=inputs=2:normalize=0:duration=first,alimiter=limit=0.89[ao]")
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", f"{tmp}/list.txt", "-i", music,
+                    "-filter_complex", fcx, "-map", "[vo]", "-map", "[ao]",
                     "-c:v", "libx264", "-crf", "18", "-preset", "medium", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
                     "-movflags", "+faststart", "-threads", "3", f"{out_dir}/cut.mp4"], check=True)
     n = len(pieces)

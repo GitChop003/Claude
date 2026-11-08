@@ -130,5 +130,83 @@
   "behind": true,
   "d": 1.7
  },
- "cta": "LÉGITIME"
+ "cta": "LÉGITIME",
+ "tags": [
+  {
+   "t": {
+    "word": "Cette"
+   },
+   "text": "la petite voix",
+   "d": 2.6
+  }
+ ],
+ "lists": [
+  {
+   "t": {
+    "word": "Alors"
+   },
+   "title": "Et pendant ce temps…",
+   "items": [
+    {
+     "text": "Tu écris",
+     "at": {
+      "word": "écris,"
+     }
+    },
+    {
+     "text": "Tu effaces",
+     "at": {
+      "word": "effaces,"
+     }
+    },
+    {
+     "text": "Tu réécris",
+     "at": {
+      "word": "réécris."
+     }
+    }
+   ],
+   "until": {
+    "word": "rejoint",
+    "off": -0.1
+   }
+  }
+ ],
+ "ui": [
+  {
+   "t": {
+    "word": "rejoint"
+   },
+   "d": 2.6,
+   "icon": "draft",
+   "t1": "Brouillons",
+   "t2": "14 posts non publiés",
+   "t3": "Le dernier date d'hier",
+   "top": 600
+  },
+  {
+   "t": {
+    "word": "messages",
+    "n": 1
+   },
+   "d": 3.8,
+   "icon": "dm",
+   "t1": "Nouveau message",
+   "t2": "« Merci, c'est exactement",
+   "t3": "ce dont j'avais besoin »",
+   "top": 600
+  }
+ ],
+ "flash": [
+  {
+   "t": {
+    "word": "prêt,",
+    "off": 0.3
+   },
+   "lab": "",
+   "a": "Jamais prêt ?",
+   "b": "Publie quand même.",
+   "d": 1.2
+  }
+ ]
 }

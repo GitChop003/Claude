@@ -96,5 +96,45 @@
   "text": "COURAGE",
   "d": 1.4
  },
- "cta": "COURAGE"
+ "cta": "COURAGE",
+ "tags": [
+  {
+   "t": {
+    "word": "Mais",
+    "n": 1
+   },
+   "text": "le vrai frein",
+   "d": 2.4
+  }
+ ],
+ "lists": [
+  {
+   "t": {
+    "word": "peur.",
+    "n": 1
+   },
+   "title": "Peur de ce que vont penser…",
+   "items": [
+    {
+     "text": "Les parents",
+     "at": {
+      "word": "parents",
+      "n": 1
+     }
+    },
+    {
+     "text": "Les amis",
+     "at": {
+      "word": "amis",
+      "n": 1
+     }
+    }
+   ],
+   "until": {
+    "word": "business.",
+    "n": 2,
+    "off": 0.5
+   }
+  }
+ ]
 }
