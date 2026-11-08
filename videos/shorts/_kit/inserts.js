@@ -1,0 +1,42 @@
+  /* Inserts illustrés */
+  INSWIN=[];
+  if(cfg.ins){
+    const D=cfg.insDur/100;
+    INSWIN=[];const insert=(id,a,slot,extra)=>{const d=Math.min(D,slot),e=a+d;INSWIN.push([a,e]);
+      tl.set(id,{opacity:1},a);tl.set(id,{opacity:0},e);
+      tl.fromTo(id+' .it span',{yPercent:60,opacity:0},{yPercent:0,opacity:1,duration:.45*k,ease:IN,stagger:.08*k,immediateRender:false},a);
+      tl.fromTo(id+' .pl',{opacity:0,y:40},{opacity:1,y:0,duration:.5*k,ease:IN,stagger:.1*k,immediateRender:false},a);
+      $$(id+' .d').forEach((p,i)=>tl.fromTo(p,{strokeDashoffset:p._L},{strokeDashoffset:0,duration:.55*k,ease:MOVE,immediateRender:false},a+.08+i*.06*k));
+      extra(a,d);};
+    gsap.set('.ins .ring',{opacity:0});$$('#ins2 .ck').forEach(c=>c.className='ck');$('#ins3 .send').className='send';$('#draftTxt').textContent='';
+    INS[1]&&insert('#ins1',INS[1][0],INS[1][1],(a,d)=>{const end=a+d;
+      tl.fromTo('#ins1 .phone',{rotateY:-30,rotateX:12,y:120,opacity:0},{rotateY:-14,rotateX:6,y:0,opacity:1,duration:.75*k,ease:IN,immediateRender:false},a);
+      tl.to('#ins1 .phone',{rotateY:-8,rotateX:4,duration:Math.max(.3,d-.75*k),ease:'none'},a+.75*k);
+      tl.fromTo('#ins1 .stage',{scale:1},{scale:1.04,duration:d,ease:'none',immediateRender:false},a);
+      const c={v:0,l:0};tl.to(c,{v:1248,l:200,duration:.9*k,ease:'power2.out',onUpdate:()=>{$('#v1').textContent=Math.round(c.v).toLocaleString('fr-FR');$('#v2').textContent=Math.round(c.l);}},a+.3);
+      tl.fromTo('#ins1 .toast',{x:90,opacity:0},{x:0,opacity:1,duration:.5*k,ease:IN,stagger:.22*k,immediateRender:false},a+.4);
+      tl.fromTo('#ins1 .inbox',{y:70,opacity:0,scale:.96},{y:0,opacity:1,scale:1,duration:.6*k,ease:IN,immediateRender:false},a+.75*k);
+      tl.set('#ins1 .typing',{opacity:1},a+1.05*k);
+      tl.fromTo('#ins1 .typing i',{y:0},{y:-8,duration:.18,ease:'sine.inOut',yoyo:true,repeat:3,stagger:.08,immediateRender:false},a+1.05*k);
+      tl.to('#ins1 .typing',{opacity:0,duration:.2},Math.min(end-.15,a+1.65*k));});
+    INS[2]&&insert('#ins2',INS[2][0],INS[2][1],(a,d)=>{const q=Math.min(1,d/1.55);
+      tl.fromTo('#ins2 .draft',{opacity:0,y:60,rotate:-9},{opacity:1,y:0,rotate:-5,duration:.45*k,ease:IN,immediateRender:false},a);
+      tl.fromTo('#ins2 .draft s',{backgroundSize:'0% 3px'},{backgroundSize:'100% 3px',duration:.22*q,ease:'power1.inOut',stagger:.09*q,immediateRender:false},a+.2*q);
+      tl.to('#ins2 .draft',{opacity:.45,scale:.94,y:-30,filter:'blur(3px)',duration:.4*k,ease:MOVE},a+.6*q);
+      tl.fromTo('#ins2 .offer',{opacity:0,y:140,rotateX:18,rotateY:-12},{opacity:1,y:0,rotateX:4,rotateY:-6,duration:.6*k,ease:IN,immediateRender:false},a+.6*q);
+      tl.to('#ins2 .offer',{rotateX:2,rotateY:-2,duration:Math.max(.2,d-1.2*q),ease:'none'},a+.6*q+.6*k);
+      $$('#ins2 .ck').forEach((c,i)=>{tl.set(c,{className:'ck on'},a+(.95+i*.14)*q);tl.fromTo(c,{scale:.7},{scale:1,duration:.3,ease:IN,immediateRender:false},a+(.95+i*.14)*q);});});
+    INS[3]&&insert('#ins3',INS[3][0],INS[3][1],(a,d)=>{const q=Math.min(1,d/1.45);
+      tl.fromTo('#ins3 .chat',{opacity:0,y:120,rotateX:14,rotateY:10},{opacity:1,y:0,rotateX:3,rotateY:3,duration:.5*k,ease:IN,immediateRender:false},a);
+      tl.to('#ins3 .chat',{rotateX:1,rotateY:0,duration:Math.max(.2,d-.5*k),ease:'none'},a+.5*k);
+      const txt="Salut Inès, ton post sur la régularité m'a parlé…";const o={n:0};const el=$('#draftTxt');el.textContent='';
+      tl.to(o,{n:txt.length,duration:.45*q,ease:'none',onUpdate:()=>{el.textContent=txt.slice(0,Math.round(o.n));}},a+.15*q);
+      tl.set('#ins3 .send',{className:'send on'},a+.5*q);
+      tl.to('#ins3 .send',{scale:.86,duration:.08},a+.62*q);tl.to('#ins3 .send',{scale:1,duration:.18,ease:IN},a+.7*q);
+      tl.to(o,{n:0,duration:.01,onUpdate:()=>{el.textContent=txt.slice(0,Math.round(o.n));}},a+.72*q);
+      tl.fromTo('#sent',{opacity:0,y:420,scale:.9},{opacity:1,y:0,scale:1,duration:.4*k,ease:IN,immediateRender:false},a+.72*q);
+      tl.fromTo('#ins3 .typing2',{opacity:0},{opacity:1,duration:.12,immediateRender:false},a+1.0*q);
+      tl.fromTo('#ins3 .typing2 i',{y:0},{y:-8,duration:.14,ease:'sine.inOut',yoyo:true,repeat:1,stagger:.06,immediateRender:false},a+1.0*q);
+      tl.to('#ins3 .typing2',{opacity:0,duration:.1},a+1.22*q);
+      tl.fromTo('#reply',{opacity:0,y:20},{opacity:1,y:0,duration:.25,ease:IN,immediateRender:false},a+1.22*q);});
+  }

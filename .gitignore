@@ -4,3 +4,8 @@ media/
 snapshots/
 *.mp4
 *.wav
+*.mov
+videos/shorts/*/assets/_pieces/
+videos/shorts/*/assets/_mf/
+videos/shorts/*/assets/fg/
+videos/shorts/*/assets/kit/

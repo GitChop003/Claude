@@ -1,0 +1,130 @@
+{
+ "id": "s3",
+ "title": "Tu es qui, toi, pour dire ça ?",
+ "rush_note": "0785 : texte récité en plusieurs prises, on garde la meilleure prise de chaque phrase",
+ "clips": [
+  {
+   "rush": "0785",
+   "in": 5.3,
+   "out": 9.7
+  },
+  {
+   "rush": "0785",
+   "in": 21.4,
+   "out": 27.2
+  },
+  {
+   "rush": "0785",
+   "in": 31.3,
+   "out": 38.2
+  },
+  {
+   "rush": "0785",
+   "in": 49.5,
+   "out": 54.0
+  },
+  {
+   "rush": "0785",
+   "in": 57.8,
+   "out": 61.6
+  },
+  {
+   "rush": "0785",
+   "in": 85.7,
+   "out": 92.4
+  },
+  {
+   "rush": "0785",
+   "in": 104.2,
+   "out": 109.8
+  },
+  {
+   "rush": "0785",
+   "in": 116.2,
+   "out": 119.0
+  },
+  {
+   "rush": "0785",
+   "in": 125.1,
+   "out": 128.1
+  },
+  {
+   "rush": "0785",
+   "in": 136.1,
+   "out": 142.1
+  },
+  {
+   "rush": "0785",
+   "in": 154.4,
+   "out": 158.5
+  },
+  {
+   "rush": "0785",
+   "in": 178.2,
+   "out": 183.5
+  },
+  {
+   "rush": "0785",
+   "in": 199.7,
+   "out": 200.6
+  }
+ ],
+ "hook": [
+  "« Tu es qui, toi,",
+  "pour dire ça ? »"
+ ],
+ "topic": [
+  "Pas légitime ?",
+  "Lis ça."
+ ],
+ "keywords": [
+  "semblant.",
+  "brouillons.",
+  "légitime",
+  "place.",
+  "pouvoir.",
+  "même."
+ ],
+ "replace": {
+  "poste": "post",
+  "postes": "posts",
+  "comparées": "de plus",
+  "Avance": "Avant",
+  "et": "chaque",
+  "zappel.": "appel.",
+  "ne": "ne",
+  "sentire": "sentiras",
+  "chacun": "chaque",
+  "Luriti": "lui retire",
+  "Public": "Publie",
+  "qu'entre": "qu'entre-temps,",
+  "temps,": "",
+  "avance": "avant"
+ },
+ "replace_n": [
+  [
+   "ne",
+   2,
+   "Tu ne"
+  ],
+  [
+   "un",
+   2,
+   ""
+  ],
+  [
+   "un",
+   2,
+   ""
+  ]
+ ],
+ "choc": {
+  "at": {
+   "word": "légitime"
+  },
+  "text": "LÉGITIME",
+  "behind": true,
+  "d": 1.7
+ },
+ "cta": "LÉGITIME"
+}

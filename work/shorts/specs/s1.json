@@ -1,0 +1,91 @@
+{
+ "id": "s1",
+ "title": "Filme tes séances",
+ "rush_note": "0751 : plusieurs prises de la même phrase, on garde la meilleure",
+ "clips": [
+  {
+   "rush": "0751",
+   "in": 0.89,
+   "out": 4.7
+  },
+  {
+   "rush": "0751",
+   "in": 9.6,
+   "out": 13.8
+  },
+  {
+   "rush": "0751",
+   "in": 14.6,
+   "out": 23.75
+  },
+  {
+   "rush": "0751",
+   "in": 29.6,
+   "out": 33.6
+  },
+  {
+   "rush": "0751",
+   "in": 39.5,
+   "out": 41.8
+  },
+  {
+   "rush": "0751",
+   "in": 52.4,
+   "out": 53.9
+  },
+  {
+   "rush": "0751",
+   "in": 59.6,
+   "out": 69.4
+  },
+  {
+   "rush": "0751",
+   "in": 69.9,
+   "out": 74.9
+  }
+ ],
+ "hook": [
+  "Plus d'idées de contenu ?",
+  "Filme tes séances."
+ ],
+ "keywords": [
+  "séances",
+  "l'illimité",
+  "filmer",
+  "hook",
+  "moments"
+ ],
+ "replace": {
+  "l'immigrée": "l'illimité",
+  "vingt?": "vente ?",
+  "sciences": "séances",
+  "leur": "le",
+  "Tes": "tes",
+  "préparés.": "préparés.",
+  "Comme": "Ou"
+ },
+ "flash": [
+  {
+   "t": {
+    "word": "méthode",
+    "off": 0.9
+   },
+   "lab": "la méthode",
+   "a": "1 hook tourné à part,",
+   "b": "puis ta séance",
+   "d": 1.1
+  }
+ ],
+ "cta": "SÉANCE",
+ "topic": [
+  "Plus d'idées ?",
+  "Filme tes séances."
+ ],
+ "replace_n": [
+  [
+   "te",
+   2,
+   ""
+  ]
+ ]
+}
