@@ -88,54 +88,6 @@
    ""
   ]
  ],
- "tags": [
-  {
-   "t": {
-    "word": "Tout"
-   },
-   "text": "astuce n° 1",
-   "d": 2.6
-  }
- ],
- "lists": [
-  {
-   "t": {
-    "word": "appels",
-    "n": 1
-   },
-   "title": "Tout ça, tu le filmes",
-   "items": [
-    {
-     "text": "Appels de vente",
-     "at": {
-      "word": "vente"
-     }
-    },
-    {
-     "text": "Séances de coaching",
-     "at": {
-      "word": "coaching",
-      "n": 2
-     }
-    },
-    {
-     "text": "Deep work",
-     "at": {
-      "word": "work,"
-     }
-    },
-    {
-     "text": "Tes formations",
-     "at": {
-      "word": "former,"
-     }
-    }
-   ],
-   "until": {
-    "word": "t'aider."
-   }
-  }
- ],
  "ui": [
   {
    "t": {
@@ -146,8 +98,7 @@
    "icon": "rec",
    "t1": "Enregistrement",
    "t2": "Séance avec Inès",
-   "t3": "52 min · prête à découper",
-   "top": 600
+   "t3": "52 min · prête à découper"
   }
  ],
  "choc": {
@@ -157,5 +108,49 @@
   },
   "text": "HOOK",
   "d": 1.3
- }
+ },
+ "opening": "top",
+ "enum": [
+  {
+   "t": {
+    "word": "appels",
+    "n": 1
+   },
+   "style": "tiles",
+   "items": [
+    {
+     "text": "Appels de vente",
+     "at": {
+      "word": "vente"
+     },
+     "icon": "call"
+    },
+    {
+     "text": "Séances",
+     "at": {
+      "word": "coaching",
+      "n": 2
+     },
+     "icon": "seance"
+    },
+    {
+     "text": "Deep work",
+     "at": {
+      "word": "work,"
+     },
+     "icon": "focus"
+    },
+    {
+     "text": "Formations",
+     "at": {
+      "word": "former,"
+     },
+     "icon": "learn"
+    }
+   ],
+   "until": {
+    "word": "t'aider."
+   }
+  }
+ ]
 }

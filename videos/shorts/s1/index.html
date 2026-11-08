@@ -263,12 +263,28 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
 .flashc .a span,.flashc .b span{display:block}
 .flashc .thread{height:4px;width:400px;background:var(--cyan-p);margin:34px 0 0 110px;transform-origin:0 50%;border-radius:2px}
 #end{background:rgba(10,18,32,.0)}
-#hook{right:96px}
-#hook .l{white-space:nowrap;font-size:77px}
+#root{--cap-y:1408px}
+#hookbg,#sig{display:none}
+/* Ouvertures typographiques sur le plan (v4) */
+#hook{left:72px;right:72px;top:312px;color:#fff;text-shadow:0 2px 18px rgba(10,18,32,.45)}
+#root.pal-n #hook{color:#fff}
+#hook .l{white-space:nowrap}
+#hook .l:first-child{font-weight:600;font-size:54px;letter-spacing:0;margin-bottom:6px}
+#hook .l.c{font-size:100px;letter-spacing:-.03em}
+#root.pal-n #hook .l.c span{color:#fff}
+#hook .rule{width:120px;height:5px;border-radius:3px;background:var(--cyan);margin-top:22px;transform-origin:0 50%}
+#topic{left:72px;top:322px;height:auto;padding:0;background:none!important;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;
+  font-size:30px;font-weight:500;color:#fff;gap:12px;text-shadow:0 1px 10px rgba(10,18,32,.5)}
+#topic::after{display:none}
+#root.pal-n #topic{color:#fff}
+#root.pal-n #topic b{color:#fff;font-weight:800}
+#fsbg{position:absolute;inset:0;background:var(--papier);opacity:0}
+.fs .gw span,.fs .sw,.fs .kw2 span,.fs .nb span{color:var(--encre)!important;text-shadow:none!important}
+.fs .nb b{color:var(--cyan-p)!important}
 #choc span{display:inline-block;margin:0 .02em}
 #choc.behind{left:0;width:1080px;top:520px;font-size:156px;letter-spacing:-.03em;text-shadow:none}
 #ctaw .lab{color:#fff;text-shadow:0 2px 14px rgba(10,18,32,.6)}
-#ctaw{top:700px}
+#ctaw{top:1150px}
 #prog{position:absolute;left:64px;top:298px;width:876px;height:5px;border-radius:3px;background:rgba(255,255,255,.3);overflow:hidden;opacity:0}
 #prog i{display:block;height:100%;width:100%;background:var(--cyan);transform-origin:0 50%;transform:scaleX(0)}
 .ui .t3:empty{display:none}
@@ -283,6 +299,35 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
 .lst .mk.on{background:var(--cyan-p);border-color:var(--cyan-p)}
 .lst .mk.x.on{background:var(--rouge);border-color:var(--rouge)}
 .lst .mk.on svg{opacity:1}
+.enum-g{position:absolute;left:64px;width:952px;top:470px;height:260px}
+.enum-g .gw{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0}
+.enum-g .gw small{font:800 30px Montserrat;letter-spacing:.12em;color:var(--cyan);text-shadow:0 2px 12px rgba(10,18,32,.5)}
+.enum-g .gw span{font:900 132px/1 Montserrat;letter-spacing:-.02em;color:#fff;text-transform:uppercase;text-shadow:0 6px 30px rgba(10,18,32,.45)}
+.enum-s{position:absolute;left:64px;top:560px;padding-left:34px;opacity:0}
+.enum-s .rail{position:absolute;left:0;top:6px;width:6px;height:calc(100% - 12px);border-radius:3px;background:var(--cyan);transform-origin:50% 0}
+.enum-s .sw{font:900 76px/1.12 Montserrat;letter-spacing:-.02em;color:#fff;text-shadow:0 4px 22px rgba(10,18,32,.55);opacity:0}
+.enum-t{position:absolute;left:64px;width:952px;top:520px;opacity:0}
+.enum-t .tt{font:800 30px Montserrat;color:#fff;text-shadow:0 2px 12px rgba(10,18,32,.55);margin:0 0 18px 6px}
+.enum-t .row{display:flex;gap:22px}
+.enum-t .tl-t{flex:1;border-radius:28px;padding:28px 18px 24px;display:flex;flex-direction:column;align-items:center;gap:16px;
+  background:rgba(255,255,255,.86);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.7);box-shadow:0 24px 60px rgba(10,18,32,.25)}
+.enum-t .ic{width:110px;height:110px;border-radius:30px;background:#EEF0F3;display:flex;align-items:center;justify-content:center}
+.enum-t .ic svg{width:64px;height:64px;fill:none;stroke:#8a93a3;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.enum-t .tl-t b{font:800 30px/1.15 Montserrat;color:var(--encre);text-align:center}
+.enum-t .tl-t.on .ic{background:var(--cyan-p)}
+.enum-t .tl-t.on .ic svg{stroke:#fff}
+.enum-t .row{gap:16px}
+.enum-t .tl-t{padding:22px 10px 18px;gap:12px;border-radius:24px}
+.enum-t .ic{width:88px;height:88px;border-radius:24px}
+.enum-t .ic svg{width:52px;height:52px}
+.enum-t .tl-t b{font-size:27px;line-height:1.1}
+.enum-x{position:absolute;left:72px;opacity:1}
+.kw2{position:relative;font:900 64px/1.08 Montserrat;letter-spacing:-.02em;color:#fff;text-shadow:0 3px 18px rgba(10,18,32,.5);opacity:0;width:max-content}
+.kw2 i{position:absolute;left:-6px;right:-6px;top:52%;height:7px;border-radius:4px;background:var(--rouge);transform-origin:0 50%}
+.enum-n{position:absolute;left:72px;width:936px;height:190px}
+.nb{position:absolute;inset:0;display:flex;align-items:center;gap:30px;opacity:0}
+.nb b{font:900 170px/1 Montserrat;color:var(--cyan);text-shadow:0 4px 24px rgba(10,18,32,.4)}
+.nb span{font:800 68px/1.05 Montserrat;color:#fff;text-shadow:0 3px 18px rgba(10,18,32,.5)}
 </style></head>
 <body>
 <div id="root" class="pal-n lite" data-composition-id="main" data-start="0" data-duration="42.658" data-width="1080" data-height="1920">
@@ -340,18 +385,15 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
               <div class="comp"><div class="field"><span id="draftTxt"></span><span class="cur2"></span></div><div class="send"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></div></div>
             </div>
           </div></div>
-        <div class="glass" id="topic" data-g="bandeau"><span>200 likes.</span><b>0 client.</b></div>
-        <div id="objection"><b>OBJECTION :</b> « Je dois réfléchir »</div>
-        <div id="hookbg"></div>
-        <div id="hook"><div class="k"><span>Tu postes. Personne n'écrit.</span></div><div class="l"><span>200 likes.</span></div><div class="l c"><span>0 client.</span></div></div>
 
   <div class="glass" id="topic"><span>Plus d&#x27;idées ?</span><b>Filme tes séances.</b></div>
   <div id="prog"><i></i></div>
   <div id="hookbg"></div>
-  <div id="hook"><div class="l"><span>Plus d&#x27;idées ?</span></div><div class="l c"><span>Filme tes séances.</span></div></div>
+  <div id="hook"><div class="l"><span>Plus d&#x27;idées ?</span></div><div class="l c"><span>Filme tes séances.</span></div><div class="rule"></div></div>
   <div id="sig"><svg viewBox="0 0 32 32" fill="none"><rect id="sigr" x="2.5" y="2.5" width="27" height="27" rx="8" stroke="#fff" stroke-width="2.6"/><circle id="sigc" cx="16" cy="16" r="6.2" stroke="#fff" stroke-width="2.6"/><circle id="sigd" cx="23.6" cy="8.4" r="1.8" fill="#fff"/></svg><span>@the_process.io</span></div>
-  <div id="choc"><span>H</span><span>O</span><span>O</span><span>K</span></div>
-  <div class="glass white ui" id="u0" style="top:600px"><div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="3.4" stroke-linejoin="round"><rect x="6" y="13" width="26" height="22" rx="5"/><path d="M32 21l10-6v18l-10-6z"/><circle cx="16" cy="24" r="4" fill="#00D9FF" stroke="none"/></svg></div><div><div class="t1">Enregistrement</div><div class="t2">Séance avec Inès</div><div class="t3">52 min · prête à découper</div></div><div class="ex">Exemple</div></div><div class="glass white lst" id="l0" style="top:520px"><div class="lt">Tout ça, tu le filmes</div><div class="li" id="l0r0"><i class="mk check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span>Appels de vente</span></div><div class="li" id="l0r1"><i class="mk check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span>Séances de coaching</span></div><div class="li" id="l0r2"><i class="mk check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span>Deep work</span></div><div class="li" id="l0r3"><i class="mk check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span>Tes formations</span></div></div><div class="glass tag tg" id="g0"><i></i>astuce n° 1</div>
+  <div id="fsbg"></div>
+  <div id="choc" style="top:1170px"><span>H</span><span>O</span><span>O</span><span>K</span></div>
+  <div class="glass white ui" id="u0" style="top:1170px"><div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="3.4" stroke-linejoin="round"><rect x="6" y="13" width="26" height="22" rx="5"/><path d="M32 21l10-6v18l-10-6z"/><circle cx="16" cy="24" r="4" fill="#00D9FF" stroke="none"/></svg></div><div><div class="t1">Enregistrement</div><div class="t2">Séance avec Inès</div><div class="t3">52 min · prête à découper</div></div><div class="ex">Exemple</div></div><div class="enum-t" id="e0" style="top:1170px"><div class="row"><div class="tl-t" id="e0w0"><div class="ic"><svg viewBox="0 0 48 48"><path d="M10 28v-4a14 14 0 0 1 28 0v4"/><rect x="7" y="27" width="7" height="12" rx="3"/><rect x="34" y="27" width="7" height="12" rx="3"/><path d="M38 39c0 4-5 5-9 5"/></svg></div><b>Appels de vente</b></div><div class="tl-t" id="e0w1"><div class="ic"><svg viewBox="0 0 48 48"><circle cx="16" cy="17" r="6"/><circle cx="33" cy="17" r="6"/><path d="M5 38c1-7 6-10 11-10s10 3 11 10M22 38c1-7 6-10 11-10s10 3 11 10"/></svg></div><b>Séances</b></div><div class="tl-t" id="e0w2"><div class="ic"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="16"/><circle cx="24" cy="24" r="8"/><circle cx="24" cy="24" r="1.5"/></svg></div><b>Deep work</b></div><div class="tl-t" id="e0w3"><div class="ic"><svg viewBox="0 0 48 48"><path d="M4 18l20-9 20 9-20 9z"/><path d="M12 22v10c0 3 6 6 12 6s12-3 12-6V22"/></svg></div><b>Formations</b></div></div></div>
   <div class="flashc" id="f0"><div class="in"><div class="lab">la méthode</div><div class="a"><span>1 hook tourné à part,</span></div><div class="b"><span>puis ta séance</span></div><div class="thread"></div></div></div>
   <div class="cap" id="c0"><span>tu</span> <span>filmes</span> <span>déjà</span></div><div class="cap" id="c1"><span>beaucoup</span> <span>tes</span> <span class="kw">séances</span></div><div class="cap" id="c2"><span>de</span> <span>coaching</span> <span>avec</span></div><div class="cap" id="c3"><span>tes</span> <span>élèves.</span></div><div class="cap" id="c4"><span>La</span> <span>meilleure</span> <span>façon</span></div><div class="cap" id="c5"><span>de</span> <span>créer</span> <span>du</span></div><div class="cap" id="c6"><span>contenu</span> <span>à</span> <span class="kw">l&#x27;illimité</span></div><div class="cap" id="c7"><span>aujourd&#x27;hui,</span></div><div class="cap" id="c8"><span>c&#x27;est</span> <span>de</span> <span>profiter</span></div><div class="cap" id="c9"><span>de</span> <span>chaque</span> <span>moment.</span></div><div class="cap" id="c10"><span>tes</span> <span>appels</span> <span>de</span></div><div class="cap" id="c11"><span>vente ?</span></div><div class="cap" id="c12"><span>tes</span> <span>appels</span> <span>de</span></div><div class="cap" id="c13"><span>coaching.</span></div><div class="cap" id="c14"><span>tes</span> <span class="kw">séances</span> <span>de</span></div><div class="cap" id="c15"><span>deep</span> <span>work,</span></div><div class="cap" id="c16"><span>même</span> <span>tes</span> <span class="kw">séances</span></div><div class="cap" id="c17"><span>où</span> <span>tu</span> <span>es</span></div><div class="cap" id="c18"><span>en</span> <span>train</span> <span>de</span></div><div class="cap" id="c19"><span>te</span> <span>former,</span></div><div class="cap" id="c20"><span>toi</span> <span>même</span> <span>Tout</span></div><div class="cap" id="c21"><span>ça,</span></div><div class="cap" id="c22"><span>tu</span> <span>dois</span> <span>le</span></div><div class="cap" id="c23"><span class="kw">filmer</span> <span>et</span> <span>après</span></div><div class="cap" id="c24"><span>tu</span> <span>le</span> <span>documentes.</span></div><div class="cap" id="c25"><span>Ça</span> <span>va</span> <span>énormément</span></div><div class="cap" id="c26"><span>t&#x27;aider.</span></div><div class="cap" id="c27"><span>Maintenant,</span></div><div class="cap" id="c28"><span>il</span> <span>y</span> <span>a</span></div><div class="cap" id="c29"><span>une</span> <span>méthode</span> <span>pour</span></div><div class="cap" id="c30"><span>le</span> <span>faire.</span></div><div class="cap" id="c32"><span>sont</span> <span>pas</span> <span>préparés.</span></div><div class="cap" id="c33"><span>Tu</span> <span>vas</span> <span>découper</span></div><div class="cap" id="c34"><span>les</span> <span>endroits</span> <span>les</span></div><div class="cap" id="c35"><span>plus</span> <span>intéressants,</span></div><div class="cap" id="c36"><span>tu</span> <span>peux</span> <span>tourner.</span></div><div class="cap" id="c37"><span>une</span> <span>vidéo</span> <span>pour</span></div><div class="cap" id="c38"><span>un</span> <span class="kw">hook,</span></div><div class="cap" id="c39"><span>juste</span> <span>pour</span> <span>le</span></div><div class="cap" id="c40"><span class="kw">hook</span> <span>et</span> <span>maintenant</span></div><div class="cap" id="c41"><span>tu</span> <span>laisses</span></div><div class="cap" id="c42"><span>La</span> <span>vidéo</span> <span>suivre.</span></div><div class="cap" id="c43"><span>Ça,</span></div><div class="cap" id="c44"><span>c&#x27;est</span> <span>une</span> <span>méthode.</span></div><div class="cap" id="c45"><span>Ou</span> <span>tu</span> <span>peux</span></div><div class="cap" id="c46"><span>juste</span> <span>couper</span> <span>les</span></div><div class="cap" id="c47"><span>bons</span> <span class="kw">moments</span> <span>et</span></div><div class="cap" id="c48"><span>directement</span> <span>laisser.</span></div><div class="cap" id="c49"><span>Là,</span></div><div class="cap" id="c50"><span>ça</span> <span>va</span> <span>dépendre</span></div><div class="cap" id="c51"><span>de</span> <span>toi.</span></div>
   <div id="ctaw"><div class="lab">Commente</div>
@@ -364,7 +406,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const IN='expo.out',OUT='power2.in',MOVE='power3.inOut',k=1,D_IN=.5,D_OUT=.28;
-const cfg={ins:true,insDur:300};const INS={};let INSWIN=[];
+const cfg={ins:true,insDur:450};const INS={};let INSWIN=[];
 $$('.ins .d').forEach(p=>{const L=Math.ceil(p.getTotalLength());p._L=L;p.setAttribute('stroke-dasharray',L);});
 const tl=gsap.timeline({paused:true});
 function cap(id,a,b){const sp=$$(id+' > span');tl.set(id,{opacity:1},a);
@@ -374,23 +416,20 @@ function flash(id,a,d){tl.set(id,{opacity:1},a);
   tl.fromTo(id+' .a span,'+id+' .b span',{yPercent:110},{yPercent:0,duration:.6,ease:IN,stagger:.08,immediateRender:false},a);
   tl.fromTo(id+' .thread',{scaleX:0},{scaleX:1,duration:.5,ease:MOVE,immediateRender:false},a+.3);
   tl.set(id,{opacity:0},a+d);}
-gsap.set(['#sig','#ctaw','#end'],{opacity:0});
-/* Accroche : plein écran 0 → 2,4 s puis se rétracte en bandeau */
-tl.fromTo('#hook .l span',{yPercent:110},{yPercent:0,duration:.7,ease:IN,stagger:.08,immediateRender:false},0);
+gsap.set(['#ctaw','#end'],{opacity:0});
+/* Ouverture typographique au-dessus de la tête (v4) : pas de carte, pas de @ */
+gsap.set('#topic',{opacity:0});
+tl.fromTo('#hook .l span',{yPercent:110},{yPercent:0,duration:.7,ease:IN,stagger:.12,immediateRender:false},0.05);
+tl.fromTo('#hook .rule',{scaleX:0},{scaleX:1,duration:.6,ease:MOVE,immediateRender:false},0.45);
 tl.fromTo('#vw',{scale:1.0},{scale:1.04,duration:2.6,ease:'none',immediateRender:false},0);
-tl.to('#hook',{opacity:0,y:-40,duration:D_OUT,ease:OUT},2.25);
-(function(){const tp=$('#topic')||$('#objection');const L=tp.offsetLeft,T=tp.offsetTop,W=tp.offsetWidth,H=tp.offsetHeight;
-  gsap.set(tp,{opacity:0});
-  tl.fromTo('#hookbg',{clipPath:'inset(0px 0px 0px 0px round 0px)'},{clipPath:`inset(${T}px ${1080-L-W}px ${1920-T-H}px ${L}px round 16px)`,duration:.6,ease:MOVE,immediateRender:false},2.3);
-  tl.set(tp,{opacity:1},2.9);tl.set('#hookbg',{opacity:0},2.9);})();
+tl.to('#hook .l span',{yPercent:-110,duration:.4,ease:OUT,stagger:.05},2.3);
+tl.to('#hook .rule',{scaleX:0,transformOrigin:'100% 50%',duration:.35,ease:OUT},2.3);
+tl.fromTo('#topic',{opacity:0,y:10},{opacity:1,y:0,duration:.5,ease:IN,immediateRender:false},2.75);
 tl.set('#vw',{scale:1.0},2.6);
-tl.to('#sig',{opacity:1,duration:D_IN,ease:IN},.2);
-tl.set(['#sigr','#sigc'],{attr:{stroke:'#00D9FF'}},.2);tl.set('#sigd',{attr:{fill:'#00D9FF'}},.2);
-tl.set(['#sigr','#sigc'],{attr:{stroke:'#fff'}},.7);tl.set('#sigd',{attr:{fill:'#fff'}},.7);
 tl.set('#vw',{scale:1.08},3.790);tl.set('#vw',{scale:1.0},8.244);tl.set('#vw',{scale:1.08},15.808);tl.set('#vw',{scale:1.0},20.102);tl.set('#vw',{scale:1.08},24.708);tl.set('#vw',{scale:1.0},32.936);
 flash('#f0',22.206,1.1);
 (function(){const sp=$$('#choc span'),mid=(sp.length-1)/2;tl.set('#choc',{opacity:1},31.096);tl.fromTo(sp,{opacity:0,x:i=>(mid-i)*18,filter:'blur(10px)'},{opacity:1,x:0,filter:'blur(0px)',duration:.8,ease:IN,immediateRender:false},31.096);tl.to('#choc',{opacity:0,duration:.25},32.146);})();
-tl.fromTo('#u0',{opacity:0,y:120},{opacity:1,y:0,duration:.6,ease:IN,immediateRender:false},4.084);tl.to('#u0',{opacity:0,y:-24,duration:D_OUT,ease:OUT},6.884);tl.fromTo('#l0',{opacity:0,y:90},{opacity:1,y:0,duration:.55,ease:IN,immediateRender:false},8.394);tl.set('#l0 .li',{opacity:.35},8.394);tl.to('#l0r0',{opacity:1,duration:.2},8.714);tl.set('#l0r0 .mk',{className:'mk check on'},8.714);tl.fromTo('#l0r0 .mk',{scale:.7},{scale:1,duration:.3,ease:IN,immediateRender:false},8.714);tl.to('#l0r1',{opacity:1,duration:.2},10.364);tl.set('#l0r1 .mk',{className:'mk check on'},10.364);tl.fromTo('#l0r1 .mk',{scale:.7},{scale:1,duration:.3,ease:IN,immediateRender:false},10.364);tl.to('#l0r2',{opacity:1,duration:.2},13.368);tl.set('#l0r2 .mk',{className:'mk check on'},13.368);tl.fromTo('#l0r2 .mk',{scale:.7},{scale:1,duration:.3,ease:IN,immediateRender:false},13.368);tl.to('#l0r3',{opacity:1,duration:.2},15.128);tl.set('#l0r3 .mk',{className:'mk check on'},15.128);tl.fromTo('#l0r3 .mk',{scale:.7},{scale:1,duration:.3,ease:IN,immediateRender:false},15.128);tl.to('#l0',{opacity:0,y:-24,duration:D_OUT,ease:OUT},19.302);tl.fromTo('#g0',{opacity:0,y:32},{opacity:1,y:0,duration:D_IN,ease:IN,immediateRender:false},15.862);tl.to('#g0',{opacity:0,y:-10,duration:D_OUT,ease:OUT},18.462);
+tl.fromTo('#u0',{opacity:0,y:120},{opacity:1,y:0,duration:.6,ease:IN,immediateRender:false},4.084);tl.to('#u0',{opacity:0,y:-24,duration:D_OUT,ease:OUT},6.884);tl.fromTo('#e0',{opacity:0,y:60},{opacity:1,y:0,duration:.55,ease:IN,immediateRender:false},8.394);tl.set('#e0 .tl-t',{opacity:.35,scale:.94},8.394);tl.to('#e0w0',{opacity:1,scale:1,duration:.35,ease:IN},8.714);tl.set('#e0w0',{className:'tl-t on'},8.714);tl.to('#e0w1',{opacity:1,scale:1,duration:.35,ease:IN},10.364);tl.set('#e0w1',{className:'tl-t on'},10.364);tl.to('#e0w2',{opacity:1,scale:1,duration:.35,ease:IN},13.368);tl.set('#e0w2',{className:'tl-t on'},13.368);tl.to('#e0w3',{opacity:1,scale:1,duration:.35,ease:IN},15.128);tl.set('#e0w3',{className:'tl-t on'},15.128);tl.to('#e0',{opacity:0,y:-24,duration:D_OUT,ease:OUT},19.302);
 /* Barre de progression : où on en est dans la vidéo */
 tl.to('#prog',{opacity:1,duration:.4},2.9);
 tl.fromTo('#prog i',{scaleX:0},{scaleX:1,duration:39.658,ease:'none',immediateRender:false},0);
@@ -441,13 +480,13 @@ cap('#c0',0.000,0.630);cap('#c1',0.630,1.670);cap('#c2',1.670,2.870);cap('#c3',2
 
 /* CTA : barre de recherche dans les 2,6 dernières secondes de parole, puis carte de fin */
 tl.set('#vw',{scale:1.0},36.958);
-tl.to('#dim',{opacity:.18,duration:D_IN},36.958);
+tl.to('#dim',{opacity:.12,duration:D_IN},36.958);
 tl.fromTo('#ctaw',{opacity:0,y:60},{opacity:1,y:0,duration:.6,ease:IN,immediateRender:false},37.008);
 (function(){const el=$('#ctat'),w="S\u00c9ANCE",o={n:0};tl.to(o,{n:w.length,duration:1.1,ease:'none',onUpdate:()=>{el.textContent=w.slice(0,Math.round(o.n));}},37.558);})();
 tl.to('#cta .go',{scale:.88,duration:.12},40.058);tl.to('#cta .go',{scale:1,duration:.3,ease:IN},40.178);
 tl.to('#ctaw',{opacity:0,duration:D_OUT,ease:OUT},41.308);
 tl.to('#dim',{opacity:.74,duration:.4,ease:IN},41.308);
-tl.to(['#topic','#objection','#sig'].filter(s=>$(s)),{opacity:0,duration:.3},41.308);
+tl.to(['#topic','#objection'].filter(s=>$(s)),{opacity:0,duration:.3},41.308);
 tl.fromTo('#end',{opacity:0,y:16},{opacity:1,y:0,duration:D_IN,ease:IN,immediateRender:false},41.408);
 window.__timelines=window.__timelines||{};window.__timelines["main"]=tl;tl.seek(0);
 </script></body></html>

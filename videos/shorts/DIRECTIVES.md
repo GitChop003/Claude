@@ -17,16 +17,24 @@ Réglages hérités des échanges avec la production (novembre 2026). Ils compl�
 
 ## Habillage
 - Palette « nuancée » (fond papier, cyan profond, touches sable) + verre dépoli subtil sur les cartes. Pas de marqueurs « IA par défaut » (bordures orange, barre colorée à gauche, émojis, dégradés, rebonds).
-- Accroche plein écran sur 2 lignes maximum, puis bandeau sujet. Signature @the_process.io. **Barre de progression** fine en haut.
+- Accroche sur 2 lignes maximum (ouvertures variées, voir v4), puis sujet en texte seul. **Barre de progression** fine en haut.
 - Sous-titres 1 à 3 mots, mot clé en cyan, doublure Montserrat italique en attendant Callum Slanted.
 - **Fin** : le CTA (« Commente MOT », barre de recherche) arrive **pendant la dernière phrase**, au-dessus des sous-titres (qui restent lisibles), reste environ 1,7 s après la voix, puis carte de fin de 1,3 s.
 
 ## Inserts et animations : varier
-4 à 6 moments graphiques par short, synchronisés sur les mots. **Ne pas répéter la même formule** :
+3 à 4 moments graphiques par short (v4), synchronisés sur les mots, jamais devant le visage. **Ne pas répéter la même formule** :
 - **Liste à cases** : au plus une fois par lot, jamais sur deux vidéos qui se suivent.
 - Pour une énumération, alterner entre : mot géant élément par élément · tuiles d'icônes ou logos stylisés qui s'allument · pile de notifications · chemin relié par un fil cyan · mots qui s'accumulent en marge · numérotation géante · mots barrés (ce qu'il faut éviter) · bulles de conversation (citations).
 - Même logique pour les cartes d'interface (DM, Calendly, notes), le schéma de la méthode, les cartes plein écran et les inserts HD : on les fait tourner d'une vidéo à l'autre.
 - Mot derrière la tête (détourage) : avec parcimonie, une fois par lot environ.
+
+## Retours de Bognin et de la production (8 novembre, v4)
+- **Ouvertures** : plus jamais la carte plein écran à fond blanc en ouverture. Ouvertures **typographiques sur le plan**, variées d'une vidéo à l'autre (texte géant, mot unique, citation, empilement, machine à écrire…), jamais deux fois la même d'affilée.
+- **Ne jamais cacher le visage** : tout élément graphique se place **sous le visage** (bande basse), les sous-titres juste en dessous, au-dessus de la zone masquée par Instagram. Position du visage **mesurée** sur chaque vidéo. Si un élément ne tient pas sous le visage, il passe en **superposition plein écran**.
+- **Pas de @the_process.io permanent** : seulement sur la carte de fin.
+- **Le moins chargé possible** : pas d'étiquettes ni de bandeaux en verre. On joue sur la **typographie** (tailles, graisses, contraste fin/gras) plutôt que sur des cadres. 3 à 4 moments graphiques par vidéo maximum.
+- **Mise en page mesurée** : haut (y ≈ 300–560) pour l'ouverture au-dessus de la tête puis le sujet en petit texte ; bande sous le visage (y ≈ 1170–1395) pour les cartes, tuiles, mot choc et CTA ; sous-titres sur une ligne à y ≈ 1408 (dans la zone 4:5 et au-dessus du masque Instagram).
+- **Énumérations** : une formule différente pour chaque vidéo d'un même lot (tuiles d'icônes, mot géant, empilement en marge, mots barrés, numérotation, liste à cases…).
 
 ## Livraison
 - Par short : 9:16 (version légère de livraison), 4:5 LinkedIn, couvertures 9:16 et 4:5, titres, 2 accroches alternatives, légende, mot-clé de CTA proposé (à valider par Bognin).

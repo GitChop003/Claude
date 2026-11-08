@@ -61,20 +61,24 @@ def main(spec_path, words_path, out_dir):
                 if n == 0: return w["s"] + off
         raise SystemExit(f"ancre introuvable: {x}")
     caps = chunks(W["words"], kws)
+    # Visage mesuré (faces.py) : les éléments vont dans la bande SOUS le visage, sinon en plein écran
+    FACES = json.load(open(f"{out_dir}/assets/faces.json")) if os.path.exists(f"{out_dir}/assets/faces.json") else []
+    BAND, FS_TOP = 1170, 760
+    def face_low(a, b):
+        z = [o[2] for o in FACES if a - 0.3 <= o[0] <= b + 0.3]
+        return 730 + (max(z) - 730) * 1.08 if z else 0   # punch-in 108 % centré à y≈730
+    fsw = []   # fenêtres plein écran (fond papier) : sous-titres passent en encre
+    def place(a, b, h_needed=225):
+        """Renvoie (top, plein_écran) pour un élément visible de a à b."""
+        if face_low(a, b) > BAND - 15 or h_needed > 1395 - BAND:
+            fsw.append((a, b)); return FS_TOP, True
+        return BAND, False
     ins = {n: [at(v[0]), v[1]] for n, v in sp.get("inserts", {}).items()}  # {"1":[t|ancre,slot],...}
     insw = [(v[0], v[0] + min(2.0, v[1])) for v in ins.values()]
     flash = sp.get("flash", [])  # [{"t":..|ancre,"a":..,"b":..,"lab":..}]
     for f in flash: f["t"] = at(f["t"])
     # sous-titres masqués pendant les cartes plein écran
     fw = [(f["t"], f["t"] + f.get("d", 1.0)) for f in flash]
-    cap_html, cap_js = [], []
-    for i, c in enumerate(caps):
-        if any(a <= c["s"] < b for a, b in fw): continue
-        oi = " oi" if any(a <= c["s"] < b for a, b in insw) else ""
-        spans = " ".join(f'<span class="kw">{esc(w)}</span>' if k else f"<span>{esc(w)}</span>" for w, k in c["w"])
-        cap_html.append(f'<div class="cap{oi}" id="c{i}">{spans}</div>')
-        nxt = caps[i + 1]["s"] if i + 1 < len(caps) else W["dur"]
-        cap_js.append(f"cap('#c{i}',{c['s']:.3f},{min(c['e']+0.05, nxt, W['dur']):.3f});")
     # punch-in : à une coupe, au plus toutes les 4 s, alterne 1,00 / 1,08
     zoom_js, last, z = [], -9, 1.0
     for t in W["cuts"][:-1]:
@@ -101,7 +105,9 @@ def main(spec_path, words_path, out_dir):
             choc_js = (f"tl.set('#fgimg',{{opacity:1}},{ct:.3f});tl.set('#fgimg',{{opacity:0}},{ct+cd:.3f});"
                        f"for(let i=0;i<{nf};i++)tl.set('#fgimg',{{attr:{{src:'assets/fg/'+String(i).padStart(4,'0')+'.webp'}}}},{ct:.3f}+i/30);")
         else:
-            choc_html = f'<div id="choc">{letters}</div>'
+            ctop, cfs = place(ct, ct + cd, 180)
+            choc_html = f'<div id="choc" style="top:{ctop}px">{letters}</div>'
+            if cfs: choc_js += f"tl.set('#fsbg',{{opacity:1}},{ct:.3f});tl.set('#fsbg',{{opacity:0}},{ct+cd:.3f});"
         choc_js += (f"(function(){{const sp=$$('#choc span'),mid=(sp.length-1)/2;tl.set('#choc',{{opacity:1}},{ct:.3f});"
                     f"tl.fromTo(sp,{{opacity:0,x:i=>(mid-i)*18,filter:'blur(10px)'}},{{opacity:1,x:0,filter:'blur(0px)',duration:.8,ease:IN,immediateRender:false}},{ct:.3f});"
                     f"tl.to('#choc',{{opacity:0,duration:.25}},{ct+cd-0.25:.3f});}})();")
@@ -117,7 +123,9 @@ def main(spec_path, words_path, out_dir):
     for j, u in enumerate(sp.get("ui", [])):
         ut = at(u["t"]); ud = u.get("d", 2.4)
         lab = f'<div class="ex">{esc(u.get("label","Exemple"))}</div>' if u.get("label", "Exemple") else ""
-        ov_html.append(f'<div class="glass white ui" id="u{j}" style="top:{u.get("top",600)}px"><div class="ic">{ICON[u.get("icon","dm")]}</div>'
+        utop, ufs = place(ut, ut + ud, 170)
+        if ufs: ov_js.append(f"tl.set('#fsbg',{{opacity:1}},{ut:.3f});tl.set('#fsbg',{{opacity:0}},{ut+ud+0.3:.3f});")
+        ov_html.append(f'<div class="glass white ui" id="u{j}" style="top:{utop}px"><div class="ic">{ICON[u.get("icon","dm")]}</div>'
                        f'<div><div class="t1">{esc(u["t1"])}</div><div class="t2">{esc(u["t2"])}</div><div class="t3">{esc(u.get("t3",""))}</div></div>{lab}</div>')
         ov_js.append(f"tl.fromTo('#u{j}',{{opacity:0,y:120}},{{opacity:1,y:0,duration:.6,ease:IN,immediateRender:false}},{ut:.3f});"
                      f"tl.to('#u{j}',{{opacity:0,y:-24,duration:D_OUT,ease:OUT}},{ut+ud:.3f});")
@@ -128,7 +136,8 @@ def main(spec_path, words_path, out_dir):
             rows.append(f'<div class="li" id="l{j}r{r}"><i class="mk {mk}"><svg viewBox="0 0 24 24">{MK[mk]}</svg></i><span>{esc(it["text"])}</span></div>')
             tick.append(at(it["at"]))
         le = at(L["until"]) if "until" in L else tick[-1] + L.get("hold", 1.4)
-        ov_html.append(f'<div class="glass white lst" id="l{j}" style="top:{L.get("top",520)}px"><div class="lt">{esc(L["title"])}</div>{"".join(rows)}</div>')
+        fsw.append((lt, le)); ov_js.append(f"tl.set('#fsbg',{{opacity:1}},{lt:.3f});tl.set('#fsbg',{{opacity:0}},{le+0.3:.3f});")
+        ov_html.append(f'<div class="glass white lst" id="l{j}" style="top:{FS_TOP - 120}px"><div class="lt">{esc(L["title"])}</div>{"".join(rows)}</div>')
         js = (f"tl.fromTo('#l{j}',{{opacity:0,y:90}},{{opacity:1,y:0,duration:.55,ease:IN,immediateRender:false}},{lt:.3f});"
               f"tl.set('#l{j} .li',{{opacity:.35}},{lt:.3f});")
         for r, tt in enumerate(tick):
@@ -144,14 +153,19 @@ def main(spec_path, words_path, out_dir):
         "video": '<rect x="5" y="12" width="28" height="24" rx="5"/><path d="M33 20l10-6v20l-10-6z"/>',
         "msg": '<path d="M7 10h34v22H22l-9 8v-8H7z"/>',
         "story": '<circle cx="24" cy="24" r="17" stroke-dasharray="9 4"/><circle cx="24" cy="24" r="10"/>',
+        "focus": '<circle cx="24" cy="24" r="16"/><circle cx="24" cy="24" r="8"/><circle cx="24" cy="24" r="1.5"/>',
+        "learn": '<path d="M4 18l20-9 20 9-20 9z"/><path d="M12 22v10c0 3 6 6 12 6s12-3 12-6V22"/>',
+        "seance": '<circle cx="16" cy="17" r="6"/><circle cx="33" cy="17" r="6"/><path d="M5 38c1-7 6-10 11-10s10 3 11 10M22 38c1-7 6-10 11-10s10 3 11 10"/>',
     }
     for j, E in enumerate(sp.get("enum", [])):
         et = at(E["t"]); ticks = [at(it["at"]) for it in E["items"]]
         ee = at(E["until"]) if "until" in E else ticks[-1] + E.get("hold", 1.4)
         st = E["style"]
+        etop, efs = place(et, ee, {"giant": 200, "stack": 64 * len(E["items"]) + 10, "tiles": 210, "strike": 64 * len(E["items"]) + 10, "numbers": 190}.get(st, 210))
+        if efs: ov_js.append(f"tl.set('#fsbg',{{opacity:1}},{et:.3f});tl.set('#fsbg',{{opacity:0}},{ee+0.3:.3f});")
         if st == "giant":  # un mot géant par élément, chacun remplace le précédent
             words = "".join(f'<div class="gw" id="e{j}w{r}"><small>{r+1}/{len(E["items"])}</small><span>{esc(it["text"])}</span></div>' for r, it in enumerate(E["items"]))
-            ov_html.append(f'<div class="enum-g" id="e{j}">{words}</div>')
+            ov_html.append(f'<div class="enum-g{" fs" if efs else ""}" id="e{j}" style="top:{etop}px">{words}</div>')
             js = ""
             for r, tt in enumerate(ticks):
                 nx = ticks[r + 1] if r + 1 < len(ticks) else ee
@@ -160,7 +174,7 @@ def main(spec_path, words_path, out_dir):
             ov_js.append(js)
         elif st == "stack":  # les mots s'empilent dans la marge, reliés par un fil cyan
             words = "".join(f'<div class="sw" id="e{j}w{r}">{esc(it["text"])}</div>' for r, it in enumerate(E["items"]))
-            ov_html.append(f'<div class="enum-s" id="e{j}"><i class="rail"></i>{words}</div>')
+            ov_html.append(f'<div class="enum-s{" fs" if efs else ""}" id="e{j}" style="top:{etop}px"><i class="rail"></i>{words}</div>')
             js = f"gsap.set('#e{j} .rail',{{scaleY:0}});tl.set('#e{j}',{{opacity:1}},{et:.3f});"
             for r, tt in enumerate(ticks):
                 js += (f"tl.fromTo('#e{j}w{r}',{{opacity:0,x:-60}},{{opacity:1,x:0,duration:.5,ease:IN,immediateRender:false}},{tt:.3f});"
@@ -170,7 +184,7 @@ def main(spec_path, words_path, out_dir):
             ov_js.append(js)
         elif st == "tiles":  # tuiles avec icônes qui s'allument une à une
             tiles = "".join(f'<div class="tl-t" id="e{j}w{r}"><div class="ic"><svg viewBox="0 0 48 48">{TILE[it.get("icon","doc")]}</svg></div><b>{esc(it["text"])}</b></div>' for r, it in enumerate(E["items"]))
-            ov_html.append(f'<div class="enum-t" id="e{j}"><div class="tt">{esc(E.get("title",""))}</div><div class="row">{tiles}</div></div>')
+            ov_html.append(f'<div class="enum-t{" fs" if efs else ""}" id="e{j}" style="top:{etop}px"><div class="row">{tiles}</div></div>')
             js = (f"tl.fromTo('#e{j}',{{opacity:0,y:60}},{{opacity:1,y:0,duration:.55,ease:IN,immediateRender:false}},{et:.3f});"
                   f"tl.set('#e{j} .tl-t',{{opacity:.35,scale:.94}},{et:.3f});")
             for r, tt in enumerate(ticks):
@@ -178,26 +192,54 @@ def main(spec_path, words_path, out_dir):
                        f"tl.set('#e{j}w{r}',{{className:'tl-t on'}},{tt:.3f});")
             js += f"tl.to('#e{j}',{{opacity:0,y:-24,duration:D_OUT,ease:OUT}},{ee:.3f});"
             ov_js.append(js)
+        elif st == "strike":  # les mots apparaissent ; ceux « à éviter » sont barrés
+            words = "".join(f'<div class="kw2{" x" if it.get("mark") == "x" else ""}" id="e{j}w{r}"><span>{esc(it["text"])}</span><i></i></div>' for r, it in enumerate(E["items"]))
+            ov_html.append(f'<div class="enum-x{" fs" if efs else ""}" id="e{j}" style="top:{etop}px">{words}</div>')
+            js = f"tl.set('#e{j}',{{opacity:1}},{et:.3f});gsap.set('#e{j} i',{{scaleX:0}});"
+            for r, (tt, it) in enumerate(zip(ticks, E["items"])):
+                js += f"tl.fromTo('#e{j}w{r}',{{opacity:0,y:24}},{{opacity:1,y:0,duration:.4,ease:IN,immediateRender:false}},{tt:.3f});"
+                if it.get("mark") == "x": js += f"tl.to('#e{j}w{r} i',{{scaleX:1,duration:.35,ease:MOVE}},{tt+0.35:.3f});tl.to('#e{j}w{r} span',{{opacity:.55,duration:.3}},{tt+0.4:.3f});"
+            js += f"tl.to('#e{j}',{{opacity:0,y:-20,duration:D_OUT,ease:OUT}},{ee:.3f});"
+            ov_js.append(js)
+        elif st == "numbers":  # grand numéro + mot, chacun remplace le précédent
+            words = "".join(f'<div class="nb" id="e{j}w{r}"><b>{r+1}</b><span>{esc(it["text"])}</span></div>' for r, it in enumerate(E["items"]))
+            ov_html.append(f'<div class="enum-n{" fs" if efs else ""}" id="e{j}" style="top:{etop}px">{words}</div>')
+            js = ""
+            for r, tt in enumerate(ticks):
+                nx = ticks[r + 1] if r + 1 < len(ticks) else ee
+                js += (f"tl.fromTo('#e{j}w{r} b',{{opacity:0,scale:.6}},{{opacity:1,scale:1,duration:.45,ease:IN,immediateRender:false}},{tt:.3f});"
+                       f"tl.fromTo('#e{j}w{r} span',{{opacity:0,x:-30}},{{opacity:1,x:0,duration:.45,ease:IN,immediateRender:false}},{tt+0.08:.3f});"
+                       f"tl.set('#e{j}w{r}',{{opacity:1}},{tt:.3f});tl.to('#e{j}w{r}',{{opacity:0,duration:.2}},{nx-0.05:.3f});")
+            ov_js.append(js)
     if sp.get("method"):
         m = sp["method"]; mt = at(m["t"]); md = m.get("d", 3.2); on = m.get("on", 2)
         names = ["Mindset", "Offre", "Acquisition", "Closing"]
         rows = "".join(f'<div class="row" id="m{i+1}"><div class="dot"></div><div class="n">0{i+1}</div><div class="w">{n}</div>'
                        + (f'<div class="here">{esc(m.get("here","tu es ici"))}</div>' if i + 1 == on else "") + "</div>" for i, n in enumerate(names))
         ov_html.append(f'<div class="glass" id="method"><div class="h">La méthode The Process</div><div class="rail"></div><div class="railc"></div>{rows}</div>')
-        js = (f"gsap.set('#method .railc',{{scaleY:0}});tl.to('#dim',{{opacity:.35,duration:D_IN,ease:IN}},{mt:.3f});"
+        fsw.append((mt, mt + md))
+        js = (f"gsap.set('#method .railc',{{scaleY:0}});tl.set('#fsbg',{{opacity:1}},{mt:.3f});tl.set('#fsbg',{{opacity:0}},{mt+md+0.3:.3f});"
               f"tl.fromTo('#method',{{opacity:0,y:32,scale:.98}},{{opacity:1,y:0,scale:1,duration:.6,ease:IN,immediateRender:false}},{mt:.3f});"
               f"tl.fromTo('#method .row',{{opacity:0,x:-18}},{{opacity:1,x:0,duration:.45,ease:IN,stagger:.1,immediateRender:false}},{mt+0.2:.3f});"
               f"tl.to('#method .railc',{{scaleY:{(on-1)/3:.3f},duration:.7,ease:MOVE}},{mt+0.9:.3f});")
         for i in range(on):
             js += f"tl.set('#m{i+1}',{{className:'row on'}},{mt+0.9+i*0.25:.3f});"
         js += (f"tl.fromTo('#m{on} .here',{{opacity:0,x:-12}},{{opacity:1,x:0,duration:D_IN,ease:IN,immediateRender:false}},{mt+1.2:.3f});"
-               f"tl.to('#method',{{opacity:0,y:-20,duration:D_OUT,ease:OUT}},{mt+md:.3f});tl.to('#dim',{{opacity:0,duration:D_OUT}},{mt+md:.3f});")
+               f"tl.to('#method',{{opacity:0,y:-20,duration:D_OUT,ease:OUT}},{mt+md:.3f});")
         ov_js.append(js)
-    for j, g in enumerate(sp.get("tags", [])):
+    for j, g in enumerate([]):  # étiquettes retirées (v4)
         gt = at(g["t"]); gd = g.get("d", 2.6)
         ov_html.append(f'<div class="glass tag tg" id="g{j}"><i></i>{esc(g["text"])}</div>')
         ov_js.append(f"tl.fromTo('#g{j}',{{opacity:0,y:32}},{{opacity:1,y:0,duration:D_IN,ease:IN,immediateRender:false}},{gt:.3f});"
                      f"tl.to('#g{j}',{{opacity:0,y:-10,duration:D_OUT,ease:OUT}},{gt+gd:.3f});")
+    cap_html, cap_js = [], []
+    for i, c in enumerate(caps):
+        if any(a <= c["s"] < b for a, b in fw): continue
+        oi = " oi" if any(a <= c["s"] < b for a, b in insw + fsw) else ""
+        spans = " ".join(f'<span class="kw">{esc(w)}</span>' if k else f"<span>{esc(w)}</span>" for w, k in c["w"])
+        cap_html.append(f'<div class="cap{oi}" id="c{i}">{spans}</div>')
+        nxt = caps[i + 1]["s"] if i + 1 < len(caps) else W["dur"]
+        cap_js.append(f"cap('#c{i}',{c['s']:.3f},{min(c['e']+0.05, nxt, W['dur']):.3f});")
     # Un seul son discret, sur la révélation principale (charte §7)
     if sp.get("reveal") is not None: reveal.append(at(sp["reveal"]))
     elif choc: reveal.append(at(choc["at"]))
@@ -212,6 +254,10 @@ def main(spec_path, words_path, out_dir):
     hook_fs = int(max(64, min(84, 888 / (0.64 * max(len(l) for l in hook)))))
     if hook_fs * 0.64 * max(len(l) for l in hook) > 900:
         raise SystemExit(f"accroche trop longue pour 2 lignes : {hook}")
+    ftop = [o[1] for o in FACES if o[0] <= 2.6]
+    face_top = min(ftop) if ftop else 560
+    h1 = int(min(54, 936 / (0.6 * len(hook[0])))); h2 = int(min(116, 936 / (0.52 * len(hook[1]))))
+    hook_top = int(max(300, min(sp.get("hook_top", 9999), face_top - 70 - (h1 * 1.08 + h2 * 1.08 + 33))))
     cta = sp["cta"]; T_END = W["dur"]
     obj = sp.get("objection")
     topic_html = (f'<div id="objection" style="opacity:1"><b>OBJECTION :</b> « {esc(obj)} »</div>' if obj else
@@ -234,12 +280,28 @@ def main(spec_path, words_path, out_dir):
 .flashc .a span,.flashc .b span{{display:block}}
 .flashc .thread{{height:4px;width:400px;background:var(--cyan-p);margin:34px 0 0 110px;transform-origin:0 50%;border-radius:2px}}
 #end{{background:rgba(10,18,32,.0)}}
-#hook{{right:96px}}
-#hook .l{{white-space:nowrap;font-size:{hook_fs}px}}
+#root{{--cap-y:1408px}}
+#hookbg,#sig{{display:none}}
+/* Ouvertures typographiques sur le plan (v4) */
+#hook{{left:72px;right:72px;top:{hook_top}px;color:#fff;text-shadow:0 2px 18px rgba(10,18,32,.45)}}
+#root.pal-n #hook{{color:#fff}}
+#hook .l{{white-space:nowrap}}
+#hook .l:first-child{{font-weight:600;font-size:{h1}px;letter-spacing:0;margin-bottom:6px}}
+#hook .l.c{{font-size:{h2}px;letter-spacing:-.03em}}
+#root.pal-n #hook .l.c span{{color:#fff}}
+#hook .rule{{width:120px;height:5px;border-radius:3px;background:var(--cyan);margin-top:22px;transform-origin:0 50%}}
+#topic{{left:72px;top:322px;height:auto;padding:0;background:none!important;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;
+  font-size:30px;font-weight:500;color:#fff;gap:12px;text-shadow:0 1px 10px rgba(10,18,32,.5)}}
+#topic::after{{display:none}}
+#root.pal-n #topic{{color:#fff}}
+#root.pal-n #topic b{{color:#fff;font-weight:800}}
+#fsbg{{position:absolute;inset:0;background:var(--papier);opacity:0}}
+.fs .gw span,.fs .sw,.fs .kw2 span,.fs .nb span{{color:var(--encre)!important;text-shadow:none!important}}
+.fs .nb b{{color:var(--cyan-p)!important}}
 #choc span{{display:inline-block;margin:0 .02em}}
 #choc.behind{{left:0;width:1080px;top:520px;font-size:156px;letter-spacing:-.03em;text-shadow:none}}
 #ctaw .lab{{color:#fff;text-shadow:0 2px 14px rgba(10,18,32,.6)}}
-#ctaw{{top:700px}}
+#ctaw{{top:1150px}}
 #prog{{position:absolute;left:64px;top:298px;width:876px;height:5px;border-radius:3px;background:rgba(255,255,255,.3);overflow:hidden;opacity:0}}
 #prog i{{display:block;height:100%;width:100%;background:var(--cyan);transform-origin:0 50%;transform:scaleX(0)}}
 .ui .t3:empty{{display:none}}
@@ -271,6 +333,18 @@ def main(spec_path, words_path, out_dir):
 .enum-t .tl-t b{{font:800 30px/1.15 Montserrat;color:var(--encre);text-align:center}}
 .enum-t .tl-t.on .ic{{background:var(--cyan-p)}}
 .enum-t .tl-t.on .ic svg{{stroke:#fff}}
+.enum-t .row{{gap:16px}}
+.enum-t .tl-t{{padding:22px 10px 18px;gap:12px;border-radius:24px}}
+.enum-t .ic{{width:88px;height:88px;border-radius:24px}}
+.enum-t .ic svg{{width:52px;height:52px}}
+.enum-t .tl-t b{{font-size:27px;line-height:1.1}}
+.enum-x{{position:absolute;left:72px;opacity:1}}
+.kw2{{position:relative;font:900 64px/1.08 Montserrat;letter-spacing:-.02em;color:#fff;text-shadow:0 3px 18px rgba(10,18,32,.5);opacity:0;width:max-content}}
+.kw2 i{{position:absolute;left:-6px;right:-6px;top:52%;height:7px;border-radius:4px;background:var(--rouge);transform-origin:0 50%}}
+.enum-n{{position:absolute;left:72px;width:936px;height:190px}}
+.nb{{position:absolute;inset:0;display:flex;align-items:center;gap:30px;opacity:0}}
+.nb b{{font:900 170px/1 Montserrat;color:var(--cyan);text-shadow:0 4px 24px rgba(10,18,32,.4)}}
+.nb span{{font:800 68px/1.05 Montserrat;color:#fff;text-shadow:0 3px 18px rgba(10,18,32,.5)}}
 </style></head>
 <body>
 <div id="root" class="pal-n lite" data-composition-id="main" data-start="0" data-duration="{dur:.3f}" data-width="1080" data-height="1920">
@@ -280,8 +354,9 @@ def main(spec_path, words_path, out_dir):
   {topic_html}
   <div id="prog"><i></i></div>
   <div id="hookbg"></div>
-  <div id="hook"><div class="l"><span>{esc(hook[0])}</span></div><div class="l c"><span>{esc(hook[1])}</span></div></div>
+  <div id="hook"><div class="l"><span>{esc(hook[0])}</span></div><div class="l c"><span>{esc(hook[1])}</span></div><div class="rule"></div></div>
   <div id="sig"><svg viewBox="0 0 32 32" fill="none"><rect id="sigr" x="2.5" y="2.5" width="27" height="27" rx="8" stroke="#fff" stroke-width="2.6"/><circle id="sigc" cx="16" cy="16" r="6.2" stroke="#fff" stroke-width="2.6"/><circle id="sigd" cx="23.6" cy="8.4" r="1.8" fill="#fff"/></svg><span>@the_process.io</span></div>
+  <div id="fsbg"></div>
   {choc_html}
   {''.join(ov_html)}
   {''.join(fl_html)}
@@ -306,19 +381,16 @@ function flash(id,a,d){{tl.set(id,{{opacity:1}},a);
   tl.fromTo(id+' .a span,'+id+' .b span',{{yPercent:110}},{{yPercent:0,duration:.6,ease:IN,stagger:.08,immediateRender:false}},a);
   tl.fromTo(id+' .thread',{{scaleX:0}},{{scaleX:1,duration:.5,ease:MOVE,immediateRender:false}},a+.3);
   tl.set(id,{{opacity:0}},a+d);}}
-gsap.set(['#sig','#ctaw','#end'],{{opacity:0}});
-/* Accroche : plein écran 0 → 2,4 s puis se rétracte en bandeau */
-tl.fromTo('#hook .l span',{{yPercent:110}},{{yPercent:0,duration:.7,ease:IN,stagger:.08,immediateRender:false}},0);
+gsap.set(['#ctaw','#end'],{{opacity:0}});
+/* Ouverture typographique au-dessus de la tête (v4) : pas de carte, pas de @ */
+gsap.set('#topic',{{opacity:0}});
+tl.fromTo('#hook .l span',{{yPercent:110}},{{yPercent:0,duration:.7,ease:IN,stagger:.12,immediateRender:false}},0.05);
+tl.fromTo('#hook .rule',{{scaleX:0}},{{scaleX:1,duration:.6,ease:MOVE,immediateRender:false}},0.45);
 tl.fromTo('#vw',{{scale:1.0}},{{scale:1.04,duration:2.6,ease:'none',immediateRender:false}},0);
-tl.to('#hook',{{opacity:0,y:-40,duration:D_OUT,ease:OUT}},2.25);
-(function(){{const tp=$('#topic')||$('#objection');const L=tp.offsetLeft,T=tp.offsetTop,W=tp.offsetWidth,H=tp.offsetHeight;
-  gsap.set(tp,{{opacity:0}});
-  tl.fromTo('#hookbg',{{clipPath:'inset(0px 0px 0px 0px round 0px)'}},{{clipPath:`inset(${{T}}px ${{1080-L-W}}px ${{1920-T-H}}px ${{L}}px round 16px)`,duration:.6,ease:MOVE,immediateRender:false}},2.3);
-  tl.set(tp,{{opacity:1}},2.9);tl.set('#hookbg',{{opacity:0}},2.9);}})();
+tl.to('#hook .l span',{{yPercent:-110,duration:.4,ease:OUT,stagger:.05}},2.3);
+tl.to('#hook .rule',{{scaleX:0,transformOrigin:'100% 50%',duration:.35,ease:OUT}},2.3);
+tl.fromTo('#topic',{{opacity:0,y:10}},{{opacity:1,y:0,duration:.5,ease:IN,immediateRender:false}},2.75);
 tl.set('#vw',{{scale:1.0}},2.6);
-tl.to('#sig',{{opacity:1,duration:D_IN,ease:IN}},.2);
-tl.set(['#sigr','#sigc'],{{attr:{{stroke:'#00D9FF'}}}},.2);tl.set('#sigd',{{attr:{{fill:'#00D9FF'}}}},.2);
-tl.set(['#sigr','#sigc'],{{attr:{{stroke:'#fff'}}}},.7);tl.set('#sigd',{{attr:{{fill:'#fff'}}}},.7);
 {''.join(zoom_js)}
 {''.join(fl_js)}
 {choc_js}
@@ -331,13 +403,13 @@ tl.to('#prog',{{opacity:0,duration:.3}},{T_END:.3f});
 {inserts_js}
 /* CTA : barre de recherche dans les 2,6 dernières secondes de parole, puis carte de fin */
 tl.set('#vw',{{scale:1.0}},{T_END-2.7:.3f});
-tl.to('#dim',{{opacity:.18,duration:D_IN}},{T_END-2.7:.3f});
+tl.to('#dim',{{opacity:.12,duration:D_IN}},{T_END-2.7:.3f});
 tl.fromTo('#ctaw',{{opacity:0,y:60}},{{opacity:1,y:0,duration:.6,ease:IN,immediateRender:false}},{T_END-2.65:.3f});
 (function(){{const el=$('#ctat'),w={json.dumps(cta)},o={{n:0}};tl.to(o,{{n:w.length,duration:1.1,ease:'none',onUpdate:()=>{{el.textContent=w.slice(0,Math.round(o.n));}}}},{T_END-2.1:.3f});}})();
 tl.to('#cta .go',{{scale:.88,duration:.12}},{T_END+0.4:.3f});tl.to('#cta .go',{{scale:1,duration:.3,ease:IN}},{T_END+0.52:.3f});
 tl.to('#ctaw',{{opacity:0,duration:D_OUT,ease:OUT}},{T_END+TAIL-1.35:.3f});
 tl.to('#dim',{{opacity:.74,duration:.4,ease:IN}},{T_END+TAIL-1.35:.3f});
-tl.to(['#topic','#objection','#sig'].filter(s=>$(s)),{{opacity:0,duration:.3}},{T_END+TAIL-1.35:.3f});
+tl.to(['#topic','#objection'].filter(s=>$(s)),{{opacity:0,duration:.3}},{T_END+TAIL-1.35:.3f});
 tl.fromTo('#end',{{opacity:0,y:16}},{{opacity:1,y:0,duration:D_IN,ease:IN,immediateRender:false}},{T_END+TAIL-1.25:.3f});
 window.__timelines=window.__timelines||{{}};window.__timelines["main"]=tl;tl.seek(0);
 </script></body></html>"""
