@@ -4,11 +4,11 @@ Pour chaque vidéo : export 9:16 (Reels/TikTok), export 4:5 (LinkedIn), couvertu
 
 | # | Fichier | Durée | Rush source | Douleur visée |
 |---|---|---|---|---|
-| s1 | `2026-11-08_SEANCE_reel_v1.mp4` | 41 s | 0751 | Contenu vu mais pas d'idées / pas de clients |
-| s2 | `2026-11-08_SILENCE_reel_v1.mp4` | 51 s | 0769 | Vu, mais personne n'écrit (0 DM) |
-| s3 | `2026-11-08_LEGITIME_reel_v1.mp4` | 68 s | 0785 | Pas légitime pour demander de l'argent |
-| s4 | `2026-11-08_COURAGE_reel_v1.mp4` | 48 s | 0772 | Peur du regard des autres |
-| s5 | `2026-11-08_TIMIDE_reel_v1.mp4` | 58 s | 0784 | Peur de prospecter (« déranger ») |
+| s1 | `2026-11-08_SEANCE_reel_v1.mp4` | 43 s | 0751 | Contenu vu mais pas d'idées / pas de clients |
+| s2 | `2026-11-08_SILENCE_reel_v1.mp4` | 53 s | 0769 | Vu, mais personne n'écrit (0 DM) |
+| s3 | `2026-11-08_LEGITIME_reel_v1.mp4` | 70 s | 0785 | Pas légitime pour demander de l'argent |
+| s4 | `2026-11-08_COURAGE_reel_v1.mp4` | 50 s | 0772 | Peur du regard des autres |
+| s5 | `2026-11-08_TIMIDE_reel_v1.mp4` | 56 s | 0784 | Peur de prospecter (« déranger ») |
 
 Dans chaque dossier `sN/renders/` : `*_reel_v1_livraison.mp4` (9:16, version légère à publier), `*_linkedin_v1.mp4` (4:5), `*_couverture_9x16.png` et `*_couverture_4x5.png`. Voix normalisée vers -14 LUFS, nappe musicale originale très basse (environ 25 dB sous la voix), un seul son discret sur la révélation principale (charte §7). Barre de progression en haut.
 
@@ -53,6 +53,6 @@ Dans chaque dossier `sN/renders/` : `*_reel_v1_livraison.mp4` (9:16, version lé
 - s3 : « des gens qui ont 5 ans d'études de plus que moi », c'est son ressenti, pas un résultat chiffré. À garder ?
 - s5 : « ça ne fait pas un an et demi que je suis dans la création de contenu », c'est une durée, pas un résultat. J'ai retiré « plus de 1 000 posts », chiffre non prouvé.
 - Police des sous-titres : Montserrat italique en doublure, à remplacer par Callum Slanted dès qu'on a le fichier.
-- s3 dure 68 s : au-dessus de la cible de 25 à 60 s, sous le maximum de 75 s.
+- s3 dure 70 s (avec 3 s de fin : CTA lisible puis carte de fin) : au-dessus de la cible de 25 à 60 s, sous le maximum de 75 s.
 - Cartes DM et Calendly de s2 marquées « Reconstitution » (son vrai échange, remis en forme).
 - Palette « nuancée » : elle sort de la charte V3 (fond papier, cyan profond, sable).
