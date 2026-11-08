@@ -37,7 +37,8 @@ def norm(w): return re.sub(r"[^\wÀ-ÿ'-]", "", w.lower())
 
 def main(spec_path, words_path, out_dir):
     sp = json.load(open(spec_path)); W = json.load(open(words_path))
-    dur = W["dur"] + 1.4  # 1,4 s de carte de fin après la dernière phrase
+    TAIL = W.get("tail", 1.4)
+    dur = W["dur"] + TAIL  # CTA lisible après la dernière phrase, puis carte de fin
     kws = {norm(k) for k in sp.get("keywords", [])}
     rep = {k: v for k, v in sp.get("replace", {}).items()}
     for w in W["words"]:
@@ -196,6 +197,7 @@ def main(spec_path, words_path, out_dir):
 #choc span{{display:inline-block;margin:0 .02em}}
 #choc.behind{{left:0;width:1080px;top:520px;font-size:156px;letter-spacing:-.03em;text-shadow:none}}
 #ctaw .lab{{color:#fff;text-shadow:0 2px 14px rgba(10,18,32,.6)}}
+#ctaw{{top:700px}}
 #prog{{position:absolute;left:64px;top:298px;width:876px;height:5px;border-radius:3px;background:rgba(255,255,255,.3);overflow:hidden;opacity:0}}
 #prog i{{display:block;height:100%;width:100%;background:var(--cyan);transform-origin:0 50%;transform:scaleX(0)}}
 .ui .t3:empty{{display:none}}
@@ -235,7 +237,7 @@ def main(spec_path, words_path, out_dir):
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const IN='expo.out',OUT='power2.in',MOVE='power3.inOut',k=1,D_IN=.5,D_OUT=.28;
-const cfg={{ins:true,insDur:200}};const INS={json.dumps({int(n): v for n, v in ins.items()})};let INSWIN=[];
+const cfg={{ins:true,insDur:300}};const INS={json.dumps({int(n): v for n, v in ins.items()})};let INSWIN=[];
 $$('.ins .d').forEach(p=>{{const L=Math.ceil(p.getTotalLength());p._L=L;p.setAttribute('stroke-dasharray',L);}});
 const tl=gsap.timeline({{paused:true}});
 function cap(id,a,b){{const sp=$$(id+' > span');tl.set(id,{{opacity:1}},a);
@@ -270,14 +272,14 @@ tl.to('#prog',{{opacity:0,duration:.3}},{T_END:.3f});
 {inserts_js}
 /* CTA : barre de recherche dans les 2,6 dernières secondes de parole, puis carte de fin */
 tl.set('#vw',{{scale:1.0}},{T_END-2.7:.3f});
-tl.to('#dim',{{opacity:.3,duration:D_IN}},{T_END-2.7:.3f});
+tl.to('#dim',{{opacity:.18,duration:D_IN}},{T_END-2.7:.3f});
 tl.fromTo('#ctaw',{{opacity:0,y:60}},{{opacity:1,y:0,duration:.6,ease:IN,immediateRender:false}},{T_END-2.65:.3f});
 (function(){{const el=$('#ctat'),w={json.dumps(cta)},o={{n:0}};tl.to(o,{{n:w.length,duration:1.1,ease:'none',onUpdate:()=>{{el.textContent=w.slice(0,Math.round(o.n));}}}},{T_END-2.1:.3f});}})();
-tl.to('#cta .go',{{scale:.88,duration:.12}},{T_END-0.6:.3f});tl.to('#cta .go',{{scale:1,duration:.3,ease:IN}},{T_END-0.48:.3f});
-tl.to('#ctaw',{{opacity:0,duration:D_OUT,ease:OUT}},{T_END+0.05:.3f});
-tl.to('#dim',{{opacity:.74,duration:.4,ease:IN}},{T_END:.3f});
-tl.to(['#topic','#objection','#sig'].filter(s=>$(s)),{{opacity:0,duration:.3}},{T_END:.3f});
-tl.fromTo('#end',{{opacity:0,y:16}},{{opacity:1,y:0,duration:D_IN,ease:IN,immediateRender:false}},{T_END+0.1:.3f});
+tl.to('#cta .go',{{scale:.88,duration:.12}},{T_END+0.4:.3f});tl.to('#cta .go',{{scale:1,duration:.3,ease:IN}},{T_END+0.52:.3f});
+tl.to('#ctaw',{{opacity:0,duration:D_OUT,ease:OUT}},{T_END+TAIL-1.35:.3f});
+tl.to('#dim',{{opacity:.74,duration:.4,ease:IN}},{T_END+TAIL-1.35:.3f});
+tl.to(['#topic','#objection','#sig'].filter(s=>$(s)),{{opacity:0,duration:.3}},{T_END+TAIL-1.35:.3f});
+tl.fromTo('#end',{{opacity:0,y:16}},{{opacity:1,y:0,duration:D_IN,ease:IN,immediateRender:false}},{T_END+TAIL-1.25:.3f});
 window.__timelines=window.__timelines||{{}};window.__timelines["main"]=tl;tl.seek(0);
 </script></body></html>"""
     os.makedirs(f"{out_dir}/assets", exist_ok=True)

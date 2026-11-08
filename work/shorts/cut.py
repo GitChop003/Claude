@@ -13,6 +13,7 @@ import json, os, subprocess, sys, glob
 
 PAD_IN, PAD_OUT, MAX_GAP = 0.10, 0.16, 0.45
 ENV = {}
+TAIL = 3.0  # fin : la dernière phrase + 3 s (CTA lisible ~1,7 s, puis carte de fin)
 FILLERS = {"euh", "heu", "hum", "hmm", "bah", "euh,", "heu,"}
 
 
@@ -135,10 +136,10 @@ def main(spec_path, rt_dir, rush_dir, out_dir, grade):
             out_words.append({"w": w["w"], "s": round(t + w["s"] - s, 3), "e": round(t + w["e"] - s, 3)})
         t += d; cuts.append(round(t, 3))
     open(f"{tmp}/list.txt", "w").write("".join(f"file '{os.path.abspath(x)}'\n" for x in lst))
-    T = t + 1.4
+    T = t + TAIL
     music = os.path.join(os.path.dirname(os.path.abspath(__file__)), "music_bed.wav")  # nappe originale à -39 LUFS
-    fcx = (f"[0:v]tpad=stop_mode=clone:stop_duration=1.4[vo];"
-           f"[0:a]apad=pad_dur=1.4,highpass=f=70,afftdn=nr=8:nf=-40,acompressor=threshold=-20dB:ratio=2.5:attack=8:release=120,"
+    fcx = (f"[0:v]tpad=stop_mode=clone:stop_duration={TAIL}[vo];"
+           f"[0:a]apad=pad_dur={TAIL},highpass=f=70,afftdn=nr=8:nf=-40,acompressor=threshold=-20dB:ratio=2.5:attack=8:release=120,"
            f"loudnorm=I=-14:TP=-1.5:LRA=9[vx];"
            f"[1:a]atrim=0:{T:.3f},asetpts=PTS-STARTPTS,afade=t=in:d=1.2,afade=t=out:st={T-2.2:.3f}:d=2.2[mx];"
            f"[vx][mx]amix=inputs=2:normalize=0:duration=first,alimiter=limit=0.89[ao]")
@@ -147,7 +148,7 @@ def main(spec_path, rt_dir, rush_dir, out_dir, grade):
                     "-c:v", "libx264", "-crf", "18", "-preset", "medium", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
                     "-movflags", "+faststart", "-threads", "3", f"{out_dir}/cut.mp4"], check=True)
     n = len(pieces)
-    json.dump({"dur": round(t, 3), "cuts": cuts, "words": out_words}, open(f"{out_dir}/words.json", "w"), ensure_ascii=False, indent=0)
+    json.dump({"dur": round(t, 3), "tail": TAIL, "cuts": cuts, "words": out_words}, open(f"{out_dir}/words.json", "w"), ensure_ascii=False, indent=0)
     print(spec["id"], "durée", round(t, 1), "s,", n, "morceaux")
 
 

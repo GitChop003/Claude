@@ -26,7 +26,7 @@
       tl.fromTo('#ins2 .offer',{opacity:0,y:140,rotateX:18,rotateY:-12},{opacity:1,y:0,rotateX:4,rotateY:-6,duration:.6*k,ease:IN,immediateRender:false},a+.6*q);
       tl.to('#ins2 .offer',{rotateX:2,rotateY:-2,duration:Math.max(.2,d-1.2*q),ease:'none'},a+.6*q+.6*k);
       $$('#ins2 .ck').forEach((c,i)=>{tl.set(c,{className:'ck on'},a+(.95+i*.14)*q);tl.fromTo(c,{scale:.7},{scale:1,duration:.3,ease:IN,immediateRender:false},a+(.95+i*.14)*q);});});
-    INS[3]&&insert('#ins3',INS[3][0],INS[3][1],(a,d)=>{const q=Math.min(1,d/1.45);
+    INS[3]&&insert('#ins3',INS[3][0],INS[3][1],(a,d)=>{const q=Math.max(1,d/1.45);
       tl.fromTo('#ins3 .chat',{opacity:0,y:120,rotateX:14,rotateY:10},{opacity:1,y:0,rotateX:3,rotateY:3,duration:.5*k,ease:IN,immediateRender:false},a);
       tl.to('#ins3 .chat',{rotateX:1,rotateY:0,duration:Math.max(.2,d-.5*k),ease:'none'},a+.5*k);
       const txt="Salut Inès, ton post sur la régularité m'a parlé…";const o={n:0};const el=$('#draftTxt');el.textContent='';

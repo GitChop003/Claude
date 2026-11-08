@@ -1,7 +1,7 @@
 {
  "id": "s5",
  "title": "J'étais le plus timide de mon quartier",
- "rush_note": "0784 : la phrase sur la voix est dite deux fois (1re prise gardée), chiffre « plus de 1000 posts » retiré (non prouvé)",
+ "rush_note": "0784 : la phrase sur la voix est dite deux fois (1re prise gardée), chiffre « plus de 1000 posts » retiré (non prouvé) ; phrase « la vitesse avec lequel… » retirée (faute à l'oral, aucun « laquelle » ailleurs dans les rushes pour la remplacer)",
  "clips": [
   {
    "rush": "0784",
@@ -57,7 +57,13 @@
   {
    "rush": "0784",
    "in": 102.9,
-   "out": 112.6
+   "out": 112.6,
+   "drop": [
+    [
+     103.3,
+     107.3
+    ]
+   ]
   }
  ],
  "hook": [
@@ -99,7 +105,7 @@
     "word": "vas-y.",
     "off": -0.2
    },
-   1.45
+   2.6
   ]
  },
  "cta": "TIMIDE",
