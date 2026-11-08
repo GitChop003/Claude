@@ -127,6 +127,8 @@ def main(spec_path, words_path, out_dir):
 .flashc .a span,.flashc .b span{{display:block}}
 .flashc .thread{{height:4px;width:400px;background:var(--cyan-p);margin:34px 0 0 110px;transform-origin:0 50%;border-radius:2px}}
 #end{{background:rgba(10,18,32,.0)}}
+#hook{{right:96px}}
+#hook .l{{white-space:nowrap}}
 #choc span{{display:inline-block;margin:0 .02em}}
 #choc.behind{{left:0;width:1080px;top:452px;font-size:156px;letter-spacing:-.03em;text-shadow:none}}
 #ctaw .lab{{color:#fff;text-shadow:0 2px 14px rgba(10,18,32,.6)}}
@@ -154,6 +156,9 @@ const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const IN='expo.out',OUT='power2.in',MOVE='power3.inOut',k=1,D_IN=.5,D_OUT=.28;
 const cfg={{ins:true,insDur:200}};const INS={json.dumps({int(n): v for n, v in ins.items()})};let INSWIN=[];
 $$('.ins .d').forEach(p=>{{const L=Math.ceil(p.getTotalLength());p._L=L;p.setAttribute('stroke-dasharray',L);}});
+/* Accroche : 2 lignes max (charte) → on réduit la taille (84 → 64 px) jusqu'à ce que chaque ligne tienne */
+(function(){{const h=$('#hook');let fs=84;$$('#hook .l').forEach(l=>l.style.fontSize=fs+'px');
+  while(fs>64&&$$('#hook .l').some(l=>l.scrollWidth>h.clientWidth)){{fs-=2;$$('#hook .l').forEach(l=>l.style.fontSize=fs+'px');}}}})();
 const tl=gsap.timeline({{paused:true}});
 function cap(id,a,b){{const sp=$$(id+' > span');tl.set(id,{{opacity:1}},a);
   tl.fromTo(sp,{{opacity:0,y:14,filter:'blur(6px)'}},{{opacity:1,y:0,filter:'blur(0px)',duration:.3,ease:IN,stagger:.07,immediateRender:false}},a);

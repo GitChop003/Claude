@@ -263,6 +263,8 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
 .flashc .a span,.flashc .b span{display:block}
 .flashc .thread{height:4px;width:400px;background:var(--cyan-p);margin:34px 0 0 110px;transform-origin:0 50%;border-radius:2px}
 #end{background:rgba(10,18,32,.0)}
+#hook{right:96px}
+#hook .l{white-space:nowrap}
 #choc span{display:inline-block;margin:0 .02em}
 #choc.behind{left:0;width:1080px;top:452px;font-size:156px;letter-spacing:-.03em;text-shadow:none}
 #ctaw .lab{color:#fff;text-shadow:0 2px 14px rgba(10,18,32,.6)}
@@ -330,7 +332,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
 
   <div class="glass" id="topic"><span>Plus d&#x27;idées ?</span><b>Filme tes séances.</b></div>
   <div id="hookbg"></div>
-  <div id="hook"><div class="l"><span>Plus d&#x27;idées de contenu ?</span></div><div class="l c"><span>Filme tes séances.</span></div></div>
+  <div id="hook"><div class="l"><span>Plus d&#x27;idées ?</span></div><div class="l c"><span>Filme tes séances.</span></div></div>
   <div id="sig"><svg viewBox="0 0 32 32" fill="none"><rect id="sigr" x="2.5" y="2.5" width="27" height="27" rx="8" stroke="#fff" stroke-width="2.6"/><circle id="sigc" cx="16" cy="16" r="6.2" stroke="#fff" stroke-width="2.6"/><circle id="sigd" cx="23.6" cy="8.4" r="1.8" fill="#fff"/></svg><span>@the_process.io</span></div>
   
   <div class="flashc" id="f0"><div class="in"><div class="lab">la méthode</div><div class="a"><span>1 hook tourné à part,</span></div><div class="b"><span>puis ta séance</span></div><div class="thread"></div></div></div>
@@ -346,6 +348,9 @@ const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const IN='expo.out',OUT='power2.in',MOVE='power3.inOut',k=1,D_IN=.5,D_OUT=.28;
 const cfg={ins:true,insDur:200};const INS={};let INSWIN=[];
 $$('.ins .d').forEach(p=>{const L=Math.ceil(p.getTotalLength());p._L=L;p.setAttribute('stroke-dasharray',L);});
+/* Accroche : 2 lignes max (charte) → on réduit la taille (84 → 64 px) jusqu'à ce que chaque ligne tienne */
+(function(){const h=$('#hook');let fs=84;$$('#hook .l').forEach(l=>l.style.fontSize=fs+'px');
+  while(fs>64&&$$('#hook .l').some(l=>l.scrollWidth>h.clientWidth)){fs-=2;$$('#hook .l').forEach(l=>l.style.fontSize=fs+'px');}})();
 const tl=gsap.timeline({paused:true});
 function cap(id,a,b){const sp=$$(id+' > span');tl.set(id,{opacity:1},a);
   tl.fromTo(sp,{opacity:0,y:14,filter:'blur(6px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.3,ease:IN,stagger:.07,immediateRender:false},a);
