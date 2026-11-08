@@ -4,21 +4,23 @@ Pour chaque vidéo : export 9:16 (Reels/TikTok), export 4:5 (LinkedIn), couvertu
 
 | # | Fichier | Durée | Rush source | Douleur visée |
 |---|---|---|---|---|
-| s1 | `2026-11-08_SEANCE_reel_v1.mp4` | ≈ 39 s | 0751 | Contenu vu mais pas d'idées / pas de clients |
-| s2 | `2026-11-08_SILENCE_reel_v1.mp4` | ≈ 47 s | 0769 | Vu, mais personne n'écrit (0 DM) |
-| s3 | `2026-11-08_LEGITIME_reel_v1.mp4` | ≈ 58 s | 0785 | Pas légitime pour demander de l'argent |
-| s4 | `2026-11-08_COURAGE_reel_v1.mp4` | ≈ 43 s | 0772 | Peur du regard des autres |
-| s5 | `2026-11-08_TIMIDE_reel_v1.mp4` | ≈ 51 s | 0784 | Peur de prospecter (« déranger ») |
+| s1 | `2026-11-08_SEANCE_reel_v1.mp4` | 39 s | 0751 | Contenu vu mais pas d'idées / pas de clients |
+| s2 | `2026-11-08_SILENCE_reel_v1.mp4` | 47 s | 0769 | Vu, mais personne n'écrit (0 DM) |
+| s3 | `2026-11-08_LEGITIME_reel_v1.mp4` | 61 s | 0785 | Pas légitime pour demander de l'argent |
+| s4 | `2026-11-08_COURAGE_reel_v1.mp4` | 44 s | 0772 | Peur du regard des autres |
+| s5 | `2026-11-08_TIMIDE_reel_v1.mp4` | 54 s | 0784 | Peur de prospecter (« déranger ») |
+
+Dans chaque dossier `sN/renders/` : `*_reel_v1_livraison.mp4` (9:16, version légère à publier), `*_linkedin_v1.mp4` (4:5), `*_couverture_9x16.png` et `*_couverture_4x5.png`. Voix normalisée entre -13,9 et -14,2 LUFS, sans musique (ajoutée dans l'appli, selon la charte).
 
 ## s1 · Filme tes séances
-- **Texte écran (accroche)** : « Plus d'idées de contenu ? / Filme tes séances. »
+- **Texte écran (accroche)** : « Plus d'idées ? / Filme tes séances. »
 - **Accroches alternatives** : « Tu as déjà 30 idées de vidéos. / Elles sont dans tes appels. » · « Ne cherche plus quoi poster. / Ton contenu est en séance. »
 - **Titre de publication** : Tes séances de coaching sont ta meilleure source de contenu
 - **Légende proposée** : Tes appels de vente, tes séances, même tes moments de formation : tout ça, c'est du contenu. Tu filmes, tu découpes les meilleurs moments, tu tournes un hook à part. Commente SÉANCE et je t'envoie la méthode.
 - **CTA** : Commente SÉANCE
 
 ## s2 · Ils regardent en silence
-- **Texte écran** : « Des vues, mais 0 DM ? / Ils regardent en silence. »
+- **Texte écran** : « Des vues. / Mais 0 DM. »
 - **Accroches alternatives** : « Personne ne like ? / Ils sont quand même là. » · « Ma cliente n'avait jamais / liké un seul post. »
 - **Titre de publication** : Ceux qui ne likent pas sont peut-être tes futurs clients
 - **Légende proposée** : Tu postes, personne ne réagit, tu crois que personne ne te voit. Pourtant ils sont là, ils regardent en silence. Une de mes clientes n'avait jamais liké un seul de mes posts avant de m'écrire. Commente SILENCE.
@@ -32,14 +34,14 @@ Pour chaque vidéo : export 9:16 (Reels/TikTok), export 4:5 (LinkedIn), couvertu
 - **CTA** : Commente LÉGITIME
 
 ## s4 · Les meilleures idées sont au cimetière
-- **Texte écran** : « Le regard des autres / tue tes projets. »
+- **Texte écran** : « Peur du regard / des autres ? »
 - **Accroches alternatives** : « Où sont les meilleures idées / de business ? » · « Tu as peur de ce que / tes parents vont penser ? »
 - **Titre de publication** : Les meilleures idées de business sont au cimetière
 - **Légende proposée** : Beaucoup de gens très compétents ne lancent jamais leur activité, juste par peur du regard des autres. Les meilleures idées sont au cimetière : avec ceux qui n'ont jamais osé. Commente COURAGE.
 - **CTA** : Commente COURAGE
 
 ## s5 · J'étais le plus timide de mon quartier
-- **Texte écran** : « Peur de déranger ? / J'étais le plus timide. »
+- **Texte écran** : « Peur de déranger ? / J'étais pareil. »
 - **Accroches alternatives** : « Je bégayais. / Aujourd'hui je forme des coachs. » · « Tu as peur de prospecter ? / Regarde ça. »
 - **Titre de publication** : J'avais peur de déranger. Aujourd'hui je crée du contenu.
 - **Légende proposée** : Je ne levais jamais le doigt en classe. Je n'aimais pas ma voix, j'avais toujours peur de déranger. Toi qui as peur de prospecter ou de lancer ton offre : vas-y. Commente TIMIDE.
