@@ -136,6 +136,48 @@ def main(spec_path, words_path, out_dir):
                    f"tl.fromTo('#l{j}r{r} .mk',{{scale:.7}},{{scale:1,duration:.3,ease:IN,immediateRender:false}},{tt:.3f});")
         js += f"tl.to('#l{j}',{{opacity:0,y:-24,duration:D_OUT,ease:OUT}},{le:.3f});"
         ov_js.append(js)
+    # Énumérations : formules variées (directive « ne pas répéter la liste à cases »)
+    TILE = {
+        "call": '<path d="M10 28v-4a14 14 0 0 1 28 0v4"/><rect x="7" y="27" width="7" height="12" rx="3"/><rect x="34" y="27" width="7" height="12" rx="3"/><path d="M38 39c0 4-5 5-9 5"/>',
+        "sale": '<path d="M24 6h16v16L22 40 8 26z"/><circle cx="32" cy="14" r="3"/>',
+        "doc": '<path d="M12 5h17l9 9v29H12z"/><path d="M29 5v9h9"/><path d="M18 24h14M18 30h14M18 36h8"/>',
+        "video": '<rect x="5" y="12" width="28" height="24" rx="5"/><path d="M33 20l10-6v20l-10-6z"/>',
+        "msg": '<path d="M7 10h34v22H22l-9 8v-8H7z"/>',
+        "story": '<circle cx="24" cy="24" r="17" stroke-dasharray="9 4"/><circle cx="24" cy="24" r="10"/>',
+    }
+    for j, E in enumerate(sp.get("enum", [])):
+        et = at(E["t"]); ticks = [at(it["at"]) for it in E["items"]]
+        ee = at(E["until"]) if "until" in E else ticks[-1] + E.get("hold", 1.4)
+        st = E["style"]
+        if st == "giant":  # un mot géant par élément, chacun remplace le précédent
+            words = "".join(f'<div class="gw" id="e{j}w{r}"><small>{r+1}/{len(E["items"])}</small><span>{esc(it["text"])}</span></div>' for r, it in enumerate(E["items"]))
+            ov_html.append(f'<div class="enum-g" id="e{j}">{words}</div>')
+            js = ""
+            for r, tt in enumerate(ticks):
+                nx = ticks[r + 1] if r + 1 < len(ticks) else ee
+                js += (f"tl.fromTo('#e{j}w{r}',{{opacity:0,y:50,filter:'blur(8px)'}},{{opacity:1,y:0,filter:'blur(0px)',duration:.45,ease:IN,immediateRender:false}},{tt:.3f});"
+                       f"tl.to('#e{j}w{r}',{{opacity:0,y:-40,duration:.25,ease:OUT}},{nx-0.05:.3f});")
+            ov_js.append(js)
+        elif st == "stack":  # les mots s'empilent dans la marge, reliés par un fil cyan
+            words = "".join(f'<div class="sw" id="e{j}w{r}">{esc(it["text"])}</div>' for r, it in enumerate(E["items"]))
+            ov_html.append(f'<div class="enum-s" id="e{j}"><i class="rail"></i>{words}</div>')
+            js = f"gsap.set('#e{j} .rail',{{scaleY:0}});tl.set('#e{j}',{{opacity:1}},{et:.3f});"
+            for r, tt in enumerate(ticks):
+                js += (f"tl.fromTo('#e{j}w{r}',{{opacity:0,x:-60}},{{opacity:1,x:0,duration:.5,ease:IN,immediateRender:false}},{tt:.3f});"
+                       f"tl.to('#e{j} .rail',{{scaleY:{(r+1)/len(ticks):.3f},duration:.45,ease:MOVE}},{tt:.3f});")
+                if r: js += f"tl.to('#e{j}w{r-1}',{{opacity:.55,duration:.3}},{tt:.3f});"
+            js += f"tl.to('#e{j}',{{opacity:0,x:-30,duration:D_OUT,ease:OUT}},{ee:.3f});"
+            ov_js.append(js)
+        elif st == "tiles":  # tuiles avec icônes qui s'allument une à une
+            tiles = "".join(f'<div class="tl-t" id="e{j}w{r}"><div class="ic"><svg viewBox="0 0 48 48">{TILE[it.get("icon","doc")]}</svg></div><b>{esc(it["text"])}</b></div>' for r, it in enumerate(E["items"]))
+            ov_html.append(f'<div class="enum-t" id="e{j}"><div class="tt">{esc(E.get("title",""))}</div><div class="row">{tiles}</div></div>')
+            js = (f"tl.fromTo('#e{j}',{{opacity:0,y:60}},{{opacity:1,y:0,duration:.55,ease:IN,immediateRender:false}},{et:.3f});"
+                  f"tl.set('#e{j} .tl-t',{{opacity:.35,scale:.94}},{et:.3f});")
+            for r, tt in enumerate(ticks):
+                js += (f"tl.to('#e{j}w{r}',{{opacity:1,scale:1,duration:.35,ease:IN}},{tt:.3f});"
+                       f"tl.set('#e{j}w{r}',{{className:'tl-t on'}},{tt:.3f});")
+            js += f"tl.to('#e{j}',{{opacity:0,y:-24,duration:D_OUT,ease:OUT}},{ee:.3f});"
+            ov_js.append(js)
     if sp.get("method"):
         m = sp["method"]; mt = at(m["t"]); md = m.get("d", 3.2); on = m.get("on", 2)
         names = ["Mindset", "Offre", "Acquisition", "Closing"]
@@ -212,6 +254,23 @@ def main(spec_path, words_path, out_dir):
 .lst .mk.on{{background:var(--cyan-p);border-color:var(--cyan-p)}}
 .lst .mk.x.on{{background:var(--rouge);border-color:var(--rouge)}}
 .lst .mk.on svg{{opacity:1}}
+.enum-g{{position:absolute;left:64px;width:952px;top:470px;height:260px}}
+.enum-g .gw{{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0}}
+.enum-g .gw small{{font:800 30px Montserrat;letter-spacing:.12em;color:var(--cyan);text-shadow:0 2px 12px rgba(10,18,32,.5)}}
+.enum-g .gw span{{font:900 132px/1 Montserrat;letter-spacing:-.02em;color:#fff;text-transform:uppercase;text-shadow:0 6px 30px rgba(10,18,32,.45)}}
+.enum-s{{position:absolute;left:64px;top:560px;padding-left:34px;opacity:0}}
+.enum-s .rail{{position:absolute;left:0;top:6px;width:6px;height:calc(100% - 12px);border-radius:3px;background:var(--cyan);transform-origin:50% 0}}
+.enum-s .sw{{font:900 76px/1.12 Montserrat;letter-spacing:-.02em;color:#fff;text-shadow:0 4px 22px rgba(10,18,32,.55);opacity:0}}
+.enum-t{{position:absolute;left:64px;width:952px;top:520px;opacity:0}}
+.enum-t .tt{{font:800 30px Montserrat;color:#fff;text-shadow:0 2px 12px rgba(10,18,32,.55);margin:0 0 18px 6px}}
+.enum-t .row{{display:flex;gap:22px}}
+.enum-t .tl-t{{flex:1;border-radius:28px;padding:28px 18px 24px;display:flex;flex-direction:column;align-items:center;gap:16px;
+  background:rgba(255,255,255,.86);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.7);box-shadow:0 24px 60px rgba(10,18,32,.25)}}
+.enum-t .ic{{width:110px;height:110px;border-radius:30px;background:#EEF0F3;display:flex;align-items:center;justify-content:center}}
+.enum-t .ic svg{{width:64px;height:64px;fill:none;stroke:#8a93a3;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}}
+.enum-t .tl-t b{{font:800 30px/1.15 Montserrat;color:var(--encre);text-align:center}}
+.enum-t .tl-t.on .ic{{background:var(--cyan-p)}}
+.enum-t .tl-t.on .ic svg{{stroke:#fff}}
 </style></head>
 <body>
 <div id="root" class="pal-n lite" data-composition-id="main" data-start="0" data-duration="{dur:.3f}" data-width="1080" data-height="1920">

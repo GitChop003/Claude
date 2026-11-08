@@ -82,40 +82,6 @@
    "top": 600
   }
  ],
- "lists": [
-  {
-   "t": {
-    "word": "C'est",
-    "n": 1
-   },
-   "title": "Une idée de…",
-   "items": [
-    {
-     "text": "vidéo",
-     "at": {
-      "word": "vidéo"
-     }
-    },
-    {
-     "text": "message",
-     "at": {
-      "word": "message"
-     }
-    },
-    {
-     "text": "story",
-     "at": {
-      "word": "story"
-     }
-    }
-   ],
-   "until": {
-    "word": "Donc",
-    "n": 1,
-    "off": -0.1
-   }
-  }
- ],
  "inserts": {
   "3": [
    {
@@ -135,5 +101,39 @@
   "text": "J'EXÉCUTE",
   "d": 1.3
  },
- "cta": "ACTION"
+ "cta": "ACTION",
+ "enum": [
+  {
+   "style": "giant",
+   "t": {
+    "word": "C'est",
+    "n": 1
+   },
+   "items": [
+    {
+     "text": "Vidéo",
+     "at": {
+      "word": "vidéo"
+     }
+    },
+    {
+     "text": "Message",
+     "at": {
+      "word": "message"
+     }
+    },
+    {
+     "text": "Story",
+     "at": {
+      "word": "story"
+     }
+    }
+   ],
+   "until": {
+    "word": "Donc",
+    "n": 1,
+    "off": -0.1
+   }
+  }
+ ]
 }
