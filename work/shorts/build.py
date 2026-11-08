@@ -135,7 +135,7 @@ def main(spec_path, words_path, out_dir):
 #hook{{right:96px}}
 #hook .l{{white-space:nowrap;font-size:{hook_fs}px}}
 #choc span{{display:inline-block;margin:0 .02em}}
-#choc.behind{{left:0;width:1080px;top:452px;font-size:156px;letter-spacing:-.03em;text-shadow:none}}
+#choc.behind{{left:0;width:1080px;top:520px;font-size:156px;letter-spacing:-.03em;text-shadow:none}}
 #ctaw .lab{{color:#fff;text-shadow:0 2px 14px rgba(10,18,32,.6)}}
 </style></head>
 <body>

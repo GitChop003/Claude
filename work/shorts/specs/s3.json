@@ -94,7 +94,6 @@
   "zappel.": "appel.",
   "ne": "ne",
   "sentire": "sentiras",
-  "chacun": "chaque",
   "Luriti": "lui retire",
   "Public": "Publie",
   "qu'entre": "qu'entre-temps,",
@@ -116,6 +115,11 @@
    "un",
    2,
    ""
+  ],
+  [
+   "chacun",
+   2,
+   "chaque"
   ]
  ],
  "choc": {
