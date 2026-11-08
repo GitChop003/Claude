@@ -168,7 +168,7 @@ def main(spec_path, rt_dir, rush_dir, out_dir, grade):
            f"[0:a]apad=pad_dur={TAIL},highpass=f=70,afftdn=nr=8:nf=-40,acompressor=threshold=-20dB:ratio=2.5:attack=8:release=120,"
            f"loudnorm=I=-14:TP=-1.5:LRA=9[vx];"
            f"[1:a]atrim=0:{T:.3f},asetpts=PTS-STARTPTS,afade=t=in:d=1.2,afade=t=out:st={T-2.2:.3f}:d=2.2[mx];"
-           f"[vx][mx]amix=inputs=2:normalize=0:duration=first,loudnorm=I=-14:TP=-1.5:LRA=9,alimiter=limit=0.89[ao]")
+           f"[vx][mx]amix=inputs=2:normalize=0:duration=first,aformat=channel_layouts=stereo,loudnorm=I=-14:TP=-1.5:LRA=9,alimiter=limit=0.89[ao]")
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", f"{tmp}/list.txt", "-i", music,
                     "-filter_complex", fcx, "-map", "[vo]", "-map", "[ao]",
                     "-c:v", "libx264", "-crf", "18", "-preset", "medium", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
