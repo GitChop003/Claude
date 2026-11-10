@@ -524,7 +524,7 @@ cap('#c0',0.054,0.774);cap('#c1',0.774,1.414);cap('#c2',1.414,2.054);cap('#c3',2
 tl.set('#vw',{scale:1.0},52.598);
 tl.to('#dim',{opacity:.12,duration:D_IN},52.598);
 tl.fromTo('#ctaw',{opacity:0,y:60},{opacity:1,y:0,duration:.6,ease:IN,immediateRender:false},52.648);
-(function(){const el=$('#ctat'),w="STRATEGIE",o={n:0};tl.to(o,{n:w.length,duration:1.1,ease:'none',onUpdate:()=>{el.textContent=w.slice(0,Math.round(o.n));}},53.198);})();
+(function(){const el=$('#ctat'),w="STRAT\u00c9GIE",o={n:0};tl.to(o,{n:w.length,duration:1.1,ease:'none',onUpdate:()=>{el.textContent=w.slice(0,Math.round(o.n));}},53.198);})();
 tl.to('#cta .go',{scale:.88,duration:.12},55.698);tl.to('#cta .go',{scale:1,duration:.3,ease:IN},55.818);
 tl.to('#ctaw',{opacity:0,duration:D_OUT,ease:OUT},56.948);
 tl.to('#dim',{opacity:.74,duration:.4,ease:IN},56.948);
