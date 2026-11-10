@@ -69,10 +69,6 @@
   "Il faut souffrir",
   "pour réussir ?"
  ],
- "topic": [
-  "Souffrir pour réussir ?",
-  "Faux."
- ],
  "keywords": [
   "souffrir",
   "justifier",
@@ -97,6 +93,16 @@
    ""
   ]
  ],
+ "reveal": {
+  "word": "Non."
+ },
+ "cta": "PROCESSUS",
+ "vhook": {
+  "style": "pathline",
+  "n": 5
+ },
+ "opening": "top",
+ "hook_style": "classic",
  "choc": {
   "at": {
    "word": "justifier",
@@ -105,76 +111,61 @@
   "text": "JUSTIFIER",
   "d": 1.3
  },
- "tags": [
-  {
-   "t": {
-    "word": "Lorsque"
-   },
-   "text": "l'excuse classique",
-   "d": 2.6
-  }
- ],
- "method": {
-  "t": {
-   "word": "Je",
-   "n": 1
-  },
-  "d": 3.8,
-  "on": 1,
-  "here": "tout commence ici"
- },
  "flash": [
   {
    "t": {
-    "word": "processus.",
-    "off": 0.25
+    "word": "Normalise"
    },
    "lab": "",
    "a": "Ça prend du temps ?",
    "b": "Aime le processus.",
-   "d": 1.1
+   "d": 2.8,
+   "bg": "dark"
   }
  ],
- "lists": [
+ "enum": [
   {
    "t": {
     "word": "aimes",
     "n": 2
    },
-   "title": "Ce qui change déjà",
+   "style": "numbers",
    "items": [
     {
      "text": "Ce que tu fais",
      "at": {
-      "word": "fais.",
-      "n": 1
+      "word": "aimes",
+      "n": 2
      }
     },
     {
      "text": "Tes actions",
      "at": {
-      "word": "place."
+      "word": "aimes",
+      "n": 3
      }
     },
     {
      "text": "Ta paix intérieure",
      "at": {
-      "word": "intérieure."
+      "word": "paix"
      }
     },
     {
      "text": "Ta façon de faire",
      "at": {
-      "word": "faire,",
-      "n": 1
+      "word": "façon",
+      "n": 2
      }
     }
    ],
-   "hold": 1.4
+   "until": {
+    "word": "concrets."
+   }
   }
  ],
- "reveal": {
-  "word": "Non."
- },
- "cta": "PROCESSUS"
+ "act": [
+  "Pas besoin de souffrir.",
+  "Avance d'un pas par jour."
+ ]
 }

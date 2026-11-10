@@ -262,13 +262,70 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
 .flashc .b{font:800 italic 80px/1.15 Montserrat;color:var(--cyan-p);margin-left:110px;overflow:hidden}
 .flashc .a span,.flashc .b span{display:block}
 .flashc .thread{height:4px;width:400px;background:var(--cyan-p);margin:34px 0 0 110px;transform-origin:0 50%;border-radius:2px}
-#end{background:rgba(10,18,32,.0)}
-#hook{right:96px}
-#hook .l{white-space:nowrap;font-size:84px}
+/* v5 : l'écran s'assombrit (le visage reste visible derrière), texte blanc */
+.flashc.dark{background:rgba(10,18,32,.66);color:#fff}
+.flashc.dark .in{top:1120px;left:72px;right:140px}
+.flashc.dark .lab{font-size:28px;margin-bottom:18px}
+.flashc.dark .a{font-size:80px;line-height:1.08}
+.flashc.dark .b{font-size:70px;margin-left:56px}
+.flashc.dark .thread{margin:22px 0 0 56px;width:300px}
+.flashc.dark .b{color:var(--cyan)}
+.flashc.dark .thread{background:var(--cyan)}
+.flashc.dark .lab{background:rgba(255,255,255,.14);color:#fff}
+/* Accroche visuelle : viseur de caméra (s1) */
+#vf{position:absolute;inset:0;pointer-events:none;opacity:0}
+#vf .c{position:absolute;width:70px;height:70px;border:0 solid rgba(255,255,255,.95);filter:drop-shadow(0 1px 6px rgba(10,18,32,.35))}
+#vf .tl{left:64px;top:270px;border-top-width:5px;border-left-width:5px;border-top-left-radius:14px}
+#vf .tr{left:870px;top:270px;border-top-width:5px;border-right-width:5px;border-top-right-radius:14px}
+#vf .bl{left:64px;top:1530px;border-bottom-width:5px;border-left-width:5px;border-bottom-left-radius:14px}
+#vf .br{left:870px;top:1530px;border-bottom-width:5px;border-right-width:5px;border-bottom-right-radius:14px}
+#vf .rec{position:absolute;right:164px;top:292px;display:flex;align-items:center;gap:12px;font:700 28px Montserrat;letter-spacing:.08em;color:#fff;text-shadow:0 1px 8px rgba(10,18,32,.45)}
+#vf .rec b{width:16px;height:16px;border-radius:50%;background:var(--cyan);display:block}
+#vf .rec span{font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:.04em;opacity:.9}
+/* Fin v5 : passage à l'acte sur écran assombri, sous le visage (plus de @the_process.io) */
+#end{display:block;background:none}
+#end .in{position:absolute;left:72px;right:140px;top:1110px}
+#end .a,#end .b{overflow:hidden}
+#end .a span,#end .b span{display:block}
+#end .a{font:600 52px/1.15 Montserrat;color:rgba(255,255,255,.88)}
+#end .b{white-space:nowrap;font:900 56px/1.1 Montserrat;letter-spacing:-.02em;color:#fff;margin-top:6px}
+#end .thread{height:5px;width:140px;border-radius:3px;background:var(--cyan);margin-top:24px;transform-origin:0 50%}
+#root{--cap-y:1408px}
+#hookbg,#sig{display:none}
+/* Ouvertures typographiques sur le plan (v4) */
+#hook{left:72px;right:72px;top:409px;color:#fff;text-shadow:0 2px 18px rgba(10,18,32,.45)}
+#root.pal-n #hook{color:#fff}
+#hook .l{white-space:nowrap}
+#hook .l:first-child{font-weight:600;font-size:54px;letter-spacing:0;margin-bottom:6px;}
+#hook .l.c{font-weight:900;font-size:116px;letter-spacing:-.03em;}
+#root.pal-n #hook .l.c span{color:#fff}
+.vh-path{position:absolute;left:76px;width:860px;height:24px;opacity:0;filter:drop-shadow(0 1px 6px rgba(10,18,32,.35))}.vh-path i{position:absolute;left:0;right:0;top:10px;height:4px;border-radius:2px;transform-origin:0 50%}.vh-path .l0{background:rgba(255,255,255,.45)}.vh-path .l1{background:#00D9FF}.vh-path b{position:absolute;top:3px;width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid #fff}
+/* Bande sous le visage sur vêtements clairs : typographie à l'encre (le blanc disparaissait dans le tissu) */
+#root.ink #hook.band{color:var(--encre);text-shadow:0 0 22px rgba(255,255,255,.65)}
+#root.ink #hook.band .l.c span{color:var(--encre)}
+#root.ink #hook.band .rule{background:var(--cyan-p)}
+#root.ink :not(.fs) > .gw span,#root.ink .enum-s:not(.fs) .sw,#root.ink .enum-x:not(.fs) .kw2 span,#root.ink .enum-n:not(.fs) .nb span,#root.ink .enum-p .nd span{color:var(--encre);text-shadow:0 0 18px rgba(255,255,255,.7)}
+#root.ink :not(.fs) > .gw small,#root.ink .enum-n:not(.fs) .nb b{color:var(--cyan-p);text-shadow:0 0 18px rgba(255,255,255,.6)}
+#root.ink .enum-s:not(.fs) .rail{background:var(--cyan-p)}
+#root.ink .enum-x:not(.fs) .kw2 i{background:var(--encre);box-shadow:none}
+#root.ink .enum-p .ln{background:rgba(10,18,32,.3)}#root.ink .enum-p .lc{background:var(--cyan-p)}
+#root.ink .enum-p .nd b{background:var(--papier);border-color:var(--encre)}#root.ink .enum-p .nd.on b{background:var(--cyan-p);border-color:var(--cyan-p)}
+#root.ink .enum-p .nd em{color:var(--cyan-p);text-shadow:0 0 14px rgba(255,255,255,.7)}
+#root.ink #choc:not(.behind){color:var(--encre);text-shadow:0 0 30px rgba(255,255,255,.7)}
+#root.ink #ctaw .lab{color:var(--encre);text-shadow:0 0 16px rgba(255,255,255,.7)}
+#root.ink #vh.inband{color:var(--encre)!important;text-shadow:0 0 18px rgba(255,255,255,.7)!important}
+#root.ink #vh.inband .ln i{background:var(--cyan-p)}#root.ink #vh.inband .ul{background:rgba(10,18,32,.4)}
+#hook .rule{width:120px;height:5px;border-radius:3px;background:var(--cyan);margin-top:22px;transform-origin:0 50%}
+#topic{left:72px;top:322px;height:auto;padding:0;background:none!important;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;
+  font-size:30px;font-weight:500;color:#fff;gap:12px;text-shadow:0 1px 10px rgba(10,18,32,.5)}
+#topic::after{display:none}
+#root.pal-n #topic{color:#fff}
+#root.pal-n #topic b{color:#fff;font-weight:800}
+#fsbg{position:absolute;inset:0;background:rgba(10,18,32,.66);opacity:0}
 #choc span{display:inline-block;margin:0 .02em}
 #choc.behind{left:0;width:1080px;top:520px;font-size:156px;letter-spacing:-.03em;text-shadow:none}
 #ctaw .lab{color:#fff;text-shadow:0 2px 14px rgba(10,18,32,.6)}
-#ctaw{top:700px}
+#ctaw{top:1195px}
 #prog{position:absolute;left:64px;top:298px;width:876px;height:5px;border-radius:3px;background:rgba(255,255,255,.3);overflow:hidden;opacity:0}
 #prog i{display:block;height:100%;width:100%;background:var(--cyan);transform-origin:0 50%;transform:scaleX(0)}
 .ui .t3:empty{display:none}
@@ -283,9 +340,46 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
 .lst .mk.on{background:var(--cyan-p);border-color:var(--cyan-p)}
 .lst .mk.x.on{background:var(--rouge);border-color:var(--rouge)}
 .lst .mk.on svg{opacity:1}
+.enum-g{position:absolute;left:64px;width:952px;top:470px;height:260px}
+.enum-g .gw{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0}
+.enum-g .gw small{font:800 30px Montserrat;letter-spacing:.12em;color:var(--cyan);text-shadow:0 2px 12px rgba(10,18,32,.5)}
+.enum-g .gw span{font:900 132px/1 Montserrat;letter-spacing:-.02em;color:#fff;text-transform:uppercase;text-shadow:0 6px 30px rgba(10,18,32,.45)}
+.enum-s{position:absolute;left:64px;top:560px;padding-left:34px;opacity:0}
+.enum-s .rail{position:absolute;left:0;top:6px;width:6px;height:calc(100% - 12px);border-radius:3px;background:var(--cyan);transform-origin:50% 0}
+.enum-s .sw{font:900 64px/1.1 Montserrat;letter-spacing:-.02em;color:#fff;text-shadow:0 4px 22px rgba(10,18,32,.55);opacity:0}
+.enum-t{position:absolute;left:64px;width:952px;top:520px;opacity:0}
+.enum-t .tt{font:800 30px Montserrat;color:#fff;text-shadow:0 2px 12px rgba(10,18,32,.55);margin:0 0 18px 6px}
+.enum-t .row{display:flex;gap:22px}
+.enum-t .tl-t{flex:1;border-radius:28px;padding:28px 18px 24px;display:flex;flex-direction:column;align-items:center;gap:16px;
+  background:rgba(255,255,255,.86);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.7);box-shadow:0 24px 60px rgba(10,18,32,.25)}
+.enum-t .ic{width:110px;height:110px;border-radius:30px;background:#EEF0F3;display:flex;align-items:center;justify-content:center}
+.enum-t .ic svg{width:64px;height:64px;fill:none;stroke:#8a93a3;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.enum-t .tl-t b{font:800 30px/1.15 Montserrat;color:var(--encre);text-align:center}
+.enum-t .tl-t.on .ic{background:var(--cyan-p)}
+.enum-t .tl-t.on .ic svg{stroke:#fff}
+.enum-t .row{gap:16px}
+.enum-t .tl-t{padding:22px 10px 18px;gap:12px;border-radius:24px}
+.enum-t .ic{width:88px;height:88px;border-radius:24px}
+.enum-t .ic svg{width:52px;height:52px}
+.enum-t .tl-t b{font-size:27px;line-height:1.1}
+.enum-x{position:absolute;left:72px;opacity:1}
+.kw2{position:relative;font:900 64px/1.08 Montserrat;letter-spacing:-.02em;color:#fff;text-shadow:0 3px 18px rgba(10,18,32,.5);opacity:0;width:max-content}
+.kw2 i{position:absolute;left:-6px;right:-6px;top:52%;height:7px;border-radius:4px;background:#fff;box-shadow:0 1px 8px rgba(10,18,32,.4);transform-origin:0 50%}
+.enum-p{position:absolute;left:72px;width:868px;height:200px;opacity:0}
+.enum-p .ln,.enum-p .lc{position:absolute;top:40px;height:4px;border-radius:2px;transform-origin:0 50%}
+.enum-p .ln{background:rgba(255,255,255,.5)}.enum-p .lc{background:var(--cyan)}
+.enum-p .nd{position:absolute;top:0;width:220px;margin-left:-110px;text-align:center}
+.enum-p .nd b{display:block;width:30px;height:30px;margin:27px auto 0;border-radius:50%;background:var(--noir);border:4px solid #fff}
+.enum-p .nd span{display:block;margin-top:18px;font:800 32px/1.12 Montserrat;color:#fff;text-shadow:0 3px 16px rgba(10,18,32,.55);opacity:.45}
+.enum-p .nd.on b{background:var(--cyan);border-color:var(--cyan)}.enum-p .nd.on span{opacity:1}
+.enum-p .nd em{position:absolute;left:0;right:0;top:-14px;font:800 italic 26px Montserrat;color:var(--cyan);text-shadow:0 2px 12px rgba(10,18,32,.5);opacity:0}
+.enum-n{position:absolute;left:72px;width:936px;height:190px}
+.nb{position:absolute;inset:0;display:flex;align-items:center;gap:30px;opacity:0}
+.nb b{font:900 170px/1 Montserrat;color:var(--cyan);text-shadow:0 4px 24px rgba(10,18,32,.4)}
+.nb span{font:800 68px/1.05 Montserrat;color:#fff;text-shadow:0 3px 18px rgba(10,18,32,.5)}
 </style></head>
 <body>
-<div id="root" class="pal-n lite" data-composition-id="main" data-start="0" data-duration="61.160" data-width="1080" data-height="1920">
+<div id="root" class="pal-n lite ink" data-composition-id="main" data-start="0" data-duration="61.860" data-width="1080" data-height="1920">
   <div id="vw"><video id="v" data-start="0" data-duration="61.160" data-has-audio="true" src="assets/cut.mp4" playsinline></video></div>
   <div id="dimfix"></div><div id="dim"></div>
         <div class="ins" id="ins1"><div class="it"><span>Vu.</span> <span class="a">Pas de DM.</span></div>
@@ -340,25 +434,21 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
               <div class="comp"><div class="field"><span id="draftTxt"></span><span class="cur2"></span></div><div class="send"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></div></div>
             </div>
           </div></div>
-        <div class="glass" id="topic" data-g="bandeau"><span>200 likes.</span><b>0 client.</b></div>
-        <div id="objection"><b>OBJECTION :</b> « Je dois réfléchir »</div>
-        <div id="hookbg"></div>
-        <div id="hook"><div class="k"><span>Tu postes. Personne n'écrit.</span></div><div class="l"><span>200 likes.</span></div><div class="l c"><span>0 client.</span></div></div>
 
-  <div class="glass" id="topic"><span>Souffrir pour réussir ?</span><b>Faux.</b></div>
-  <div id="prog"><i></i></div>
+  
+<div id="vh" class="vh-path" style="top:262px"><i class="l0"></i><i class="l1"></i><b style="left:-9px"></b><b style="left:206px"></b><b style="left:421px"></b><b style="left:636px"></b><b style="left:851px"></b></div>
   <div id="hookbg"></div>
-  <div id="hook"><div class="l"><span>Il faut souffrir</span></div><div class="l c"><span>pour réussir ?</span></div></div>
-  <div id="sig"><svg viewBox="0 0 32 32" fill="none"><rect id="sigr" x="2.5" y="2.5" width="27" height="27" rx="8" stroke="#fff" stroke-width="2.6"/><circle id="sigc" cx="16" cy="16" r="6.2" stroke="#fff" stroke-width="2.6"/><circle id="sigd" cx="23.6" cy="8.4" r="1.8" fill="#fff"/></svg><span>@the_process.io</span></div>
-  <div id="choc"><span>J</span><span>U</span><span>S</span><span>T</span><span>I</span><span>F</span><span>I</span><span>E</span><span>R</span></div>
-  <div class="glass white lst" id="l0" style="top:520px"><div class="lt">Ce qui change déjà</div><div class="li" id="l0r0"><i class="mk check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span>Ce que tu fais</span></div><div class="li" id="l0r1"><i class="mk check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span>Tes actions</span></div><div class="li" id="l0r2"><i class="mk check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span>Ta paix intérieure</span></div><div class="li" id="l0r3"><i class="mk check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span>Ta façon de faire</span></div></div><div class="glass" id="method"><div class="h">La méthode The Process</div><div class="rail"></div><div class="railc"></div><div class="row" id="m1"><div class="dot"></div><div class="n">01</div><div class="w">Mindset</div><div class="here">tout commence ici</div></div><div class="row" id="m2"><div class="dot"></div><div class="n">02</div><div class="w">Offre</div></div><div class="row" id="m3"><div class="dot"></div><div class="n">03</div><div class="w">Acquisition</div></div><div class="row" id="m4"><div class="dot"></div><div class="n">04</div><div class="w">Closing</div></div></div><div class="glass tag tg" id="g0"><i></i>l&#x27;excuse classique</div>
-  <div class="flashc" id="f0"><div class="in"><div class="lab"></div><div class="a"><span>Ça prend du temps ?</span></div><div class="b"><span>Aime le processus.</span></div><div class="thread"></div></div></div>
-  <div class="cap" id="c0"><span>Beaucoup</span> <span>ont</span> <span>normalisé</span></div><div class="cap" id="c1"><span>le</span> <span>fait</span> <span>qu&#x27;il</span></div><div class="cap" id="c2"><span>faut</span> <span class="kw">souffrir</span> <span>avant</span></div><div class="cap" id="c3"><span>de</span> <span>réussir.</span></div><div class="cap" id="c4"><span>Parce</span> <span>qu&#x27;on</span> <span>nous</span></div><div class="cap" id="c5"><span>a</span> <span>toujours</span> <span>dit,</span></div><div class="cap" id="c6"><span>il</span> <span>faut</span> <span class="kw">souffrir.</span></div><div class="cap" id="c7"><span>Avant</span> <span>de</span> <span>réussir.</span></div><div class="cap" id="c8"><span>mais</span> <span>je</span> <span>pense</span></div><div class="cap" id="c9"><span>que</span> <span>ça</span> <span>permet</span></div><div class="cap" id="c10"><span>plus</span> <span>aux</span> <span>gens</span></div><div class="cap" id="c11"><span>de</span> <span>se</span> <span class="kw">justifier</span></div><div class="cap" id="c12"><span>que</span> <span>de</span> <span>travailler.</span></div><div class="cap" id="c13"><span>Parce</span> <span>que</span> <span>tu</span></div><div class="cap" id="c14"><span>vas</span> <span>voir</span> <span>une</span></div><div class="cap" id="c15"><span>personne</span> <span>qui</span> <span class="kw">stagne</span></div><div class="cap" id="c16"><span>depuis</span> <span>un</span> <span>an</span></div><div class="cap" id="c17"><span>dans</span> <span>son</span> <span>activité.</span></div><div class="cap" id="c18"><span>Lorsque</span> <span>tu</span> <span>vas</span></div><div class="cap" id="c19"><span>poser</span> <span>la</span> <span>question</span></div><div class="cap" id="c20"><span>à</span> <span>savoir</span> <span>pourquoi</span></div><div class="cap" id="c21"><span>depuis</span> <span>tu</span> <span>n&#x27;évolues</span></div><div class="cap" id="c22"><span>pas,</span></div><div class="cap" id="c23"><span>il</span> <span>va</span> <span>te</span></div><div class="cap" id="c24"><span>dire</span> <span>ah,</span></div><div class="cap" id="c25"><span>il</span> <span>faut</span> <span class="kw">souffrir</span></div><div class="cap" id="c26"><span>Tout</span> <span>ce</span> <span>qui</span></div><div class="cap" id="c27"><span>est</span> <span>bien</span> <span>prend</span></div><div class="cap" id="c28"><span>du</span> <span class="kw">temps.</span></div><div class="cap" id="c29"><span>Je</span> <span>peux</span> <span>accepter</span></div><div class="cap" id="c30"><span>que</span> <span>ça</span> <span>peut</span></div><div class="cap" id="c31"><span>prendre</span> <span>du</span> <span class="kw">temps,</span></div><div class="cap" id="c32"><span>mais</span> <span>il</span> <span>y</span></div><div class="cap" id="c33"><span>a</span> <span>des</span> <span>petits</span></div><div class="cap" id="c34"><span>résultats</span> <span>qu&#x27;il</span> <span>ne</span></div><div class="cap" id="c35"><span>faut</span> <span>pas</span> <span>ignorer.</span></div><div class="cap" id="c36"><span>Non.</span></div><div class="cap" id="c37"><span>Normalise</span> <span>le</span> <span>fait</span></div><div class="cap" id="c38"><span>que</span> <span>ça</span> <span>peut</span></div><div class="cap" id="c39"><span>prendre</span> <span>du</span> <span class="kw">temps,</span></div><div class="cap" id="c40"><span>mais</span> <span>tu</span> <span>aimes</span></div><div class="cap" id="c41"><span>le</span> <span class="kw">processus.</span></div><div class="cap" id="c43"><span>que</span> <span>tu</span> <span>fais.</span></div><div class="cap" id="c44"><span>Tu</span> <span>aimes</span> <span>les</span></div><div class="cap" id="c45"><span>actions</span> <span>que</span> <span>tu</span></div><div class="cap" id="c46"><span>mets</span> <span>en</span> <span>place.</span></div><div class="cap" id="c47"><span>Même</span> <span>si</span> <span>les</span></div><div class="cap" id="c48"><span>actions</span> <span>ne</span> <span>t&#x27;apportent</span></div><div class="cap" id="c49"><span>pas</span> <span>des</span> <span>résultats</span></div><div class="cap" id="c50"><span>en</span> <span>termes</span> <span>de</span></div><div class="cap" id="c51"><span>chiffres</span> <span>d&#x27;affaires,</span></div><div class="cap" id="c52"><span>ça</span> <span>t&#x27;apporte</span> <span>des</span></div><div class="cap" id="c53"><span>résultats</span> <span>dans</span> <span>ta</span></div><div class="cap" id="c54"><span>paix</span> <span class="kw">intérieure.</span></div><div class="cap" id="c55"><span>dans</span> <span>ta</span> <span>façon</span></div><div class="cap" id="c56"><span>de</span> <span>te</span> <span>comporter,</span></div><div class="cap" id="c57"><span>dans</span> <span>ta</span> <span>façon</span></div><div class="cap" id="c58"><span>de</span> <span>faire,</span></div><div class="cap" id="c59"><span>mais</span> <span>tu</span> <span>vois</span></div><div class="cap" id="c60"><span>quand</span> <span>même</span> <span>des</span></div><div class="cap" id="c61"><span>changements</span> <span class="kw">concrets.</span></div><div class="cap" id="c62"><span>Oui,</span></div><div class="cap" id="c63"><span>on</span> <span>refuse</span> <span>pas,</span></div><div class="cap" id="c64"><span>ça</span> <span>doit</span> <span>prendre</span></div><div class="cap" id="c65"><span>du</span> <span class="kw">temps,</span></div><div class="cap" id="c66"><span>mais</span> <span>il</span> <span>y</span></div><div class="cap" id="c67"><span>a</span> <span>quand</span> <span>même</span></div><div class="cap" id="c68"><span>les</span> <span class="kw">micro-actions</span></div><div class="cap" id="c69"><span>que</span> <span>toi-même</span> <span>tu</span></div><div class="cap" id="c70"><span>dois</span> <span>pouvoir</span> <span>percevoir,</span></div><div class="cap" id="c71"><span>sans</span> <span>qu&#x27;on</span> <span>te</span></div><div class="cap" id="c72"><span>le</span> <span>dise.</span></div>
+  <div id="hook" class="top"><div class="l"><span>Il faut souffrir</span></div><div class="l c"><span>pour réussir ?</span></div><div class="rule"></div></div>
+  <div id="fsbg"></div>
+  <div id="choc" style="top:1170px;font-size:131px"><span>J</span><span>U</span><span>S</span><span>T</span><span>I</span><span>F</span><span>I</span><span>E</span><span>R</span></div>
+  <div class="enum-n" id="e0" style="top:413px"><div class="nb" id="e0w0"><b>1</b><span>Ce que tu fais</span></div><div class="nb" id="e0w1"><b>2</b><span>Tes actions</span></div><div class="nb" id="e0w2"><b>3</b><span>Ta paix intérieure</span></div><div class="nb" id="e0w3"><b>4</b><span>Ta façon de faire</span></div></div>
+  <div class="flashc dark" id="f0"><div class="in" style="top:1145px"><div class="lab"></div><div class="a"><span>Ça prend du temps ?</span></div><div class="b"><span>Aime le processus.</span></div><div class="thread"></div></div></div>
+  <div class="cap" id="c0"><span>Beaucoup</span> <span>ont</span> <span>normalisé</span></div><div class="cap" id="c1"><span>le</span> <span>fait</span> <span>qu&#x27;il</span></div><div class="cap" id="c2"><span>faut</span> <span class="kw">souffrir</span> <span>avant</span></div><div class="cap" id="c3"><span>de</span> <span>réussir.</span></div><div class="cap" id="c4"><span>Parce</span> <span>qu&#x27;on</span> <span>nous</span></div><div class="cap" id="c5"><span>a</span> <span>toujours</span> <span>dit,</span></div><div class="cap" id="c6"><span>il</span> <span>faut</span> <span class="kw">souffrir.</span></div><div class="cap" id="c7"><span>Avant</span> <span>de</span> <span>réussir.</span></div><div class="cap" id="c8"><span>mais</span> <span>je</span> <span>pense</span></div><div class="cap" id="c9"><span>que</span> <span>ça</span> <span>permet</span></div><div class="cap" id="c10"><span>plus</span> <span>aux</span> <span>gens</span></div><div class="cap" id="c11"><span>de</span> <span>se</span> <span class="kw">justifier</span></div><div class="cap" id="c12"><span>que</span> <span>de</span> <span>travailler.</span></div><div class="cap" id="c13"><span>Parce</span> <span>que</span> <span>tu</span></div><div class="cap" id="c14"><span>vas</span> <span>voir</span> <span>une</span></div><div class="cap" id="c15"><span>personne</span> <span>qui</span> <span class="kw">stagne</span></div><div class="cap" id="c16"><span>depuis</span> <span>un</span> <span>an</span></div><div class="cap" id="c17"><span>dans</span> <span>son</span> <span>activité.</span></div><div class="cap" id="c18"><span>Lorsque</span> <span>tu</span> <span>vas</span></div><div class="cap" id="c19"><span>poser</span> <span>la</span> <span>question</span></div><div class="cap" id="c20"><span>à</span> <span>savoir</span> <span>pourquoi</span></div><div class="cap" id="c21"><span>depuis</span> <span>tu</span> <span>n&#x27;évolues</span></div><div class="cap" id="c22"><span>pas,</span></div><div class="cap" id="c23"><span>il</span> <span>va</span> <span>te</span></div><div class="cap" id="c24"><span>dire</span> <span>ah,</span></div><div class="cap" id="c25"><span>il</span> <span>faut</span> <span class="kw">souffrir</span></div><div class="cap" id="c26"><span>Tout</span> <span>ce</span> <span>qui</span></div><div class="cap" id="c27"><span>est</span> <span>bien</span> <span>prend</span></div><div class="cap" id="c28"><span>du</span> <span class="kw">temps.</span></div><div class="cap" id="c29"><span>Je</span> <span>peux</span> <span>accepter</span></div><div class="cap" id="c30"><span>que</span> <span>ça</span> <span>peut</span></div><div class="cap" id="c31"><span>prendre</span> <span>du</span> <span class="kw">temps,</span></div><div class="cap" id="c32"><span>mais</span> <span>il</span> <span>y</span></div><div class="cap" id="c33"><span>a</span> <span>des</span> <span>petits</span></div><div class="cap" id="c34"><span>résultats</span> <span>qu&#x27;il</span> <span>ne</span></div><div class="cap" id="c35"><span>faut</span> <span>pas</span> <span>ignorer.</span></div><div class="cap" id="c36"><span>Non.</span></div><div class="cap" id="c40"><span>mais</span> <span>tu</span> <span>aimes</span></div><div class="cap" id="c41"><span>le</span> <span class="kw">processus.</span></div><div class="cap" id="c42"><span>Tu</span> <span>aimes</span> <span>ce</span></div><div class="cap" id="c43"><span>que</span> <span>tu</span> <span>fais.</span></div><div class="cap" id="c44"><span>Tu</span> <span>aimes</span> <span>les</span></div><div class="cap" id="c45"><span>actions</span> <span>que</span> <span>tu</span></div><div class="cap" id="c46"><span>mets</span> <span>en</span> <span>place.</span></div><div class="cap" id="c47"><span>Même</span> <span>si</span> <span>les</span></div><div class="cap" id="c48"><span>actions</span> <span>ne</span> <span>t&#x27;apportent</span></div><div class="cap" id="c49"><span>pas</span> <span>des</span> <span>résultats</span></div><div class="cap" id="c50"><span>en</span> <span>termes</span> <span>de</span></div><div class="cap" id="c51"><span>chiffres</span> <span>d&#x27;affaires,</span></div><div class="cap" id="c52"><span>ça</span> <span>t&#x27;apporte</span> <span>des</span></div><div class="cap" id="c53"><span>résultats</span> <span>dans</span> <span>ta</span></div><div class="cap" id="c54"><span>paix</span> <span class="kw">intérieure.</span></div><div class="cap" id="c55"><span>dans</span> <span>ta</span> <span>façon</span></div><div class="cap" id="c56"><span>de</span> <span>te</span> <span>comporter,</span></div><div class="cap" id="c57"><span>dans</span> <span>ta</span> <span>façon</span></div><div class="cap" id="c58"><span>de</span> <span>faire,</span></div><div class="cap" id="c59"><span>mais</span> <span>tu</span> <span>vois</span></div><div class="cap" id="c60"><span>quand</span> <span>même</span> <span>des</span></div><div class="cap" id="c61"><span>changements</span> <span class="kw">concrets.</span></div><div class="cap" id="c62"><span>Oui,</span></div><div class="cap" id="c63"><span>on</span> <span>refuse</span> <span>pas,</span></div><div class="cap" id="c64"><span>ça</span> <span>doit</span> <span>prendre</span></div><div class="cap" id="c65"><span>du</span> <span class="kw">temps,</span></div><div class="cap" id="c66"><span>mais</span> <span>il</span> <span>y</span></div><div class="cap" id="c67"><span>a</span> <span>quand</span> <span>même</span></div><div class="cap" id="c68"><span>les</span> <span class="kw">micro-actions</span></div><div class="cap" id="c69"><span>que</span> <span>toi-même</span> <span>tu</span></div><div class="cap" id="c70"><span>dois</span> <span>pouvoir</span> <span>percevoir,</span></div><div class="cap" id="c71"><span>sans</span> <span>qu&#x27;on</span> <span>te</span></div><div class="cap" id="c72"><span>le</span> <span>dise.</span></div>
   <div id="ctaw"><div class="lab">Commente</div>
     <div class="glass white" id="cta"><svg class="s" viewBox="0 0 40 40" fill="none" stroke="#001F3F" stroke-width="4" stroke-linecap="round"><circle cx="17" cy="17" r="11"/><path d="M25 25l9 9"/></svg>
       <div class="q"><span id="ctat"></span><span class="cur"></span></div>
       <div class="go"><svg viewBox="0 0 42 42" fill="none" stroke="#001F3F" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21h22M22 11l10 10-10 10"/></svg></div></div></div>
-  <div id="end"><svg viewBox="0 0 32 32" fill="none"><rect x="2.5" y="2.5" width="27" height="27" rx="8" stroke="#fff" stroke-width="2"/><circle cx="16" cy="16" r="6.2" stroke="#fff" stroke-width="2"/><circle cx="23.6" cy="8.4" r="1.6" fill="#00D9FF"/></svg><div class="h">@the_process.io</div></div>
+  <div id="end"><div class="in"><div class="a"><span>Pas besoin de souffrir.</span></div><div class="b"><span>Avance d&#x27;un pas par jour.</span></div><div class="thread"></div></div></div>
   <audio id="sfx" data-start="31.226" data-duration="0.37" data-volume="0.32" src="assets/kit/reveal.mp3"></audio>
 </div>
 <script>
@@ -370,32 +460,23 @@ const tl=gsap.timeline({paused:true});
 function cap(id,a,b){const sp=$$(id+' > span');tl.set(id,{opacity:1},a);
   tl.fromTo(sp,{opacity:0,y:14,filter:'blur(6px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.3,ease:IN,stagger:.07,immediateRender:false},a);
   tl.set(id,{opacity:0},b);}
-function flash(id,a,d){tl.set(id,{opacity:1},a);
+function flash(id,a,d){tl.fromTo(id,{opacity:0},{opacity:1,duration:.25,ease:'none',immediateRender:false},a);
   tl.fromTo(id+' .a span,'+id+' .b span',{yPercent:110},{yPercent:0,duration:.6,ease:IN,stagger:.08,immediateRender:false},a);
   tl.fromTo(id+' .thread',{scaleX:0},{scaleX:1,duration:.5,ease:MOVE,immediateRender:false},a+.3);
-  tl.set(id,{opacity:0},a+d);}
-gsap.set(['#sig','#ctaw','#end'],{opacity:0});
-/* Accroche : plein écran 0 → 2,4 s puis se rétracte en bandeau */
-tl.fromTo('#hook .l span',{yPercent:110},{yPercent:0,duration:.7,ease:IN,stagger:.08,immediateRender:false},0);
-tl.fromTo('#vw',{scale:1.0},{scale:1.04,duration:2.6,ease:'none',immediateRender:false},0);
-tl.to('#hook',{opacity:0,y:-40,duration:D_OUT,ease:OUT},2.25);
-(function(){const tp=$('#topic')||$('#objection');const L=tp.offsetLeft,T=tp.offsetTop,W=tp.offsetWidth,H=tp.offsetHeight;
-  gsap.set(tp,{opacity:0});
-  tl.fromTo('#hookbg',{clipPath:'inset(0px 0px 0px 0px round 0px)'},{clipPath:`inset(${T}px ${1080-L-W}px ${1920-T-H}px ${L}px round 16px)`,duration:.6,ease:MOVE,immediateRender:false},2.3);
-  tl.set(tp,{opacity:1},2.9);tl.set('#hookbg',{opacity:0},2.9);})();
-tl.set('#vw',{scale:1.0},2.6);
-tl.to('#sig',{opacity:1,duration:D_IN,ease:IN},.2);
-tl.set(['#sigr','#sigc'],{attr:{stroke:'#00D9FF'}},.2);tl.set('#sigd',{attr:{fill:'#00D9FF'}},.2);
-tl.set(['#sigr','#sigc'],{attr:{stroke:'#fff'}},.7);tl.set('#sigd',{attr:{fill:'#fff'}},.7);
+  tl.to(id,{opacity:0,duration:.25,ease:'none'},a+d);}
+gsap.set(['#ctaw','#end'],{opacity:0});
+/* Ouverture v5 : coup de zoom arrière + accroche visuelle, titre tenu 6.7 s puis disparu (pas de @, pas de barre) */
+tl.fromTo('#vw',{scale:1.16},{scale:1.0,duration:.6,ease:'expo.out',immediateRender:false},0);
+tl.fromTo('#hook .l span',{yPercent:110},{yPercent:0,duration:.7,ease:IN,stagger:.12,immediateRender:false},0.15);
+tl.fromTo('#hook .rule',{scaleX:0},{scaleX:1,duration:.6,ease:MOVE,immediateRender:false},0.55);
+tl.to('#hook .l span',{yPercent:-110,duration:.4,ease:OUT,stagger:.05},6.506);
+tl.to('#hook .rule',{scaleX:0,transformOrigin:'100% 50%',duration:.35,ease:OUT},6.506);
+tl.set('#vh',{opacity:1},0);tl.fromTo('#vh .l0',{scaleX:0},{scaleX:1,duration:.6,ease:MOVE,immediateRender:false},0);tl.fromTo('#vh b',{scale:0},{scale:1,duration:.3,ease:IN,stagger:.08,immediateRender:false},.15);tl.fromTo('#vh .l1',{scaleX:0},{scaleX:1,duration:1.5,ease:'power1.inOut',immediateRender:false},.7);tl.to('#vh b:nth-of-type(1)',{backgroundColor:'#00D9FF',borderColor:'#00D9FF',scale:1.25,duration:.2},0.70);tl.to('#vh b:nth-of-type(2)',{backgroundColor:'#00D9FF',borderColor:'#00D9FF',scale:1.25,duration:.2},1.07);tl.to('#vh b:nth-of-type(3)',{backgroundColor:'#00D9FF',borderColor:'#00D9FF',scale:1.25,duration:.2},1.45);tl.to('#vh b:nth-of-type(4)',{backgroundColor:'#00D9FF',borderColor:'#00D9FF',scale:1.25,duration:.2},1.82);tl.to('#vh b:nth-of-type(5)',{backgroundColor:'#00D9FF',borderColor:'#00D9FF',scale:1.25,duration:.2},2.20);tl.to('#vh',{opacity:0,duration:.35,ease:OUT},2.6);
 tl.set('#vw',{scale:1.08},3.738);tl.set('#vw',{scale:1.0},8.174);tl.set('#vw',{scale:1.08},12.262);tl.set('#vw',{scale:1.0},16.400);tl.set('#vw',{scale:1.08},22.730);tl.set('#vw',{scale:1.0},31.076);tl.set('#vw',{scale:1.08},36.706);tl.set('#vw',{scale:1.0},47.000);tl.set('#vw',{scale:1.08},52.146);
-flash('#f0',36.156,1.1);
+flash('#f0',32.226,2.8);
 (function(){const sp=$$('#choc span'),mid=(sp.length-1)/2;tl.set('#choc',{opacity:1},10.662);tl.fromTo(sp,{opacity:0,x:i=>(mid-i)*18,filter:'blur(10px)'},{opacity:1,x:0,filter:'blur(0px)',duration:.8,ease:IN,immediateRender:false},10.662);tl.to('#choc',{opacity:0,duration:.25},11.712);})();
-tl.fromTo('#l0',{opacity:0,y:90},{opacity:1,y:0,duration:.55,ease:IN,immediateRender:false},37.000);tl.set('#l0 .li',{opacity:.35},37.000);tl.to('#l0r0',{opacity:1,duration:.2},37.640);tl.set('#l0r0 .mk',{className:'mk check on'},37.640);tl.fromTo('#l0r0 .mk',{scale:.7},{scale:1,duration:.3,ease:IN,immediateRender:false},37.640);tl.to('#l0r1',{opacity:1,duration:.2},39.560);tl.set('#l0r1 .mk',{className:'mk check on'},39.560);tl.fromTo('#l0r1 .mk',{scale:.7},{scale:1,duration:.3,ease:IN,immediateRender:false},39.560);tl.to('#l0r2',{opacity:1,duration:.2},46.200);tl.set('#l0r2 .mk',{className:'mk check on'},46.200);tl.fromTo('#l0r2 .mk',{scale:.7},{scale:1,duration:.3,ease:IN,immediateRender:false},46.200);tl.to('#l0r3',{opacity:1,duration:.2},49.506);tl.set('#l0r3 .mk',{className:'mk check on'},49.506);tl.fromTo('#l0r3 .mk',{scale:.7},{scale:1,duration:.3,ease:IN,immediateRender:false},49.506);tl.to('#l0',{opacity:0,y:-24,duration:D_OUT,ease:OUT},50.906);gsap.set('#method .railc',{scaleY:0});tl.to('#dim',{opacity:.35,duration:D_IN,ease:IN},25.156);tl.fromTo('#method',{opacity:0,y:32,scale:.98},{opacity:1,y:0,scale:1,duration:.6,ease:IN,immediateRender:false},25.156);tl.fromTo('#method .row',{opacity:0,x:-18},{opacity:1,x:0,duration:.45,ease:IN,stagger:.1,immediateRender:false},25.356);tl.to('#method .railc',{scaleY:0.000,duration:.7,ease:MOVE},26.056);tl.set('#m1',{className:'row on'},26.056);tl.fromTo('#m1 .here',{opacity:0,x:-12},{opacity:1,x:0,duration:D_IN,ease:IN,immediateRender:false},26.356);tl.to('#method',{opacity:0,y:-20,duration:D_OUT,ease:OUT},28.956);tl.to('#dim',{opacity:0,duration:D_OUT},28.956);tl.fromTo('#g0',{opacity:0,y:32},{opacity:1,y:0,duration:D_IN,ease:IN,immediateRender:false},16.486);tl.to('#g0',{opacity:0,y:-10,duration:D_OUT,ease:OUT},19.086);
-/* Barre de progression : où on en est dans la vidéo */
-tl.to('#prog',{opacity:1,duration:.4},2.9);
-tl.fromTo('#prog i',{scaleX:0},{scaleX:1,duration:58.160,ease:'none',immediateRender:false},0);
-tl.to('#prog',{opacity:0,duration:.3},58.160);
-cap('#c0',0.138,1.258);cap('#c1',1.258,1.738);cap('#c2',1.738,2.778);cap('#c3',2.778,3.796);cap('#c4',3.796,4.516);cap('#c5',4.516,5.476);cap('#c6',5.476,6.894);cap('#c7',6.894,8.404);cap('#c8',8.404,9.044);cap('#c9',9.044,9.782);cap('#c10',9.782,10.342);cap('#c11',10.342,11.142);cap('#c12',11.142,12.320);cap('#c13',12.320,12.720);cap('#c14',12.720,13.200);cap('#c15',13.200,14.240);cap('#c16',14.240,15.280);cap('#c17',15.280,16.486);cap('#c18',16.486,17.126);cap('#c19',17.126,17.766);cap('#c20',17.766,18.806);cap('#c21',18.806,19.766);cap('#c22',19.766,20.406);cap('#c23',20.406,20.806);cap('#c24',20.806,21.446);cap('#c25',21.446,22.780);cap('#c26',22.780,23.340);cap('#c27',23.340,24.140);cap('#c28',24.140,25.156);cap('#c29',25.156,26.036);cap('#c30',26.036,26.436);cap('#c31',26.436,27.156);cap('#c32',27.156,27.556);cap('#c33',27.556,28.836);cap('#c34',28.836,29.876);cap('#c35',29.876,31.226);cap('#c36',31.226,32.226);cap('#c37',32.226,33.186);cap('#c38',33.186,34.386);cap('#c39',34.386,35.026);cap('#c40',35.026,35.746);cap('#c41',35.746,36.760);cap('#c43',37.400,38.040);cap('#c44',38.040,38.600);cap('#c45',38.600,39.160);cap('#c46',39.160,40.120);cap('#c47',40.120,40.760);cap('#c48',40.760,41.960);cap('#c49',41.960,43.160);cap('#c50',43.160,43.720);cap('#c51',43.720,44.440);cap('#c52',44.440,45.080);cap('#c53',45.080,45.880);cap('#c54',45.880,46.950);cap('#c55',47.346,48.146);cap('#c56',48.146,48.866);cap('#c57',48.866,49.426);cap('#c58',49.426,49.746);cap('#c59',49.746,50.386);cap('#c60',50.386,50.786);cap('#c61',50.786,52.200);cap('#c62',52.200,52.360);cap('#c63',52.360,52.920);cap('#c64',52.920,53.400);cap('#c65',53.400,53.640);cap('#c66',53.640,53.800);cap('#c67',53.800,54.200);cap('#c68',54.200,54.840);cap('#c69',54.840,55.560);cap('#c70',55.560,56.680);cap('#c71',56.680,57.400);cap('#c72',57.400,58.110);
+tl.fromTo('#e0w0 b',{opacity:0,scale:.6},{opacity:1,scale:1,duration:.45,ease:IN,immediateRender:false},37.000);tl.fromTo('#e0w0 span',{opacity:0,x:-30},{opacity:1,x:0,duration:.45,ease:IN,immediateRender:false},37.080);tl.set('#e0w0',{opacity:1},37.000);tl.to('#e0w0',{opacity:0,duration:.2},38.150);tl.fromTo('#e0w1 b',{opacity:0,scale:.6},{opacity:1,scale:1,duration:.45,ease:IN,immediateRender:false},38.200);tl.fromTo('#e0w1 span',{opacity:0,x:-30},{opacity:1,x:0,duration:.45,ease:IN,immediateRender:false},38.280);tl.set('#e0w1',{opacity:1},38.200);tl.to('#e0w1',{opacity:0,duration:.2},45.830);tl.fromTo('#e0w2 b',{opacity:0,scale:.6},{opacity:1,scale:1,duration:.45,ease:IN,immediateRender:false},45.880);tl.fromTo('#e0w2 span',{opacity:0,x:-30},{opacity:1,x:0,duration:.45,ease:IN,immediateRender:false},45.960);tl.set('#e0w2',{opacity:1},45.880);tl.to('#e0w2',{opacity:0,duration:.2},49.136);tl.fromTo('#e0w3 b',{opacity:0,scale:.6},{opacity:1,scale:1,duration:.45,ease:IN,immediateRender:false},49.186);tl.fromTo('#e0w3 span',{opacity:0,x:-30},{opacity:1,x:0,duration:.45,ease:IN,immediateRender:false},49.266);tl.set('#e0w3',{opacity:1},49.186);tl.to('#e0w3',{opacity:0,duration:.2},51.296);
+cap('#c0',0.138,1.258);cap('#c1',1.258,1.738);cap('#c2',1.738,2.778);cap('#c3',2.778,3.796);cap('#c4',3.796,4.516);cap('#c5',4.516,5.476);cap('#c6',5.476,6.894);cap('#c7',6.894,8.404);cap('#c8',8.404,9.044);cap('#c9',9.044,9.782);cap('#c10',9.782,10.342);cap('#c11',10.342,11.142);cap('#c12',11.142,12.320);cap('#c13',12.320,12.720);cap('#c14',12.720,13.200);cap('#c15',13.200,14.240);cap('#c16',14.240,15.280);cap('#c17',15.280,16.486);cap('#c18',16.486,17.126);cap('#c19',17.126,17.766);cap('#c20',17.766,18.806);cap('#c21',18.806,19.766);cap('#c22',19.766,20.406);cap('#c23',20.406,20.806);cap('#c24',20.806,21.446);cap('#c25',21.446,22.780);cap('#c26',22.780,23.340);cap('#c27',23.340,24.140);cap('#c28',24.140,25.156);cap('#c29',25.156,26.036);cap('#c30',26.036,26.436);cap('#c31',26.436,27.156);cap('#c32',27.156,27.556);cap('#c33',27.556,28.836);cap('#c34',28.836,29.876);cap('#c35',29.876,31.226);cap('#c36',31.226,32.226);cap('#c40',35.026,35.746);cap('#c41',35.746,36.760);cap('#c42',36.760,37.400);cap('#c43',37.400,38.040);cap('#c44',38.040,38.600);cap('#c45',38.600,39.160);cap('#c46',39.160,40.120);cap('#c47',40.120,40.760);cap('#c48',40.760,41.960);cap('#c49',41.960,43.160);cap('#c50',43.160,43.720);cap('#c51',43.720,44.440);cap('#c52',44.440,45.080);cap('#c53',45.080,45.880);cap('#c54',45.880,46.950);cap('#c55',47.346,48.146);cap('#c56',48.146,48.866);cap('#c57',48.866,49.426);cap('#c58',49.426,49.746);cap('#c59',49.746,50.386);cap('#c60',50.386,50.786);cap('#c61',50.786,52.200);cap('#c62',52.200,52.360);cap('#c63',52.360,52.920);cap('#c64',52.920,53.400);cap('#c65',53.400,53.640);cap('#c66',53.640,53.800);cap('#c67',53.800,54.200);cap('#c68',54.200,54.840);cap('#c69',54.840,55.560);cap('#c70',55.560,56.680);cap('#c71',56.680,57.400);cap('#c72',57.400,58.110);
   /* Inserts illustrés */
   INSWIN=[];
   if(cfg.ins){
@@ -441,13 +522,16 @@ cap('#c0',0.138,1.258);cap('#c1',1.258,1.738);cap('#c2',1.738,2.778);cap('#c3',2
 
 /* CTA : barre de recherche dans les 2,6 dernières secondes de parole, puis carte de fin */
 tl.set('#vw',{scale:1.0},55.460);
-tl.to('#dim',{opacity:.18,duration:D_IN},55.460);
+tl.to('#dim',{opacity:.12,duration:D_IN},55.460);
 tl.fromTo('#ctaw',{opacity:0,y:60},{opacity:1,y:0,duration:.6,ease:IN,immediateRender:false},55.510);
 (function(){const el=$('#ctat'),w="PROCESSUS",o={n:0};tl.to(o,{n:w.length,duration:1.1,ease:'none',onUpdate:()=>{el.textContent=w.slice(0,Math.round(o.n));}},56.060);})();
 tl.to('#cta .go',{scale:.88,duration:.12},58.560);tl.to('#cta .go',{scale:1,duration:.3,ease:IN},58.680);
 tl.to('#ctaw',{opacity:0,duration:D_OUT,ease:OUT},59.810);
 tl.to('#dim',{opacity:.74,duration:.4,ease:IN},59.810);
-tl.to(['#topic','#objection','#sig'].filter(s=>$(s)),{opacity:0,duration:.3},59.810);
-tl.fromTo('#end',{opacity:0,y:16},{opacity:1,y:0,duration:D_IN,ease:IN,immediateRender:false},59.910);
+tl.to(['#topic','#objection'].filter(s=>$(s)),{opacity:0,duration:.3},59.810);
+tl.set('#end',{opacity:1},59.910);
+tl.fromTo('#end .a span,#end .b span',{yPercent:110},{yPercent:0,duration:.42,ease:IN,stagger:.07,immediateRender:false},59.910);
+tl.fromTo('#end .thread',{scaleX:0},{scaleX:1,duration:.45,ease:MOVE,immediateRender:false},60.160);
+tl.to('#dim',{opacity:1,duration:.55,ease:'power1.in'},60.540);  /* fondu au noir avant la fin de l'image */
 window.__timelines=window.__timelines||{};window.__timelines["main"]=tl;tl.seek(0);
 </script></body></html>

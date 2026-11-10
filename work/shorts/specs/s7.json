@@ -38,10 +38,6 @@
   "Une idée ?",
   "Fais-la maintenant."
  ],
- "topic": [
-  "Une idée ?",
-  "Fais-la maintenant."
- ],
  "keywords": [
   "waouh,",
   "disparu.",
@@ -58,30 +54,6 @@
   "plus": "plus"
  },
  "replace_n": [],
- "tags": [
-  {
-   "t": {
-    "word": "Ce",
-    "n": 1
-   },
-   "text": "mon constat",
-   "d": 2.6
-  }
- ],
- "ui": [
-  {
-   "t": {
-    "word": "Maintenant,",
-    "n": 1
-   },
-   "d": 3.6,
-   "icon": "draft",
-   "t1": "Notes",
-   "t2": "Idée : vidéo sur la prospection",
-   "t3": "Créée il y a 3 heures",
-   "top": 600
-  }
- ],
  "inserts": {
   "3": [
    {
@@ -94,21 +66,20 @@
  "insert_titles": {
   "3": "<span>Tu</span> <span class=\"a\">envoies.</span>"
  },
- "choc": {
-  "at": {
-   "word": "j'exécute."
-  },
-  "text": "J'EXÉCUTE",
-  "d": 1.3
- },
  "cta": "ACTION",
+ "vhook": {
+  "style": "timer",
+  "t1": "ton idée",
+  "t2": "2 h plus tard…"
+ },
+ "opening": "band",
+ "hook_style": "inverse",
  "enum": [
   {
-   "style": "giant",
    "t": {
-    "word": "C'est",
-    "n": 1
+    "word": "vidéo"
    },
+   "style": "giant",
    "items": [
     {
      "text": "Vidéo",
@@ -129,11 +100,31 @@
      }
     }
    ],
-   "until": {
-    "word": "Donc",
-    "n": 1,
-    "off": -0.1
-   }
+   "hold": 1.0
   }
+ ],
+ "ui": [
+  {
+   "t": {
+    "word": "l'émotion",
+    "n": 1
+   },
+   "d": 3.0,
+   "icon": "draft",
+   "t1": "Notes",
+   "t2": "Idée : vidéo sur la prospection",
+   "t3": "Créée il y a 3 heures"
+  }
+ ],
+ "choc": {
+  "at": {
+   "word": "j'exécute."
+  },
+  "text": "J'EXÉCUTE",
+  "d": 1.3
+ },
+ "act": [
+  "Ta prochaine idée ?",
+  "Exécute-la dans l'heure."
  ]
 }

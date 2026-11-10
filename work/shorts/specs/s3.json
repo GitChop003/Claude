@@ -73,10 +73,6 @@
   "« Tu es qui, toi,",
   "pour dire ça ? »"
  ],
- "topic": [
-  "Pas légitime ?",
-  "Lis ça."
- ],
  "keywords": [
   "semblant.",
   "brouillons.",
@@ -122,30 +118,20 @@
    "chaque"
   ]
  ],
- "choc": {
-  "at": {
-   "word": "légitime"
-  },
-  "text": "LÉGITIME",
-  "behind": true,
-  "d": 1.7
- },
  "cta": "LÉGITIME",
- "tags": [
+ "vhook": {
+  "style": "typing",
+  "label": "Brouillon",
+  "text": "Je suis coach et je peux t'aider à"
+ },
+ "opening": "top",
+ "hook_style": "quote",
+ "enum": [
   {
    "t": {
-    "word": "Cette"
+    "word": "écris,"
    },
-   "text": "la petite voix",
-   "d": 2.6
-  }
- ],
- "lists": [
-  {
-   "t": {
-    "word": "Alors"
-   },
-   "title": "Et pendant ce temps…",
+   "style": "giant",
    "items": [
     {
      "text": "Tu écris",
@@ -166,47 +152,32 @@
      }
     }
    ],
-   "until": {
-    "word": "rejoint",
-    "off": -0.1
-   }
+   "hold": 1.1
   }
  ],
- "ui": [
-  {
-   "t": {
-    "word": "rejoint"
-   },
-   "d": 2.6,
-   "icon": "draft",
-   "t1": "Brouillons",
-   "t2": "14 posts non publiés",
-   "t3": "Le dernier date d'hier",
-   "top": 600
+ "choc": {
+  "at": {
+   "word": "légitime"
   },
-  {
-   "t": {
-    "word": "messages",
-    "n": 1
-   },
-   "d": 3.8,
-   "icon": "dm",
-   "t1": "Nouveau message",
-   "t2": "« Merci, c'est exactement",
-   "t3": "ce dont j'avais besoin »",
-   "top": 600
-  }
- ],
+  "text": "LÉGITIME",
+  "behind": true,
+  "d": 1.7
+ },
  "flash": [
   {
    "t": {
-    "word": "prêt,",
-    "off": 0.3
+    "word": "différence,",
+    "off": -0.2
    },
    "lab": "",
-   "a": "Jamais prêt ?",
-   "b": "Publie quand même.",
-   "d": 1.2
+   "a": "Elle revient encore.",
+   "b": "Mais elle ne décide plus.",
+   "d": 2.8,
+   "bg": "dark"
   }
+ ],
+ "act": [
+  "Ton brouillon attend.",
+  "Publie-le aujourd'hui."
  ]
 }

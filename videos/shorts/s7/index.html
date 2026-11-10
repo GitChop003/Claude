@@ -262,13 +262,70 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
 .flashc .b{font:800 italic 80px/1.15 Montserrat;color:var(--cyan-p);margin-left:110px;overflow:hidden}
 .flashc .a span,.flashc .b span{display:block}
 .flashc .thread{height:4px;width:400px;background:var(--cyan-p);margin:34px 0 0 110px;transform-origin:0 50%;border-radius:2px}
-#end{background:rgba(10,18,32,.0)}
-#hook{right:96px}
-#hook .l{white-space:nowrap;font-size:73px}
+/* v5 : l'écran s'assombrit (le visage reste visible derrière), texte blanc */
+.flashc.dark{background:rgba(10,18,32,.66);color:#fff}
+.flashc.dark .in{top:1120px;left:72px;right:140px}
+.flashc.dark .lab{font-size:28px;margin-bottom:18px}
+.flashc.dark .a{font-size:80px;line-height:1.08}
+.flashc.dark .b{font-size:70px;margin-left:56px}
+.flashc.dark .thread{margin:22px 0 0 56px;width:300px}
+.flashc.dark .b{color:var(--cyan)}
+.flashc.dark .thread{background:var(--cyan)}
+.flashc.dark .lab{background:rgba(255,255,255,.14);color:#fff}
+/* Accroche visuelle : viseur de caméra (s1) */
+#vf{position:absolute;inset:0;pointer-events:none;opacity:0}
+#vf .c{position:absolute;width:70px;height:70px;border:0 solid rgba(255,255,255,.95);filter:drop-shadow(0 1px 6px rgba(10,18,32,.35))}
+#vf .tl{left:64px;top:270px;border-top-width:5px;border-left-width:5px;border-top-left-radius:14px}
+#vf .tr{left:870px;top:270px;border-top-width:5px;border-right-width:5px;border-top-right-radius:14px}
+#vf .bl{left:64px;top:1530px;border-bottom-width:5px;border-left-width:5px;border-bottom-left-radius:14px}
+#vf .br{left:870px;top:1530px;border-bottom-width:5px;border-right-width:5px;border-bottom-right-radius:14px}
+#vf .rec{position:absolute;right:164px;top:292px;display:flex;align-items:center;gap:12px;font:700 28px Montserrat;letter-spacing:.08em;color:#fff;text-shadow:0 1px 8px rgba(10,18,32,.45)}
+#vf .rec b{width:16px;height:16px;border-radius:50%;background:var(--cyan);display:block}
+#vf .rec span{font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:.04em;opacity:.9}
+/* Fin v5 : passage à l'acte sur écran assombri, sous le visage (plus de @the_process.io) */
+#end{display:block;background:none}
+#end .in{position:absolute;left:72px;right:140px;top:1110px}
+#end .a,#end .b{overflow:hidden}
+#end .a span,#end .b span{display:block}
+#end .a{font:600 52px/1.15 Montserrat;color:rgba(255,255,255,.88)}
+#end .b{white-space:nowrap;font:900 58px/1.1 Montserrat;letter-spacing:-.02em;color:#fff;margin-top:6px}
+#end .thread{height:5px;width:140px;border-radius:3px;background:var(--cyan);margin-top:24px;transform-origin:0 50%}
+#root{--cap-y:1408px}
+#hookbg,#sig{display:none}
+/* Ouvertures typographiques sur le plan (v4) */
+#hook{left:72px;right:72px;top:1130px;color:#fff;text-shadow:0 2px 18px rgba(10,18,32,.45)}
+#root.pal-n #hook{color:#fff}
+#hook .l{white-space:nowrap}
+#hook .l:first-child{font-weight:900;font-size:116px;letter-spacing:-.03em;margin-bottom:6px;}
+#hook .l.c{font-weight:600;font-size:54px;letter-spacing:0;}
+#root.pal-n #hook .l.c span{color:var(--cyan)}
+.vh-tm{position:absolute;left:110px;display:flex;align-items:center;gap:34px;color:#fff;opacity:0;text-shadow:0 2px 14px rgba(10,18,32,.45)}.vh-tm svg{width:150px;height:150px;transform:rotate(-90deg);filter:drop-shadow(0 2px 10px rgba(10,18,32,.35))}.vh-tm circle{fill:none;stroke-width:9}.vh-tm .bg{stroke:rgba(255,255,255,.35)}.vh-tm .fg{stroke:#00D9FF;stroke-linecap:round;stroke-dasharray:402;stroke-dashoffset:402}.vh-tm .hd{stroke:#fff;stroke-width:7;stroke-linecap:round;transform-origin:75px 75px}.vh-tm small{display:block;font:700 24px Montserrat;letter-spacing:.12em;text-transform:uppercase;opacity:.8}.vh-tm b{display:block;font:900 64px/1.05 Montserrat;letter-spacing:-.02em;opacity:0}
+/* Bande sous le visage sur vêtements clairs : typographie à l'encre (le blanc disparaissait dans le tissu) */
+#root.ink #hook.band{color:var(--encre);text-shadow:0 0 22px rgba(255,255,255,.65)}
+#root.ink #hook.band .l.c span{color:var(--cyan-p)}
+#root.ink #hook.band .rule{background:var(--cyan-p)}
+#root.ink :not(.fs) > .gw span,#root.ink .enum-s:not(.fs) .sw,#root.ink .enum-x:not(.fs) .kw2 span,#root.ink .enum-n:not(.fs) .nb span,#root.ink .enum-p .nd span{color:var(--encre);text-shadow:0 0 18px rgba(255,255,255,.7)}
+#root.ink :not(.fs) > .gw small,#root.ink .enum-n:not(.fs) .nb b{color:var(--cyan-p);text-shadow:0 0 18px rgba(255,255,255,.6)}
+#root.ink .enum-s:not(.fs) .rail{background:var(--cyan-p)}
+#root.ink .enum-x:not(.fs) .kw2 i{background:var(--encre);box-shadow:none}
+#root.ink .enum-p .ln{background:rgba(10,18,32,.3)}#root.ink .enum-p .lc{background:var(--cyan-p)}
+#root.ink .enum-p .nd b{background:var(--papier);border-color:var(--encre)}#root.ink .enum-p .nd.on b{background:var(--cyan-p);border-color:var(--cyan-p)}
+#root.ink .enum-p .nd em{color:var(--cyan-p);text-shadow:0 0 14px rgba(255,255,255,.7)}
+#root.ink #choc:not(.behind){color:var(--encre);text-shadow:0 0 30px rgba(255,255,255,.7)}
+#root.ink #ctaw .lab{color:var(--encre);text-shadow:0 0 16px rgba(255,255,255,.7)}
+#root.ink #vh.inband{color:var(--encre)!important;text-shadow:0 0 18px rgba(255,255,255,.7)!important}
+#root.ink #vh.inband .ln i{background:var(--cyan-p)}#root.ink #vh.inband .ul{background:rgba(10,18,32,.4)}
+#hook .rule{width:120px;height:5px;border-radius:3px;background:var(--cyan);margin-top:22px;transform-origin:0 50%}
+#topic{left:72px;top:322px;height:auto;padding:0;background:none!important;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;
+  font-size:30px;font-weight:500;color:#fff;gap:12px;text-shadow:0 1px 10px rgba(10,18,32,.5)}
+#topic::after{display:none}
+#root.pal-n #topic{color:#fff}
+#root.pal-n #topic b{color:#fff;font-weight:800}
+#fsbg{position:absolute;inset:0;background:rgba(10,18,32,.66);opacity:0}
 #choc span{display:inline-block;margin:0 .02em}
 #choc.behind{left:0;width:1080px;top:520px;font-size:156px;letter-spacing:-.03em;text-shadow:none}
 #ctaw .lab{color:#fff;text-shadow:0 2px 14px rgba(10,18,32,.6)}
-#ctaw{top:700px}
+#ctaw{top:1150px}
 #prog{position:absolute;left:64px;top:298px;width:876px;height:5px;border-radius:3px;background:rgba(255,255,255,.3);overflow:hidden;opacity:0}
 #prog i{display:block;height:100%;width:100%;background:var(--cyan);transform-origin:0 50%;transform:scaleX(0)}
 .ui .t3:empty{display:none}
@@ -289,7 +346,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
 .enum-g .gw span{font:900 132px/1 Montserrat;letter-spacing:-.02em;color:#fff;text-transform:uppercase;text-shadow:0 6px 30px rgba(10,18,32,.45)}
 .enum-s{position:absolute;left:64px;top:560px;padding-left:34px;opacity:0}
 .enum-s .rail{position:absolute;left:0;top:6px;width:6px;height:calc(100% - 12px);border-radius:3px;background:var(--cyan);transform-origin:50% 0}
-.enum-s .sw{font:900 76px/1.12 Montserrat;letter-spacing:-.02em;color:#fff;text-shadow:0 4px 22px rgba(10,18,32,.55);opacity:0}
+.enum-s .sw{font:900 64px/1.1 Montserrat;letter-spacing:-.02em;color:#fff;text-shadow:0 4px 22px rgba(10,18,32,.55);opacity:0}
 .enum-t{position:absolute;left:64px;width:952px;top:520px;opacity:0}
 .enum-t .tt{font:800 30px Montserrat;color:#fff;text-shadow:0 2px 12px rgba(10,18,32,.55);margin:0 0 18px 6px}
 .enum-t .row{display:flex;gap:22px}
@@ -300,9 +357,29 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
 .enum-t .tl-t b{font:800 30px/1.15 Montserrat;color:var(--encre);text-align:center}
 .enum-t .tl-t.on .ic{background:var(--cyan-p)}
 .enum-t .tl-t.on .ic svg{stroke:#fff}
+.enum-t .row{gap:16px}
+.enum-t .tl-t{padding:22px 10px 18px;gap:12px;border-radius:24px}
+.enum-t .ic{width:88px;height:88px;border-radius:24px}
+.enum-t .ic svg{width:52px;height:52px}
+.enum-t .tl-t b{font-size:27px;line-height:1.1}
+.enum-x{position:absolute;left:72px;opacity:1}
+.kw2{position:relative;font:900 64px/1.08 Montserrat;letter-spacing:-.02em;color:#fff;text-shadow:0 3px 18px rgba(10,18,32,.5);opacity:0;width:max-content}
+.kw2 i{position:absolute;left:-6px;right:-6px;top:52%;height:7px;border-radius:4px;background:#fff;box-shadow:0 1px 8px rgba(10,18,32,.4);transform-origin:0 50%}
+.enum-p{position:absolute;left:72px;width:868px;height:200px;opacity:0}
+.enum-p .ln,.enum-p .lc{position:absolute;top:40px;height:4px;border-radius:2px;transform-origin:0 50%}
+.enum-p .ln{background:rgba(255,255,255,.5)}.enum-p .lc{background:var(--cyan)}
+.enum-p .nd{position:absolute;top:0;width:220px;margin-left:-110px;text-align:center}
+.enum-p .nd b{display:block;width:30px;height:30px;margin:27px auto 0;border-radius:50%;background:var(--noir);border:4px solid #fff}
+.enum-p .nd span{display:block;margin-top:18px;font:800 32px/1.12 Montserrat;color:#fff;text-shadow:0 3px 16px rgba(10,18,32,.55);opacity:.45}
+.enum-p .nd.on b{background:var(--cyan);border-color:var(--cyan)}.enum-p .nd.on span{opacity:1}
+.enum-p .nd em{position:absolute;left:0;right:0;top:-14px;font:800 italic 26px Montserrat;color:var(--cyan);text-shadow:0 2px 12px rgba(10,18,32,.5);opacity:0}
+.enum-n{position:absolute;left:72px;width:936px;height:190px}
+.nb{position:absolute;inset:0;display:flex;align-items:center;gap:30px;opacity:0}
+.nb b{font:900 170px/1 Montserrat;color:var(--cyan);text-shadow:0 4px 24px rgba(10,18,32,.4)}
+.nb span{font:800 68px/1.05 Montserrat;color:#fff;text-shadow:0 3px 18px rgba(10,18,32,.5)}
 </style></head>
 <body>
-<div id="root" class="pal-n lite" data-composition-id="main" data-start="0" data-duration="59.648" data-width="1080" data-height="1920">
+<div id="root" class="pal-n lite ink" data-composition-id="main" data-start="0" data-duration="60.348" data-width="1080" data-height="1920">
   <div id="vw"><video id="v" data-start="0" data-duration="59.648" data-has-audio="true" src="assets/cut.mp4" playsinline></video></div>
   <div id="dimfix"></div><div id="dim"></div>
         <div class="ins" id="ins1"><div class="it"><span>Vu.</span> <span class="a">Pas de DM.</span></div>
@@ -357,25 +434,21 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
               <div class="comp"><div class="field"><span id="draftTxt"></span><span class="cur2"></span></div><div class="send"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></div></div>
             </div>
           </div></div>
-        <div class="glass" id="topic" data-g="bandeau"><span>200 likes.</span><b>0 client.</b></div>
-        <div id="objection"><b>OBJECTION :</b> « Je dois réfléchir »</div>
-        <div id="hookbg"></div>
-        <div id="hook"><div class="k"><span>Tu postes. Personne n'écrit.</span></div><div class="l"><span>200 likes.</span></div><div class="l c"><span>0 client.</span></div></div>
 
-  <div class="glass" id="topic"><span>Une idée ?</span><b>Fais-la maintenant.</b></div>
-  <div id="prog"><i></i></div>
+  
+<div id="vh" class="vh-tm" style="top:315px"><svg viewBox="0 0 150 150"><circle class="bg" cx="75" cy="75" r="64"/><circle class="fg" cx="75" cy="75" r="64"/><path class="hd" d="M75 75V26"/></svg><div><small>ton idée</small><b>2 h plus tard…</b></div></div>
   <div id="hookbg"></div>
-  <div id="hook"><div class="l"><span>Une idée ?</span></div><div class="l c"><span>Fais-la maintenant.</span></div></div>
-  <div id="sig"><svg viewBox="0 0 32 32" fill="none"><rect id="sigr" x="2.5" y="2.5" width="27" height="27" rx="8" stroke="#fff" stroke-width="2.6"/><circle id="sigc" cx="16" cy="16" r="6.2" stroke="#fff" stroke-width="2.6"/><circle id="sigd" cx="23.6" cy="8.4" r="1.8" fill="#fff"/></svg><span>@the_process.io</span></div>
-  <div id="choc"><span>J</span><span>&#x27;</span><span>E</span><span>X</span><span>É</span><span>C</span><span>U</span><span>T</span><span>E</span></div>
-  <div class="glass white ui" id="u0" style="top:600px"><div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6h18l8 8v28H12z"/><path d="M30 6v8h8" /><path d="M18 26h14M18 33h9" stroke="#00D9FF"/></svg></div><div><div class="t1">Notes</div><div class="t2">Idée : vidéo sur la prospection</div><div class="t3">Créée il y a 3 heures</div></div><div class="ex">Exemple</div></div><div class="enum-g" id="e0"><div class="gw" id="e0w0"><small>1/3</small><span>Vidéo</span></div><div class="gw" id="e0w1"><small>2/3</small><span>Message</span></div><div class="gw" id="e0w2"><small>3/3</small><span>Story</span></div></div><div class="glass tag tg" id="g0"><i></i>mon constat</div>
+  <div id="hook" class="band"><div class="l"><span>Une idée ?</span></div><div class="l c"><span>Fais-la maintenant.</span></div><div class="rule"></div></div>
+  <div id="fsbg"></div>
+  <div id="choc" style="top:1170px;font-size:131px"><span>J</span><span>&#x27;</span><span>E</span><span>X</span><span>É</span><span>C</span><span>U</span><span>T</span><span>E</span></div>
+  <div class="glass white ui" id="u0" style="top:1170px"><div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6h18l8 8v28H12z"/><path d="M30 6v8h8" /><path d="M18 26h14M18 33h9" stroke="#00D9FF"/></svg></div><div><div class="t1">Notes</div><div class="t2">Idée : vidéo sur la prospection</div><div class="t3">Créée il y a 3 heures</div></div><div class="ex">Exemple</div></div><div class="enum-g" id="e0" style="top:1170px"><div class="gw" id="e0w0"><small>1/3</small><span>Vidéo</span></div><div class="gw" id="e0w1"><small>2/3</small><span>Message</span></div><div class="gw" id="e0w2"><small>3/3</small><span>Story</span></div></div>
   
   <div class="cap" id="c0"><span>L&#x27;idée</span> <span>me</span> <span>vient</span></div><div class="cap" id="c1"><span>à</span> <span>tête,</span></div><div class="cap" id="c2"><span>j&#x27;ai</span> <span>dit</span> <span class="kw">waouh,</span></div><div class="cap" id="c3"><span>c&#x27;est</span> <span>bien,</span></div><div class="cap" id="c4"><span>je</span> <span>veux</span> <span>le</span></div><div class="cap" id="c5"><span>faire.</span></div><div class="cap" id="c6"><span>Maintenant,</span></div><div class="cap" id="c7"><span>quand</span> <span>deux</span> <span>heures,</span></div><div class="cap" id="c8"><span>trois</span> <span>heures</span> <span>passent,</span></div><div class="cap" id="c9"><span>l&#x27;émotion</span> <span>que</span> <span>j&#x27;avais</span></div><div class="cap" id="c10"><span>de</span> <span>faire</span> <span>cette</span></div><div class="cap" id="c11"><span>idée</span> <span>a</span> <span>complètement</span></div><div class="cap" id="c12"><span class="kw">disparu.</span></div><div class="cap" id="c13"><span>Je</span> <span>commence</span> <span>à</span></div><div class="cap" id="c14"><span>me</span> <span>dire,</span></div><div class="cap" id="c15"><span>mais</span> <span>non,</span></div><div class="cap" id="c16"><span>peut-être</span> <span>l&#x27;idée</span></div><div class="cap" id="c17"><span>là</span> <span>était</span> <span class="kw">mauvaise,</span></div><div class="cap" id="c18"><span>mais</span> <span>non,</span></div><div class="cap" id="c19"><span>je</span> <span>n&#x27;ai</span> <span>même</span></div><div class="cap" id="c20"><span>pas</span> <span>assez</span> <span>d&#x27;équipement</span></div><div class="cap" id="c21"><span>pour</span> <span>le</span> <span>faire.</span></div><div class="cap" id="c22"><span>Ce</span> <span>que</span> <span>j&#x27;ai</span></div><div class="cap" id="c23"><span>constaté,</span></div><div class="cap" id="c24"><span>c&#x27;est</span> <span>que</span> <span>la</span></div><div class="cap" id="c25"><span>motivation</span> <span>que</span> <span>tu</span></div><div class="cap" id="c26"><span>as</span> <span>de</span> <span>faire</span></div><div class="cap" id="c27"><span>quelque</span> <span>chose</span> <span class="kw">diminue</span></div><div class="cap" id="c28"><span>plus</span></div><div class="cap" id="c29"><span>quand</span> <span>tu</span> <span>donnes</span></div><div class="cap" id="c30"><span>du</span> <span>temps</span> <span>à</span></div><div class="cap" id="c31"><span>cette</span> <span>chose</span> <span>de</span></div><div class="cap" id="c32"><span>faire.</span></div><div class="cap" id="c33"><span>Du</span> <span>coup</span> <span>maintenant,</span></div><div class="cap" id="c34"><span>quand</span> <span>une</span> <span>idée</span></div><div class="cap" id="c35"><span>me</span> <span>vient</span> <span>en</span></div><div class="cap" id="c36"><span>tête,</span></div><div class="cap" id="c37"><span>C&#x27;est</span> <span>peut-être</span> <span>sur</span></div><div class="cap" id="c38"><span>une</span> <span>idée</span> <span>d&#x27;une</span></div><div class="cap" id="c39"><span>vidéo</span> <span>que</span> <span>je</span></div><div class="cap" id="c40"><span>dois</span> <span>faire.</span></div><div class="cap" id="c41"><span>C&#x27;est</span> <span>peut-être</span> <span>sur</span></div><div class="cap" id="c42"><span>une</span> <span>idée</span> <span>d&#x27;un</span></div><div class="cap" id="c43"><span>message</span> <span>que</span> <span>je</span></div><div class="cap" id="c44"><span>dois</span> <span>faire.</span></div><div class="cap" id="c45"><span>C&#x27;est</span> <span>peut-être</span> <span>sur</span></div><div class="cap" id="c46"><span>une</span> <span>idée</span> <span>d&#x27;une</span></div><div class="cap" id="c47"><span>story</span> <span>que</span> <span>je</span></div><div class="cap" id="c48"><span>dois</span> <span>faire.</span></div><div class="cap" id="c49"><span>Je</span> <span>fais</span> <span>à</span></div><div class="cap" id="c50"><span class="kw">l&#x27;instant.</span></div><div class="cap" id="c51"><span>Donc</span> <span>pendant</span> <span>le</span></div><div class="cap" id="c52"><span>temps</span> <span>que</span> <span>l&#x27;émotion</span></div><div class="cap" id="c53"><span>là</span> <span>est</span> <span>encore</span></div><div class="cap" id="c54"><span>bonne,</span></div><div class="cap" id="c55"><span>je</span> <span>fais.</span></div><div class="cap" id="c56"><span>Du</span> <span>coup,</span></div><div class="cap" id="c57"><span>maintenant,</span></div><div class="cap" id="c58"><span>quand</span> <span>j&#x27;ai</span> <span>envie</span></div><div class="cap" id="c59"><span>de</span> <span>faire</span> <span>quelque</span></div><div class="cap" id="c60"><span>chose,</span></div><div class="cap" id="c61"><span>d&#x27;écrire</span> <span>une</span> <span>personne,</span></div><div class="cap" id="c62"><span>quand</span> <span>j&#x27;ai</span> <span>envie</span></div><div class="cap" id="c63"><span>de</span> <span>demander</span> <span>quelque</span></div><div class="cap" id="c64"><span>chose,</span></div><div class="cap" id="c65"><span>quand</span> <span>j&#x27;ai</span> <span>envie</span></div><div class="cap oi" id="c66"><span>d&#x27;envoyer</span> <span>un</span> <span>message,</span></div><div class="cap oi" id="c67"><span>quand</span> <span>j&#x27;ai</span> <span>envie</span></div><div class="cap oi" id="c68"><span>de</span> <span>poser</span> <span>une</span></div><div class="cap" id="c69"><span>problématique,</span></div><div class="cap" id="c70"><span>à</span> <span class="kw">l&#x27;instant</span> <span>que</span></div><div class="cap" id="c71"><span>je</span> <span>pense,</span></div><div class="cap" id="c72"><span class="kw">j&#x27;exécute.</span></div><div class="cap" id="c73"><span>Parce</span> <span>que</span> <span>plus</span></div><div class="cap" id="c74"><span>je</span> <span>prends</span> <span>du</span></div><div class="cap" id="c75"><span>temps,</span></div><div class="cap" id="c76"><span>plus</span> <span>je</span> <span>me</span></div><div class="cap" id="c77"><span>donne</span> <span>des</span> <span class="kw">justifications</span></div><div class="cap" id="c78"><span>pour</span> <span>ne</span> <span>pas</span></div><div class="cap" id="c79"><span>le</span> <span>faire.</span></div>
   <div id="ctaw"><div class="lab">Commente</div>
     <div class="glass white" id="cta"><svg class="s" viewBox="0 0 40 40" fill="none" stroke="#001F3F" stroke-width="4" stroke-linecap="round"><circle cx="17" cy="17" r="11"/><path d="M25 25l9 9"/></svg>
       <div class="q"><span id="ctat"></span><span class="cur"></span></div>
       <div class="go"><svg viewBox="0 0 42 42" fill="none" stroke="#001F3F" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21h22M22 11l10 10-10 10"/></svg></div></div></div>
-  <div id="end"><svg viewBox="0 0 32 32" fill="none"><rect x="2.5" y="2.5" width="27" height="27" rx="8" stroke="#fff" stroke-width="2"/><circle cx="16" cy="16" r="6.2" stroke="#fff" stroke-width="2"/><circle cx="23.6" cy="8.4" r="1.6" fill="#00D9FF"/></svg><div class="h">@the_process.io</div></div>
+  <div id="end"><div class="in"><div class="a"><span>Ta prochaine idée ?</span></div><div class="b"><span>Exécute-la dans l&#x27;heure.</span></div><div class="thread"></div></div></div>
   <audio id="sfx" data-start="52.528" data-duration="0.37" data-volume="0.32" src="assets/kit/reveal.mp3"></audio>
 </div>
 <script>
@@ -387,31 +460,22 @@ const tl=gsap.timeline({paused:true});
 function cap(id,a,b){const sp=$$(id+' > span');tl.set(id,{opacity:1},a);
   tl.fromTo(sp,{opacity:0,y:14,filter:'blur(6px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.3,ease:IN,stagger:.07,immediateRender:false},a);
   tl.set(id,{opacity:0},b);}
-function flash(id,a,d){tl.set(id,{opacity:1},a);
+function flash(id,a,d){tl.fromTo(id,{opacity:0},{opacity:1,duration:.25,ease:'none',immediateRender:false},a);
   tl.fromTo(id+' .a span,'+id+' .b span',{yPercent:110},{yPercent:0,duration:.6,ease:IN,stagger:.08,immediateRender:false},a);
   tl.fromTo(id+' .thread',{scaleX:0},{scaleX:1,duration:.5,ease:MOVE,immediateRender:false},a+.3);
-  tl.set(id,{opacity:0},a+d);}
-gsap.set(['#sig','#ctaw','#end'],{opacity:0});
-/* Accroche : plein écran 0 → 2,4 s puis se rétracte en bandeau */
-tl.fromTo('#hook .l span',{yPercent:110},{yPercent:0,duration:.7,ease:IN,stagger:.08,immediateRender:false},0);
-tl.fromTo('#vw',{scale:1.0},{scale:1.04,duration:2.6,ease:'none',immediateRender:false},0);
-tl.to('#hook',{opacity:0,y:-40,duration:D_OUT,ease:OUT},2.25);
-(function(){const tp=$('#topic')||$('#objection');const L=tp.offsetLeft,T=tp.offsetTop,W=tp.offsetWidth,H=tp.offsetHeight;
-  gsap.set(tp,{opacity:0});
-  tl.fromTo('#hookbg',{clipPath:'inset(0px 0px 0px 0px round 0px)'},{clipPath:`inset(${T}px ${1080-L-W}px ${1920-T-H}px ${L}px round 16px)`,duration:.6,ease:MOVE,immediateRender:false},2.3);
-  tl.set(tp,{opacity:1},2.9);tl.set('#hookbg',{opacity:0},2.9);})();
-tl.set('#vw',{scale:1.0},2.6);
-tl.to('#sig',{opacity:1,duration:D_IN,ease:IN},.2);
-tl.set(['#sigr','#sigc'],{attr:{stroke:'#00D9FF'}},.2);tl.set('#sigd',{attr:{fill:'#00D9FF'}},.2);
-tl.set(['#sigr','#sigc'],{attr:{stroke:'#fff'}},.7);tl.set('#sigd',{attr:{fill:'#fff'}},.7);
+  tl.to(id,{opacity:0,duration:.25,ease:'none'},a+d);}
+gsap.set(['#ctaw','#end'],{opacity:0});
+/* Ouverture v5 : coup de zoom arrière + accroche visuelle, titre tenu 6.5 s puis disparu (pas de @, pas de barre) */
+tl.fromTo('#vw',{scale:1.16},{scale:1.0,duration:.6,ease:'expo.out',immediateRender:false},0);
+tl.fromTo('#hook .l span',{yPercent:110},{yPercent:0,duration:.7,ease:IN,stagger:.12,immediateRender:false},0.15);
+tl.fromTo('#hook .rule',{scaleX:0},{scaleX:1,duration:.6,ease:MOVE,immediateRender:false},0.55);
+tl.to('#hook .l span',{yPercent:-110,duration:.4,ease:OUT,stagger:.05},6.350);
+tl.to('#hook .rule',{scaleX:0,transformOrigin:'100% 50%',duration:.35,ease:OUT},6.350);
+tl.fromTo('#vh',{opacity:0,x:-30},{opacity:1,x:0,duration:.45,ease:IN,immediateRender:false},0);tl.fromTo('#vh .fg',{strokeDashoffset:402},{strokeDashoffset:0,duration:1.4,ease:'power2.inOut',immediateRender:false},.15);tl.fromTo('#vh .hd',{rotation:90},{rotation:450*3+90,duration:1.4,ease:'power2.inOut',immediateRender:false},.15);tl.fromTo('#vh b',{opacity:0,y:20},{opacity:1,y:0,duration:.4,ease:IN,immediateRender:false},1.1);tl.to('#vh',{opacity:0,y:-16,duration:.35,ease:OUT},2.7);
 tl.set('#vw',{scale:1.08},3.970);tl.set('#vw',{scale:1.0},19.146);tl.set('#vw',{scale:1.08},24.006);tl.set('#vw',{scale:1.0},38.488);tl.set('#vw',{scale:1.08},42.778);
 
 (function(){const sp=$$('#choc span'),mid=(sp.length-1)/2;tl.set('#choc',{opacity:1},52.528);tl.fromTo(sp,{opacity:0,x:i=>(mid-i)*18,filter:'blur(10px)'},{opacity:1,x:0,filter:'blur(0px)',duration:.8,ease:IN,immediateRender:false},52.528);tl.to('#choc',{opacity:0,duration:.25},53.578);})();
-tl.fromTo('#u0',{opacity:0,y:120},{opacity:1,y:0,duration:.6,ease:IN,immediateRender:false},4.026);tl.to('#u0',{opacity:0,y:-24,duration:D_OUT,ease:OUT},7.626);tl.fromTo('#e0w0',{opacity:0,y:50,filter:'blur(8px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.45,ease:IN,immediateRender:false},32.008);tl.to('#e0w0',{opacity:0,y:-40,duration:.25,ease:OUT},34.278);tl.fromTo('#e0w1',{opacity:0,y:50,filter:'blur(8px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.45,ease:IN,immediateRender:false},34.328);tl.to('#e0w1',{opacity:0,y:-40,duration:.25,ease:OUT},36.278);tl.fromTo('#e0w2',{opacity:0,y:50,filter:'blur(8px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.45,ease:IN,immediateRender:false},36.328);tl.to('#e0w2',{opacity:0,y:-40,duration:.25,ease:OUT},38.748);tl.fromTo('#g0',{opacity:0,y:32},{opacity:1,y:0,duration:D_IN,ease:IN,immediateRender:false},19.198);tl.to('#g0',{opacity:0,y:-10,duration:D_OUT,ease:OUT},21.798);
-/* Barre de progression : où on en est dans la vidéo */
-tl.to('#prog',{opacity:1,duration:.4},2.9);
-tl.fromTo('#prog i',{scaleX:0},{scaleX:1,duration:56.648,ease:'none',immediateRender:false},0);
-tl.to('#prog',{opacity:0,duration:.3},56.648);
+tl.fromTo('#u0',{opacity:0,y:120},{opacity:1,y:0,duration:.6,ease:IN,immediateRender:false},6.906);tl.to('#u0',{opacity:0,y:-24,duration:D_OUT,ease:OUT},9.906);tl.fromTo('#e0w0',{opacity:0,y:50,filter:'blur(8px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.45,ease:IN,immediateRender:false},32.008);tl.to('#e0w0',{opacity:0,y:-40,duration:.25,ease:OUT},34.278);tl.fromTo('#e0w1',{opacity:0,y:50,filter:'blur(8px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.45,ease:IN,immediateRender:false},34.328);tl.to('#e0w1',{opacity:0,y:-40,duration:.25,ease:OUT},36.278);tl.fromTo('#e0w2',{opacity:0,y:50,filter:'blur(8px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.45,ease:IN,immediateRender:false},36.328);tl.to('#e0w2',{opacity:0,y:-40,duration:.25,ease:OUT},37.278);
 cap('#c0',0.050,0.690);cap('#c1',0.690,1.330);cap('#c2',1.330,2.130);cap('#c3',2.130,2.690);cap('#c4',2.690,3.170);cap('#c5',3.170,4.026);cap('#c6',4.026,4.506);cap('#c7',4.506,5.706);cap('#c8',5.706,6.906);cap('#c9',6.906,8.026);cap('#c10',8.026,8.586);cap('#c11',8.586,9.546);cap('#c12',9.546,10.346);cap('#c13',10.346,10.986);cap('#c14',10.986,11.786);cap('#c15',11.786,12.746);cap('#c16',12.746,13.866);cap('#c17',13.866,15.306);cap('#c18',15.306,15.866);cap('#c19',15.866,16.586);cap('#c20',16.586,17.946);cap('#c21',17.946,19.198);cap('#c22',19.198,19.678);cap('#c23',19.678,20.238);cap('#c24',20.238,20.878);cap('#c25',20.878,21.918);cap('#c26',21.918,22.478);cap('#c27',22.478,24.058);cap('#c28',24.058,24.808);cap('#c29',25.258,25.818);cap('#c30',25.818,26.298);cap('#c31',26.298,26.938);cap('#c32',26.938,27.784);cap('#c33',27.784,28.504);cap('#c34',28.504,29.144);cap('#c35',29.144,29.704);cap('#c36',29.704,30.568);cap('#c37',30.568,31.288);cap('#c38',31.288,32.008);cap('#c39',32.008,32.488);cap('#c40',32.488,33.048);cap('#c41',33.048,33.848);cap('#c42',33.848,34.328);cap('#c43',34.328,34.888);cap('#c44',34.888,35.288);cap('#c45',35.288,35.848);cap('#c46',35.848,36.328);cap('#c47',36.328,36.888);cap('#c48',36.888,37.208);cap('#c49',37.208,37.688);cap('#c50',37.688,38.438);cap('#c51',38.898,39.778);cap('#c52',39.778,40.818);cap('#c53',40.818,41.618);cap('#c54',41.618,42.098);cap('#c55',42.098,42.928);cap('#c56',42.928,43.328);cap('#c57',43.328,43.728);cap('#c58',43.728,44.368);cap('#c59',44.368,44.848);cap('#c60',44.848,45.088);cap('#c61',45.088,46.208);cap('#c62',46.208,46.848);cap('#c63',46.848,47.328);cap('#c64',47.328,47.568);cap('#c65',47.568,48.048);cap('#c66',48.048,48.928);cap('#c67',48.928,49.568);cap('#c68',49.568,50.528);cap('#c69',50.528,51.248);cap('#c70',51.248,51.968);cap('#c71',51.968,52.528);cap('#c72',52.528,53.408);cap('#c73',53.408,53.968);cap('#c74',53.968,54.448);cap('#c75',54.448,54.688);cap('#c76',54.688,55.168);cap('#c77',55.168,55.968);cap('#c78',55.968,56.368);cap('#c79',56.368,56.648);
   /* Inserts illustrés */
   INSWIN=[];
@@ -458,13 +522,16 @@ cap('#c0',0.050,0.690);cap('#c1',0.690,1.330);cap('#c2',1.330,2.130);cap('#c3',2
 
 /* CTA : barre de recherche dans les 2,6 dernières secondes de parole, puis carte de fin */
 tl.set('#vw',{scale:1.0},53.948);
-tl.to('#dim',{opacity:.18,duration:D_IN},53.948);
+tl.to('#dim',{opacity:.12,duration:D_IN},53.948);
 tl.fromTo('#ctaw',{opacity:0,y:60},{opacity:1,y:0,duration:.6,ease:IN,immediateRender:false},53.998);
 (function(){const el=$('#ctat'),w="ACTION",o={n:0};tl.to(o,{n:w.length,duration:1.1,ease:'none',onUpdate:()=>{el.textContent=w.slice(0,Math.round(o.n));}},54.548);})();
 tl.to('#cta .go',{scale:.88,duration:.12},57.048);tl.to('#cta .go',{scale:1,duration:.3,ease:IN},57.168);
 tl.to('#ctaw',{opacity:0,duration:D_OUT,ease:OUT},58.298);
 tl.to('#dim',{opacity:.74,duration:.4,ease:IN},58.298);
-tl.to(['#topic','#objection','#sig'].filter(s=>$(s)),{opacity:0,duration:.3},58.298);
-tl.fromTo('#end',{opacity:0,y:16},{opacity:1,y:0,duration:D_IN,ease:IN,immediateRender:false},58.398);
+tl.to(['#topic','#objection'].filter(s=>$(s)),{opacity:0,duration:.3},58.298);
+tl.set('#end',{opacity:1},58.398);
+tl.fromTo('#end .a span,#end .b span',{yPercent:110},{yPercent:0,duration:.42,ease:IN,stagger:.07,immediateRender:false},58.398);
+tl.fromTo('#end .thread',{scaleX:0},{scaleX:1,duration:.45,ease:MOVE,immediateRender:false},58.648);
+tl.to('#dim',{opacity:1,duration:.55,ease:'power1.in'},59.028);  /* fondu au noir avant la fin de l'image */
 window.__timelines=window.__timelines||{};window.__timelines["main"]=tl;tl.seek(0);
 </script></body></html>

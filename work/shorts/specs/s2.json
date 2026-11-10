@@ -59,10 +59,6 @@
   "Des vues.",
   "Mais 0 DM."
  ],
- "topic": [
-  "Des vues,",
-  "mais 0 DM."
- ],
  "keywords": [
   "voit",
   "silence",
@@ -98,49 +94,65 @@
    "Le"
   ]
  ],
- "tags": [
+ "reveal": {
+  "word": "silence,"
+ },
+ "vhook": {
+  "style": "notif",
+  "t1": "Messages",
+  "t2": "Aucun nouveau message"
+ },
+ "opening": "band",
+ "hook_style": "inverse",
+ "enum": [
   {
    "t": {
-    "word": "Pourtant"
+    "word": "Jamais."
    },
-   "text": "ce qu'on ne voit pas",
-   "d": 2.4
-  }
- ],
- "lists": [
-  {
-   "t": {
-    "word": "Elle"
-   },
-   "title": "Ma cliente n'avait jamais…",
+   "style": "strike",
    "items": [
     {
-     "text": "Liké un post",
+     "text": "Un like",
      "at": {
       "word": "liké",
-      "n": 1
+      "n": 2
      },
      "mark": "x"
     },
     {
-     "text": "Liké une publication",
-     "at": {
-      "word": "publications,"
-     },
-     "mark": "x"
-    },
-    {
-     "text": "Commenté",
+     "text": "Un commentaire",
      "at": {
       "word": "commenté,"
      },
      "mark": "x"
     }
    ],
-   "until": {
-    "word": "Ça",
-    "off": -0.1
-   }
+   "hold": 0.6
+  },
+  {
+   "t": {
+    "word": "Tant"
+   },
+   "style": "path",
+   "items": [
+    {
+     "text": "Mindset"
+    },
+    {
+     "text": "Offre"
+    },
+    {
+     "text": "Acquisition"
+    },
+    {
+     "text": "Closing"
+    }
+   ],
+   "here": {
+    "i": 2,
+    "text": "tu es ici"
+   },
+   "hold": 2.4
   }
  ],
  "ui": [
@@ -153,31 +165,11 @@
    "t1": "Message reçu",
    "t2": "« Ça fait longtemps que je te suis »",
    "t3": "Tu proposes quel accompagnement ?",
-   "label": "Reconstitution",
-   "top": 600
-  },
-  {
-   "t": {
-    "word": "appelé"
-   },
-   "d": 2.8,
-   "icon": "cal",
-   "t1": "Calendly",
-   "t2": "Appel ce soir",
-   "t3": "Elle rejoint le programme",
-   "label": "Reconstitution",
-   "top": 600
+   "label": "Reconstitution"
   }
  ],
- "method": {
-  "t": {
-   "word": "Tant"
-  },
-  "d": 3.6,
-  "on": 3,
-  "here": "tu es ici"
- },
- "reveal": {
-  "word": "silence,"
- }
+ "act": [
+  "Ils te regardent déjà.",
+  "Continue de publier."
+ ]
 }

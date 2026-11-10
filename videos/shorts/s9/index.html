@@ -262,13 +262,70 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
 .flashc .b{font:800 italic 80px/1.15 Montserrat;color:var(--cyan-p);margin-left:110px;overflow:hidden}
 .flashc .a span,.flashc .b span{display:block}
 .flashc .thread{height:4px;width:400px;background:var(--cyan-p);margin:34px 0 0 110px;transform-origin:0 50%;border-radius:2px}
-#end{background:rgba(10,18,32,.0)}
-#hook{right:96px}
-#hook .l{white-space:nowrap;font-size:81px}
+/* v5 : l'écran s'assombrit (le visage reste visible derrière), texte blanc */
+.flashc.dark{background:rgba(10,18,32,.66);color:#fff}
+.flashc.dark .in{top:1120px;left:72px;right:140px}
+.flashc.dark .lab{font-size:28px;margin-bottom:18px}
+.flashc.dark .a{font-size:80px;line-height:1.08}
+.flashc.dark .b{font-size:60px;margin-left:56px}
+.flashc.dark .thread{margin:22px 0 0 56px;width:300px}
+.flashc.dark .b{color:var(--cyan)}
+.flashc.dark .thread{background:var(--cyan)}
+.flashc.dark .lab{background:rgba(255,255,255,.14);color:#fff}
+/* Accroche visuelle : viseur de caméra (s1) */
+#vf{position:absolute;inset:0;pointer-events:none;opacity:0}
+#vf .c{position:absolute;width:70px;height:70px;border:0 solid rgba(255,255,255,.95);filter:drop-shadow(0 1px 6px rgba(10,18,32,.35))}
+#vf .tl{left:64px;top:270px;border-top-width:5px;border-left-width:5px;border-top-left-radius:14px}
+#vf .tr{left:870px;top:270px;border-top-width:5px;border-right-width:5px;border-top-right-radius:14px}
+#vf .bl{left:64px;top:1530px;border-bottom-width:5px;border-left-width:5px;border-bottom-left-radius:14px}
+#vf .br{left:870px;top:1530px;border-bottom-width:5px;border-right-width:5px;border-bottom-right-radius:14px}
+#vf .rec{position:absolute;right:164px;top:292px;display:flex;align-items:center;gap:12px;font:700 28px Montserrat;letter-spacing:.08em;color:#fff;text-shadow:0 1px 8px rgba(10,18,32,.45)}
+#vf .rec b{width:16px;height:16px;border-radius:50%;background:var(--cyan);display:block}
+#vf .rec span{font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:.04em;opacity:.9}
+/* Fin v5 : passage à l'acte sur écran assombri, sous le visage (plus de @the_process.io) */
+#end{display:block;background:none}
+#end .in{position:absolute;left:72px;right:140px;top:1121px}
+#end .a,#end .b{overflow:hidden}
+#end .a span,#end .b span{display:block}
+#end .a{font:600 52px/1.15 Montserrat;color:rgba(255,255,255,.88)}
+#end .b{white-space:nowrap;font:900 63px/1.1 Montserrat;letter-spacing:-.02em;color:#fff;margin-top:6px}
+#end .thread{height:5px;width:140px;border-radius:3px;background:var(--cyan);margin-top:24px;transform-origin:0 50%}
+#root{--cap-y:1408px}
+#hookbg,#sig{display:none}
+/* Ouvertures typographiques sur le plan (v4) */
+#hook{left:72px;right:72px;top:1186px;color:#fff;text-shadow:0 2px 18px rgba(10,18,32,.45)}
+#root.pal-n #hook{color:#fff}
+#hook .l{white-space:nowrap}
+#hook .l:first-child{font-weight:900;font-size:96px;letter-spacing:-.03em;margin-bottom:6px;}
+#hook .l.c{font-weight:600;font-size:54px;letter-spacing:0;}
+#root.pal-n #hook .l.c span{color:var(--cyan)}
+.vh-ar{position:absolute;left:96px;width:840px;height:90px;opacity:0}.vh-ar svg{position:absolute;top:0;width:90px;height:90px;fill:none;stroke:#fff;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 2px 8px rgba(10,18,32,.35))}
+/* Bande sous le visage sur vêtements clairs : typographie à l'encre (le blanc disparaissait dans le tissu) */
+#root.ink #hook.band{color:var(--encre);text-shadow:0 0 22px rgba(255,255,255,.65)}
+#root.ink #hook.band .l.c span{color:var(--cyan-p)}
+#root.ink #hook.band .rule{background:var(--cyan-p)}
+#root.ink :not(.fs) > .gw span,#root.ink .enum-s:not(.fs) .sw,#root.ink .enum-x:not(.fs) .kw2 span,#root.ink .enum-n:not(.fs) .nb span,#root.ink .enum-p .nd span{color:var(--encre);text-shadow:0 0 18px rgba(255,255,255,.7)}
+#root.ink :not(.fs) > .gw small,#root.ink .enum-n:not(.fs) .nb b{color:var(--cyan-p);text-shadow:0 0 18px rgba(255,255,255,.6)}
+#root.ink .enum-s:not(.fs) .rail{background:var(--cyan-p)}
+#root.ink .enum-x:not(.fs) .kw2 i{background:var(--encre);box-shadow:none}
+#root.ink .enum-p .ln{background:rgba(10,18,32,.3)}#root.ink .enum-p .lc{background:var(--cyan-p)}
+#root.ink .enum-p .nd b{background:var(--papier);border-color:var(--encre)}#root.ink .enum-p .nd.on b{background:var(--cyan-p);border-color:var(--cyan-p)}
+#root.ink .enum-p .nd em{color:var(--cyan-p);text-shadow:0 0 14px rgba(255,255,255,.7)}
+#root.ink #choc:not(.behind){color:var(--encre);text-shadow:0 0 30px rgba(255,255,255,.7)}
+#root.ink #ctaw .lab{color:var(--encre);text-shadow:0 0 16px rgba(255,255,255,.7)}
+#root.ink #vh.inband{color:var(--encre)!important;text-shadow:0 0 18px rgba(255,255,255,.7)!important}
+#root.ink #vh.inband .ln i{background:var(--cyan-p)}#root.ink #vh.inband .ul{background:rgba(10,18,32,.4)}
+#hook .rule{width:120px;height:5px;border-radius:3px;background:var(--cyan);margin-top:22px;transform-origin:0 50%}
+#topic{left:72px;top:322px;height:auto;padding:0;background:none!important;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;
+  font-size:30px;font-weight:500;color:#fff;gap:12px;text-shadow:0 1px 10px rgba(10,18,32,.5)}
+#topic::after{display:none}
+#root.pal-n #topic{color:#fff}
+#root.pal-n #topic b{color:#fff;font-weight:800}
+#fsbg{position:absolute;inset:0;background:rgba(10,18,32,.66);opacity:0}
 #choc span{display:inline-block;margin:0 .02em}
 #choc.behind{left:0;width:1080px;top:520px;font-size:156px;letter-spacing:-.03em;text-shadow:none}
 #ctaw .lab{color:#fff;text-shadow:0 2px 14px rgba(10,18,32,.6)}
-#ctaw{top:700px}
+#ctaw{top:1185px}
 #prog{position:absolute;left:64px;top:298px;width:876px;height:5px;border-radius:3px;background:rgba(255,255,255,.3);overflow:hidden;opacity:0}
 #prog i{display:block;height:100%;width:100%;background:var(--cyan);transform-origin:0 50%;transform:scaleX(0)}
 .ui .t3:empty{display:none}
@@ -283,9 +340,46 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
 .lst .mk.on{background:var(--cyan-p);border-color:var(--cyan-p)}
 .lst .mk.x.on{background:var(--rouge);border-color:var(--rouge)}
 .lst .mk.on svg{opacity:1}
+.enum-g{position:absolute;left:64px;width:952px;top:470px;height:260px}
+.enum-g .gw{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0}
+.enum-g .gw small{font:800 30px Montserrat;letter-spacing:.12em;color:var(--cyan);text-shadow:0 2px 12px rgba(10,18,32,.5)}
+.enum-g .gw span{font:900 132px/1 Montserrat;letter-spacing:-.02em;color:#fff;text-transform:uppercase;text-shadow:0 6px 30px rgba(10,18,32,.45)}
+.enum-s{position:absolute;left:64px;top:560px;padding-left:34px;opacity:0}
+.enum-s .rail{position:absolute;left:0;top:6px;width:6px;height:calc(100% - 12px);border-radius:3px;background:var(--cyan);transform-origin:50% 0}
+.enum-s .sw{font:900 64px/1.1 Montserrat;letter-spacing:-.02em;color:#fff;text-shadow:0 4px 22px rgba(10,18,32,.55);opacity:0}
+.enum-t{position:absolute;left:64px;width:952px;top:520px;opacity:0}
+.enum-t .tt{font:800 30px Montserrat;color:#fff;text-shadow:0 2px 12px rgba(10,18,32,.55);margin:0 0 18px 6px}
+.enum-t .row{display:flex;gap:22px}
+.enum-t .tl-t{flex:1;border-radius:28px;padding:28px 18px 24px;display:flex;flex-direction:column;align-items:center;gap:16px;
+  background:rgba(255,255,255,.86);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.7);box-shadow:0 24px 60px rgba(10,18,32,.25)}
+.enum-t .ic{width:110px;height:110px;border-radius:30px;background:#EEF0F3;display:flex;align-items:center;justify-content:center}
+.enum-t .ic svg{width:64px;height:64px;fill:none;stroke:#8a93a3;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.enum-t .tl-t b{font:800 30px/1.15 Montserrat;color:var(--encre);text-align:center}
+.enum-t .tl-t.on .ic{background:var(--cyan-p)}
+.enum-t .tl-t.on .ic svg{stroke:#fff}
+.enum-t .row{gap:16px}
+.enum-t .tl-t{padding:22px 10px 18px;gap:12px;border-radius:24px}
+.enum-t .ic{width:88px;height:88px;border-radius:24px}
+.enum-t .ic svg{width:52px;height:52px}
+.enum-t .tl-t b{font-size:27px;line-height:1.1}
+.enum-x{position:absolute;left:72px;opacity:1}
+.kw2{position:relative;font:900 64px/1.08 Montserrat;letter-spacing:-.02em;color:#fff;text-shadow:0 3px 18px rgba(10,18,32,.5);opacity:0;width:max-content}
+.kw2 i{position:absolute;left:-6px;right:-6px;top:52%;height:7px;border-radius:4px;background:#fff;box-shadow:0 1px 8px rgba(10,18,32,.4);transform-origin:0 50%}
+.enum-p{position:absolute;left:72px;width:868px;height:200px;opacity:0}
+.enum-p .ln,.enum-p .lc{position:absolute;top:40px;height:4px;border-radius:2px;transform-origin:0 50%}
+.enum-p .ln{background:rgba(255,255,255,.5)}.enum-p .lc{background:var(--cyan)}
+.enum-p .nd{position:absolute;top:0;width:220px;margin-left:-110px;text-align:center}
+.enum-p .nd b{display:block;width:30px;height:30px;margin:27px auto 0;border-radius:50%;background:var(--noir);border:4px solid #fff}
+.enum-p .nd span{display:block;margin-top:18px;font:800 32px/1.12 Montserrat;color:#fff;text-shadow:0 3px 16px rgba(10,18,32,.55);opacity:.45}
+.enum-p .nd.on b{background:var(--cyan);border-color:var(--cyan)}.enum-p .nd.on span{opacity:1}
+.enum-p .nd em{position:absolute;left:0;right:0;top:-14px;font:800 italic 26px Montserrat;color:var(--cyan);text-shadow:0 2px 12px rgba(10,18,32,.5);opacity:0}
+.enum-n{position:absolute;left:72px;width:936px;height:190px}
+.nb{position:absolute;inset:0;display:flex;align-items:center;gap:30px;opacity:0}
+.nb b{font:900 170px/1 Montserrat;color:var(--cyan);text-shadow:0 4px 24px rgba(10,18,32,.4)}
+.nb span{font:800 68px/1.05 Montserrat;color:#fff;text-shadow:0 3px 18px rgba(10,18,32,.5)}
 </style></head>
 <body>
-<div id="root" class="pal-n lite" data-composition-id="main" data-start="0" data-duration="61.372" data-width="1080" data-height="1920">
+<div id="root" class="pal-n lite ink" data-composition-id="main" data-start="0" data-duration="62.072" data-width="1080" data-height="1920">
   <div id="vw"><video id="v" data-start="0" data-duration="61.372" data-has-audio="true" src="assets/cut.mp4" playsinline></video></div>
   <div id="dimfix"></div><div id="dim"></div>
         <div class="ins" id="ins1"><div class="it"><span>Vu.</span> <span class="a">Pas de DM.</span></div>
@@ -340,26 +434,22 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
               <div class="comp"><div class="field"><span id="draftTxt"></span><span class="cur2"></span></div><div class="send"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></div></div>
             </div>
           </div></div>
-        <div class="glass" id="topic" data-g="bandeau"><span>200 likes.</span><b>0 client.</b></div>
-        <div id="objection"><b>OBJECTION :</b> « Je dois réfléchir »</div>
-        <div id="hookbg"></div>
-        <div id="hook"><div class="k"><span>Tu postes. Personne n'écrit.</span></div><div class="l"><span>200 likes.</span></div><div class="l c"><span>0 client.</span></div></div>
 
-  <div class="glass" id="topic"><span>Gratuit ?</span><b>Ça t&#x27;embrouille.</b></div>
-  <div id="prog"><i></i></div>
-  <div id="hookbg"></div>
-  <div id="hook"><div class="l"><span>Trop de gratuit ?</span></div><div class="l c"><span>Ça t&#x27;embrouille.</span></div></div>
-  <div id="sig"><svg viewBox="0 0 32 32" fill="none"><rect id="sigr" x="2.5" y="2.5" width="27" height="27" rx="8" stroke="#fff" stroke-width="2.6"/><circle id="sigc" cx="16" cy="16" r="6.2" stroke="#fff" stroke-width="2.6"/><circle id="sigd" cx="23.6" cy="8.4" r="1.8" fill="#fff"/></svg><span>@the_process.io</span></div>
   
-  <div class="glass white ui" id="u0" style="top:600px"><div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6h18l8 8v28H12z"/><path d="M30 6v8h8" /><path d="M18 26h14M18 33h9" stroke="#00D9FF"/></svg></div><div><div class="t1">Téléchargements</div><div class="t2">PDF et guides jamais ouverts</div><div class="t3">Checklist ultime, template, méthode…</div></div><div class="ex">Exemple</div></div><div class="glass white lst" id="l0" style="top:520px"><div class="lt">Ce que tu accumules</div><div class="li" id="l0r0"><i class="mk check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span>Des PDF</span></div><div class="li" id="l0r1"><i class="mk check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span>Des guides</span></div><div class="li" id="l0r2"><i class="mk x"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></svg></i><span>Une direction</span></div></div><div class="glass" id="method"><div class="h">La méthode The Process</div><div class="rail"></div><div class="railc"></div><div class="row" id="m1"><div class="dot"></div><div class="n">01</div><div class="w">Mindset</div><div class="here">commence ici</div></div><div class="row" id="m2"><div class="dot"></div><div class="n">02</div><div class="w">Offre</div></div><div class="row" id="m3"><div class="dot"></div><div class="n">03</div><div class="w">Acquisition</div></div><div class="row" id="m4"><div class="dot"></div><div class="n">04</div><div class="w">Closing</div></div></div><div class="glass tag tg" id="g0"><i></i>ce qu&#x27;une élève m&#x27;a dit</div>
-  <div class="flashc" id="f0"><div class="in"><div class="lab"></div><div class="a"><span>Le gratuit</span></div><div class="b"><span>t&#x27;embrouille.</span></div><div class="thread"></div></div></div>
-  <div class="cap" id="c0"><span>« Avant,</span></div><div class="cap" id="c1"><span>j&#x27;étais</span> <span>une</span> <span>bouffeuse</span></div><div class="cap" id="c2"><span>de</span> <span class="kw">gratuit »,</span></div><div class="cap" id="c3"><span>c&#x27;est</span> <span>ce</span> <span>qu&#x27;elle</span></div><div class="cap" id="c4"><span>m&#x27;a</span> <span>dit</span> <span>pendant</span></div><div class="cap" id="c5"><span>un</span> <span>appel.</span></div><div class="cap" id="c6"><span>Une</span> <span>de</span> <span>mes</span></div><div class="cap" id="c7"><span>élèves</span> <span>qui</span> <span>me</span></div><div class="cap" id="c8"><span>l&#x27;a</span> <span>dit</span> <span>pendant</span></div><div class="cap" id="c9"><span>un</span> <span>appel</span> <span>avant</span></div><div class="cap" id="c10"><span>de</span> <span>signer</span> <span>avec</span></div><div class="cap" id="c11"><span>moi.</span></div><div class="cap" id="c12"><span>Le</span> <span>problème</span> <span>avec</span></div><div class="cap" id="c13"><span>du</span> <span class="kw">gratuit,</span></div><div class="cap" id="c14"><span>c&#x27;est</span> <span>que</span> <span>ça</span></div><div class="cap" id="c15"><span>te</span> <span>donne</span> <span>l&#x27;impression</span></div><div class="cap" id="c16"><span>d&#x27;évoluer.</span></div><div class="cap" id="c17"><span>Mais</span> <span>en</span> <span>réalité,</span></div><div class="cap" id="c18"><span>c&#x27;est</span> <span>que</span> <span>ça</span></div><div class="cap" id="c19"><span class="kw">t&#x27;embrouille.</span></div><div class="cap" id="c22"><span>obtiens</span> <span>énormément</span></div><div class="cap" id="c23"><span>de</span> <span>choses</span> <span>où</span></div><div class="cap" id="c24"><span>tu</span> <span>ne</span> <span>sais</span></div><div class="cap" id="c25"><span>plus</span> <span>où</span> <span>mettre</span></div><div class="cap" id="c26"><span>la</span> <span>tête.</span></div><div class="cap" id="c27"><span>Tu</span> <span>as</span> <span>tellement</span></div><div class="cap" id="c28"><span>de</span> <span>PDF.</span></div><div class="cap" id="c29"><span>Tellement</span> <span>de</span> <span>guides.</span></div><div class="cap" id="c30"><span>Et</span> <span>le</span> <span>plus</span></div><div class="cap" id="c31"><span>important,</span></div><div class="cap" id="c32"><span>tu</span> <span>n&#x27;as</span> <span>personne</span></div><div class="cap" id="c33"><span>qui</span> <span>peut</span> <span>te</span></div><div class="cap" id="c34"><span>donner</span> <span>une</span> <span class="kw">direction</span></div><div class="cap" id="c35"><span class="kw">précise.</span></div><div class="cap" id="c36"><span>Du</span> <span>coup,</span></div><div class="cap" id="c37"><span>tu</span> <span>te</span> <span>mets</span></div><div class="cap" id="c38"><span>à</span> <span>peaufiner,</span></div><div class="cap" id="c39"><span>tu</span> <span>essayes</span> <span>de</span></div><div class="cap" id="c40"><span>faire</span> <span>X,</span></div><div class="cap" id="c41"><span>après</span> <span>tu</span> <span>essayes</span></div><div class="cap" id="c42"><span>de</span> <span>faire</span> <span>Y,</span></div><div class="cap" id="c43"><span>et</span> <span>après</span> <span>tu</span></div><div class="cap" id="c44"><span>oublies</span> <span>même</span> <span>énormément</span></div><div class="cap" id="c45"><span>de</span> <span>choses.</span></div><div class="cap" id="c46"><span>Les</span> <span>tonnes</span> <span>de</span></div><div class="cap" id="c47"><span>guides</span> <span>des</span> <span>process</span></div><div class="cap" id="c48"><span>que</span> <span>tu</span> <span>as</span></div><div class="cap" id="c49"><span>reçus</span> <span>dorment</span> <span>dans</span></div><div class="cap" id="c50"><span>tes</span> <span>enregistrements</span></div><div class="cap" id="c51"><span>parce</span> <span>que</span> <span>tu</span></div><div class="cap" id="c52"><span>n&#x27;as</span> <span>pas</span> <span>de</span></div><div class="cap" id="c53"><span class="kw">direction</span> <span class="kw">précise.</span></div><div class="cap" id="c54"><span>Tu</span> <span>es</span> <span class="kw">seul,</span></div><div class="cap" id="c55"><span>tu</span> <span>n&#x27;as</span> <span>personne</span></div><div class="cap" id="c56"><span>qui</span> <span>va</span> <span>te</span></div><div class="cap" id="c57"><span>demander</span> <span>de</span> <span>commencer</span></div><div class="cap" id="c58"><span>ici</span> <span>et</span> <span>de</span></div><div class="cap" id="c59"><span>finir</span> <span>ici.</span></div><div class="cap" id="c60"><span>Lorsque</span> <span>tu</span> <span>as</span></div><div class="cap" id="c61"><span>une</span> <span>question,</span></div><div class="cap" id="c62"><span>une</span> <span>préoccupation,</span></div><div class="cap" id="c63"><span>tu</span> <span>n&#x27;as</span> <span>pas</span></div><div class="cap" id="c64"><span>vraiment</span> <span>une</span> <span>personne</span></div><div class="cap" id="c65"><span>vers</span> <span>qui</span> <span>te</span></div><div class="cap" id="c66"><span class="kw">tourner.</span></div><div class="cap" id="c67"><span>Le</span> <span class="kw">gratuit</span> <span>te</span></div><div class="cap" id="c68"><span>donne</span> <span>des</span> <span>informations,</span></div><div class="cap" id="c69"><span>mais</span> <span>il</span> <span>ne</span></div><div class="cap" id="c70"><span>te</span> <span>donne</span> <span>pas</span></div><div class="cap" id="c71"><span>une</span> <span>personne</span> <span>qui</span></div><div class="cap" id="c72"><span>regarde</span> <span>comment</span> <span>tu</span></div><div class="cap" id="c73"><span class="kw">avances.</span></div>
+<div id="vh" class="vh-ar" style="top:363px"><svg viewBox="0 0 90 90" style="left:0px"><path d="M14 45h58M50 23l22 22-22 22"/></svg><svg viewBox="0 0 90 90" style="left:150px"><path d="M14 45h58M50 23l22 22-22 22"/></svg><svg viewBox="0 0 90 90" style="left:300px"><path d="M14 45h58M50 23l22 22-22 22"/></svg><svg viewBox="0 0 90 90" style="left:450px"><path d="M14 45h58M50 23l22 22-22 22"/></svg><svg viewBox="0 0 90 90" style="left:600px"><path d="M14 45h58M50 23l22 22-22 22"/></svg><svg viewBox="0 0 90 90" style="left:750px"><path d="M14 45h58M50 23l22 22-22 22"/></svg></div>
+  <div id="hookbg"></div>
+  <div id="hook" class="band"><div class="l"><span>Trop de gratuit ?</span></div><div class="l c"><span>Ça t&#x27;embrouille.</span></div><div class="rule"></div></div>
+  <div id="fsbg"></div>
+  
+  <div class="glass white ui" id="u0" style="top:1195px"><div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6h18l8 8v28H12z"/><path d="M30 6v8h8" /><path d="M18 26h14M18 33h9" stroke="#00D9FF"/></svg></div><div><div class="t1">Téléchargements</div><div class="t2">PDF et guides jamais ouverts</div><div class="t3">Checklist ultime, template, méthode…</div></div><div class="ex">Exemple</div></div><div class="enum-x" id="e0" style="top:1170px"><div class="kw2" id="e0w0"><span>Des PDF</span><i></i></div><div class="kw2" id="e0w1"><span>Des guides</span><i></i></div><div class="kw2 x" id="e0w2"><span>Une direction</span><i></i></div></div>
+  <div class="flashc dark" id="f0"><div class="in" style="top:1145px"><div class="lab"></div><div class="a"><span>Tu es seul.</span></div><div class="b"><span>Personne pour te guider.</span></div><div class="thread"></div></div></div>
+  <div class="cap" id="c0"><span>« Avant,</span></div><div class="cap" id="c1"><span>j&#x27;étais</span> <span>une</span> <span>bouffeuse</span></div><div class="cap" id="c2"><span>de</span> <span class="kw">gratuit »,</span></div><div class="cap" id="c3"><span>c&#x27;est</span> <span>ce</span> <span>qu&#x27;elle</span></div><div class="cap" id="c4"><span>m&#x27;a</span> <span>dit</span> <span>pendant</span></div><div class="cap" id="c5"><span>un</span> <span>appel.</span></div><div class="cap" id="c6"><span>Une</span> <span>de</span> <span>mes</span></div><div class="cap" id="c7"><span>élèves</span> <span>qui</span> <span>me</span></div><div class="cap" id="c8"><span>l&#x27;a</span> <span>dit</span> <span>pendant</span></div><div class="cap" id="c9"><span>un</span> <span>appel</span> <span>avant</span></div><div class="cap" id="c10"><span>de</span> <span>signer</span> <span>avec</span></div><div class="cap" id="c11"><span>moi.</span></div><div class="cap" id="c12"><span>Le</span> <span>problème</span> <span>avec</span></div><div class="cap" id="c13"><span>du</span> <span class="kw">gratuit,</span></div><div class="cap" id="c14"><span>c&#x27;est</span> <span>que</span> <span>ça</span></div><div class="cap" id="c15"><span>te</span> <span>donne</span> <span>l&#x27;impression</span></div><div class="cap" id="c16"><span>d&#x27;évoluer.</span></div><div class="cap" id="c17"><span>Mais</span> <span>en</span> <span>réalité,</span></div><div class="cap" id="c18"><span>c&#x27;est</span> <span>que</span> <span>ça</span></div><div class="cap" id="c19"><span class="kw">t&#x27;embrouille.</span></div><div class="cap" id="c20"><span>Pourquoi</span> <span>?</span></div><div class="cap" id="c21"><span>Parce</span> <span>que</span> <span>tu</span></div><div class="cap" id="c22"><span>obtiens</span> <span>énormément</span></div><div class="cap" id="c23"><span>de</span> <span>choses</span> <span>où</span></div><div class="cap" id="c24"><span>tu</span> <span>ne</span> <span>sais</span></div><div class="cap" id="c25"><span>plus</span> <span>où</span> <span>mettre</span></div><div class="cap" id="c26"><span>la</span> <span>tête.</span></div><div class="cap" id="c27"><span>Tu</span> <span>as</span> <span>tellement</span></div><div class="cap" id="c28"><span>de</span> <span>PDF.</span></div><div class="cap" id="c29"><span>Tellement</span> <span>de</span> <span>guides.</span></div><div class="cap" id="c30"><span>Et</span> <span>le</span> <span>plus</span></div><div class="cap" id="c31"><span>important,</span></div><div class="cap" id="c32"><span>tu</span> <span>n&#x27;as</span> <span>personne</span></div><div class="cap" id="c33"><span>qui</span> <span>peut</span> <span>te</span></div><div class="cap" id="c34"><span>donner</span> <span>une</span> <span class="kw">direction</span></div><div class="cap" id="c35"><span class="kw">précise.</span></div><div class="cap" id="c36"><span>Du</span> <span>coup,</span></div><div class="cap" id="c37"><span>tu</span> <span>te</span> <span>mets</span></div><div class="cap" id="c38"><span>à</span> <span>peaufiner,</span></div><div class="cap" id="c39"><span>tu</span> <span>essayes</span> <span>de</span></div><div class="cap" id="c40"><span>faire</span> <span>X,</span></div><div class="cap" id="c41"><span>après</span> <span>tu</span> <span>essayes</span></div><div class="cap" id="c42"><span>de</span> <span>faire</span> <span>Y,</span></div><div class="cap" id="c43"><span>et</span> <span>après</span> <span>tu</span></div><div class="cap" id="c44"><span>oublies</span> <span>même</span> <span>énormément</span></div><div class="cap" id="c45"><span>de</span> <span>choses.</span></div><div class="cap" id="c46"><span>Les</span> <span>tonnes</span> <span>de</span></div><div class="cap" id="c47"><span>guides</span> <span>des</span> <span>process</span></div><div class="cap" id="c48"><span>que</span> <span>tu</span> <span>as</span></div><div class="cap" id="c49"><span>reçus</span> <span>dorment</span> <span>dans</span></div><div class="cap" id="c50"><span>tes</span> <span>enregistrements</span></div><div class="cap" id="c51"><span>parce</span> <span>que</span> <span>tu</span></div><div class="cap" id="c52"><span>n&#x27;as</span> <span>pas</span> <span>de</span></div><div class="cap" id="c53"><span class="kw">direction</span> <span class="kw">précise.</span></div><div class="cap" id="c59"><span>finir</span> <span>ici.</span></div><div class="cap" id="c60"><span>Lorsque</span> <span>tu</span> <span>as</span></div><div class="cap" id="c61"><span>une</span> <span>question,</span></div><div class="cap" id="c62"><span>une</span> <span>préoccupation,</span></div><div class="cap" id="c63"><span>tu</span> <span>n&#x27;as</span> <span>pas</span></div><div class="cap" id="c64"><span>vraiment</span> <span>une</span> <span>personne</span></div><div class="cap" id="c65"><span>vers</span> <span>qui</span> <span>te</span></div><div class="cap" id="c66"><span class="kw">tourner.</span></div><div class="cap" id="c67"><span>Le</span> <span class="kw">gratuit</span> <span>te</span></div><div class="cap" id="c68"><span>donne</span> <span>des</span> <span>informations,</span></div><div class="cap" id="c69"><span>mais</span> <span>il</span> <span>ne</span></div><div class="cap" id="c70"><span>te</span> <span>donne</span> <span>pas</span></div><div class="cap" id="c71"><span>une</span> <span>personne</span> <span>qui</span></div><div class="cap" id="c72"><span>regarde</span> <span>comment</span> <span>tu</span></div><div class="cap" id="c73"><span class="kw">avances.</span></div>
   <div id="ctaw"><div class="lab">Commente</div>
     <div class="glass white" id="cta"><svg class="s" viewBox="0 0 40 40" fill="none" stroke="#001F3F" stroke-width="4" stroke-linecap="round"><circle cx="17" cy="17" r="11"/><path d="M25 25l9 9"/></svg>
       <div class="q"><span id="ctat"></span><span class="cur"></span></div>
       <div class="go"><svg viewBox="0 0 42 42" fill="none" stroke="#001F3F" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21h22M22 11l10 10-10 10"/></svg></div></div></div>
-  <div id="end"><svg viewBox="0 0 32 32" fill="none"><rect x="2.5" y="2.5" width="27" height="27" rx="8" stroke="#fff" stroke-width="2"/><circle cx="16" cy="16" r="6.2" stroke="#fff" stroke-width="2"/><circle cx="23.6" cy="8.4" r="1.6" fill="#00D9FF"/></svg><div class="h">@the_process.io</div></div>
-  <audio id="sfx" data-start="14.676" data-duration="0.37" data-volume="0.32" src="assets/kit/reveal.mp3"></audio>
+  <div id="end"><div class="in"><div class="a"><span>Assez de PDF.</span></div><div class="b"><span>Choisis une direction.</span></div><div class="thread"></div></div></div>
+  <audio id="sfx" data-start="44.322" data-duration="0.37" data-volume="0.32" src="assets/kit/reveal.mp3"></audio>
 </div>
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
@@ -370,32 +460,23 @@ const tl=gsap.timeline({paused:true});
 function cap(id,a,b){const sp=$$(id+' > span');tl.set(id,{opacity:1},a);
   tl.fromTo(sp,{opacity:0,y:14,filter:'blur(6px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.3,ease:IN,stagger:.07,immediateRender:false},a);
   tl.set(id,{opacity:0},b);}
-function flash(id,a,d){tl.set(id,{opacity:1},a);
+function flash(id,a,d){tl.fromTo(id,{opacity:0},{opacity:1,duration:.25,ease:'none',immediateRender:false},a);
   tl.fromTo(id+' .a span,'+id+' .b span',{yPercent:110},{yPercent:0,duration:.6,ease:IN,stagger:.08,immediateRender:false},a);
   tl.fromTo(id+' .thread',{scaleX:0},{scaleX:1,duration:.5,ease:MOVE,immediateRender:false},a+.3);
-  tl.set(id,{opacity:0},a+d);}
-gsap.set(['#sig','#ctaw','#end'],{opacity:0});
-/* Accroche : plein écran 0 → 2,4 s puis se rétracte en bandeau */
-tl.fromTo('#hook .l span',{yPercent:110},{yPercent:0,duration:.7,ease:IN,stagger:.08,immediateRender:false},0);
-tl.fromTo('#vw',{scale:1.0},{scale:1.04,duration:2.6,ease:'none',immediateRender:false},0);
-tl.to('#hook',{opacity:0,y:-40,duration:D_OUT,ease:OUT},2.25);
-(function(){const tp=$('#topic')||$('#objection');const L=tp.offsetLeft,T=tp.offsetTop,W=tp.offsetWidth,H=tp.offsetHeight;
-  gsap.set(tp,{opacity:0});
-  tl.fromTo('#hookbg',{clipPath:'inset(0px 0px 0px 0px round 0px)'},{clipPath:`inset(${T}px ${1080-L-W}px ${1920-T-H}px ${L}px round 16px)`,duration:.6,ease:MOVE,immediateRender:false},2.3);
-  tl.set(tp,{opacity:1},2.9);tl.set('#hookbg',{opacity:0},2.9);})();
-tl.set('#vw',{scale:1.0},2.6);
-tl.to('#sig',{opacity:1,duration:D_IN,ease:IN},.2);
-tl.set(['#sigr','#sigc'],{attr:{stroke:'#00D9FF'}},.2);tl.set('#sigd',{attr:{fill:'#00D9FF'}},.2);
-tl.set(['#sigr','#sigc'],{attr:{stroke:'#fff'}},.7);tl.set('#sigd',{attr:{fill:'#fff'}},.7);
+  tl.to(id,{opacity:0,duration:.25,ease:'none'},a+d);}
+gsap.set(['#ctaw','#end'],{opacity:0});
+/* Ouverture v5 : coup de zoom arrière + accroche visuelle, titre tenu 6.5 s puis disparu (pas de @, pas de barre) */
+tl.fromTo('#vw',{scale:1.16},{scale:1.0,duration:.6,ease:'expo.out',immediateRender:false},0);
+tl.fromTo('#hook .l span',{yPercent:110},{yPercent:0,duration:.7,ease:IN,stagger:.12,immediateRender:false},0.15);
+tl.fromTo('#hook .rule',{scaleX:0},{scaleX:1,duration:.6,ease:MOVE,immediateRender:false},0.55);
+tl.to('#hook .l span',{yPercent:-110,duration:.4,ease:OUT,stagger:.05},6.350);
+tl.to('#hook .rule',{scaleX:0,transformOrigin:'100% 50%',duration:.35,ease:OUT},6.350);
+tl.set('#vh',{opacity:1},0);tl.fromTo('#vh svg:nth-child(1)',{rotation:110,opacity:0},{rotation:150,opacity:1,duration:.4,ease:IN,immediateRender:false},0.05);tl.to('#vh svg:nth-child(1)',{rotation:0,duration:.6,ease:'back.out(1.2)'},1.00);tl.fromTo('#vh svg:nth-child(2)',{rotation:-110,opacity:0},{rotation:-70,opacity:1,duration:.4,ease:IN,immediateRender:false},0.10);tl.to('#vh svg:nth-child(2)',{rotation:0,duration:.6,ease:'back.out(1.2)'},1.07);tl.fromTo('#vh svg:nth-child(3)',{rotation:175,opacity:0},{rotation:215,opacity:1,duration:.4,ease:IN,immediateRender:false},0.15);tl.to('#vh svg:nth-child(3)',{rotation:0,duration:.6,ease:'back.out(1.2)'},1.14);tl.fromTo('#vh svg:nth-child(4)',{rotation:-5,opacity:0},{rotation:35,opacity:1,duration:.4,ease:IN,immediateRender:false},0.20);tl.to('#vh svg:nth-child(4)',{rotation:0,duration:.6,ease:'back.out(1.2)'},1.21);tl.fromTo('#vh svg:nth-child(5)',{rotation:-170,opacity:0},{rotation:-130,opacity:1,duration:.4,ease:IN,immediateRender:false},0.25);tl.to('#vh svg:nth-child(5)',{rotation:0,duration:.6,ease:'back.out(1.2)'},1.28);tl.fromTo('#vh svg:nth-child(6)',{rotation:55,opacity:0},{rotation:95,opacity:1,duration:.4,ease:IN,immediateRender:false},0.30);tl.to('#vh svg:nth-child(6)',{rotation:0,duration:.6,ease:'back.out(1.2)'},1.35);tl.to('#vh svg',{stroke:'#00D9FF',duration:.25},1.6);tl.to('#vh',{opacity:0,x:40,duration:.35,ease:OUT},2.6);
 tl.set('#vw',{scale:1.08},4.626);tl.set('#vw',{scale:1.0},9.604);tl.set('#vw',{scale:1.08},15.244);tl.set('#vw',{scale:1.0},20.656);tl.set('#vw',{scale:1.08},28.190);tl.set('#vw',{scale:1.0},36.000);tl.set('#vw',{scale:1.08},43.950);tl.set('#vw',{scale:1.0},48.682);tl.set('#vw',{scale:1.08},53.060);
-flash('#f0',14.676,1.1);
+flash('#f0',44.322,2.6);
 
-tl.fromTo('#u0',{opacity:0,y:120},{opacity:1,y:0,duration:.6,ease:IN,immediateRender:false},39.256);tl.to('#u0',{opacity:0,y:-24,duration:D_OUT,ease:OUT},42.256);tl.fromTo('#l0',{opacity:0,y:90},{opacity:1,y:0,duration:.55,ease:IN,immediateRender:false},21.126);tl.set('#l0 .li',{opacity:.35},21.126);tl.to('#l0r0',{opacity:1,duration:.2},21.526);tl.set('#l0r0 .mk',{className:'mk check on'},21.526);tl.fromTo('#l0r0 .mk',{scale:.7},{scale:1,duration:.3,ease:IN,immediateRender:false},21.526);tl.to('#l0r1',{opacity:1,duration:.2},23.110);tl.set('#l0r1 .mk',{className:'mk check on'},23.110);tl.fromTo('#l0r1 .mk',{scale:.7},{scale:1,duration:.3,ease:IN,immediateRender:false},23.110);tl.to('#l0r2',{opacity:1,duration:.2},27.430);tl.set('#l0r2 .mk',{className:'mk x on'},27.430);tl.fromTo('#l0r2 .mk',{scale:.7},{scale:1,duration:.3,ease:IN,immediateRender:false},27.430);tl.to('#l0',{opacity:0,y:-24,duration:D_OUT,ease:OUT},28.500);gsap.set('#method .railc',{scaleY:0});tl.to('#dim',{opacity:.35,duration:D_IN,ease:IN},44.322);tl.fromTo('#method',{opacity:0,y:32,scale:.98},{opacity:1,y:0,scale:1,duration:.6,ease:IN,immediateRender:false},44.322);tl.fromTo('#method .row',{opacity:0,x:-18},{opacity:1,x:0,duration:.45,ease:IN,stagger:.1,immediateRender:false},44.522);tl.to('#method .railc',{scaleY:0.000,duration:.7,ease:MOVE},45.222);tl.set('#m1',{className:'row on'},45.222);tl.fromTo('#m1 .here',{opacity:0,x:-12},{opacity:1,x:0,duration:D_IN,ease:IN,immediateRender:false},45.522);tl.to('#method',{opacity:0,y:-20,duration:D_OUT,ease:OUT},48.122);tl.to('#dim',{opacity:0,duration:D_OUT},48.122);tl.fromTo('#g0',{opacity:0,y:32},{opacity:1,y:0,duration:D_IN,ease:IN,immediateRender:false},5.036);tl.to('#g0',{opacity:0,y:-10,duration:D_OUT,ease:OUT},7.636);
-/* Barre de progression : où on en est dans la vidéo */
-tl.to('#prog',{opacity:1,duration:.4},2.9);
-tl.fromTo('#prog i',{scaleX:0},{scaleX:1,duration:58.372,ease:'none',immediateRender:false},0);
-tl.to('#prog',{opacity:0,duration:.3},58.372);
-cap('#c0',0.058,0.458);cap('#c1',0.458,1.578);cap('#c2',1.578,2.298);cap('#c3',2.298,2.938);cap('#c4',2.938,3.738);cap('#c5',3.738,4.648);cap('#c6',5.036,5.596);cap('#c7',5.596,6.316);cap('#c8',6.316,7.356);cap('#c9',7.356,8.236);cap('#c10',8.236,8.956);cap('#c11',8.956,9.658);cap('#c12',9.658,10.298);cap('#c13',10.298,10.938);cap('#c14',10.938,11.418);cap('#c15',11.418,12.218);cap('#c16',12.218,12.968);cap('#c17',13.306,13.946);cap('#c18',13.946,14.426);cap('#c19',14.426,15.296);cap('#c22',16.176,17.456);cap('#c23',17.456,18.576);cap('#c24',18.576,19.056);cap('#c25',19.056,19.776);cap('#c26',19.776,20.726);cap('#c27',20.726,21.366);cap('#c28',21.366,22.550);cap('#c29',22.550,23.670);cap('#c30',23.670,24.310);cap('#c31',24.310,24.710);cap('#c32',24.710,25.670);cap('#c33',25.670,26.230);cap('#c34',26.230,27.430);cap('#c35',27.430,28.180);cap('#c36',28.600,29.000);cap('#c37',29.000,29.480);cap('#c38',29.480,30.440);cap('#c39',30.440,31.080);cap('#c40',31.080,31.880);cap('#c41',31.880,32.680);cap('#c42',32.680,33.720);cap('#c43',33.720,34.360);cap('#c44',34.360,35.560);cap('#c45',35.560,36.056);cap('#c46',36.056,36.776);cap('#c47',36.776,38.056);cap('#c48',38.056,38.616);cap('#c49',38.616,39.976);cap('#c50',39.976,41.256);cap('#c51',41.256,41.816);cap('#c52',41.816,42.376);cap('#c53',42.376,43.606);cap('#c54',44.002,44.642);cap('#c55',44.642,45.282);cap('#c56',45.282,45.762);cap('#c57',45.762,46.882);cap('#c58',46.882,47.762);cap('#c59',47.762,48.740);cap('#c60',48.740,49.300);cap('#c61',49.300,49.780);cap('#c62',49.780,50.500);cap('#c63',50.500,50.980);cap('#c64',50.980,51.620);cap('#c65',51.620,52.260);cap('#c66',52.260,53.132);cap('#c67',53.132,53.932);cap('#c68',53.932,54.892);cap('#c69',54.892,55.292);cap('#c70',55.292,55.852);cap('#c71',55.852,56.652);cap('#c72',56.652,57.772);cap('#c73',57.772,58.322);
+tl.fromTo('#u0',{opacity:0,y:120},{opacity:1,y:0,duration:.6,ease:IN,immediateRender:false},39.256);tl.to('#u0',{opacity:0,y:-24,duration:D_OUT,ease:OUT},42.256);tl.set('#e0',{opacity:1},21.526);gsap.set('#e0 i',{scaleX:0});tl.fromTo('#e0w0',{opacity:0,y:24},{opacity:1,y:0,duration:.4,ease:IN,immediateRender:false},21.526);tl.fromTo('#e0w1',{opacity:0,y:24},{opacity:1,y:0,duration:.4,ease:IN,immediateRender:false},23.110);tl.fromTo('#e0w2',{opacity:0,y:24},{opacity:1,y:0,duration:.4,ease:IN,immediateRender:false},26.710);tl.to('#e0w2 i',{scaleX:1,duration:.35,ease:MOVE},27.060);tl.to('#e0w2 span',{opacity:.55,duration:.3},27.110);tl.to('#e0',{opacity:0,y:-20,duration:D_OUT,ease:OUT},28.110);
+cap('#c0',0.058,0.458);cap('#c1',0.458,1.578);cap('#c2',1.578,2.298);cap('#c3',2.298,2.938);cap('#c4',2.938,3.738);cap('#c5',3.738,4.648);cap('#c6',5.036,5.596);cap('#c7',5.596,6.316);cap('#c8',6.316,7.356);cap('#c9',7.356,8.236);cap('#c10',8.236,8.956);cap('#c11',8.956,9.658);cap('#c12',9.658,10.298);cap('#c13',10.298,10.938);cap('#c14',10.938,11.418);cap('#c15',11.418,12.218);cap('#c16',12.218,12.968);cap('#c17',13.306,13.946);cap('#c18',13.946,14.426);cap('#c19',14.426,15.296);cap('#c20',15.296,15.696);cap('#c21',15.696,16.176);cap('#c22',16.176,17.456);cap('#c23',17.456,18.576);cap('#c24',18.576,19.056);cap('#c25',19.056,19.776);cap('#c26',19.776,20.726);cap('#c27',20.726,21.366);cap('#c28',21.366,22.550);cap('#c29',22.550,23.670);cap('#c30',23.670,24.310);cap('#c31',24.310,24.710);cap('#c32',24.710,25.670);cap('#c33',25.670,26.230);cap('#c34',26.230,27.430);cap('#c35',27.430,28.180);cap('#c36',28.600,29.000);cap('#c37',29.000,29.480);cap('#c38',29.480,30.440);cap('#c39',30.440,31.080);cap('#c40',31.080,31.880);cap('#c41',31.880,32.680);cap('#c42',32.680,33.720);cap('#c43',33.720,34.360);cap('#c44',34.360,35.560);cap('#c45',35.560,36.056);cap('#c46',36.056,36.776);cap('#c47',36.776,38.056);cap('#c48',38.056,38.616);cap('#c49',38.616,39.976);cap('#c50',39.976,41.256);cap('#c51',41.256,41.816);cap('#c52',41.816,42.376);cap('#c53',42.376,43.606);cap('#c59',47.762,48.740);cap('#c60',48.740,49.300);cap('#c61',49.300,49.780);cap('#c62',49.780,50.500);cap('#c63',50.500,50.980);cap('#c64',50.980,51.620);cap('#c65',51.620,52.260);cap('#c66',52.260,53.132);cap('#c67',53.132,53.932);cap('#c68',53.932,54.892);cap('#c69',54.892,55.292);cap('#c70',55.292,55.852);cap('#c71',55.852,56.652);cap('#c72',56.652,57.772);cap('#c73',57.772,58.322);
   /* Inserts illustrés */
   INSWIN=[];
   if(cfg.ins){
@@ -441,13 +522,16 @@ cap('#c0',0.058,0.458);cap('#c1',0.458,1.578);cap('#c2',1.578,2.298);cap('#c3',2
 
 /* CTA : barre de recherche dans les 2,6 dernières secondes de parole, puis carte de fin */
 tl.set('#vw',{scale:1.0},55.672);
-tl.to('#dim',{opacity:.18,duration:D_IN},55.672);
+tl.to('#dim',{opacity:.12,duration:D_IN},55.672);
 tl.fromTo('#ctaw',{opacity:0,y:60},{opacity:1,y:0,duration:.6,ease:IN,immediateRender:false},55.722);
 (function(){const el=$('#ctat'),w="DIRECTION",o={n:0};tl.to(o,{n:w.length,duration:1.1,ease:'none',onUpdate:()=>{el.textContent=w.slice(0,Math.round(o.n));}},56.272);})();
 tl.to('#cta .go',{scale:.88,duration:.12},58.772);tl.to('#cta .go',{scale:1,duration:.3,ease:IN},58.892);
 tl.to('#ctaw',{opacity:0,duration:D_OUT,ease:OUT},60.022);
 tl.to('#dim',{opacity:.74,duration:.4,ease:IN},60.022);
-tl.to(['#topic','#objection','#sig'].filter(s=>$(s)),{opacity:0,duration:.3},60.022);
-tl.fromTo('#end',{opacity:0,y:16},{opacity:1,y:0,duration:D_IN,ease:IN,immediateRender:false},60.122);
+tl.to(['#topic','#objection'].filter(s=>$(s)),{opacity:0,duration:.3},60.022);
+tl.set('#end',{opacity:1},60.122);
+tl.fromTo('#end .a span,#end .b span',{yPercent:110},{yPercent:0,duration:.42,ease:IN,stagger:.07,immediateRender:false},60.122);
+tl.fromTo('#end .thread',{scaleX:0},{scaleX:1,duration:.45,ease:MOVE,immediateRender:false},60.372);
+tl.to('#dim',{opacity:1,duration:.55,ease:'power1.in'},60.752);  /* fondu au noir avant la fin de l'image */
 window.__timelines=window.__timelines||{};window.__timelines["main"]=tl;tl.seek(0);
 </script></body></html>

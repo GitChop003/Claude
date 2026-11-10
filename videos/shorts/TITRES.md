@@ -4,13 +4,13 @@ Pour chaque vidéo : export 9:16 (Reels/TikTok), export 4:5 (LinkedIn), couvertu
 
 | # | Fichier | Durée | Rush source | Douleur visée |
 |---|---|---|---|---|
-| s1 | `2026-11-08_SEANCE_reel_v1.mp4` | 43 s | 0751 | Contenu vu mais pas d'idées / pas de clients |
-| s2 | `2026-11-08_SILENCE_reel_v1.mp4` | 53 s | 0769 | Vu, mais personne n'écrit (0 DM) |
-| s3 | `2026-11-08_LEGITIME_reel_v1.mp4` | 70 s | 0785 | Pas légitime pour demander de l'argent |
-| s4 | `2026-11-08_COURAGE_reel_v1.mp4` | 50 s | 0772 | Peur du regard des autres |
-| s5 | `2026-11-08_TIMIDE_reel_v1.mp4` | 56 s | 0784 | Peur de prospecter (« déranger ») |
+| s1 | `2026-11-10_SEANCE_reel_v5_livraison.mp4` | 43 s | 0751 | Contenu vu mais pas d'idées / pas de clients |
+| s2 | `2026-11-10_SILENCE_reel_v5_livraison.mp4` | 53 s | 0769 | Vu, mais personne n'écrit (0 DM) |
+| s3 | `2026-11-10_LEGITIME_reel_v5_livraison.mp4` | 70 s | 0785 | Pas légitime pour demander de l'argent |
+| s4 | `2026-11-10_COURAGE_reel_v5_livraison.mp4` | 50 s | 0772 | Peur du regard des autres |
+| s5 | `2026-11-10_TIMIDE_reel_v5_livraison.mp4` | 56 s | 0784 | Peur de prospecter (« déranger ») |
 
-Dans chaque dossier `sN/renders/` : `*_reel_v1_livraison.mp4` (9:16, version légère à publier), `*_linkedin_v1.mp4` (4:5), `*_couverture_9x16.png` et `*_couverture_4x5.png`. Voix normalisée vers -14 LUFS, nappe musicale originale très basse (environ 25 dB sous la voix), un seul son discret sur la révélation principale (charte §7). Barre de progression en haut.
+Dans chaque dossier `sN/renders/` : `*_reel_v5_livraison.mp4` (9:16, version légère à publier), `*_linkedin_v5.mp4` (4:5), `*_couverture_9x16.png` et `*_couverture_4x5.png`. Voix normalisée vers -14 LUFS, nappe musicale originale très basse (environ 25 dB sous la voix), un seul son discret sur la révélation principale (charte §7). Version v5 : accroche visuelle propre à chaque vidéo, titre qui disparaît après 5 à 9 s, rien devant le visage, fin sur une phrase de passage à l'acte.
 
 ## s1 · Filme tes séances
 - **Texte écran (accroche)** : « Plus d'idées ? / Filme tes séances. »
@@ -63,12 +63,12 @@ Dans chaque dossier `sN/renders/` : `*_reel_v1_livraison.mp4` (9:16, version lé
 
 | # | Fichier | Rush source | Douleur visée |
 |---|---|---|---|
-| s6 | `2026-11-08_JANVIER_reel_v1.mp4` | 0781 + 0782 | Repousser le lancement, peur de commencer |
-| s7 | `2026-11-08_ACTION_reel_v1.mp4` | 0766 | Procrastination, les excuses qui s'installent |
-| s8 | `2026-11-08_PROCESSUS_reel_v1.mp4` | 0773 | Stagnation, « il faut souffrir » |
-| s9 | `2026-11-08_DIRECTION_reel_v1.mp4` | 0786 | Formations gratuites qui embrouillent, pas de direction |
-| s10 | `2026-11-08_QUESTION_reel_v1.mp4` | 0763 | À court d'idées, contenu sans DM |
-| s11 | `2026-11-08_STRATEGIE_reel_v1.mp4` | 0788 | Tout réinventer, contenu qui ne performe pas |
+| s6 | `2026-11-10_JANVIER_reel_v5_livraison.mp4` | 0781 + 0782 | Repousser le lancement, peur de commencer |
+| s7 | `2026-11-10_ACTION_reel_v5_livraison.mp4` | 0766 | Procrastination, les excuses qui s'installent |
+| s8 | `2026-11-10_PROCESSUS_reel_v5_livraison.mp4` | 0773 | Stagnation, « il faut souffrir » |
+| s9 | `2026-11-10_DIRECTION_reel_v5_livraison.mp4` | 0786 | Formations gratuites qui embrouillent, pas de direction |
+| s10 | `2026-11-10_QUESTION_reel_v5_livraison.mp4` | 0763 | À court d'idées, contenu sans DM |
+| s11 | `2026-11-10_STRATEGIE_reel_v5_livraison.mp4` | 0788 | Tout réinventer, contenu qui ne performe pas |
 
 ## s6 · N'attends pas janvier
 - **Texte écran** : « Tu attends janvier ? / Mauvaise idée. »

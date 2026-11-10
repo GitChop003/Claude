@@ -38,7 +38,8 @@ def norm(w): return re.sub(r"[^\wÀ-ÿ'-]", "", w.lower())
 def main(spec_path, words_path, out_dir):
     sp = json.load(open(spec_path)); W = json.load(open(words_path))
     TAIL = W.get("tail", 1.4)
-    dur = W["dur"] + TAIL  # CTA lisible après la dernière phrase, puis carte de fin
+    END_X = 0.7  # carte de fin prolongée au-delà de la vidéo (image figée sous l'écran assombri)
+    vdur = W["dur"] + TAIL; dur = vdur + END_X  # CTA lisible après la dernière phrase, puis carte de fin
     kws = {norm(k) for k in sp.get("keywords", [])}
     rep = {k: v for k, v in sp.get("replace", {}).items()}
     for w in W["words"]:
@@ -63,16 +64,32 @@ def main(spec_path, words_path, out_dir):
     caps = chunks(W["words"], kws)
     # Visage mesuré (faces.py) : les éléments vont dans la bande SOUS le visage, sinon en plein écran
     FACES = json.load(open(f"{out_dir}/assets/faces.json")) if os.path.exists(f"{out_dir}/assets/faces.json") else []
+    FACES = [o for o in FACES if 250 <= o[2] - o[1] <= 750 and o[1] > 250 and o[2] < 1450]  # fausses détections écartées
     BAND, FS_TOP = 1170, 760
+    bj = f"{out_dir}/assets/band.json"
+    if not os.path.exists(bj) and os.path.exists(f"{out_dir}/assets/cut.mp4"):
+        import subprocess, numpy as np
+        raw = subprocess.run(["ffmpeg", "-v", "error", "-i", f"{out_dir}/assets/cut.mp4", "-vf", "fps=0.5,scale=108:192,format=gray", "-f", "rawvideo", "-"], capture_output=True).stdout
+        a = np.frombuffer(raw, np.uint8).reshape(-1, 192, 108)[:, 115:140, 7:94] / 255
+        json.dump({"luma": round(float(a.mean()), 3)}, open(bj, "w"))
+    INK = json.load(open(bj))["luma"] > 0.6 if os.path.exists(bj) else False  # vêtements clairs : texte de la bande à l'encre
     def face_low(a, b):
         z = [o[2] for o in FACES if a - 0.3 <= o[0] <= b + 0.3]
         return 730 + (max(z) - 730) * 1.08 if z else 0   # punch-in 108 % centré à y≈730
     fsw = []   # fenêtres plein écran (fond papier) : sous-titres passent en encre
+    def face_high(a, b):
+        z = sorted(730 + (o[1] - 730) * 1.08 for o in FACES if a - 0.3 <= o[0] <= b + 0.3)
+        return z[0] if z else 600
+    def low_top(a, b, h, floor):
+        """Haut d'un élément de hauteur h sous le menton mesuré (entre floor et 1395 - h)."""
+        return int(min(max(floor, face_low(a, b) + 25), 1395 - h))
     def place(a, b, h_needed=225):
-        """Renvoie (top, plein_écran) pour un élément visible de a à b."""
-        if face_low(a, b) > BAND - 15 or h_needed > 1395 - BAND:
-            fsw.append((a, b)); return FS_TOP, True
-        return BAND, False
+        """Renvoie (top, plein_écran) : sous le visage, sinon au-dessus de la tête, sinon écran assombri."""
+        top = max(BAND, int(face_low(a, b) + 25))
+        if top + h_needed <= 1400: return top, False
+        ft = face_high(a, b)
+        if ft - 40 - 262 >= h_needed: return int(ft - 40 - h_needed), False
+        fsw.append((a, b)); return BAND, True
     ins = {n: [at(v[0]), v[1]] for n, v in sp.get("inserts", {}).items()}  # {"1":[t|ancre,slot],...}
     insw = [(v[0], v[0] + min(2.0, v[1])) for v in ins.values()]
     flash = sp.get("flash", [])  # [{"t":..|ancre,"a":..,"b":..,"lab":..}]
@@ -87,7 +104,8 @@ def main(spec_path, words_path, out_dir):
             zoom_js.append(f"tl.set('#vw',{{scale:{z}}},{t:.3f});")
     fl_html, fl_js = [], []
     for j, f in enumerate(flash):
-        fl_html.append(f'<div class="flashc {f.get("bg","dark")}" id="f{j}"><div class="in"><div class="lab">{esc(f.get("lab",""))}</div>'
+        ftp = low_top(f["t"], f["t"] + f.get("d", 1.0), 250, 1120)
+        fl_html.append(f'<div class="flashc {f.get("bg","dark")}" id="f{j}"><div class="in" style="top:{ftp}px"><div class="lab">{esc(f.get("lab",""))}</div>'
                        f'<div class="a"><span>{esc(f["a"])}</span></div><div class="b"><span>{esc(f["b"])}</span></div><div class="thread"></div></div></div>')
         d = f.get("d", 1.0)
         fl_js.append(f"flash('#f{j}',{f['t']:.3f},{d});")
@@ -106,7 +124,8 @@ def main(spec_path, words_path, out_dir):
                        f"for(let i=0;i<{nf};i++)tl.set('#fgimg',{{attr:{{src:'assets/fg/'+String(i).padStart(4,'0')+'.webp'}}}},{ct:.3f}+i/30);")
         else:
             ctop, cfs = place(ct, ct + cd, 180)
-            choc_html = f'<div id="choc" style="top:{ctop}px">{letters}</div>'
+            cfs_px = int(min(150, 876 / (0.74 * len(choc["text"]))))  # le mot tient dans la largeur utile
+            choc_html = f'<div id="choc" style="top:{ctop}px;font-size:{cfs_px}px">{letters}</div>'
             if cfs: choc_js += f"tl.set('#fsbg',{{opacity:1}},{ct:.3f});tl.set('#fsbg',{{opacity:0}},{ct+cd:.3f});"
         choc_js += (f"(function(){{const sp=$$('#choc span'),mid=(sp.length-1)/2;tl.set('#choc',{{opacity:1}},{ct:.3f});"
                     f"tl.fromTo(sp,{{opacity:0,x:i=>(mid-i)*18,filter:'blur(10px)'}},{{opacity:1,x:0,filter:'blur(0px)',duration:.8,ease:IN,immediateRender:false}},{ct:.3f});"
@@ -158,10 +177,11 @@ def main(spec_path, words_path, out_dir):
         "seance": '<circle cx="16" cy="17" r="6"/><circle cx="33" cy="17" r="6"/><path d="M5 38c1-7 6-10 11-10s10 3 11 10M22 38c1-7 6-10 11-10s10 3 11 10"/>',
     }
     for j, E in enumerate(sp.get("enum", [])):
-        et = at(E["t"]); ticks = [at(it["at"]) for it in E["items"]]
+        et = at(E["t"]); ticks = [at(it["at"]) if "at" in it else None for it in E["items"]]
+        ticks = [tt if tt is not None else et + 0.5 + 0.5 * r for r, tt in enumerate(ticks)]  # sans ancre : 0,5 s d'écart
         ee = at(E["until"]) if "until" in E else ticks[-1] + E.get("hold", 1.4)
         st = E["style"]
-        etop, efs = place(et, ee, {"giant": 200, "stack": 64 * len(E["items"]) + 10, "tiles": 210, "strike": 64 * len(E["items"]) + 10, "numbers": 190}.get(st, 210))
+        etop, efs = place(et, ee, {"giant": 200, "stack": 71 * len(E["items"]) + 10, "tiles": 210, "strike": 64 * len(E["items"]) + 10, "numbers": 190, "path": 200}.get(st, 210))
         if efs: ov_js.append(f"tl.set('#fsbg',{{opacity:1}},{et:.3f});tl.set('#fsbg',{{opacity:0}},{ee+0.3:.3f});")
         if st == "giant":  # un mot géant par élément, chacun remplace le précédent
             words = "".join(f'<div class="gw" id="e{j}w{r}"><small>{r+1}/{len(E["items"])}</small><span>{esc(it["text"])}</span></div>' for r, it in enumerate(E["items"]))
@@ -201,6 +221,21 @@ def main(spec_path, words_path, out_dir):
                 if it.get("mark") == "x": js += f"tl.to('#e{j}w{r} i',{{scaleX:1,duration:.35,ease:MOVE}},{tt+0.35:.3f});tl.to('#e{j}w{r} span',{{opacity:.55,duration:.3}},{tt+0.4:.3f});"
             js += f"tl.to('#e{j}',{{opacity:0,y:-20,duration:D_OUT,ease:OUT}},{ee:.3f});"
             ov_js.append(js)
+        elif st == "path":  # chemin relié par un fil cyan : chaque étape s'allume ; « ici » sur l'étape courante
+            n = len(E["items"]); xs = [110 + k * (868 - 220) / max(1, n - 1) for k in range(n)]
+            here = E.get("here")
+            nodes = "".join(f'<div class="nd" id="e{j}n{r}" style="left:{x:.0f}px"><b></b><span>{esc(it["text"])}</span>'
+                            + (f'<em>{esc(here["text"])}</em>' if here and here["i"] == r else "") + '</div>' for r, (x, it) in enumerate(zip(xs, E["items"])))
+            ov_html.append(f'<div class="enum-p" id="e{j}" style="top:{etop}px"><i class="ln" style="left:{xs[0]:.0f}px;width:{xs[-1]-xs[0]:.0f}px"></i>'
+                           f'<i class="lc" style="left:{xs[0]:.0f}px;width:{xs[-1]-xs[0]:.0f}px"></i>{nodes}</div>')
+            js = (f"tl.fromTo('#e{j}',{{opacity:0,y:40}},{{opacity:1,y:0,duration:.5,ease:IN,immediateRender:false}},{et:.3f});"
+                  f"tl.fromTo('#e{j} .ln',{{scaleX:0}},{{scaleX:1,duration:.6,ease:MOVE,immediateRender:false}},{et:.3f});gsap.set('#e{j} .lc',{{scaleX:0}});")
+            for r, tt in enumerate(ticks):
+                js += (f"tl.set('#e{j}n{r}',{{className:'nd on'}},{tt:.3f});tl.fromTo('#e{j}n{r} b',{{scale:.6}},{{scale:1,duration:.35,ease:IN,immediateRender:false}},{tt:.3f});"
+                       f"tl.to('#e{j} .lc',{{scaleX:{r / max(1, n - 1):.3f},duration:.45,ease:MOVE}},{tt:.3f});")
+            if here: js += f"tl.fromTo('#e{j}n{here['i']} em',{{opacity:0,y:8}},{{opacity:1,y:0,duration:.4,ease:IN,immediateRender:false}},{ticks[here['i']]+0.3:.3f});"
+            js += f"tl.to('#e{j}',{{opacity:0,y:-20,duration:D_OUT,ease:OUT}},{ee:.3f});"
+            ov_js.append(js)
         elif st == "numbers":  # grand numéro + mot, chacun remplace le précédent
             words = "".join(f'<div class="nb" id="e{j}w{r}"><b>{r+1}</b><span>{esc(it["text"])}</span></div>' for r, it in enumerate(E["items"]))
             ov_html.append(f'<div class="enum-n{" fs" if efs else ""}" id="e{j}" style="top:{etop}px">{words}</div>')
@@ -234,8 +269,8 @@ def main(spec_path, words_path, out_dir):
                      f"tl.to('#g{j}',{{opacity:0,y:-10,duration:D_OUT,ease:OUT}},{gt+gd:.3f});")
     cap_html, cap_js = [], []
     for i, c in enumerate(caps):
-        if any(a <= c["s"] < b for a, b in fw): continue
-        oi = " oi" if any(a <= c["s"] < b for a, b in insw + fsw) else ""
+        if any(c["s"] < b and c["e"] > a + 0.15 for a, b in fw): continue  # pas de sous-titre doublé sous une carte assombrie
+        oi = " oi" if any(a <= c["s"] < b for a, b in insw) else ""  # encre seulement sur les inserts papier
         spans = " ".join(f'<span class="kw">{esc(w)}</span>' if k else f"<span>{esc(w)}</span>" for w, k in c["w"])
         cap_html.append(f'<div class="cap{oi}" id="c{i}">{spans}</div>')
         nxt = caps[i + 1]["s"] if i + 1 < len(caps) else W["dur"]
@@ -258,30 +293,40 @@ def main(spec_path, words_path, out_dir):
     ends = [w["e"] for w in W["words"] if w["w"][-1:] in ".?!" and 5.0 <= w["e"] <= 9.0]
     hook_until = sp.get("hook_until", ends[0] if ends else 6.5)
     zt = lambda y: 730 + (y - 730) * 1.08  # punch-in 108 % centré à y≈730
-    ftop = [zt(o[1]) for o in FACES if o[0] <= hook_until]
-    face_top = min(ftop) if ftop else 560
-    # Accroche visuelle (1re seconde), liée au sujet ; une par vidéo, variée d'un short à l'autre
-    vf_html = vf_js = ""
-    if sp.get("vhook") == "viewfinder":
-        vf_html = '<div id="vf"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i><div class="rec"><b></b>REC <span id="tc">00:00:00</span></div></div>'
-        vf_js = ("tl.set('#vf',{opacity:1},0);"
-                 "tl.fromTo('#vf .tl',{x:-46,y:-46,opacity:0},{x:0,y:0,opacity:1,duration:.5,ease:'expo.out',immediateRender:false},0);"
-                 "tl.fromTo('#vf .tr',{x:46,y:-46,opacity:0},{x:0,y:0,opacity:1,duration:.5,ease:'expo.out',immediateRender:false},0);"
-                 "tl.fromTo('#vf .bl',{x:-46,y:46,opacity:0},{x:0,y:0,opacity:1,duration:.5,ease:'expo.out',immediateRender:false},0);"
-                 "tl.fromTo('#vf .br',{x:46,y:46,opacity:0},{x:0,y:0,opacity:1,duration:.5,ease:'expo.out',immediateRender:false},0);"
-                 "tl.fromTo('#vf .rec',{opacity:0},{opacity:1,duration:.3,immediateRender:false},.25);"
-                 + "".join(f"tl.set('#vf .rec b',{{opacity:{0 if k % 2 else 1}}},{0.25 + k * 0.45:.2f});" for k in range(6))
-                 + "(function(){const el=$('#tc'),o={t:0};tl.to(o,{t:2.8,duration:2.8,ease:'none',onUpdate:()=>{const f=Math.floor(o.t*30)%30,s=Math.floor(o.t);el.textContent='00:0'+s+':'+String(f).padStart(2,'0');}},0);})();"
-                 "tl.to('#vf .c,#vf .rec',{opacity:0,duration:.35,ease:OUT},2.6);")
-    h1 = int(min(54, 936 / (0.6 * len(hook[0])))); h2 = int(min(116, 868 / (0.53 * len(hook[1]))))  # ne déborde pas dans la marge droite (140 px)
-    hook_top = int(max(300, min(sp.get("hook_top", 9999), face_top - 70 - (h1 * 1.08 + h2 * 1.08 + 33))))
+    ftop = sorted(zt(o[1]) for o in FACES if o[0] <= hook_until)
+    face_top = ftop[max(0, len(ftop) // 20)] if ftop else 560  # 5e centile : robuste aux fausses détections
+    # Typographie du titre : classique (fin puis gras), inversé (gras puis fin cyan), citation (italiques)
+    hs = sp.get("hook_style", "classic")
+    big = lambda l: int(min(116, 868 / (0.53 * len(l)))); small = lambda l: int(min(54, 868 / (0.6 * len(l))))
+    h1, h2 = (big(hook[0]), small(hook[1])) if hs == "inverse" else (small(hook[0]), big(hook[1]))
+    if hs == "quote": h2 = int(min(96, 868 / (0.53 * len(hook[1])))); h1 = int(min(64, 868 / (0.55 * len(hook[0]))))
+    hook_h = h1 * 1.08 + 6 + h2 * 1.08 + 33
+    hook_top = int(max(300, min(sp.get("hook_top", 9999), face_top - 70 - hook_h)))
+    opening = sp.get("opening", "top")
+    if opening == "band":  # titre sous le visage, au-dessus des sous-titres
+        hb = face_low(0, hook_until)
+        hook_top = int(max(BAND - 40, hb + 30))
+        if hook_top + hook_h > 1392:
+            print("  ! titre trop haut pour la bande : passage en haut"); opening = "top"
+            hook_top = int(max(300, face_top - 70 - hook_h))
+    import vhooks
+    zt_top = [zt(o[1]) for o in FACES if o[0] <= 2.8]
+    zone = (262, int((sorted(zt_top)[max(0, len(zt_top) // 20)] if zt_top else 600) - 50))
+    vst = (sp.get("vhook") or {}).get("style") if isinstance(sp.get("vhook"), dict) else sp.get("vhook")
+    if opening == "top":
+        if vst in ("viewfinder", "pathline", "scan", "iris"): zone = (262, min(zone[1], hook_top - 20))
+        else: zone = (int(face_low(0, 2.8) + 30), 1395)  # titre en haut : l'accroche visuelle passe sous le visage
+    vf_html, vh_css, vf_js = vhooks.make(sp, zone)
+    if zone[0] >= 900: vf_html = vf_html.replace('id="vh" class="', 'id="vh" class="inband ', 1)
     # taille des cartes assombries : chaque ligne tient sur une ligne dans 868 px
     fa = int(min(80, min([868 / (0.56 * len(f["a"])) for f in flash] or [80])))
     fb = int(min(70, min([800 / (0.55 * len(f["b"])) for f in flash] or [70])))
     # Fin : une phrase de passage à l'acte propre à chaque vidéo (pas de @ à l'écran)
     act = sp.get("act", ["À toi de jouer.", "Commence aujourd'hui."])
-    ea = int(min(52, 868 / (0.55 * len(act[0])))); eb = int(min(84, 868 / (0.56 * len(act[1]))))
+    ea = int(min(52, 868 / (0.55 * len(act[0])))); eb = int(min(84, 868 / (0.62 * len(act[1]))))
     cta = sp["cta"]; T_END = W["dur"]
+    cta_top = low_top(T_END - 2.7, T_END + 1.7, 200, 1150)
+    end_top = low_top(T_END + 1.5, T_END + 3.0, 210, 1110)
     obj = sp.get("objection")
     topic_html = (f'<div id="objection" style="opacity:1"><b>OBJECTION :</b> « {esc(obj)} »</div>' if obj else
                   "")  # v5 : pas de rappel du sujet en haut (l'accroche disparaît d'elle-même)
@@ -324,11 +369,11 @@ def main(spec_path, words_path, out_dir):
 #vf .rec span{{font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:.04em;opacity:.9}}
 /* Fin v5 : passage à l'acte sur écran assombri, sous le visage (plus de @the_process.io) */
 #end{{display:block;background:none}}
-#end .in{{position:absolute;left:72px;right:140px;top:1110px}}
+#end .in{{position:absolute;left:72px;right:140px;top:{end_top}px}}
 #end .a,#end .b{{overflow:hidden}}
 #end .a span,#end .b span{{display:block}}
 #end .a{{font:600 {ea}px/1.15 Montserrat;color:rgba(255,255,255,.88)}}
-#end .b{{font:900 {eb}px/1.1 Montserrat;letter-spacing:-.02em;color:#fff;margin-top:6px}}
+#end .b{{white-space:nowrap;font:900 {eb}px/1.1 Montserrat;letter-spacing:-.02em;color:#fff;margin-top:6px}}
 #end .thread{{height:5px;width:140px;border-radius:3px;background:var(--cyan);margin-top:24px;transform-origin:0 50%}}
 #root{{--cap-y:1408px}}
 #hookbg,#sig{{display:none}}
@@ -336,22 +381,36 @@ def main(spec_path, words_path, out_dir):
 #hook{{left:72px;right:72px;top:{hook_top}px;color:#fff;text-shadow:0 2px 18px rgba(10,18,32,.45)}}
 #root.pal-n #hook{{color:#fff}}
 #hook .l{{white-space:nowrap}}
-#hook .l:first-child{{font-weight:600;font-size:{h1}px;letter-spacing:0;margin-bottom:6px}}
-#hook .l.c{{font-size:{h2}px;letter-spacing:-.03em}}
-#root.pal-n #hook .l.c span{{color:#fff}}
+#hook .l:first-child{{font-weight:{900 if hs == "inverse" else (700 if hs == "quote" else 600)};font-size:{h1}px;letter-spacing:{"-.03em" if hs == "inverse" else "0"};margin-bottom:6px;{"font-style:italic;" if hs == "quote" else ""}}}
+#hook .l.c{{font-weight:{600 if hs == "inverse" else 900};font-size:{h2}px;letter-spacing:{"0" if hs == "inverse" else "-.03em"};{"font-style:italic;" if hs == "quote" else ""}}}
+#root.pal-n #hook .l.c span{{color:{"var(--cyan)" if hs == "inverse" else "#fff"}}}
+{vh_css}
+/* Bande sous le visage sur vêtements clairs : typographie à l'encre (le blanc disparaissait dans le tissu) */
+#root.ink #hook.band{{color:var(--encre);text-shadow:0 0 22px rgba(255,255,255,.65)}}
+#root.ink #hook.band .l.c span{{color:{"var(--cyan-p)" if hs == "inverse" else "var(--encre)"}}}
+#root.ink #hook.band .rule{{background:var(--cyan-p)}}
+#root.ink :not(.fs) > .gw span,#root.ink .enum-s:not(.fs) .sw,#root.ink .enum-x:not(.fs) .kw2 span,#root.ink .enum-n:not(.fs) .nb span,#root.ink .enum-p .nd span{{color:var(--encre);text-shadow:0 0 18px rgba(255,255,255,.7)}}
+#root.ink :not(.fs) > .gw small,#root.ink .enum-n:not(.fs) .nb b{{color:var(--cyan-p);text-shadow:0 0 18px rgba(255,255,255,.6)}}
+#root.ink .enum-s:not(.fs) .rail{{background:var(--cyan-p)}}
+#root.ink .enum-x:not(.fs) .kw2 i{{background:var(--encre);box-shadow:none}}
+#root.ink .enum-p .ln{{background:rgba(10,18,32,.3)}}#root.ink .enum-p .lc{{background:var(--cyan-p)}}
+#root.ink .enum-p .nd b{{background:var(--papier);border-color:var(--encre)}}#root.ink .enum-p .nd.on b{{background:var(--cyan-p);border-color:var(--cyan-p)}}
+#root.ink .enum-p .nd em{{color:var(--cyan-p);text-shadow:0 0 14px rgba(255,255,255,.7)}}
+#root.ink #choc:not(.behind){{color:var(--encre);text-shadow:0 0 30px rgba(255,255,255,.7)}}
+#root.ink #ctaw .lab{{color:var(--encre);text-shadow:0 0 16px rgba(255,255,255,.7)}}
+#root.ink #vh.inband{{color:var(--encre)!important;text-shadow:0 0 18px rgba(255,255,255,.7)!important}}
+#root.ink #vh.inband .ln i{{background:var(--cyan-p)}}#root.ink #vh.inband .ul{{background:rgba(10,18,32,.4)}}
 #hook .rule{{width:120px;height:5px;border-radius:3px;background:var(--cyan);margin-top:22px;transform-origin:0 50%}}
 #topic{{left:72px;top:322px;height:auto;padding:0;background:none!important;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;
   font-size:30px;font-weight:500;color:#fff;gap:12px;text-shadow:0 1px 10px rgba(10,18,32,.5)}}
 #topic::after{{display:none}}
 #root.pal-n #topic{{color:#fff}}
 #root.pal-n #topic b{{color:#fff;font-weight:800}}
-#fsbg{{position:absolute;inset:0;background:var(--papier);opacity:0}}
-.fs .gw span,.fs .sw,.fs .kw2 span,.fs .nb span{{color:var(--encre)!important;text-shadow:none!important}}
-.fs .nb b{{color:var(--cyan-p)!important}}
+#fsbg{{position:absolute;inset:0;background:rgba(10,18,32,.66);opacity:0}}
 #choc span{{display:inline-block;margin:0 .02em}}
 #choc.behind{{left:0;width:1080px;top:520px;font-size:156px;letter-spacing:-.03em;text-shadow:none}}
 #ctaw .lab{{color:#fff;text-shadow:0 2px 14px rgba(10,18,32,.6)}}
-#ctaw{{top:1150px}}
+#ctaw{{top:{cta_top}px}}
 #prog{{position:absolute;left:64px;top:298px;width:876px;height:5px;border-radius:3px;background:rgba(255,255,255,.3);overflow:hidden;opacity:0}}
 #prog i{{display:block;height:100%;width:100%;background:var(--cyan);transform-origin:0 50%;transform:scaleX(0)}}
 .ui .t3:empty{{display:none}}
@@ -372,7 +431,7 @@ def main(spec_path, words_path, out_dir):
 .enum-g .gw span{{font:900 132px/1 Montserrat;letter-spacing:-.02em;color:#fff;text-transform:uppercase;text-shadow:0 6px 30px rgba(10,18,32,.45)}}
 .enum-s{{position:absolute;left:64px;top:560px;padding-left:34px;opacity:0}}
 .enum-s .rail{{position:absolute;left:0;top:6px;width:6px;height:calc(100% - 12px);border-radius:3px;background:var(--cyan);transform-origin:50% 0}}
-.enum-s .sw{{font:900 76px/1.12 Montserrat;letter-spacing:-.02em;color:#fff;text-shadow:0 4px 22px rgba(10,18,32,.55);opacity:0}}
+.enum-s .sw{{font:900 64px/1.1 Montserrat;letter-spacing:-.02em;color:#fff;text-shadow:0 4px 22px rgba(10,18,32,.55);opacity:0}}
 .enum-t{{position:absolute;left:64px;width:952px;top:520px;opacity:0}}
 .enum-t .tt{{font:800 30px Montserrat;color:#fff;text-shadow:0 2px 12px rgba(10,18,32,.55);margin:0 0 18px 6px}}
 .enum-t .row{{display:flex;gap:22px}}
@@ -390,21 +449,29 @@ def main(spec_path, words_path, out_dir):
 .enum-t .tl-t b{{font-size:27px;line-height:1.1}}
 .enum-x{{position:absolute;left:72px;opacity:1}}
 .kw2{{position:relative;font:900 64px/1.08 Montserrat;letter-spacing:-.02em;color:#fff;text-shadow:0 3px 18px rgba(10,18,32,.5);opacity:0;width:max-content}}
-.kw2 i{{position:absolute;left:-6px;right:-6px;top:52%;height:7px;border-radius:4px;background:var(--rouge);transform-origin:0 50%}}
+.kw2 i{{position:absolute;left:-6px;right:-6px;top:52%;height:7px;border-radius:4px;background:#fff;box-shadow:0 1px 8px rgba(10,18,32,.4);transform-origin:0 50%}}
+.enum-p{{position:absolute;left:72px;width:868px;height:200px;opacity:0}}
+.enum-p .ln,.enum-p .lc{{position:absolute;top:40px;height:4px;border-radius:2px;transform-origin:0 50%}}
+.enum-p .ln{{background:rgba(255,255,255,.5)}}.enum-p .lc{{background:var(--cyan)}}
+.enum-p .nd{{position:absolute;top:0;width:220px;margin-left:-110px;text-align:center}}
+.enum-p .nd b{{display:block;width:30px;height:30px;margin:27px auto 0;border-radius:50%;background:var(--noir);border:4px solid #fff}}
+.enum-p .nd span{{display:block;margin-top:18px;font:800 32px/1.12 Montserrat;color:#fff;text-shadow:0 3px 16px rgba(10,18,32,.55);opacity:.45}}
+.enum-p .nd.on b{{background:var(--cyan);border-color:var(--cyan)}}.enum-p .nd.on span{{opacity:1}}
+.enum-p .nd em{{position:absolute;left:0;right:0;top:-14px;font:800 italic 26px Montserrat;color:var(--cyan);text-shadow:0 2px 12px rgba(10,18,32,.5);opacity:0}}
 .enum-n{{position:absolute;left:72px;width:936px;height:190px}}
 .nb{{position:absolute;inset:0;display:flex;align-items:center;gap:30px;opacity:0}}
 .nb b{{font:900 170px/1 Montserrat;color:var(--cyan);text-shadow:0 4px 24px rgba(10,18,32,.4)}}
 .nb span{{font:800 68px/1.05 Montserrat;color:#fff;text-shadow:0 3px 18px rgba(10,18,32,.5)}}
 </style></head>
 <body>
-<div id="root" class="pal-n lite" data-composition-id="main" data-start="0" data-duration="{dur:.3f}" data-width="1080" data-height="1920">
-  <div id="vw"><video id="v" data-start="0" data-duration="{dur:.3f}" data-has-audio="true" src="assets/cut.mp4" playsinline></video>{choc_vw}</div>
+<div id="root" class="pal-n lite{' ink' if INK else ''}" data-composition-id="main" data-start="0" data-duration="{dur:.3f}" data-width="1080" data-height="1920">
+  <div id="vw"><video id="v" data-start="0" data-duration="{vdur:.3f}" data-has-audio="true" src="assets/cut.mp4" playsinline></video>{choc_vw}</div>
   <div id="dimfix"></div><div id="dim"></div>
 {inserts_html}
   {topic_html}
 {vf_html}
   <div id="hookbg"></div>
-  <div id="hook"><div class="l"><span>{esc(hook[0])}</span></div><div class="l c"><span>{esc(hook[1])}</span></div><div class="rule"></div></div>
+  <div id="hook" class="{'band' if opening == 'band' else 'top'}"><div class="l"><span>{esc(hook[0])}</span></div><div class="l c"><span>{esc(hook[1])}</span></div><div class="rule"></div></div>
   <div id="fsbg"></div>
   {choc_html}
   {''.join(ov_html)}
@@ -454,8 +521,9 @@ tl.to('#ctaw',{{opacity:0,duration:D_OUT,ease:OUT}},{T_END+TAIL-1.35:.3f});
 tl.to('#dim',{{opacity:.74,duration:.4,ease:IN}},{T_END+TAIL-1.35:.3f});
 tl.to(['#topic','#objection'].filter(s=>$(s)),{{opacity:0,duration:.3}},{T_END+TAIL-1.35:.3f});
 tl.set('#end',{{opacity:1}},{T_END+TAIL-1.25:.3f});
-tl.fromTo('#end .a span,#end .b span',{{yPercent:110}},{{yPercent:0,duration:.55,ease:IN,stagger:.12,immediateRender:false}},{T_END+TAIL-1.25:.3f});
-tl.fromTo('#end .thread',{{scaleX:0}},{{scaleX:1,duration:.5,ease:MOVE,immediateRender:false}},{T_END+TAIL-0.95:.3f});
+tl.fromTo('#end .a span,#end .b span',{{yPercent:110}},{{yPercent:0,duration:.42,ease:IN,stagger:.07,immediateRender:false}},{T_END+TAIL-1.25:.3f});
+tl.fromTo('#end .thread',{{scaleX:0}},{{scaleX:1,duration:.45,ease:MOVE,immediateRender:false}},{T_END+TAIL-1.0:.3f});
+tl.to('#dim',{{opacity:1,duration:.55,ease:'power1.in'}},{vdur-0.62:.3f});  /* fondu au noir avant la fin de l'image */
 window.__timelines=window.__timelines||{{}};window.__timelines["main"]=tl;tl.seek(0);
 </script></body></html>"""
     os.makedirs(f"{out_dir}/assets", exist_ok=True)

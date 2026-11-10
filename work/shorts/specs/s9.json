@@ -64,10 +64,6 @@
   "Trop de gratuit ?",
   "Ça t'embrouille."
  ],
- "topic": [
-  "Gratuit ?",
-  "Ça t'embrouille."
- ],
  "keywords": [
   "gratuit,",
   "t'embrouille.",
@@ -102,34 +98,16 @@
    "Les"
   ]
  ],
- "tags": [
+ "cta": "DIRECTION",
+ "vhook": "arrows",
+ "opening": "band",
+ "hook_style": "inverse",
+ "enum": [
   {
    "t": {
-    "word": "Une"
+    "word": "PDF."
    },
-   "text": "ce qu'une élève m'a dit",
-   "d": 2.6
-  }
- ],
- "flash": [
-  {
-   "t": {
-    "word": "t'embrouille.",
-    "off": 0.25
-   },
-   "lab": "",
-   "a": "Le gratuit",
-   "b": "t'embrouille.",
-   "d": 1.1
-  }
- ],
- "lists": [
-  {
-   "t": {
-    "word": "tellement",
-    "n": 1
-   },
-   "title": "Ce que tu accumules",
+   "style": "strike",
    "items": [
     {
      "text": "Des PDF",
@@ -147,17 +125,13 @@
     {
      "text": "Une direction",
      "at": {
-      "word": "précise.",
+      "word": "direction",
       "n": 1
      },
      "mark": "x"
     }
    ],
-   "until": {
-    "word": "Du",
-    "n": 1,
-    "off": -0.1
-   }
+   "hold": 1.4
   }
  ],
  "ui": [
@@ -169,17 +143,23 @@
    "icon": "draft",
    "t1": "Téléchargements",
    "t2": "PDF et guides jamais ouverts",
-   "t3": "Checklist ultime, template, méthode…",
-   "top": 600
+   "t3": "Checklist ultime, template, méthode…"
   }
  ],
- "method": {
-  "t": {
-   "word": "seul,"
-  },
-  "d": 3.8,
-  "on": 1,
-  "here": "commence ici"
- },
- "cta": "DIRECTION"
+ "flash": [
+  {
+   "t": {
+    "word": "seul,"
+   },
+   "lab": "",
+   "a": "Tu es seul.",
+   "b": "Personne pour te guider.",
+   "d": 2.6,
+   "bg": "dark"
+  }
+ ],
+ "act": [
+  "Assez de PDF.",
+  "Choisis une direction."
+ ]
 }

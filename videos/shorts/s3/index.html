@@ -262,13 +262,70 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
 .flashc .b{font:800 italic 80px/1.15 Montserrat;color:var(--cyan-p);margin-left:110px;overflow:hidden}
 .flashc .a span,.flashc .b span{display:block}
 .flashc .thread{height:4px;width:400px;background:var(--cyan-p);margin:34px 0 0 110px;transform-origin:0 50%;border-radius:2px}
-#end{background:rgba(10,18,32,.0)}
-#hook{right:96px}
-#hook .l{white-space:nowrap;font-size:81px}
+/* v5 : l'écran s'assombrit (le visage reste visible derrière), texte blanc */
+.flashc.dark{background:rgba(10,18,32,.66);color:#fff}
+.flashc.dark .in{top:1120px;left:72px;right:140px}
+.flashc.dark .lab{font-size:28px;margin-bottom:18px}
+.flashc.dark .a{font-size:77px;line-height:1.08}
+.flashc.dark .b{font-size:58px;margin-left:56px}
+.flashc.dark .thread{margin:22px 0 0 56px;width:300px}
+.flashc.dark .b{color:var(--cyan)}
+.flashc.dark .thread{background:var(--cyan)}
+.flashc.dark .lab{background:rgba(255,255,255,.14);color:#fff}
+/* Accroche visuelle : viseur de caméra (s1) */
+#vf{position:absolute;inset:0;pointer-events:none;opacity:0}
+#vf .c{position:absolute;width:70px;height:70px;border:0 solid rgba(255,255,255,.95);filter:drop-shadow(0 1px 6px rgba(10,18,32,.35))}
+#vf .tl{left:64px;top:270px;border-top-width:5px;border-left-width:5px;border-top-left-radius:14px}
+#vf .tr{left:870px;top:270px;border-top-width:5px;border-right-width:5px;border-top-right-radius:14px}
+#vf .bl{left:64px;top:1530px;border-bottom-width:5px;border-left-width:5px;border-bottom-left-radius:14px}
+#vf .br{left:870px;top:1530px;border-bottom-width:5px;border-right-width:5px;border-bottom-right-radius:14px}
+#vf .rec{position:absolute;right:164px;top:292px;display:flex;align-items:center;gap:12px;font:700 28px Montserrat;letter-spacing:.08em;color:#fff;text-shadow:0 1px 8px rgba(10,18,32,.45)}
+#vf .rec b{width:16px;height:16px;border-radius:50%;background:var(--cyan);display:block}
+#vf .rec span{font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:.04em;opacity:.9}
+/* Fin v5 : passage à l'acte sur écran assombri, sous le visage (plus de @the_process.io) */
+#end{display:block;background:none}
+#end .in{position:absolute;left:72px;right:140px;top:1182px}
+#end .a,#end .b{overflow:hidden}
+#end .a span,#end .b span{display:block}
+#end .a{font:600 52px/1.15 Montserrat;color:rgba(255,255,255,.88)}
+#end .b{font:900 70px/1.1 Montserrat;letter-spacing:-.02em;color:#fff;margin-top:6px}
+#end .thread{height:5px;width:140px;border-radius:3px;background:var(--cyan);margin-top:24px;transform-origin:0 50%}
+#root{--cap-y:1408px}
+#hookbg,#sig{display:none}
+/* Ouvertures typographiques sur le plan (v4) */
+#hook{left:72px;right:72px;top:314px;color:#fff;text-shadow:0 2px 18px rgba(10,18,32,.45)}
+#root.pal-n #hook{color:#fff}
+#hook .l{white-space:nowrap}
+#hook .l:first-child{font-weight:700;font-size:64px;letter-spacing:0;margin-bottom:6px;font-style:italic;}
+#hook .l.c{font-weight:900;font-size:96px;letter-spacing:-.03em;font-style:italic;}
+#root.pal-n #hook .l.c span{color:#fff}
+.vh-type{position:absolute;left:72px;width:868px;opacity:0;color:#fff;text-shadow:0 2px 14px rgba(10,18,32,.45)}.vh-type small{display:block;font:700 22px Montserrat;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:10px}.vh-type .ln{font:600 40px Montserrat;min-height:52px;white-space:nowrap}.vh-type .ln i{display:inline-block;width:4px;height:42px;background:var(--cyan);margin-left:4px;vertical-align:-7px}.vh-type .ul{height:2px;background:rgba(255,255,255,.55);margin-top:12px;transform-origin:0 50%}
+/* Bande sous le visage sur vêtements clairs : typographie à l'encre (le blanc disparaissait dans le tissu) */
+#root.ink #hook.band{color:var(--encre);text-shadow:0 0 22px rgba(255,255,255,.65)}
+#root.ink #hook.band .l.c span{color:var(--encre)}
+#root.ink #hook.band .rule{background:var(--cyan-p)}
+#root.ink :not(.fs) > .gw span,#root.ink .enum-s:not(.fs) .sw,#root.ink .enum-x:not(.fs) .kw2 span,#root.ink .enum-n:not(.fs) .nb span,#root.ink .enum-p .nd span{color:var(--encre);text-shadow:0 0 18px rgba(255,255,255,.7)}
+#root.ink :not(.fs) > .gw small,#root.ink .enum-n:not(.fs) .nb b{color:var(--cyan-p);text-shadow:0 0 18px rgba(255,255,255,.6)}
+#root.ink .enum-s:not(.fs) .rail{background:var(--cyan-p)}
+#root.ink .enum-x:not(.fs) .kw2 i{background:var(--encre);box-shadow:none}
+#root.ink .enum-p .ln{background:rgba(10,18,32,.3)}#root.ink .enum-p .lc{background:var(--cyan-p)}
+#root.ink .enum-p .nd b{background:var(--papier);border-color:var(--encre)}#root.ink .enum-p .nd.on b{background:var(--cyan-p);border-color:var(--cyan-p)}
+#root.ink .enum-p .nd em{color:var(--cyan-p);text-shadow:0 0 14px rgba(255,255,255,.7)}
+#root.ink #choc:not(.behind){color:var(--encre);text-shadow:0 0 30px rgba(255,255,255,.7)}
+#root.ink #ctaw .lab{color:var(--encre);text-shadow:0 0 16px rgba(255,255,255,.7)}
+#root.ink #vh.inband{color:var(--encre)!important;text-shadow:0 0 18px rgba(255,255,255,.7)!important}
+#root.ink #vh.inband .ln i{background:var(--cyan-p)}#root.ink #vh.inband .ul{background:rgba(10,18,32,.4)}
+#hook .rule{width:120px;height:5px;border-radius:3px;background:var(--cyan);margin-top:22px;transform-origin:0 50%}
+#topic{left:72px;top:322px;height:auto;padding:0;background:none!important;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;
+  font-size:30px;font-weight:500;color:#fff;gap:12px;text-shadow:0 1px 10px rgba(10,18,32,.5)}
+#topic::after{display:none}
+#root.pal-n #topic{color:#fff}
+#root.pal-n #topic b{color:#fff;font-weight:800}
+#fsbg{position:absolute;inset:0;background:rgba(10,18,32,.66);opacity:0}
 #choc span{display:inline-block;margin:0 .02em}
 #choc.behind{left:0;width:1080px;top:520px;font-size:156px;letter-spacing:-.03em;text-shadow:none}
 #ctaw .lab{color:#fff;text-shadow:0 2px 14px rgba(10,18,32,.6)}
-#ctaw{top:700px}
+#ctaw{top:1195px}
 #prog{position:absolute;left:64px;top:298px;width:876px;height:5px;border-radius:3px;background:rgba(255,255,255,.3);overflow:hidden;opacity:0}
 #prog i{display:block;height:100%;width:100%;background:var(--cyan);transform-origin:0 50%;transform:scaleX(0)}
 .ui .t3:empty{display:none}
@@ -283,9 +340,46 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
 .lst .mk.on{background:var(--cyan-p);border-color:var(--cyan-p)}
 .lst .mk.x.on{background:var(--rouge);border-color:var(--rouge)}
 .lst .mk.on svg{opacity:1}
+.enum-g{position:absolute;left:64px;width:952px;top:470px;height:260px}
+.enum-g .gw{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0}
+.enum-g .gw small{font:800 30px Montserrat;letter-spacing:.12em;color:var(--cyan);text-shadow:0 2px 12px rgba(10,18,32,.5)}
+.enum-g .gw span{font:900 132px/1 Montserrat;letter-spacing:-.02em;color:#fff;text-transform:uppercase;text-shadow:0 6px 30px rgba(10,18,32,.45)}
+.enum-s{position:absolute;left:64px;top:560px;padding-left:34px;opacity:0}
+.enum-s .rail{position:absolute;left:0;top:6px;width:6px;height:calc(100% - 12px);border-radius:3px;background:var(--cyan);transform-origin:50% 0}
+.enum-s .sw{font:900 64px/1.1 Montserrat;letter-spacing:-.02em;color:#fff;text-shadow:0 4px 22px rgba(10,18,32,.55);opacity:0}
+.enum-t{position:absolute;left:64px;width:952px;top:520px;opacity:0}
+.enum-t .tt{font:800 30px Montserrat;color:#fff;text-shadow:0 2px 12px rgba(10,18,32,.55);margin:0 0 18px 6px}
+.enum-t .row{display:flex;gap:22px}
+.enum-t .tl-t{flex:1;border-radius:28px;padding:28px 18px 24px;display:flex;flex-direction:column;align-items:center;gap:16px;
+  background:rgba(255,255,255,.86);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.7);box-shadow:0 24px 60px rgba(10,18,32,.25)}
+.enum-t .ic{width:110px;height:110px;border-radius:30px;background:#EEF0F3;display:flex;align-items:center;justify-content:center}
+.enum-t .ic svg{width:64px;height:64px;fill:none;stroke:#8a93a3;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.enum-t .tl-t b{font:800 30px/1.15 Montserrat;color:var(--encre);text-align:center}
+.enum-t .tl-t.on .ic{background:var(--cyan-p)}
+.enum-t .tl-t.on .ic svg{stroke:#fff}
+.enum-t .row{gap:16px}
+.enum-t .tl-t{padding:22px 10px 18px;gap:12px;border-radius:24px}
+.enum-t .ic{width:88px;height:88px;border-radius:24px}
+.enum-t .ic svg{width:52px;height:52px}
+.enum-t .tl-t b{font-size:27px;line-height:1.1}
+.enum-x{position:absolute;left:72px;opacity:1}
+.kw2{position:relative;font:900 64px/1.08 Montserrat;letter-spacing:-.02em;color:#fff;text-shadow:0 3px 18px rgba(10,18,32,.5);opacity:0;width:max-content}
+.kw2 i{position:absolute;left:-6px;right:-6px;top:52%;height:7px;border-radius:4px;background:#fff;box-shadow:0 1px 8px rgba(10,18,32,.4);transform-origin:0 50%}
+.enum-p{position:absolute;left:72px;width:868px;height:200px;opacity:0}
+.enum-p .ln,.enum-p .lc{position:absolute;top:40px;height:4px;border-radius:2px;transform-origin:0 50%}
+.enum-p .ln{background:rgba(255,255,255,.5)}.enum-p .lc{background:var(--cyan)}
+.enum-p .nd{position:absolute;top:0;width:220px;margin-left:-110px;text-align:center}
+.enum-p .nd b{display:block;width:30px;height:30px;margin:27px auto 0;border-radius:50%;background:var(--noir);border:4px solid #fff}
+.enum-p .nd span{display:block;margin-top:18px;font:800 32px/1.12 Montserrat;color:#fff;text-shadow:0 3px 16px rgba(10,18,32,.55);opacity:.45}
+.enum-p .nd.on b{background:var(--cyan);border-color:var(--cyan)}.enum-p .nd.on span{opacity:1}
+.enum-p .nd em{position:absolute;left:0;right:0;top:-14px;font:800 italic 26px Montserrat;color:var(--cyan);text-shadow:0 2px 12px rgba(10,18,32,.5);opacity:0}
+.enum-n{position:absolute;left:72px;width:936px;height:190px}
+.nb{position:absolute;inset:0;display:flex;align-items:center;gap:30px;opacity:0}
+.nb b{font:900 170px/1 Montserrat;color:var(--cyan);text-shadow:0 4px 24px rgba(10,18,32,.4)}
+.nb span{font:800 68px/1.05 Montserrat;color:#fff;text-shadow:0 3px 18px rgba(10,18,32,.5)}
 </style></head>
 <body>
-<div id="root" class="pal-n lite" data-composition-id="main" data-start="0" data-duration="70.024" data-width="1080" data-height="1920">
+<div id="root" class="pal-n lite ink" data-composition-id="main" data-start="0" data-duration="70.724" data-width="1080" data-height="1920">
   <div id="vw"><video id="v" data-start="0" data-duration="70.024" data-has-audio="true" src="assets/cut.mp4" playsinline></video><div id="choc" class="behind"><span>L</span><span>É</span><span>G</span><span>I</span><span>T</span><span>I</span><span>M</span><span>E</span></div><img id="fgimg" src="assets/fg/0000.webp" style="position:absolute;left:0;top:0;width:1080px;height:1920px;opacity:0"/></div>
   <div id="dimfix"></div><div id="dim"></div>
         <div class="ins" id="ins1"><div class="it"><span>Vu.</span> <span class="a">Pas de DM.</span></div>
@@ -340,62 +434,49 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
               <div class="comp"><div class="field"><span id="draftTxt"></span><span class="cur2"></span></div><div class="send"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></div></div>
             </div>
           </div></div>
-        <div class="glass" id="topic" data-g="bandeau"><span>200 likes.</span><b>0 client.</b></div>
-        <div id="objection"><b>OBJECTION :</b> « Je dois réfléchir »</div>
-        <div id="hookbg"></div>
-        <div id="hook"><div class="k"><span>Tu postes. Personne n'écrit.</span></div><div class="l"><span>200 likes.</span></div><div class="l c"><span>0 client.</span></div></div>
 
-  <div class="glass" id="topic"><span>Pas légitime ?</span><b>Lis ça.</b></div>
-  <div id="prog"><i></i></div>
-  <div id="hookbg"></div>
-  <div id="hook"><div class="l"><span>« Tu es qui, toi,</span></div><div class="l c"><span>pour dire ça ? »</span></div></div>
-  <div id="sig"><svg viewBox="0 0 32 32" fill="none"><rect id="sigr" x="2.5" y="2.5" width="27" height="27" rx="8" stroke="#fff" stroke-width="2.6"/><circle id="sigc" cx="16" cy="16" r="6.2" stroke="#fff" stroke-width="2.6"/><circle id="sigd" cx="23.6" cy="8.4" r="1.8" fill="#fff"/></svg><span>@the_process.io</span></div>
   
-  <div class="glass white ui" id="u0" style="top:600px"><div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6h18l8 8v28H12z"/><path d="M30 6v8h8" /><path d="M18 26h14M18 33h9" stroke="#00D9FF"/></svg></div><div><div class="t1">Brouillons</div><div class="t2">14 posts non publiés</div><div class="t3">Le dernier date d&#x27;hier</div></div><div class="ex">Exemple</div></div><div class="glass white ui" id="u1" style="top:600px"><div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="3.4" stroke-linejoin="round"><path d="M8 11h32v21H22l-9 8v-8H8z"/><path d="M16 20h16M16 26h10" stroke="#00D9FF" stroke-linecap="round"/></svg></div><div><div class="t1">Nouveau message</div><div class="t2">« Merci, c&#x27;est exactement</div><div class="t3">ce dont j&#x27;avais besoin »</div></div><div class="ex">Exemple</div></div><div class="glass white lst" id="l0" style="top:520px"><div class="lt">Et pendant ce temps…</div><div class="li" id="l0r0"><i class="mk check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span>Tu écris</span></div><div class="li" id="l0r1"><i class="mk check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span>Tu effaces</span></div><div class="li" id="l0r2"><i class="mk check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span>Tu réécris</span></div></div><div class="glass tag tg" id="g0"><i></i>la petite voix</div>
-  <div class="flashc" id="f0"><div class="in"><div class="lab"></div><div class="a"><span>Jamais prêt ?</span></div><div class="b"><span>Publie quand même.</span></div><div class="thread"></div></div></div>
-  <div class="cap" id="c0"><span>Tu</span> <span>es</span> <span>qui,</span></div><div class="cap" id="c1"><span>toi,</span></div><div class="cap" id="c2"><span>pour</span> <span>dire</span> <span>ça</span></div><div class="cap" id="c3"><span>?</span></div><div class="cap" id="c4"><span>Elle</span> <span>arrive</span> <span>juste</span></div><div class="cap" id="c5"><span>au</span> <span>moment</span> <span>où</span></div><div class="cap" id="c6"><span>tu</span> <span>veux</span> <span>publier.</span></div><div class="cap" id="c7"><span>Tu</span> <span>n&#x27;as</span> <span class="kw">même</span></div><div class="cap" id="c8"><span>pas</span> <span>de</span> <span>client.</span></div><div class="cap" id="c9"><span>D&#x27;autres</span> <span>font</span> <span>ça</span></div><div class="cap" id="c10"><span>depuis</span> <span>10</span> <span>ans.</span></div><div class="cap" id="c11"><span>Les</span> <span>gens</span> <span>vont</span></div><div class="cap" id="c12"><span>savoir</span> <span>que</span> <span>tu</span></div><div class="cap" id="c13"><span>fais</span> <span class="kw">semblant.</span></div><div class="cap" id="c14"><span>Alors</span> <span>tu</span> <span>écris,</span></div><div class="cap" id="c15"><span>tu</span> <span>effaces,</span></div><div class="cap" id="c16"><span>tu</span> <span>réécris.</span></div><div class="cap" id="c17"><span>Et</span> <span>ton</span> <span>post</span></div><div class="cap" id="c18"><span>rejoint</span> <span>les</span> <span>14</span></div><div class="cap" id="c19"><span>autres</span> <span>posts</span> <span>dans</span></div><div class="cap" id="c20"><span>tes</span> <span class="kw">brouillons.</span></div><div class="cap" id="c21"><span>Cette</span> <span>voix,</span></div><div class="cap" id="c22"><span>je</span> <span>la</span> <span>connais</span></div><div class="cap" id="c23"><span>car</span> <span>je</span> <span>l&#x27;ai</span></div><div class="cap" id="c24"><span>entendue</span> <span>pendant</span></div><div class="cap" id="c25"><span>des</span> <span>mois,</span></div><div class="cap" id="c26"><span>voire</span> <span class="kw">même</span> <span>des</span></div><div class="cap" id="c27"><span>années.</span></div><div class="cap" id="c28"><span>sans</span> <span>bac,</span></div><div class="cap" id="c29"><span>sans</span> <span>diplôme,</span></div><div class="cap" id="c30"><span>avec</span> <span>des</span> <span>posts</span></div><div class="cap" id="c31"><span>qui</span> <span>faisaient</span> <span>un</span></div><div class="cap" id="c32"><span>like.</span></div><div class="cap" id="c33"><span>Et</span> <span>elle</span> <span>me</span></div><div class="cap" id="c34"><span>disait</span> <span>chaque</span> <span>jour</span></div><div class="cap" id="c35"><span>que</span> <span>je</span> <span>n&#x27;étais</span></div><div class="cap" id="c36"><span>pas</span> <span class="kw">légitime</span> <span>pour</span></div><div class="cap" id="c37"><span>coacher</span> <span>des</span> <span>gens</span></div><div class="cap" id="c38"><span>qui</span> <span>ont</span> <span>5</span></div><div class="cap" id="c39"><span>ans</span> <span>d&#x27;études</span> <span>de plus</span></div><div class="cap" id="c40"><span>à</span> <span>moi.</span></div><div class="cap" id="c41"><span>Je</span> <span>vais</span> <span>te</span></div><div class="cap" id="c42"><span>dire</span> <span>une</span> <span>vérité</span></div><div class="cap" id="c43"><span>que</span> <span>très</span> <span>peu</span></div><div class="cap" id="c44"><span>ont</span> <span>le</span> <span>courage</span></div><div class="cap" id="c45"><span>de</span> <span>te</span> <span>dire.</span></div><div class="cap" id="c46"><span>Jusqu&#x27;aujourd&#x27;hui,</span></div><div class="cap" id="c47"><span>elle</span> <span>revient</span> <span>encore.</span></div><div class="cap" id="c48"><span>Avant</span> <span>chaque</span></div><div class="cap" id="c49"><span>post,</span></div><div class="cap" id="c50"><span>avant</span> <span>chaque</span></div><div class="cap" id="c51"><span>appel.</span></div><div class="cap" id="c52"><span>La</span> <span>différence,</span></div><div class="cap" id="c53"><span>c&#x27;est</span> <span>qu&#x27;elle</span> <span>ne</span></div><div class="cap" id="c54"><span>décide</span> <span>plus</span> <span>à</span></div><div class="cap" id="c55"><span>ma</span> <span class="kw">place.</span></div><div class="cap" id="c56"><span>Parce</span> <span>qu&#x27;entre-temps,</span></div><div class="cap" id="c57"><span>j&#x27;ai</span> <span>reçu</span> <span>des</span></div><div class="cap" id="c58"><span>messages</span> <span>du</span> <span>style</span></div><div class="cap" id="c59"><span>merci,</span></div><div class="cap" id="c60"><span>c&#x27;est</span> <span>exactement</span></div><div class="cap" id="c61"><span>ce</span> <span>dont</span> <span>j&#x27;avais</span></div><div class="cap" id="c62"><span>besoin.</span></div><div class="cap" id="c63"><span>Et</span> <span>chacun</span> <span>de</span></div><div class="cap" id="c64"><span>ces</span> <span>messages</span> <span>était</span></div><div class="cap" id="c65"><span>une</span> <span>preuve</span> <span>de</span></div><div class="cap" id="c66"><span>plus</span> <span>contre</span> <span>elle.</span></div><div class="cap" id="c67"><span>Tu ne</span> <span>te</span> <span>sentiras</span></div><div class="cap" id="c68"><span>jamais</span> <span>prêt,</span></div><div class="cap" id="c70"><span>publié</span> <span>lui retire</span></div><div class="cap" id="c71"><span>un</span> <span>peu</span> <span>de</span></div><div class="cap" id="c72"><span class="kw">pouvoir.</span></div><div class="cap" id="c73"><span>Publie</span> <span>quand</span> <span class="kw">même.</span></div>
+<div id="vh" class="inband vh-type" style="top:1225px"><small>Brouillon</small><div class="ln"><span id="vht"></span><i></i></div><div class="ul"></div></div>
+  <div id="hookbg"></div>
+  <div id="hook" class="top"><div class="l"><span>« Tu es qui, toi,</span></div><div class="l c"><span>pour dire ça ? »</span></div><div class="rule"></div></div>
+  <div id="fsbg"></div>
+  
+  <div class="enum-g" id="e0" style="top:1170px"><div class="gw" id="e0w0"><small>1/3</small><span>Tu écris</span></div><div class="gw" id="e0w1"><small>2/3</small><span>Tu effaces</span></div><div class="gw" id="e0w2"><small>3/3</small><span>Tu réécris</span></div></div>
+  <div class="flashc dark" id="f0"><div class="in" style="top:1145px"><div class="lab"></div><div class="a"><span>Elle revient encore.</span></div><div class="b"><span>Mais elle ne décide plus.</span></div><div class="thread"></div></div></div>
+  <div class="cap" id="c0"><span>Tu</span> <span>es</span> <span>qui,</span></div><div class="cap" id="c1"><span>toi,</span></div><div class="cap" id="c2"><span>pour</span> <span>dire</span> <span>ça</span></div><div class="cap" id="c3"><span>?</span></div><div class="cap" id="c4"><span>Elle</span> <span>arrive</span> <span>juste</span></div><div class="cap" id="c5"><span>au</span> <span>moment</span> <span>où</span></div><div class="cap" id="c6"><span>tu</span> <span>veux</span> <span>publier.</span></div><div class="cap" id="c7"><span>Tu</span> <span>n&#x27;as</span> <span class="kw">même</span></div><div class="cap" id="c8"><span>pas</span> <span>de</span> <span>client.</span></div><div class="cap" id="c9"><span>D&#x27;autres</span> <span>font</span> <span>ça</span></div><div class="cap" id="c10"><span>depuis</span> <span>10</span> <span>ans.</span></div><div class="cap" id="c11"><span>Les</span> <span>gens</span> <span>vont</span></div><div class="cap" id="c12"><span>savoir</span> <span>que</span> <span>tu</span></div><div class="cap" id="c13"><span>fais</span> <span class="kw">semblant.</span></div><div class="cap" id="c14"><span>Alors</span> <span>tu</span> <span>écris,</span></div><div class="cap" id="c15"><span>tu</span> <span>effaces,</span></div><div class="cap" id="c16"><span>tu</span> <span>réécris.</span></div><div class="cap" id="c17"><span>Et</span> <span>ton</span> <span>post</span></div><div class="cap" id="c18"><span>rejoint</span> <span>les</span> <span>14</span></div><div class="cap" id="c19"><span>autres</span> <span>posts</span> <span>dans</span></div><div class="cap" id="c20"><span>tes</span> <span class="kw">brouillons.</span></div><div class="cap" id="c21"><span>Cette</span> <span>voix,</span></div><div class="cap" id="c22"><span>je</span> <span>la</span> <span>connais</span></div><div class="cap" id="c23"><span>car</span> <span>je</span> <span>l&#x27;ai</span></div><div class="cap" id="c24"><span>entendue</span> <span>pendant</span></div><div class="cap" id="c25"><span>des</span> <span>mois,</span></div><div class="cap" id="c26"><span>voire</span> <span class="kw">même</span> <span>des</span></div><div class="cap" id="c27"><span>années.</span></div><div class="cap" id="c28"><span>sans</span> <span>bac,</span></div><div class="cap" id="c29"><span>sans</span> <span>diplôme,</span></div><div class="cap" id="c30"><span>avec</span> <span>des</span> <span>posts</span></div><div class="cap" id="c31"><span>qui</span> <span>faisaient</span> <span>un</span></div><div class="cap" id="c32"><span>like.</span></div><div class="cap" id="c33"><span>Et</span> <span>elle</span> <span>me</span></div><div class="cap" id="c34"><span>disait</span> <span>chaque</span> <span>jour</span></div><div class="cap" id="c35"><span>que</span> <span>je</span> <span>n&#x27;étais</span></div><div class="cap" id="c36"><span>pas</span> <span class="kw">légitime</span> <span>pour</span></div><div class="cap" id="c37"><span>coacher</span> <span>des</span> <span>gens</span></div><div class="cap" id="c38"><span>qui</span> <span>ont</span> <span>5</span></div><div class="cap" id="c39"><span>ans</span> <span>d&#x27;études</span> <span>de plus</span></div><div class="cap" id="c40"><span>à</span> <span>moi.</span></div><div class="cap" id="c41"><span>Je</span> <span>vais</span> <span>te</span></div><div class="cap" id="c42"><span>dire</span> <span>une</span> <span>vérité</span></div><div class="cap" id="c43"><span>que</span> <span>très</span> <span>peu</span></div><div class="cap" id="c44"><span>ont</span> <span>le</span> <span>courage</span></div><div class="cap" id="c45"><span>de</span> <span>te</span> <span>dire.</span></div><div class="cap" id="c46"><span>Jusqu&#x27;aujourd&#x27;hui,</span></div><div class="cap" id="c47"><span>elle</span> <span>revient</span> <span>encore.</span></div><div class="cap" id="c48"><span>Avant</span> <span>chaque</span></div><div class="cap" id="c49"><span>post,</span></div><div class="cap" id="c50"><span>avant</span> <span>chaque</span></div><div class="cap" id="c51"><span>appel.</span></div><div class="cap" id="c56"><span>Parce</span> <span>qu&#x27;entre-temps,</span></div><div class="cap" id="c57"><span>j&#x27;ai</span> <span>reçu</span> <span>des</span></div><div class="cap" id="c58"><span>messages</span> <span>du</span> <span>style</span></div><div class="cap" id="c59"><span>merci,</span></div><div class="cap" id="c60"><span>c&#x27;est</span> <span>exactement</span></div><div class="cap" id="c61"><span>ce</span> <span>dont</span> <span>j&#x27;avais</span></div><div class="cap" id="c62"><span>besoin.</span></div><div class="cap" id="c63"><span>Et</span> <span>chacun</span> <span>de</span></div><div class="cap" id="c64"><span>ces</span> <span>messages</span> <span>était</span></div><div class="cap" id="c65"><span>une</span> <span>preuve</span> <span>de</span></div><div class="cap" id="c66"><span>plus</span> <span>contre</span> <span>elle.</span></div><div class="cap" id="c67"><span>Tu ne</span> <span>te</span> <span>sentiras</span></div><div class="cap" id="c68"><span>jamais</span> <span>prêt,</span></div><div class="cap" id="c69"><span>mais</span> <span>chaque</span> <span>post</span></div><div class="cap" id="c70"><span>publié</span> <span>lui retire</span></div><div class="cap" id="c71"><span>un</span> <span>peu</span> <span>de</span></div><div class="cap" id="c72"><span class="kw">pouvoir.</span></div><div class="cap" id="c73"><span>Publie</span> <span>quand</span> <span class="kw">même.</span></div>
   <div id="ctaw"><div class="lab">Commente</div>
     <div class="glass white" id="cta"><svg class="s" viewBox="0 0 40 40" fill="none" stroke="#001F3F" stroke-width="4" stroke-linecap="round"><circle cx="17" cy="17" r="11"/><path d="M25 25l9 9"/></svg>
       <div class="q"><span id="ctat"></span><span class="cur"></span></div>
       <div class="go"><svg viewBox="0 0 42 42" fill="none" stroke="#001F3F" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21h22M22 11l10 10-10 10"/></svg></div></div></div>
-  <div id="end"><svg viewBox="0 0 32 32" fill="none"><rect x="2.5" y="2.5" width="27" height="27" rx="8" stroke="#fff" stroke-width="2"/><circle cx="16" cy="16" r="6.2" stroke="#fff" stroke-width="2"/><circle cx="23.6" cy="8.4" r="1.6" fill="#00D9FF"/></svg><div class="h">@the_process.io</div></div>
+  <div id="end"><div class="in"><div class="a"><span>Ton brouillon attend.</span></div><div class="b"><span>Publie-le aujourd&#x27;hui.</span></div><div class="thread"></div></div></div>
   <audio id="sfx" data-start="30.920" data-duration="0.37" data-volume="0.32" src="assets/kit/reveal.mp3"></audio>
 </div>
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const IN='expo.out',OUT='power2.in',MOVE='power3.inOut',k=1,D_IN=.5,D_OUT=.28;
-const cfg={ins:true,insDur:300};const INS={};let INSWIN=[];
+const cfg={ins:true,insDur:450};const INS={};let INSWIN=[];
 $$('.ins .d').forEach(p=>{const L=Math.ceil(p.getTotalLength());p._L=L;p.setAttribute('stroke-dasharray',L);});
 const tl=gsap.timeline({paused:true});
 function cap(id,a,b){const sp=$$(id+' > span');tl.set(id,{opacity:1},a);
   tl.fromTo(sp,{opacity:0,y:14,filter:'blur(6px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.3,ease:IN,stagger:.07,immediateRender:false},a);
   tl.set(id,{opacity:0},b);}
-function flash(id,a,d){tl.set(id,{opacity:1},a);
+function flash(id,a,d){tl.fromTo(id,{opacity:0},{opacity:1,duration:.25,ease:'none',immediateRender:false},a);
   tl.fromTo(id+' .a span,'+id+' .b span',{yPercent:110},{yPercent:0,duration:.6,ease:IN,stagger:.08,immediateRender:false},a);
   tl.fromTo(id+' .thread',{scaleX:0},{scaleX:1,duration:.5,ease:MOVE,immediateRender:false},a+.3);
-  tl.set(id,{opacity:0},a+d);}
-gsap.set(['#sig','#ctaw','#end'],{opacity:0});
-/* Accroche : plein écran 0 → 2,4 s puis se rétracte en bandeau */
-tl.fromTo('#hook .l span',{yPercent:110},{yPercent:0,duration:.7,ease:IN,stagger:.08,immediateRender:false},0);
-tl.fromTo('#vw',{scale:1.0},{scale:1.04,duration:2.6,ease:'none',immediateRender:false},0);
-tl.to('#hook',{opacity:0,y:-40,duration:D_OUT,ease:OUT},2.25);
-(function(){const tp=$('#topic')||$('#objection');const L=tp.offsetLeft,T=tp.offsetTop,W=tp.offsetWidth,H=tp.offsetHeight;
-  gsap.set(tp,{opacity:0});
-  tl.fromTo('#hookbg',{clipPath:'inset(0px 0px 0px 0px round 0px)'},{clipPath:`inset(${T}px ${1080-L-W}px ${1920-T-H}px ${L}px round 16px)`,duration:.6,ease:MOVE,immediateRender:false},2.3);
-  tl.set(tp,{opacity:1},2.9);tl.set('#hookbg',{opacity:0},2.9);})();
-tl.set('#vw',{scale:1.0},2.6);
-tl.to('#sig',{opacity:1,duration:D_IN,ease:IN},.2);
-tl.set(['#sigr','#sigc'],{attr:{stroke:'#00D9FF'}},.2);tl.set('#sigd',{attr:{fill:'#00D9FF'}},.2);
-tl.set(['#sigr','#sigc'],{attr:{stroke:'#fff'}},.7);tl.set('#sigd',{attr:{fill:'#fff'}},.7);
+  tl.to(id,{opacity:0,duration:.25,ease:'none'},a+d);}
+gsap.set(['#ctaw','#end'],{opacity:0});
+/* Ouverture v5 : coup de zoom arrière + accroche visuelle, titre tenu 6.5 s puis disparu (pas de @, pas de barre) */
+tl.fromTo('#vw',{scale:1.16},{scale:1.0,duration:.6,ease:'expo.out',immediateRender:false},0);
+tl.fromTo('#hook .l span',{yPercent:110},{yPercent:0,duration:.7,ease:IN,stagger:.12,immediateRender:false},0.15);
+tl.fromTo('#hook .rule',{scaleX:0},{scaleX:1,duration:.6,ease:MOVE,immediateRender:false},0.55);
+tl.to('#hook .l span',{yPercent:-110,duration:.4,ease:OUT,stagger:.05},6.336);
+tl.to('#hook .rule',{scaleX:0,transformOrigin:'100% 50%',duration:.35,ease:OUT},6.336);
+tl.set('#vh',{opacity:1},0);tl.fromTo('#vh .ul',{scaleX:0},{scaleX:1,duration:.5,ease:MOVE,immediateRender:false},0);(function(){const el=$('#vht'),w="Je suis coach et je peux t'aider \u00e0",o={n:0};tl.to(o,{n:w.length,duration:1.15,ease:'none',onUpdate:()=>{el.textContent=w.slice(0,Math.round(o.n));}},.2);tl.to(o,{n:0,duration:.55,ease:'none',onUpdate:()=>{el.textContent=w.slice(0,Math.round(o.n));}},1.75);})();tl.set('#vh .ln i',{opacity:1},0.20);tl.set('#vh .ln i',{opacity:0},0.60);tl.set('#vh .ln i',{opacity:1},1.00);tl.set('#vh .ln i',{opacity:0},1.40);tl.set('#vh .ln i',{opacity:1},1.80);tl.set('#vh .ln i',{opacity:0},2.20);tl.set('#vh .ln i',{opacity:1},2.60);tl.to('#vh',{opacity:0,duration:.35,ease:OUT},2.6);
 tl.set('#vw',{scale:1.08},5.016);tl.set('#vw',{scale:1.0},11.382);tl.set('#vw',{scale:1.08},18.800);tl.set('#vw',{scale:1.0},23.830);tl.set('#vw',{scale:1.08},28.382);tl.set('#vw',{scale:1.0},35.560);tl.set('#vw',{scale:1.08},41.692);tl.set('#vw',{scale:1.0},48.558);tl.set('#vw',{scale:1.08},55.098);tl.set('#vw',{scale:1.0},59.728);tl.set('#vw',{scale:1.08},65.740);
-flash('#f0',61.720,1.2);
+flash('#f0',45.158,2.8);
 tl.set('#fgimg',{opacity:1},30.920);tl.set('#fgimg',{opacity:0},32.620);for(let i=0;i<51;i++)tl.set('#fgimg',{attr:{src:'assets/fg/'+String(i).padStart(4,'0')+'.webp'}},30.920+i/30);(function(){const sp=$$('#choc span'),mid=(sp.length-1)/2;tl.set('#choc',{opacity:1},30.920);tl.fromTo(sp,{opacity:0,x:i=>(mid-i)*18,filter:'blur(10px)'},{opacity:1,x:0,filter:'blur(0px)',duration:.8,ease:IN,immediateRender:false},30.920);tl.to('#choc',{opacity:0,duration:.25},32.370);})();
-tl.fromTo('#u0',{opacity:0,y:120},{opacity:1,y:0,duration:.6,ease:IN,immediateRender:false},15.760);tl.to('#u0',{opacity:0,y:-24,duration:D_OUT,ease:OUT},18.360);tl.fromTo('#u1',{opacity:0,y:120},{opacity:1,y:0,duration:.6,ease:IN,immediateRender:false},50.698);tl.to('#u1',{opacity:0,y:-24,duration:D_OUT,ease:OUT},54.498);tl.fromTo('#l0',{opacity:0,y:90},{opacity:1,y:0,duration:.55,ease:IN,immediateRender:false},11.440);tl.set('#l0 .li',{opacity:.35},11.440);tl.to('#l0r0',{opacity:1,duration:.2},12.080);tl.set('#l0r0 .mk',{className:'mk check on'},12.080);tl.fromTo('#l0r0 .mk',{scale:.7},{scale:1,duration:.3,ease:IN,immediateRender:false},12.080);tl.to('#l0r1',{opacity:1,duration:.2},13.040);tl.set('#l0r1 .mk',{className:'mk check on'},13.040);tl.fromTo('#l0r1 .mk',{scale:.7},{scale:1,duration:.3,ease:IN,immediateRender:false},13.040);tl.to('#l0r2',{opacity:1,duration:.2},14.000);tl.set('#l0r2 .mk',{className:'mk check on'},14.000);tl.fromTo('#l0r2 .mk',{scale:.7},{scale:1,duration:.3,ease:IN,immediateRender:false},14.000);tl.to('#l0',{opacity:0,y:-24,duration:D_OUT,ease:OUT},15.660);tl.fromTo('#g0',{opacity:0,y:32},{opacity:1,y:0,duration:D_IN,ease:IN,immediateRender:false},18.866);tl.to('#g0',{opacity:0,y:-10,duration:D_OUT,ease:OUT},21.466);
-/* Barre de progression : où on en est dans la vidéo */
-tl.to('#prog',{opacity:1,duration:.4},2.9);
-tl.fromTo('#prog i',{scaleX:0},{scaleX:1,duration:67.024,ease:'none',immediateRender:false},0);
-tl.to('#prog',{opacity:0,duration:.3},67.024);
-cap('#c0',0.072,0.632);cap('#c1',0.632,0.952);cap('#c2',0.952,1.592);cap('#c3',1.592,2.056);cap('#c4',2.056,3.096);cap('#c5',3.096,3.736);cap('#c6',3.736,5.126);cap('#c7',5.126,5.686);cap('#c8',5.686,6.486);cap('#c9',6.486,7.606);cap('#c10',7.606,8.902);cap('#c11',8.902,9.622);cap('#c12',9.622,10.342);cap('#c13',10.342,11.440);cap('#c14',11.440,12.720);cap('#c15',12.720,13.760);cap('#c16',13.760,14.800);cap('#c17',14.800,15.760);cap('#c18',15.760,16.960);cap('#c19',16.960,17.760);cap('#c20',17.760,18.866);cap('#c21',18.866,19.426);cap('#c22',19.426,20.146);cap('#c23',20.146,20.786);cap('#c24',20.786,21.666);cap('#c25',21.666,22.226);cap('#c26',22.226,23.026);cap('#c27',23.026,23.990);cap('#c28',23.990,24.870);cap('#c29',24.870,25.910);cap('#c30',25.910,26.790);cap('#c31',26.790,27.510);cap('#c32',27.510,28.440);cap('#c33',28.440,29.080);cap('#c34',29.080,30.120);cap('#c35',30.120,30.760);cap('#c36',30.760,31.640);cap('#c37',31.640,32.600);cap('#c38',32.600,33.400);cap('#c39',33.400,34.680);cap('#c40',34.680,35.612);cap('#c41',35.612,36.172);cap('#c42',36.172,36.972);cap('#c43',36.972,37.692);cap('#c44',37.692,38.332);cap('#c45',38.332,39.132);cap('#c46',39.132,40.172);cap('#c47',40.172,41.794);cap('#c48',41.794,42.674);cap('#c49',42.674,43.314);cap('#c50',43.314,44.194);cap('#c51',44.194,45.118);cap('#c52',45.118,45.918);cap('#c53',45.918,46.558);cap('#c54',46.558,47.598);cap('#c55',47.598,48.618);cap('#c56',48.618,49.548);cap('#c57',49.898,50.698);cap('#c58',50.698,52.138);cap('#c59',52.138,52.698);cap('#c60',52.698,53.578);cap('#c61',53.578,54.298);cap('#c62',54.298,55.150);cap('#c63',55.150,55.950);cap('#c64',55.950,57.150);cap('#c65',57.150,58.110);cap('#c66',58.110,59.660);cap('#c67',59.980,60.940);cap('#c68',60.940,61.900);cap('#c70',63.100,64.540);cap('#c71',64.540,64.940);cap('#c72',64.940,65.944);cap('#c73',65.944,66.974);
+tl.fromTo('#e0w0',{opacity:0,y:50,filter:'blur(8px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.45,ease:IN,immediateRender:false},12.080);tl.to('#e0w0',{opacity:0,y:-40,duration:.25,ease:OUT},12.990);tl.fromTo('#e0w1',{opacity:0,y:50,filter:'blur(8px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.45,ease:IN,immediateRender:false},13.040);tl.to('#e0w1',{opacity:0,y:-40,duration:.25,ease:OUT},13.950);tl.fromTo('#e0w2',{opacity:0,y:50,filter:'blur(8px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.45,ease:IN,immediateRender:false},14.000);tl.to('#e0w2',{opacity:0,y:-40,duration:.25,ease:OUT},15.050);
+cap('#c0',0.072,0.632);cap('#c1',0.632,0.952);cap('#c2',0.952,1.592);cap('#c3',1.592,2.056);cap('#c4',2.056,3.096);cap('#c5',3.096,3.736);cap('#c6',3.736,5.126);cap('#c7',5.126,5.686);cap('#c8',5.686,6.486);cap('#c9',6.486,7.606);cap('#c10',7.606,8.902);cap('#c11',8.902,9.622);cap('#c12',9.622,10.342);cap('#c13',10.342,11.440);cap('#c14',11.440,12.720);cap('#c15',12.720,13.760);cap('#c16',13.760,14.800);cap('#c17',14.800,15.760);cap('#c18',15.760,16.960);cap('#c19',16.960,17.760);cap('#c20',17.760,18.866);cap('#c21',18.866,19.426);cap('#c22',19.426,20.146);cap('#c23',20.146,20.786);cap('#c24',20.786,21.666);cap('#c25',21.666,22.226);cap('#c26',22.226,23.026);cap('#c27',23.026,23.990);cap('#c28',23.990,24.870);cap('#c29',24.870,25.910);cap('#c30',25.910,26.790);cap('#c31',26.790,27.510);cap('#c32',27.510,28.440);cap('#c33',28.440,29.080);cap('#c34',29.080,30.120);cap('#c35',30.120,30.760);cap('#c36',30.760,31.640);cap('#c37',31.640,32.600);cap('#c38',32.600,33.400);cap('#c39',33.400,34.680);cap('#c40',34.680,35.612);cap('#c41',35.612,36.172);cap('#c42',36.172,36.972);cap('#c43',36.972,37.692);cap('#c44',37.692,38.332);cap('#c45',38.332,39.132);cap('#c46',39.132,40.172);cap('#c47',40.172,41.794);cap('#c48',41.794,42.674);cap('#c49',42.674,43.314);cap('#c50',43.314,44.194);cap('#c51',44.194,45.118);cap('#c56',48.618,49.548);cap('#c57',49.898,50.698);cap('#c58',50.698,52.138);cap('#c59',52.138,52.698);cap('#c60',52.698,53.578);cap('#c61',53.578,54.298);cap('#c62',54.298,55.150);cap('#c63',55.150,55.950);cap('#c64',55.950,57.150);cap('#c65',57.150,58.110);cap('#c66',58.110,59.660);cap('#c67',59.980,60.940);cap('#c68',60.940,61.900);cap('#c69',61.900,63.100);cap('#c70',63.100,64.540);cap('#c71',64.540,64.940);cap('#c72',64.940,65.944);cap('#c73',65.944,66.974);
   /* Inserts illustrés */
   INSWIN=[];
   if(cfg.ins){
@@ -441,13 +522,16 @@ cap('#c0',0.072,0.632);cap('#c1',0.632,0.952);cap('#c2',0.952,1.592);cap('#c3',1
 
 /* CTA : barre de recherche dans les 2,6 dernières secondes de parole, puis carte de fin */
 tl.set('#vw',{scale:1.0},64.324);
-tl.to('#dim',{opacity:.18,duration:D_IN},64.324);
+tl.to('#dim',{opacity:.12,duration:D_IN},64.324);
 tl.fromTo('#ctaw',{opacity:0,y:60},{opacity:1,y:0,duration:.6,ease:IN,immediateRender:false},64.374);
 (function(){const el=$('#ctat'),w="L\u00c9GITIME",o={n:0};tl.to(o,{n:w.length,duration:1.1,ease:'none',onUpdate:()=>{el.textContent=w.slice(0,Math.round(o.n));}},64.924);})();
 tl.to('#cta .go',{scale:.88,duration:.12},67.424);tl.to('#cta .go',{scale:1,duration:.3,ease:IN},67.544);
 tl.to('#ctaw',{opacity:0,duration:D_OUT,ease:OUT},68.674);
 tl.to('#dim',{opacity:.74,duration:.4,ease:IN},68.674);
-tl.to(['#topic','#objection','#sig'].filter(s=>$(s)),{opacity:0,duration:.3},68.674);
-tl.fromTo('#end',{opacity:0,y:16},{opacity:1,y:0,duration:D_IN,ease:IN,immediateRender:false},68.774);
+tl.to(['#topic','#objection'].filter(s=>$(s)),{opacity:0,duration:.3},68.674);
+tl.set('#end',{opacity:1},68.774);
+tl.fromTo('#end .a span,#end .b span',{yPercent:110},{yPercent:0,duration:.42,ease:IN,stagger:.07,immediateRender:false},68.774);
+tl.fromTo('#end .thread',{scaleX:0},{scaleX:1,duration:.45,ease:MOVE,immediateRender:false},69.024);
+tl.to('#dim',{opacity:1,duration:.55,ease:'power1.in'},69.404);  /* fondu au noir avant la fin de l'image */
 window.__timelines=window.__timelines||{};window.__timelines["main"]=tl;tl.seek(0);
 </script></body></html>

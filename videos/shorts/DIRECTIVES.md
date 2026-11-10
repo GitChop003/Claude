@@ -44,6 +44,8 @@ Réglages hérités des échanges avec la production (novembre 2026). Ils compl�
 - **Varier les types de montage** d'une vidéo à l'autre (accroche visuelle, ouverture, formule d'énumération, moment assombri), à partir du modèle s1.
 - **Son** : la dernière phrase doit s'entendre. Pas de `loudnorm` dynamique en bout de chaîne (son tampon de 3 s coupait la fin) : gain fixe mesuré + limiteur, et contrôle automatique de la fin à chaque découpe.
 - **Fin** : plus de @the_process.io, même sur la carte de fin. Quand l'écran s'assombrit, une phrase de **passage à l'acte** propre à la vidéo (s1 : « À toi de jouer. / Filme ta prochaine séance. »), sous le visage.
+- **Lisibilité** : la bande sous le visage tombe souvent sur un vêtement clair. La luminosité y est mesurée sur chaque vidéo : si elle est claire, la typographie de la bande passe **à l'encre** (noir de marque, cyan profond). Le titre en haut et les textes sur écran assombri restent blancs.
+- **Carte de fin** : prolongée de 0,7 s après l'image, fondu au noir, pour que la phrase de passage à l'acte se lise.
 - Toujours proscrit : début tout blanc, @the_process.io (y compris à la fin), barre de progression, éléments devant le visage.
 
 ## Livraison

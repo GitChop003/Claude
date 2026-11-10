@@ -262,13 +262,70 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
 .flashc .b{font:800 italic 80px/1.15 Montserrat;color:var(--cyan-p);margin-left:110px;overflow:hidden}
 .flashc .a span,.flashc .b span{display:block}
 .flashc .thread{height:4px;width:400px;background:var(--cyan-p);margin:34px 0 0 110px;transform-origin:0 50%;border-radius:2px}
-#end{background:rgba(10,18,32,.0)}
-#hook{right:96px}
-#hook .l{white-space:nowrap;font-size:69px}
+/* v5 : l'écran s'assombrit (le visage reste visible derrière), texte blanc */
+.flashc.dark{background:rgba(10,18,32,.66);color:#fff}
+.flashc.dark .in{top:1120px;left:72px;right:140px}
+.flashc.dark .lab{font-size:28px;margin-bottom:18px}
+.flashc.dark .a{font-size:80px;line-height:1.08}
+.flashc.dark .b{font-size:70px;margin-left:56px}
+.flashc.dark .thread{margin:22px 0 0 56px;width:300px}
+.flashc.dark .b{color:var(--cyan)}
+.flashc.dark .thread{background:var(--cyan)}
+.flashc.dark .lab{background:rgba(255,255,255,.14);color:#fff}
+/* Accroche visuelle : viseur de caméra (s1) */
+#vf{position:absolute;inset:0;pointer-events:none;opacity:0}
+#vf .c{position:absolute;width:70px;height:70px;border:0 solid rgba(255,255,255,.95);filter:drop-shadow(0 1px 6px rgba(10,18,32,.35))}
+#vf .tl{left:64px;top:270px;border-top-width:5px;border-left-width:5px;border-top-left-radius:14px}
+#vf .tr{left:870px;top:270px;border-top-width:5px;border-right-width:5px;border-top-right-radius:14px}
+#vf .bl{left:64px;top:1530px;border-bottom-width:5px;border-left-width:5px;border-bottom-left-radius:14px}
+#vf .br{left:870px;top:1530px;border-bottom-width:5px;border-right-width:5px;border-bottom-right-radius:14px}
+#vf .rec{position:absolute;right:164px;top:292px;display:flex;align-items:center;gap:12px;font:700 28px Montserrat;letter-spacing:.08em;color:#fff;text-shadow:0 1px 8px rgba(10,18,32,.45)}
+#vf .rec b{width:16px;height:16px;border-radius:50%;background:var(--cyan);display:block}
+#vf .rec span{font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:.04em;opacity:.9}
+/* Fin v5 : passage à l'acte sur écran assombri, sous le visage (plus de @the_process.io) */
+#end{display:block;background:none}
+#end .in{position:absolute;left:72px;right:140px;top:1130px}
+#end .a,#end .b{overflow:hidden}
+#end .a span,#end .b span{display:block}
+#end .a{font:600 52px/1.15 Montserrat;color:rgba(255,255,255,.88)}
+#end .b{font:900 67px/1.1 Montserrat;letter-spacing:-.02em;color:#fff;margin-top:6px}
+#end .thread{height:5px;width:140px;border-radius:3px;background:var(--cyan);margin-top:24px;transform-origin:0 50%}
+#root{--cap-y:1408px}
+#hookbg,#sig{display:none}
+/* Ouvertures typographiques sur le plan (v4) */
+#hook{left:72px;right:72px;top:1130px;color:#fff;text-shadow:0 2px 18px rgba(10,18,32,.45)}
+#root.pal-n #hook{color:#fff}
+#hook .l{white-space:nowrap}
+#hook .l:first-child{font-weight:600;font-size:54px;letter-spacing:0;margin-bottom:6px;}
+#hook .l.c{font-weight:900;font-size:116px;letter-spacing:-.03em;}
+#root.pal-n #hook .l.c span{color:#fff}
+.vh-cd{position:absolute;left:72px;width:868px;text-align:center;color:#fff;opacity:0;text-shadow:0 2px 14px rgba(10,18,32,.45)}.vh-cd b{display:block;font:900 150px/1 Montserrat;letter-spacing:-.03em;font-variant-numeric:tabular-nums}.vh-cd span{display:block;font:600 30px Montserrat;letter-spacing:.04em;margin-top:6px;opacity:.9}
+/* Bande sous le visage sur vêtements clairs : typographie à l'encre (le blanc disparaissait dans le tissu) */
+#root.ink #hook.band{color:var(--encre);text-shadow:0 0 22px rgba(255,255,255,.65)}
+#root.ink #hook.band .l.c span{color:var(--encre)}
+#root.ink #hook.band .rule{background:var(--cyan-p)}
+#root.ink :not(.fs) > .gw span,#root.ink .enum-s:not(.fs) .sw,#root.ink .enum-x:not(.fs) .kw2 span,#root.ink .enum-n:not(.fs) .nb span,#root.ink .enum-p .nd span{color:var(--encre);text-shadow:0 0 18px rgba(255,255,255,.7)}
+#root.ink :not(.fs) > .gw small,#root.ink .enum-n:not(.fs) .nb b{color:var(--cyan-p);text-shadow:0 0 18px rgba(255,255,255,.6)}
+#root.ink .enum-s:not(.fs) .rail{background:var(--cyan-p)}
+#root.ink .enum-x:not(.fs) .kw2 i{background:var(--encre);box-shadow:none}
+#root.ink .enum-p .ln{background:rgba(10,18,32,.3)}#root.ink .enum-p .lc{background:var(--cyan-p)}
+#root.ink .enum-p .nd b{background:var(--papier);border-color:var(--encre)}#root.ink .enum-p .nd.on b{background:var(--cyan-p);border-color:var(--cyan-p)}
+#root.ink .enum-p .nd em{color:var(--cyan-p);text-shadow:0 0 14px rgba(255,255,255,.7)}
+#root.ink #choc:not(.behind){color:var(--encre);text-shadow:0 0 30px rgba(255,255,255,.7)}
+#root.ink #ctaw .lab{color:var(--encre);text-shadow:0 0 16px rgba(255,255,255,.7)}
+#root.ink #vh.inband{color:var(--encre)!important;text-shadow:0 0 18px rgba(255,255,255,.7)!important}
+#root.ink #vh.inband .ln i{background:var(--cyan-p)}#root.ink #vh.inband .ul{background:rgba(10,18,32,.4)}
+#hook .rule{width:120px;height:5px;border-radius:3px;background:var(--cyan);margin-top:22px;transform-origin:0 50%}
+#topic{left:72px;top:322px;height:auto;padding:0;background:none!important;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;
+  font-size:30px;font-weight:500;color:#fff;gap:12px;text-shadow:0 1px 10px rgba(10,18,32,.5)}
+#topic::after{display:none}
+#root.pal-n #topic{color:#fff}
+#root.pal-n #topic b{color:#fff;font-weight:800}
+#fsbg{position:absolute;inset:0;background:rgba(10,18,32,.66);opacity:0}
 #choc span{display:inline-block;margin:0 .02em}
 #choc.behind{left:0;width:1080px;top:520px;font-size:156px;letter-spacing:-.03em;text-shadow:none}
 #ctaw .lab{color:#fff;text-shadow:0 2px 14px rgba(10,18,32,.6)}
-#ctaw{top:700px}
+#ctaw{top:1164px}
 #prog{position:absolute;left:64px;top:298px;width:876px;height:5px;border-radius:3px;background:rgba(255,255,255,.3);overflow:hidden;opacity:0}
 #prog i{display:block;height:100%;width:100%;background:var(--cyan);transform-origin:0 50%;transform:scaleX(0)}
 .ui .t3:empty{display:none}
@@ -289,7 +346,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
 .enum-g .gw span{font:900 132px/1 Montserrat;letter-spacing:-.02em;color:#fff;text-transform:uppercase;text-shadow:0 6px 30px rgba(10,18,32,.45)}
 .enum-s{position:absolute;left:64px;top:560px;padding-left:34px;opacity:0}
 .enum-s .rail{position:absolute;left:0;top:6px;width:6px;height:calc(100% - 12px);border-radius:3px;background:var(--cyan);transform-origin:50% 0}
-.enum-s .sw{font:900 76px/1.12 Montserrat;letter-spacing:-.02em;color:#fff;text-shadow:0 4px 22px rgba(10,18,32,.55);opacity:0}
+.enum-s .sw{font:900 64px/1.1 Montserrat;letter-spacing:-.02em;color:#fff;text-shadow:0 4px 22px rgba(10,18,32,.55);opacity:0}
 .enum-t{position:absolute;left:64px;width:952px;top:520px;opacity:0}
 .enum-t .tt{font:800 30px Montserrat;color:#fff;text-shadow:0 2px 12px rgba(10,18,32,.55);margin:0 0 18px 6px}
 .enum-t .row{display:flex;gap:22px}
@@ -300,9 +357,29 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
 .enum-t .tl-t b{font:800 30px/1.15 Montserrat;color:var(--encre);text-align:center}
 .enum-t .tl-t.on .ic{background:var(--cyan-p)}
 .enum-t .tl-t.on .ic svg{stroke:#fff}
+.enum-t .row{gap:16px}
+.enum-t .tl-t{padding:22px 10px 18px;gap:12px;border-radius:24px}
+.enum-t .ic{width:88px;height:88px;border-radius:24px}
+.enum-t .ic svg{width:52px;height:52px}
+.enum-t .tl-t b{font-size:27px;line-height:1.1}
+.enum-x{position:absolute;left:72px;opacity:1}
+.kw2{position:relative;font:900 64px/1.08 Montserrat;letter-spacing:-.02em;color:#fff;text-shadow:0 3px 18px rgba(10,18,32,.5);opacity:0;width:max-content}
+.kw2 i{position:absolute;left:-6px;right:-6px;top:52%;height:7px;border-radius:4px;background:#fff;box-shadow:0 1px 8px rgba(10,18,32,.4);transform-origin:0 50%}
+.enum-p{position:absolute;left:72px;width:868px;height:200px;opacity:0}
+.enum-p .ln,.enum-p .lc{position:absolute;top:40px;height:4px;border-radius:2px;transform-origin:0 50%}
+.enum-p .ln{background:rgba(255,255,255,.5)}.enum-p .lc{background:var(--cyan)}
+.enum-p .nd{position:absolute;top:0;width:220px;margin-left:-110px;text-align:center}
+.enum-p .nd b{display:block;width:30px;height:30px;margin:27px auto 0;border-radius:50%;background:var(--noir);border:4px solid #fff}
+.enum-p .nd span{display:block;margin-top:18px;font:800 32px/1.12 Montserrat;color:#fff;text-shadow:0 3px 16px rgba(10,18,32,.55);opacity:.45}
+.enum-p .nd.on b{background:var(--cyan);border-color:var(--cyan)}.enum-p .nd.on span{opacity:1}
+.enum-p .nd em{position:absolute;left:0;right:0;top:-14px;font:800 italic 26px Montserrat;color:var(--cyan);text-shadow:0 2px 12px rgba(10,18,32,.5);opacity:0}
+.enum-n{position:absolute;left:72px;width:936px;height:190px}
+.nb{position:absolute;inset:0;display:flex;align-items:center;gap:30px;opacity:0}
+.nb b{font:900 170px/1 Montserrat;color:var(--cyan);text-shadow:0 4px 24px rgba(10,18,32,.4)}
+.nb span{font:800 68px/1.05 Montserrat;color:#fff;text-shadow:0 3px 18px rgba(10,18,32,.5)}
 </style></head>
 <body>
-<div id="root" class="pal-n lite" data-composition-id="main" data-start="0" data-duration="51.544" data-width="1080" data-height="1920">
+<div id="root" class="pal-n lite ink" data-composition-id="main" data-start="0" data-duration="52.244" data-width="1080" data-height="1920">
   <div id="vw"><video id="v" data-start="0" data-duration="51.544" data-has-audio="true" src="assets/cut.mp4" playsinline></video></div>
   <div id="dimfix"></div><div id="dim"></div>
         <div class="ins" id="ins1"><div class="it"><span>Vu.</span> <span class="a">Pas de DM.</span></div>
@@ -357,25 +434,21 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0A1220}
               <div class="comp"><div class="field"><span id="draftTxt"></span><span class="cur2"></span></div><div class="send"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></div></div>
             </div>
           </div></div>
-        <div class="glass" id="topic" data-g="bandeau"><span>200 likes.</span><b>0 client.</b></div>
-        <div id="objection"><b>OBJECTION :</b> « Je dois réfléchir »</div>
-        <div id="hookbg"></div>
-        <div id="hook"><div class="k"><span>Tu postes. Personne n'écrit.</span></div><div class="l"><span>200 likes.</span></div><div class="l c"><span>0 client.</span></div></div>
 
-  <div class="glass" id="topic"><span>Moins de 60 jours</span><b>avant 2027.</b></div>
-  <div id="prog"><i></i></div>
+  
+<div id="vh" class="vh-cd" style="top:264px"><b id="vhn">365</b><span>jours avant 2027</span></div>
   <div id="hookbg"></div>
-  <div id="hook"><div class="l"><span>Tu attends janvier ?</span></div><div class="l c"><span>Mauvaise idée.</span></div></div>
-  <div id="sig"><svg viewBox="0 0 32 32" fill="none"><rect id="sigr" x="2.5" y="2.5" width="27" height="27" rx="8" stroke="#fff" stroke-width="2.6"/><circle id="sigc" cx="16" cy="16" r="6.2" stroke="#fff" stroke-width="2.6"/><circle id="sigd" cx="23.6" cy="8.4" r="1.8" fill="#fff"/></svg><span>@the_process.io</span></div>
-  <div id="choc"><span>A</span><span>C</span><span>T</span><span>I</span><span>O</span><span>N</span></div>
-  <div class="glass white ui" id="u0" style="top:600px"><div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"><rect x="7" y="10" width="34" height="31" rx="6"/><path d="M7 19h34M16 6v8M32 6v8"/><path d="M17 30l5 5 9-10" stroke="#00D9FF"/></svg></div><div><div class="t1">Calendrier</div><div class="t2">1er janvier 2027</div><div class="t3">dans moins de 60 jours</div></div></div><div class="enum-s" id="e0"><i class="rail"></i><div class="sw" id="e0w0">Ton projet</div><div class="sw" id="e0w1">Ton business</div><div class="sw" id="e0w2">Ton système</div></div><div class="glass tag tg" id="g0"><i></i>mon histoire</div>
-  <div class="flashc" id="f0"><div class="in"><div class="lab"></div><div class="a"><span>En janvier,</span></div><div class="b"><span>rien ne se passe.</span></div><div class="thread"></div></div></div>
-  <div class="cap" id="c0"><span>Tu</span> <span>as</span> <span>moins</span></div><div class="cap" id="c1"><span>de</span> <span>60</span> <span>jours</span></div><div class="cap" id="c2"><span>pour</span> <span>arrêter</span> <span>de</span></div><div class="cap" id="c3"><span>te</span> <span>donner</span> <span>les</span></div><div class="cap" id="c4"><span class="kw">excuses</span> <span>que</span> <span>tu</span></div><div class="cap" id="c5"><span>te</span> <span>donnes</span> <span>pour</span></div><div class="cap" id="c6"><span>enfin</span> <span>lancer</span> <span>ton</span></div><div class="cap" id="c7"><span>projet,</span></div><div class="cap" id="c8"><span>lancer</span> <span>ton</span> <span>business,</span></div><div class="cap" id="c9"><span>lancer</span> <span>ton</span> <span>système.</span></div><div class="cap" id="c10"><span>Je</span> <span>sais</span> <span>que</span></div><div class="cap" id="c11"><span>tu</span> <span>vas</span> <span>me</span></div><div class="cap" id="c12"><span>dire</span></div><div class="cap" id="c13"><span>j&#x27;attends</span> <span>en</span> <span class="kw">janvier,</span></div><div class="cap" id="c14"><span>en</span> <span class="kw">janvier</span> <span>c&#x27;est</span></div><div class="cap" id="c15"><span>mieux</span> <span>pour</span> <span>commencer,</span></div><div class="cap" id="c16"><span>nouvelle</span> <span>année,</span></div><div class="cap" id="c17"><span>nouvelle</span> <span>méthode,</span></div><div class="cap" id="c18"><span>blablabla.</span></div><div class="cap" id="c19"><span>On</span> <span>a</span> <span>l&#x27;habitude</span></div><div class="cap" id="c20"><span>d&#x27;entendre</span> <span>ça,</span></div><div class="cap" id="c21"><span>mais</span> <span>ce</span> <span>qui</span></div><div class="cap" id="c22"><span>se</span> <span>passe,</span></div><div class="cap" id="c23"><span>c&#x27;est</span> <span>que</span> <span>le</span></div><div class="cap" id="c24"><span>plus</span> <span>souvent</span> <span>en</span></div><div class="cap" id="c25"><span class="kw">janvier,</span></div><div class="cap" id="c26"><span class="kw">rien</span> <span>ne</span> <span>se</span></div><div class="cap" id="c27"><span>passe.</span></div><div class="cap" id="c29"><span>que</span> <span>je</span> <span>te</span></div><div class="cap" id="c30"><span>pose,</span></div><div class="cap" id="c31"><span>c&#x27;est</span> <span>pourquoi</span> <span>attendre</span></div><div class="cap" id="c32"><span class="kw">janvier</span> <span>2027</span> <span>avant</span></div><div class="cap" id="c33"><span>de</span> <span>construire</span> <span>la</span></div><div class="cap" id="c34"><span class="kw">vie</span> <span>que</span> <span>tu</span></div><div class="cap" id="c35"><span>veux</span> <span>?</span></div><div class="cap" id="c36"><span>Je</span> <span>le</span> <span>dis</span></div><div class="cap" id="c37"><span>ça</span> <span>parce</span> <span>que</span></div><div class="cap" id="c38"><span>moi</span> <span>de</span> <span>même</span></div><div class="cap" id="c39"><span>j&#x27;aurais</span> <span>pu</span> <span>attendre.</span></div><div class="cap" id="c40"><span>J&#x27;ai</span> <span class="kw">raté</span> <span>mon</span></div><div class="cap" id="c41"><span>bac,</span></div><div class="cap" id="c42"><span>j&#x27;ai</span> <span class="kw">raté</span> <span>mon</span></div><div class="cap" id="c43"><span>voyage,</span></div><div class="cap" id="c44"><span>j&#x27;ai</span> <span class="kw">raté</span> <span>mes</span></div><div class="cap" id="c45"><span>projets,</span></div><div class="cap" id="c46"><span>j&#x27;ai</span> <span>perdu</span> <span>ma</span></div><div class="cap" id="c47"><span>source</span> <span>de</span> <span>revenus</span></div><div class="cap" id="c48"><span>principale,</span></div><div class="cap" id="c49"><span>j&#x27;avais</span> <span>pas</span> <span>toutes</span></div><div class="cap" id="c50"><span>les</span> <span>réponses.</span></div><div class="cap" id="c51"><span>J&#x27;ai</span> <span>commencé</span> <span>avec</span></div><div class="cap" id="c52"><span>ce</span> <span>que</span> <span>j&#x27;avais</span></div><div class="cap" id="c53"><span>et</span> <span>c&#x27;est</span> <span>en</span></div><div class="cap" id="c54"><span>passant</span> <span>à</span> <span class="kw">l&#x27;action</span></div><div class="cap" id="c55"><span>que</span> <span>j&#x27;ai</span> <span>appris</span></div><div class="cap" id="c56"><span>que</span> <span>j&#x27;ai</span> <span>trouvé</span></div><div class="cap" id="c57"><span>mes</span> <span>premiers</span> <span>clients</span></div><div class="cap" id="c58"><span>et</span> <span>que</span> <span>j&#x27;ai</span></div><div class="cap" id="c59"><span>commencé</span> <span>à</span> <span>construire.</span></div><div class="cap" id="c60"><span>Parce</span> <span>que</span> <span>de</span></div><div class="cap" id="c61"><span>comprendre</span> <span>une</span> <span>chose,</span></div><div class="cap" id="c62"><span>c&#x27;est</span> <span>qu&#x27;on</span> <span>apprend</span></div><div class="cap" id="c63"><span>en</span> <span class="kw">appliquant,</span></div><div class="cap" id="c64"><span>pas</span> <span>en</span> <span>restant.</span></div><div class="cap" id="c65"><span>N&#x27;attends</span> <span>pas</span> <span class="kw">janvier</span></div><div class="cap" id="c66"><span>pour</span> <span>commencer.</span></div><div class="cap" id="c67"><span>Commence</span> <span>dès</span> <span class="kw">maintenant.</span></div>
+  <div id="hook" class="band"><div class="l"><span>Tu attends janvier ?</span></div><div class="l c"><span>Mauvaise idée.</span></div><div class="rule"></div></div>
+  <div id="fsbg"></div>
+  <div id="choc" style="top:494px"><span>A</span><span>C</span><span>T</span><span>I</span><span>O</span><span>N</span></div>
+  <div class="enum-s" id="e0" style="top:1170px"><i class="rail"></i><div class="sw" id="e0w0">Bac raté.</div><div class="sw" id="e0w1">Projets ratés.</div><div class="sw" id="e0w2">Revenus perdus.</div></div>
+  <div class="flashc dark" id="f0"><div class="in" style="top:1145px"><div class="lab"></div><div class="a"><span>En janvier,</span></div><div class="b"><span>rien ne se passe.</span></div><div class="thread"></div></div></div>
+  <div class="cap" id="c0"><span>Tu</span> <span>as</span> <span>moins</span></div><div class="cap" id="c1"><span>de</span> <span>60</span> <span>jours</span></div><div class="cap" id="c2"><span>pour</span> <span>arrêter</span> <span>de</span></div><div class="cap" id="c3"><span>te</span> <span>donner</span> <span>les</span></div><div class="cap" id="c4"><span class="kw">excuses</span> <span>que</span> <span>tu</span></div><div class="cap" id="c5"><span>te</span> <span>donnes</span> <span>pour</span></div><div class="cap" id="c6"><span>enfin</span> <span>lancer</span> <span>ton</span></div><div class="cap" id="c7"><span>projet,</span></div><div class="cap" id="c8"><span>lancer</span> <span>ton</span> <span>business,</span></div><div class="cap" id="c9"><span>lancer</span> <span>ton</span> <span>système.</span></div><div class="cap" id="c10"><span>Je</span> <span>sais</span> <span>que</span></div><div class="cap" id="c11"><span>tu</span> <span>vas</span> <span>me</span></div><div class="cap" id="c12"><span>dire</span></div><div class="cap" id="c13"><span>j&#x27;attends</span> <span>en</span> <span class="kw">janvier,</span></div><div class="cap" id="c14"><span>en</span> <span class="kw">janvier</span> <span>c&#x27;est</span></div><div class="cap" id="c15"><span>mieux</span> <span>pour</span> <span>commencer,</span></div><div class="cap" id="c16"><span>nouvelle</span> <span>année,</span></div><div class="cap" id="c17"><span>nouvelle</span> <span>méthode,</span></div><div class="cap" id="c18"><span>blablabla.</span></div><div class="cap" id="c19"><span>On</span> <span>a</span> <span>l&#x27;habitude</span></div><div class="cap" id="c20"><span>d&#x27;entendre</span> <span>ça,</span></div><div class="cap" id="c21"><span>mais</span> <span>ce</span> <span>qui</span></div><div class="cap" id="c22"><span>se</span> <span>passe,</span></div><div class="cap" id="c23"><span>c&#x27;est</span> <span>que</span> <span>le</span></div><div class="cap" id="c29"><span>que</span> <span>je</span> <span>te</span></div><div class="cap" id="c30"><span>pose,</span></div><div class="cap" id="c31"><span>c&#x27;est</span> <span>pourquoi</span> <span>attendre</span></div><div class="cap" id="c32"><span class="kw">janvier</span> <span>2027</span> <span>avant</span></div><div class="cap" id="c33"><span>de</span> <span>construire</span> <span>la</span></div><div class="cap" id="c34"><span class="kw">vie</span> <span>que</span> <span>tu</span></div><div class="cap" id="c35"><span>veux</span> <span>?</span></div><div class="cap" id="c36"><span>Je</span> <span>le</span> <span>dis</span></div><div class="cap" id="c37"><span>ça</span> <span>parce</span> <span>que</span></div><div class="cap" id="c38"><span>moi</span> <span>de</span> <span>même</span></div><div class="cap" id="c39"><span>j&#x27;aurais</span> <span>pu</span> <span>attendre.</span></div><div class="cap" id="c40"><span>J&#x27;ai</span> <span class="kw">raté</span> <span>mon</span></div><div class="cap" id="c41"><span>bac,</span></div><div class="cap" id="c42"><span>j&#x27;ai</span> <span class="kw">raté</span> <span>mon</span></div><div class="cap" id="c43"><span>voyage,</span></div><div class="cap" id="c44"><span>j&#x27;ai</span> <span class="kw">raté</span> <span>mes</span></div><div class="cap" id="c45"><span>projets,</span></div><div class="cap" id="c46"><span>j&#x27;ai</span> <span>perdu</span> <span>ma</span></div><div class="cap" id="c47"><span>source</span> <span>de</span> <span>revenus</span></div><div class="cap" id="c48"><span>principale,</span></div><div class="cap" id="c49"><span>j&#x27;avais</span> <span>pas</span> <span>toutes</span></div><div class="cap" id="c50"><span>les</span> <span>réponses.</span></div><div class="cap" id="c51"><span>J&#x27;ai</span> <span>commencé</span> <span>avec</span></div><div class="cap" id="c52"><span>ce</span> <span>que</span> <span>j&#x27;avais</span></div><div class="cap" id="c53"><span>et</span> <span>c&#x27;est</span> <span>en</span></div><div class="cap" id="c54"><span>passant</span> <span>à</span> <span class="kw">l&#x27;action</span></div><div class="cap" id="c55"><span>que</span> <span>j&#x27;ai</span> <span>appris</span></div><div class="cap" id="c56"><span>que</span> <span>j&#x27;ai</span> <span>trouvé</span></div><div class="cap" id="c57"><span>mes</span> <span>premiers</span> <span>clients</span></div><div class="cap" id="c58"><span>et</span> <span>que</span> <span>j&#x27;ai</span></div><div class="cap" id="c59"><span>commencé</span> <span>à</span> <span>construire.</span></div><div class="cap" id="c60"><span>Parce</span> <span>que</span> <span>de</span></div><div class="cap" id="c61"><span>comprendre</span> <span>une</span> <span>chose,</span></div><div class="cap" id="c62"><span>c&#x27;est</span> <span>qu&#x27;on</span> <span>apprend</span></div><div class="cap" id="c63"><span>en</span> <span class="kw">appliquant,</span></div><div class="cap" id="c64"><span>pas</span> <span>en</span> <span>restant.</span></div><div class="cap" id="c65"><span>N&#x27;attends</span> <span>pas</span> <span class="kw">janvier</span></div><div class="cap" id="c66"><span>pour</span> <span>commencer.</span></div><div class="cap" id="c67"><span>Commence</span> <span>dès</span> <span class="kw">maintenant.</span></div>
   <div id="ctaw"><div class="lab">Commente</div>
     <div class="glass white" id="cta"><svg class="s" viewBox="0 0 40 40" fill="none" stroke="#001F3F" stroke-width="4" stroke-linecap="round"><circle cx="17" cy="17" r="11"/><path d="M25 25l9 9"/></svg>
       <div class="q"><span id="ctat"></span><span class="cur"></span></div>
       <div class="go"><svg viewBox="0 0 42 42" fill="none" stroke="#001F3F" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21h22M22 11l10 10-10 10"/></svg></div></div></div>
-  <div id="end"><svg viewBox="0 0 32 32" fill="none"><rect x="2.5" y="2.5" width="27" height="27" rx="8" stroke="#fff" stroke-width="2"/><circle cx="16" cy="16" r="6.2" stroke="#fff" stroke-width="2"/><circle cx="23.6" cy="8.4" r="1.6" fill="#00D9FF"/></svg><div class="h">@the_process.io</div></div>
+  <div id="end"><div class="in"><div class="a"><span>N&#x27;attends pas janvier.</span></div><div class="b"><span>Commence cette semaine.</span></div><div class="thread"></div></div></div>
   <audio id="sfx" data-start="37.312" data-duration="0.37" data-volume="0.32" src="assets/kit/reveal.mp3"></audio>
 </div>
 <script>
@@ -387,32 +460,23 @@ const tl=gsap.timeline({paused:true});
 function cap(id,a,b){const sp=$$(id+' > span');tl.set(id,{opacity:1},a);
   tl.fromTo(sp,{opacity:0,y:14,filter:'blur(6px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.3,ease:IN,stagger:.07,immediateRender:false},a);
   tl.set(id,{opacity:0},b);}
-function flash(id,a,d){tl.set(id,{opacity:1},a);
+function flash(id,a,d){tl.fromTo(id,{opacity:0},{opacity:1,duration:.25,ease:'none',immediateRender:false},a);
   tl.fromTo(id+' .a span,'+id+' .b span',{yPercent:110},{yPercent:0,duration:.6,ease:IN,stagger:.08,immediateRender:false},a);
   tl.fromTo(id+' .thread',{scaleX:0},{scaleX:1,duration:.5,ease:MOVE,immediateRender:false},a+.3);
-  tl.set(id,{opacity:0},a+d);}
-gsap.set(['#sig','#ctaw','#end'],{opacity:0});
-/* Accroche : plein écran 0 → 2,4 s puis se rétracte en bandeau */
-tl.fromTo('#hook .l span',{yPercent:110},{yPercent:0,duration:.7,ease:IN,stagger:.08,immediateRender:false},0);
-tl.fromTo('#vw',{scale:1.0},{scale:1.04,duration:2.6,ease:'none',immediateRender:false},0);
-tl.to('#hook',{opacity:0,y:-40,duration:D_OUT,ease:OUT},2.25);
-(function(){const tp=$('#topic')||$('#objection');const L=tp.offsetLeft,T=tp.offsetTop,W=tp.offsetWidth,H=tp.offsetHeight;
-  gsap.set(tp,{opacity:0});
-  tl.fromTo('#hookbg',{clipPath:'inset(0px 0px 0px 0px round 0px)'},{clipPath:`inset(${T}px ${1080-L-W}px ${1920-T-H}px ${L}px round 16px)`,duration:.6,ease:MOVE,immediateRender:false},2.3);
-  tl.set(tp,{opacity:1},2.9);tl.set('#hookbg',{opacity:0},2.9);})();
-tl.set('#vw',{scale:1.0},2.6);
-tl.to('#sig',{opacity:1,duration:D_IN,ease:IN},.2);
-tl.set(['#sigr','#sigc'],{attr:{stroke:'#00D9FF'}},.2);tl.set('#sigd',{attr:{fill:'#00D9FF'}},.2);
-tl.set(['#sigr','#sigc'],{attr:{stroke:'#fff'}},.7);tl.set('#sigd',{attr:{fill:'#fff'}},.7);
+  tl.to(id,{opacity:0,duration:.25,ease:'none'},a+d);}
+gsap.set(['#ctaw','#end'],{opacity:0});
+/* Ouverture v5 : coup de zoom arrière + accroche visuelle, titre tenu 7.6 s puis disparu (pas de @, pas de barre) */
+tl.fromTo('#vw',{scale:1.16},{scale:1.0,duration:.6,ease:'expo.out',immediateRender:false},0);
+tl.fromTo('#hook .l span',{yPercent:110},{yPercent:0,duration:.7,ease:IN,stagger:.12,immediateRender:false},0.15);
+tl.fromTo('#hook .rule',{scaleX:0},{scaleX:1,duration:.6,ease:MOVE,immediateRender:false},0.55);
+tl.to('#hook .l span',{yPercent:-110,duration:.4,ease:OUT,stagger:.05},7.454);
+tl.to('#hook .rule',{scaleX:0,transformOrigin:'100% 50%',duration:.35,ease:OUT},7.454);
+tl.fromTo('#vh',{opacity:0,scale:.92},{opacity:1,scale:1,duration:.4,ease:IN,immediateRender:false},0);(function(){const el=$('#vhn'),o={n:365};tl.to(o,{n:60,duration:1.5,ease:'expo.out',onUpdate:()=>{el.textContent=Math.round(o.n);}},.1);})();tl.to('#vhn',{color:'#00D9FF',duration:.2},1.5);tl.to('#vh',{opacity:0,y:-16,duration:.35,ease:OUT},2.6);
 tl.set('#vw',{scale:1.08},7.564);tl.set('#vw',{scale:1.0},19.714);tl.set('#vw',{scale:1.08},25.608);tl.set('#vw',{scale:1.0},34.262);tl.set('#vw',{scale:1.08},40.912);tl.set('#vw',{scale:1.0},45.474);
-flash('#f0',19.164,1.1);
+flash('#f0',17.314,2.6);
 (function(){const sp=$$('#choc span'),mid=(sp.length-1)/2;tl.set('#choc',{opacity:1},37.312);tl.fromTo(sp,{opacity:0,x:i=>(mid-i)*18,filter:'blur(10px)'},{opacity:1,x:0,filter:'blur(0px)',duration:.8,ease:IN,immediateRender:false},37.312);tl.to('#choc',{opacity:0,duration:.25},38.362);})();
-tl.fromTo('#u0',{opacity:0,y:120},{opacity:1,y:0,duration:.6,ease:IN,immediateRender:false},9.314);tl.to('#u0',{opacity:0,y:-24,duration:D_OUT,ease:OUT},12.314);gsap.set('#e0 .rail',{scaleY:0});tl.set('#e0',{opacity:1},4.084);tl.fromTo('#e0w0',{opacity:0,x:-60},{opacity:1,x:0,duration:.5,ease:IN,immediateRender:false},4.724);tl.to('#e0 .rail',{scaleY:0.333,duration:.45,ease:MOVE},4.724);tl.fromTo('#e0w1',{opacity:0,x:-60},{opacity:1,x:0,duration:.5,ease:IN,immediateRender:false},6.084);tl.to('#e0 .rail',{scaleY:0.667,duration:.45,ease:MOVE},6.084);tl.to('#e0w0',{opacity:.55,duration:.3},6.084);tl.fromTo('#e0w2',{opacity:0,x:-60},{opacity:1,x:0,duration:.5,ease:IN,immediateRender:false},7.284);tl.to('#e0 .rail',{scaleY:1.000,duration:.45,ease:MOVE},7.284);tl.to('#e0w1',{opacity:.55,duration:.3},7.284);tl.to('#e0',{opacity:0,x:-30,duration:D_OUT,ease:OUT},9.084);tl.fromTo('#g0',{opacity:0,y:32},{opacity:1,y:0,duration:D_IN,ease:IN,immediateRender:false},7.554);tl.to('#g0',{opacity:0,y:-10,duration:D_OUT,ease:OUT},10.154);
-/* Barre de progression : où on en est dans la vidéo */
-tl.to('#prog',{opacity:1,duration:.4},2.9);
-tl.fromTo('#prog i',{scaleX:0},{scaleX:1,duration:48.544,ease:'none',immediateRender:false},0);
-tl.to('#prog',{opacity:0,duration:.3},48.544);
-cap('#c0',0.084,0.644);cap('#c1',0.644,1.444);cap('#c2',1.444,2.004);cap('#c3',2.004,2.484);cap('#c4',2.484,3.204);cap('#c5',3.204,3.764);cap('#c6',3.764,4.724);cap('#c7',4.724,5.444);cap('#c8',5.444,6.724);cap('#c9',6.724,7.554);cap('#c10',7.554,7.954);cap('#c11',7.954,8.354);cap('#c12',8.354,8.754);cap('#c13',8.754,9.954);cap('#c14',9.954,10.754);cap('#c15',10.754,11.714);cap('#c16',11.714,12.354);cap('#c17',12.354,13.154);cap('#c18',13.154,14.114);cap('#c19',14.114,14.834);cap('#c20',14.834,15.714);cap('#c21',15.714,16.354);cap('#c22',16.354,16.754);cap('#c23',16.754,17.154);cap('#c24',17.154,17.714);cap('#c25',17.714,18.274);cap('#c26',18.274,18.914);cap('#c27',18.914,19.768);cap('#c29',20.328,20.808);cap('#c30',20.808,21.048);cap('#c31',21.048,22.008);cap('#c32',22.008,23.448);cap('#c33',23.448,24.168);cap('#c34',24.168,24.568);cap('#c35',24.568,25.662);cap('#c36',25.662,26.142);cap('#c37',26.142,26.542);cap('#c38',26.542,27.102);cap('#c39',27.102,28.222);cap('#c40',28.222,28.942);cap('#c41',28.942,29.342);cap('#c42',29.342,29.982);cap('#c43',29.982,30.542);cap('#c44',30.542,31.262);cap('#c45',31.262,31.902);cap('#c46',31.902,32.622);cap('#c47',32.622,33.582);cap('#c48',33.582,34.332);cap('#c49',34.672,35.152);cap('#c50',35.152,35.552);cap('#c51',35.552,36.112);cap('#c52',36.112,36.592);cap('#c53',36.592,36.992);cap('#c54',36.992,37.712);cap('#c55',37.712,38.272);cap('#c56',38.272,38.752);cap('#c57',38.752,39.392);cap('#c58',39.392,39.792);cap('#c59',39.792,41.142);cap('#c60',41.142,41.782);cap('#c61',41.782,42.422);cap('#c62',42.422,43.302);cap('#c63',43.302,44.182);cap('#c64',44.182,45.624);cap('#c65',45.624,46.584);cap('#c66',46.584,47.304);cap('#c67',47.304,48.544);
+gsap.set('#e0 .rail',{scaleY:0});tl.set('#e0',{opacity:1},28.942);tl.fromTo('#e0w0',{opacity:0,x:-60},{opacity:1,x:0,duration:.5,ease:IN,immediateRender:false},28.942);tl.to('#e0 .rail',{scaleY:0.333,duration:.45,ease:MOVE},28.942);tl.fromTo('#e0w1',{opacity:0,x:-60},{opacity:1,x:0,duration:.5,ease:IN,immediateRender:false},31.262);tl.to('#e0 .rail',{scaleY:0.667,duration:.45,ease:MOVE},31.262);tl.to('#e0w0',{opacity:.55,duration:.3},31.262);tl.fromTo('#e0w2',{opacity:0,x:-60},{opacity:1,x:0,duration:.5,ease:IN,immediateRender:false},32.142);tl.to('#e0 .rail',{scaleY:1.000,duration:.45,ease:MOVE},32.142);tl.to('#e0w1',{opacity:.55,duration:.3},32.142);tl.to('#e0',{opacity:0,x:-30,duration:D_OUT,ease:OUT},33.742);
+cap('#c0',0.084,0.644);cap('#c1',0.644,1.444);cap('#c2',1.444,2.004);cap('#c3',2.004,2.484);cap('#c4',2.484,3.204);cap('#c5',3.204,3.764);cap('#c6',3.764,4.724);cap('#c7',4.724,5.444);cap('#c8',5.444,6.724);cap('#c9',6.724,7.554);cap('#c10',7.554,7.954);cap('#c11',7.954,8.354);cap('#c12',8.354,8.754);cap('#c13',8.754,9.954);cap('#c14',9.954,10.754);cap('#c15',10.754,11.714);cap('#c16',11.714,12.354);cap('#c17',12.354,13.154);cap('#c18',13.154,14.114);cap('#c19',14.114,14.834);cap('#c20',14.834,15.714);cap('#c21',15.714,16.354);cap('#c22',16.354,16.754);cap('#c23',16.754,17.154);cap('#c29',20.328,20.808);cap('#c30',20.808,21.048);cap('#c31',21.048,22.008);cap('#c32',22.008,23.448);cap('#c33',23.448,24.168);cap('#c34',24.168,24.568);cap('#c35',24.568,25.662);cap('#c36',25.662,26.142);cap('#c37',26.142,26.542);cap('#c38',26.542,27.102);cap('#c39',27.102,28.222);cap('#c40',28.222,28.942);cap('#c41',28.942,29.342);cap('#c42',29.342,29.982);cap('#c43',29.982,30.542);cap('#c44',30.542,31.262);cap('#c45',31.262,31.902);cap('#c46',31.902,32.622);cap('#c47',32.622,33.582);cap('#c48',33.582,34.332);cap('#c49',34.672,35.152);cap('#c50',35.152,35.552);cap('#c51',35.552,36.112);cap('#c52',36.112,36.592);cap('#c53',36.592,36.992);cap('#c54',36.992,37.712);cap('#c55',37.712,38.272);cap('#c56',38.272,38.752);cap('#c57',38.752,39.392);cap('#c58',39.392,39.792);cap('#c59',39.792,41.142);cap('#c60',41.142,41.782);cap('#c61',41.782,42.422);cap('#c62',42.422,43.302);cap('#c63',43.302,44.182);cap('#c64',44.182,45.624);cap('#c65',45.624,46.584);cap('#c66',46.584,47.304);cap('#c67',47.304,48.544);
   /* Inserts illustrés */
   INSWIN=[];
   if(cfg.ins){
@@ -458,13 +522,16 @@ cap('#c0',0.084,0.644);cap('#c1',0.644,1.444);cap('#c2',1.444,2.004);cap('#c3',2
 
 /* CTA : barre de recherche dans les 2,6 dernières secondes de parole, puis carte de fin */
 tl.set('#vw',{scale:1.0},45.844);
-tl.to('#dim',{opacity:.18,duration:D_IN},45.844);
+tl.to('#dim',{opacity:.12,duration:D_IN},45.844);
 tl.fromTo('#ctaw',{opacity:0,y:60},{opacity:1,y:0,duration:.6,ease:IN,immediateRender:false},45.894);
 (function(){const el=$('#ctat'),w="JANVIER",o={n:0};tl.to(o,{n:w.length,duration:1.1,ease:'none',onUpdate:()=>{el.textContent=w.slice(0,Math.round(o.n));}},46.444);})();
 tl.to('#cta .go',{scale:.88,duration:.12},48.944);tl.to('#cta .go',{scale:1,duration:.3,ease:IN},49.064);
 tl.to('#ctaw',{opacity:0,duration:D_OUT,ease:OUT},50.194);
 tl.to('#dim',{opacity:.74,duration:.4,ease:IN},50.194);
-tl.to(['#topic','#objection','#sig'].filter(s=>$(s)),{opacity:0,duration:.3},50.194);
-tl.fromTo('#end',{opacity:0,y:16},{opacity:1,y:0,duration:D_IN,ease:IN,immediateRender:false},50.294);
+tl.to(['#topic','#objection'].filter(s=>$(s)),{opacity:0,duration:.3},50.194);
+tl.set('#end',{opacity:1},50.294);
+tl.fromTo('#end .a span,#end .b span',{yPercent:110},{yPercent:0,duration:.42,ease:IN,stagger:.07,immediateRender:false},50.294);
+tl.fromTo('#end .thread',{scaleX:0},{scaleX:1,duration:.45,ease:MOVE,immediateRender:false},50.544);
+tl.to('#dim',{opacity:1,duration:.55,ease:'power1.in'},50.924);  /* fondu au noir avant la fin de l'image */
 window.__timelines=window.__timelines||{};window.__timelines["main"]=tl;tl.seek(0);
 </script></body></html>

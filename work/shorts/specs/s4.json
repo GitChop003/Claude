@@ -53,10 +53,6 @@
   "Peur du regard",
   "des autres ?"
  ],
- "topic": [
-  "Peur du regard",
-  "des autres ?"
- ],
  "keywords": [
   "détruit",
   "peur.",
@@ -77,16 +73,50 @@
    "les"
   ]
  ],
+ "cta": "COURAGE",
+ "vhook": {
+  "style": "iris",
+  "cx": 474,
+  "cy": 880,
+  "r": 285
+ },
+ "opening": "top",
+ "hook_style": "classic",
+ "hook_top": 360,
+ "enum": [
+  {
+   "t": {
+    "word": "parents"
+   },
+   "style": "stack",
+   "items": [
+    {
+     "text": "Les parents",
+     "at": {
+      "word": "parents"
+     }
+    },
+    {
+     "text": "Les amis",
+     "at": {
+      "word": "amis"
+     }
+    }
+   ],
+   "hold": 1.6
+  }
+ ],
  "flash": [
   {
    "t": {
-    "word": "cimetières.",
-    "off": 0.75
+    "word": "meilleures",
+    "n": 2
    },
    "lab": "",
    "a": "Les meilleures idées",
    "b": "sont au cimetière.",
-   "d": 1.1
+   "d": 2.8,
+   "bg": "dark"
   }
  ],
  "choc": {
@@ -96,45 +126,8 @@
   "text": "COURAGE",
   "d": 1.4
  },
- "cta": "COURAGE",
- "tags": [
-  {
-   "t": {
-    "word": "Mais",
-    "n": 1
-   },
-   "text": "le vrai frein",
-   "d": 2.4
-  }
- ],
- "lists": [
-  {
-   "t": {
-    "word": "peur.",
-    "n": 1
-   },
-   "title": "Peur de ce que vont penser…",
-   "items": [
-    {
-     "text": "Les parents",
-     "at": {
-      "word": "parents",
-      "n": 1
-     }
-    },
-    {
-     "text": "Les amis",
-     "at": {
-      "word": "amis",
-      "n": 1
-     }
-    }
-   ],
-   "until": {
-    "word": "business.",
-    "n": 2,
-    "off": 0.5
-   }
-  }
+ "act": [
+  "Ton idée mérite de vivre.",
+  "Lance-la, même avec la peur."
  ]
 }

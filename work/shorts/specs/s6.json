@@ -43,10 +43,6 @@
   "Tu attends janvier ?",
   "Mauvaise idée."
  ],
- "topic": [
-  "Moins de 60 jours",
-  "avant 2027."
- ],
  "keywords": [
   "excuses",
   "janvier,",
@@ -67,41 +63,54 @@
    "Je"
   ]
  ],
- "ui": [
-  {
-   "t": {
-    "word": "janvier,",
-    "n": 1
-   },
-   "d": 3.0,
-   "icon": "cal",
-   "t1": "Calendrier",
-   "t2": "1er janvier 2027",
-   "t3": "dans moins de 60 jours",
-   "label": "",
-   "top": 600
-  }
- ],
- "tags": [
-  {
-   "t": {
-    "word": "Je",
-    "n": 1
-   },
-   "text": "mon histoire",
-   "d": 2.6
-  }
- ],
+ "cta": "JANVIER",
+ "vhook": {
+  "style": "countdown",
+  "from": 365,
+  "to": 60,
+  "label": "jours avant 2027"
+ },
+ "opening": "band",
+ "hook_style": "classic",
  "flash": [
   {
    "t": {
-    "word": "passe.",
-    "off": 0.25
+    "word": "souvent"
    },
    "lab": "",
    "a": "En janvier,",
    "b": "rien ne se passe.",
-   "d": 1.1
+   "d": 2.6,
+   "bg": "dark"
+  }
+ ],
+ "enum": [
+  {
+   "t": {
+    "word": "bac,"
+   },
+   "style": "stack",
+   "items": [
+    {
+     "text": "Bac raté.",
+     "at": {
+      "word": "bac,"
+     }
+    },
+    {
+     "text": "Projets ratés.",
+     "at": {
+      "word": "projets,"
+     }
+    },
+    {
+     "text": "Revenus perdus.",
+     "at": {
+      "word": "perdu"
+     }
+    }
+   ],
+   "hold": 1.6
   }
  ],
  "choc": {
@@ -111,35 +120,8 @@
   "text": "ACTION",
   "d": 1.3
  },
- "cta": "JANVIER",
- "enum": [
-  {
-   "style": "stack",
-   "t": {
-    "word": "lancer",
-    "n": 1
-   },
-   "items": [
-    {
-     "text": "Ton projet",
-     "at": {
-      "word": "projet,"
-     }
-    },
-    {
-     "text": "Ton business",
-     "at": {
-      "word": "business,"
-     }
-    },
-    {
-     "text": "Ton système",
-     "at": {
-      "word": "système."
-     }
-    }
-   ],
-   "hold": 1.8
-  }
+ "act": [
+  "N'attends pas janvier.",
+  "Commence cette semaine."
  ]
 }
