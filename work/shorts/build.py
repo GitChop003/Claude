@@ -313,7 +313,10 @@ def main(spec_path, words_path, out_dir):
     zt_top = [zt(o[1]) for o in FACES if o[0] <= 2.8]
     zone = (262, int((sorted(zt_top)[max(0, len(zt_top) // 20)] if zt_top else 600) - 50))
     vst = (sp.get("vhook") or {}).get("style") if isinstance(sp.get("vhook"), dict) else sp.get("vhook")
-    if opening == "top":
+    vwhere = sp["vhook"].get("where") if isinstance(sp.get("vhook"), dict) else None
+    if vwhere == "band" and opening == "band":  # accroche visuelle sous le menton, au-dessus du titre (visage trop haut au début)
+        zone = (int(face_low(0, 2.8) + 30), hook_top - 10)
+    elif opening == "top":
         if vst in ("viewfinder", "pathline", "scan", "iris"): zone = (262, min(zone[1], hook_top - 20))
         else: zone = (int(face_low(0, 2.8) + 30), 1395)  # titre en haut : l'accroche visuelle passe sous le visage
     vf_html, vh_css, vf_js = vhooks.make(sp, zone)

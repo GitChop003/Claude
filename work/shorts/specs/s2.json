@@ -100,7 +100,8 @@
  "vhook": {
   "style": "notif",
   "t1": "Messages",
-  "t2": "Aucun nouveau message"
+  "t2": "Aucun nouveau message",
+  "where": "band"
  },
  "opening": "band",
  "hook_style": "inverse",
