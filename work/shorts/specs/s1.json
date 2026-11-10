@@ -68,38 +68,22 @@
   {
    "t": {
     "word": "méthode",
-    "off": 0.9
+    "off": 0.3
    },
    "lab": "la méthode",
    "a": "1 hook tourné à part,",
-   "b": "puis ta séance",
-   "d": 1.1
+   "b": "puis ta séance.",
+   "d": 2.0,
+   "bg": "dark"
   }
  ],
  "cta": "SÉANCE",
- "topic": [
-  "Plus d'idées ?",
-  "Filme tes séances."
- ],
  "replace_n": [
   [
    "te",
    2,
    ""
   ]
- ],
- "ui": [
-  {
-   "t": {
-    "word": "meilleure",
-    "n": 1
-   },
-   "d": 2.8,
-   "icon": "rec",
-   "t1": "Enregistrement",
-   "t2": "Séance avec Inès",
-   "t3": "52 min · prête à découper"
-  }
  ],
  "choc": {
   "at": {
@@ -152,5 +136,6 @@
     "word": "t'aider."
    }
   }
- ]
+ ],
+ "vhook": "viewfinder"
 }

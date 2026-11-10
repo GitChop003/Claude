@@ -85,6 +85,28 @@ def tts_words(path, rt_dir):
     return words_of(p)
 
 
+def lufs(path):
+    """Loudness intégrée (LUFS) d'un fichier, mesurée par ebur128."""
+    r = subprocess.run(["ffmpeg", "-nostats", "-i", path, "-af", "ebur128", "-f", "null", "-"], capture_output=True, text=True).stderr
+    return float(r.rsplit("I:", 1)[1].split("LUFS")[0])
+
+
+def check_tail(path, words, T):
+    """Garde-fou : la dernière phrase doit s'entendre et le son doit durer jusqu'à la fin (CTA + carte de fin)."""
+    import numpy as np
+    a = np.frombuffer(subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-map", "0:a", "-ac", "1", "-ar", "16000", "-f", "f32le", "-"],
+                                     capture_output=True).stdout, np.float32)
+    dur = len(a) / 16000
+    s, e = words[-5]["s"], words[-1]["e"]
+    seg = a[int(s * 16000):int(e * 16000)]
+    lvl = 20 * np.log10(np.sqrt((seg ** 2).mean()) + 1e-9)
+    tail = a[int((T - 2.5) * 16000):int((T - 1.0) * 16000)]
+    tl = 20 * np.log10(np.sqrt((tail ** 2).mean()) + 1e-9) if len(tail) else -200
+    ok = dur >= T - 0.1 and lvl > -35 and tl > -80
+    print(f"  contrôle fin : son {dur:.2f}/{T:.2f} s, dernière phrase {lvl:.0f} dBFS, musique de fin {tl:.0f} dBFS -> {'OK' if ok else 'ÉCHEC'}")
+    if not ok: raise SystemExit("fin de son incorrecte")
+
+
 def islands(words, a, b, drops, env=None):
     ws = [w for w in words if w["s"] >= a - 0.05 and w["s"] < b
           and not any(x <= w["s"] < y for x, y in drops)
@@ -163,16 +185,26 @@ def main(spec_path, rt_dir, rush_dir, out_dir, grade):
         t += d; cuts.append(round(t, 3))
     open(f"{tmp}/list.txt", "w").write("".join(f"file '{os.path.abspath(x)}'\n" for x in lst))
     T = t + TAIL
-    music = os.path.join(os.path.dirname(os.path.abspath(__file__)), "music_bed.wav")  # nappe originale à -39 LUFS
-    fcx = (f"[0:v]tpad=stop_mode=clone:stop_duration={TAIL}[vo];"
-           f"[0:a]apad=pad_dur={TAIL},highpass=f=70,afftdn=nr=8:nf=-40,acompressor=threshold=-20dB:ratio=2.5:attack=8:release=120,"
-           f"loudnorm=I=-14:TP=-1.5:LRA=9[vx];"
-           f"[1:a]atrim=0:{T:.3f},asetpts=PTS-STARTPTS,afade=t=in:d=1.2,afade=t=out:st={T-2.2:.3f}:d=2.2[mx];"
-           f"[vx][mx]amix=inputs=2:normalize=0:duration=first,aformat=channel_layouts=stereo,loudnorm=I=-14:TP=-1.5:LRA=9,alimiter=limit=0.89[ao]")
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", f"{tmp}/list.txt", "-i", music,
-                    "-filter_complex", fcx, "-map", "[vo]", "-map", "[ao]",
-                    "-c:v", "libx264", "-crf", "18", "-preset", "medium", "-g", "30", "-keyint_min", "30", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
-                    "-movflags", "+faststart", "-threads", "3", f"{out_dir}/cut.mp4"], check=True)
+    music = os.path.join(os.path.dirname(os.path.abspath(__file__)), "music_bed.wav")  # nappe originale à -38 LUFS
+    # Son en 3 étapes, SANS loudnorm dynamique : son tampon de 3 s avalait la fin du mixage
+    # (dernière phrase muette sur s1-s4, plus de musique sous le CTA sur tous les shorts).
+    vraw = f"{tmp}/voice.wav"
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", f"{tmp}/list.txt", "-vn",
+                    "-af", f"apad=pad_dur={TAIL + 2},highpass=f=70,afftdn=nr=8:nf=-40,acompressor=threshold=-20dB:ratio=2.5:attack=8:release=120,"
+                           f"aformat=channel_layouts=stereo,atrim=0:{T:.3f}",
+                    "-ar", "48000", "-c:a", "pcm_s16le", vraw], check=True)
+    g = -14.0 - lufs(vraw)  # gain fixe : la voix seule à -14 LUFS
+    mix = f"{tmp}/mix.wav"
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", vraw, "-i", music, "-filter_complex",
+                    f"[0:a]volume={g:.2f}dB[vx];[1:a]atrim=0:{T:.3f},asetpts=PTS-STARTPTS,aformat=channel_layouts=stereo,"
+                    f"afade=t=in:d=1.2,afade=t=out:st={T-2.2:.3f}:d=2.2[mx];"
+                    f"[vx][mx]amix=inputs=2:normalize=0:duration=first,apad=pad_dur=1,alimiter=limit=0.89:latency=1,atrim=0:{T:.3f}[ao]",
+                    "-map", "[ao]", "-ar", "48000", "-c:a", "pcm_s16le", mix], check=True)
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", f"{tmp}/list.txt", "-i", mix,
+                    "-filter_complex", f"[0:v]tpad=stop_mode=clone:stop_duration={TAIL}[vo]", "-map", "[vo]", "-map", "1:a", "-t", f"{T:.3f}",
+                    "-c:v", "libx264", "-crf", "18", "-preset", "medium", "-r", "30", "-g", "30", "-keyint_min", "30", "-pix_fmt", "yuv420p",
+                    "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-movflags", "+faststart", "-threads", "3", f"{out_dir}/cut.mp4"], check=True)
+    check_tail(f"{out_dir}/cut.mp4", out_words, T)
     n = len(pieces)
     json.dump({"dur": round(t, 3), "tail": TAIL, "cuts": cuts, "words": out_words}, open(f"{out_dir}/words.json", "w"), ensure_ascii=False, indent=0)
     print(spec["id"], "durée", round(t, 1), "s,", n, "morceaux")

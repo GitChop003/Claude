@@ -17,7 +17,7 @@ Réglages hérités des échanges avec la production (novembre 2026). Ils compl�
 
 ## Habillage
 - Palette « nuancée » (fond papier, cyan profond, touches sable) + verre dépoli subtil sur les cartes. Pas de marqueurs « IA par défaut » (bordures orange, barre colorée à gauche, émojis, dégradés, rebonds).
-- Accroche sur 2 lignes maximum (ouvertures variées, voir v4), puis sujet en texte seul. **Barre de progression** fine en haut.
+- Accroche sur 2 lignes maximum (ouvertures variées, voir v4), titre tenu 5 à 9 s puis disparu, sans barre de progression (v5).
 - Sous-titres 1 à 3 mots, mot clé en cyan, doublure Montserrat italique en attendant Callum Slanted.
 - **Fin** : le CTA (« Commente MOT », barre de recherche) arrive **pendant la dernière phrase**, au-dessus des sous-titres (qui restent lisibles), reste environ 1,7 s après la voix, puis carte de fin de 1,3 s.
 
@@ -35,6 +35,15 @@ Réglages hérités des échanges avec la production (novembre 2026). Ils compl�
 - **Le moins chargé possible** : pas d'étiquettes ni de bandeaux en verre. On joue sur la **typographie** (tailles, graisses, contraste fin/gras) plutôt que sur des cadres. 3 à 4 moments graphiques par vidéo maximum.
 - **Mise en page mesurée** : haut (y ≈ 300–560) pour l'ouverture au-dessus de la tête puis le sujet en petit texte ; bande sous le visage (y ≈ 1170–1395) pour les cartes, tuiles, mot choc et CTA ; sous-titres sur une ligne à y ≈ 1408 (dans la zone 4:5 et au-dessus du masque Instagram).
 - **Énumérations** : une formule différente pour chaque vidéo d'un même lot (tuiles d'icônes, mot géant, empilement en marge, mots barrés, numérotation, liste à cases…).
+
+## Retours de Bognin (10 novembre, v5) : modèle de référence = s1 SÉANCE v4
+- **Accroche visuelle obligatoire** dans la première seconde, en plus du texte : coup de zoom arrière + un élément graphique lié au sujet (s1 : viseur de caméra « REC »). Une accroche visuelle **différente pour chaque vidéo**.
+- **Plus de barre de progression** en haut.
+- **Le titre (headline) disparaît** : tenu jusqu'à la première fin de phrase après 5 s (entre 5 et 9 s), puis plus rien en haut de l'écran. Pas de rappel permanent du sujet.
+- **Assombrissement de l'écran** : remplace la carte blanche plein écran pour le moment clé (méthode, question, phrase choc). Le visage reste visible derrière, le texte se place sous le visage.
+- **Varier les types de montage** d'une vidéo à l'autre (accroche visuelle, ouverture, formule d'énumération, moment assombri), à partir du modèle s1.
+- **Son** : la dernière phrase doit s'entendre. Pas de `loudnorm` dynamique en bout de chaîne (son tampon de 3 s coupait la fin) : gain fixe mesuré + limiteur, et contrôle automatique de la fin à chaque découpe.
+- Toujours proscrit : début tout blanc, @the_process.io permanent, barre de progression, éléments devant le visage.
 
 ## Livraison
 - Par short : 9:16 (version légère de livraison), 4:5 LinkedIn, couvertures 9:16 et 4:5, titres, 2 accroches alternatives, légende, mot-clé de CTA proposé (à valider par Bognin).

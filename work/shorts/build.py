@@ -87,7 +87,7 @@ def main(spec_path, words_path, out_dir):
             zoom_js.append(f"tl.set('#vw',{{scale:{z}}},{t:.3f});")
     fl_html, fl_js = [], []
     for j, f in enumerate(flash):
-        fl_html.append(f'<div class="flashc" id="f{j}"><div class="in"><div class="lab">{esc(f.get("lab",""))}</div>'
+        fl_html.append(f'<div class="flashc {f.get("bg","dark")}" id="f{j}"><div class="in"><div class="lab">{esc(f.get("lab",""))}</div>'
                        f'<div class="a"><span>{esc(f["a"])}</span></div><div class="b"><span>{esc(f["b"])}</span></div><div class="thread"></div></div></div>')
         d = f.get("d", 1.0)
         fl_js.append(f"flash('#f{j}',{f['t']:.3f},{d});")
@@ -254,14 +254,34 @@ def main(spec_path, words_path, out_dir):
     hook_fs = int(max(64, min(84, 888 / (0.64 * max(len(l) for l in hook)))))
     if hook_fs * 0.64 * max(len(l) for l in hook) > 900:
         raise SystemExit(f"accroche trop longue pour 2 lignes : {hook}")
-    ftop = [o[1] for o in FACES if o[0] <= 2.6]
+    # Titre tenu jusqu'à la première fin de phrase après 5 s (entre 5 et 9 s)
+    ends = [w["e"] for w in W["words"] if w["w"][-1:] in ".?!" and 5.0 <= w["e"] <= 9.0]
+    hook_until = sp.get("hook_until", ends[0] if ends else 6.5)
+    zt = lambda y: 730 + (y - 730) * 1.08  # punch-in 108 % centré à y≈730
+    ftop = [zt(o[1]) for o in FACES if o[0] <= hook_until]
     face_top = min(ftop) if ftop else 560
-    h1 = int(min(54, 936 / (0.6 * len(hook[0])))); h2 = int(min(116, 936 / (0.52 * len(hook[1]))))
+    # Accroche visuelle (1re seconde), liée au sujet ; une par vidéo, variée d'un short à l'autre
+    vf_html = vf_js = ""
+    if sp.get("vhook") == "viewfinder":
+        vf_html = '<div id="vf"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i><div class="rec"><b></b>REC <span id="tc">00:00:00</span></div></div>'
+        vf_js = ("tl.set('#vf',{opacity:1},0);"
+                 "tl.fromTo('#vf .tl',{x:-46,y:-46,opacity:0},{x:0,y:0,opacity:1,duration:.5,ease:'expo.out',immediateRender:false},0);"
+                 "tl.fromTo('#vf .tr',{x:46,y:-46,opacity:0},{x:0,y:0,opacity:1,duration:.5,ease:'expo.out',immediateRender:false},0);"
+                 "tl.fromTo('#vf .bl',{x:-46,y:46,opacity:0},{x:0,y:0,opacity:1,duration:.5,ease:'expo.out',immediateRender:false},0);"
+                 "tl.fromTo('#vf .br',{x:46,y:46,opacity:0},{x:0,y:0,opacity:1,duration:.5,ease:'expo.out',immediateRender:false},0);"
+                 "tl.fromTo('#vf .rec',{opacity:0},{opacity:1,duration:.3,immediateRender:false},.25);"
+                 + "".join(f"tl.set('#vf .rec b',{{opacity:{0 if k % 2 else 1}}},{0.25 + k * 0.45:.2f});" for k in range(6))
+                 + "(function(){const el=$('#tc'),o={t:0};tl.to(o,{t:2.8,duration:2.8,ease:'none',onUpdate:()=>{const f=Math.floor(o.t*30)%30,s=Math.floor(o.t);el.textContent='00:0'+s+':'+String(f).padStart(2,'0');}},0);})();"
+                 "tl.to('#vf .c,#vf .rec',{opacity:0,duration:.35,ease:OUT},2.6);")
+    h1 = int(min(54, 936 / (0.6 * len(hook[0])))); h2 = int(min(116, 868 / (0.53 * len(hook[1]))))  # ne déborde pas dans la marge droite (140 px)
     hook_top = int(max(300, min(sp.get("hook_top", 9999), face_top - 70 - (h1 * 1.08 + h2 * 1.08 + 33))))
+    # taille des cartes assombries : chaque ligne tient sur une ligne dans 868 px
+    fa = int(min(80, min([868 / (0.56 * len(f["a"])) for f in flash] or [80])))
+    fb = int(min(70, min([800 / (0.55 * len(f["b"])) for f in flash] or [70])))
     cta = sp["cta"]; T_END = W["dur"]
     obj = sp.get("objection")
     topic_html = (f'<div id="objection" style="opacity:1"><b>OBJECTION :</b> « {esc(obj)} »</div>' if obj else
-                  f'<div class="glass" id="topic"><span>{esc(sp.get("topic",hook)[0])}</span><b>{esc(sp.get("topic",hook)[1])}</b></div>')
+                  "")  # v5 : pas de rappel du sujet en haut (l'accroche disparaît d'elle-même)
     KITCSS = open(f"{KIT}/kit.css").read().replace("url(fonts/", "url(assets/kit/fonts/")
     doc = f"""<!doctype html>
 <html lang="fr"><head><meta charset="UTF-8"/><meta name="viewport" content="width=1080, height=1920"/>
@@ -279,6 +299,26 @@ def main(spec_path, words_path, out_dir):
 .flashc .b{{font:800 italic 80px/1.15 Montserrat;color:var(--cyan-p);margin-left:110px;overflow:hidden}}
 .flashc .a span,.flashc .b span{{display:block}}
 .flashc .thread{{height:4px;width:400px;background:var(--cyan-p);margin:34px 0 0 110px;transform-origin:0 50%;border-radius:2px}}
+/* v5 : l'écran s'assombrit (le visage reste visible derrière), texte blanc */
+.flashc.dark{{background:rgba(10,18,32,.66);color:#fff}}
+.flashc.dark .in{{top:1120px;left:72px;right:140px}}
+.flashc.dark .lab{{font-size:28px;margin-bottom:18px}}
+.flashc.dark .a{{font-size:{fa}px;line-height:1.08}}
+.flashc.dark .b{{font-size:{fb}px;margin-left:56px}}
+.flashc.dark .thread{{margin:22px 0 0 56px;width:300px}}
+.flashc.dark .b{{color:var(--cyan)}}
+.flashc.dark .thread{{background:var(--cyan)}}
+.flashc.dark .lab{{background:rgba(255,255,255,.14);color:#fff}}
+/* Accroche visuelle : viseur de caméra (s1) */
+#vf{{position:absolute;inset:0;pointer-events:none;opacity:0}}
+#vf .c{{position:absolute;width:70px;height:70px;border:0 solid rgba(255,255,255,.95);filter:drop-shadow(0 1px 6px rgba(10,18,32,.35))}}
+#vf .tl{{left:64px;top:270px;border-top-width:5px;border-left-width:5px;border-top-left-radius:14px}}
+#vf .tr{{left:870px;top:270px;border-top-width:5px;border-right-width:5px;border-top-right-radius:14px}}
+#vf .bl{{left:64px;top:1530px;border-bottom-width:5px;border-left-width:5px;border-bottom-left-radius:14px}}
+#vf .br{{left:870px;top:1530px;border-bottom-width:5px;border-right-width:5px;border-bottom-right-radius:14px}}
+#vf .rec{{position:absolute;right:164px;top:292px;display:flex;align-items:center;gap:12px;font:700 28px Montserrat;letter-spacing:.08em;color:#fff;text-shadow:0 1px 8px rgba(10,18,32,.45)}}
+#vf .rec b{{width:16px;height:16px;border-radius:50%;background:var(--cyan);display:block}}
+#vf .rec span{{font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:.04em;opacity:.9}}
 #end{{background:rgba(10,18,32,.0)}}
 #root{{--cap-y:1408px}}
 #hookbg,#sig{{display:none}}
@@ -352,7 +392,7 @@ def main(spec_path, words_path, out_dir):
   <div id="dimfix"></div><div id="dim"></div>
 {inserts_html}
   {topic_html}
-  <div id="prog"><i></i></div>
+{vf_html}
   <div id="hookbg"></div>
   <div id="hook"><div class="l"><span>{esc(hook[0])}</span></div><div class="l c"><span>{esc(hook[1])}</span></div><div class="rule"></div></div>
   <div id="sig"><svg viewBox="0 0 32 32" fill="none"><rect id="sigr" x="2.5" y="2.5" width="27" height="27" rx="8" stroke="#fff" stroke-width="2.6"/><circle id="sigc" cx="16" cy="16" r="6.2" stroke="#fff" stroke-width="2.6"/><circle id="sigd" cx="23.6" cy="8.4" r="1.8" fill="#fff"/></svg><span>@the_process.io</span></div>
@@ -377,28 +417,22 @@ const tl=gsap.timeline({{paused:true}});
 function cap(id,a,b){{const sp=$$(id+' > span');tl.set(id,{{opacity:1}},a);
   tl.fromTo(sp,{{opacity:0,y:14,filter:'blur(6px)'}},{{opacity:1,y:0,filter:'blur(0px)',duration:.3,ease:IN,stagger:.07,immediateRender:false}},a);
   tl.set(id,{{opacity:0}},b);}}
-function flash(id,a,d){{tl.set(id,{{opacity:1}},a);
+function flash(id,a,d){{tl.fromTo(id,{{opacity:0}},{{opacity:1,duration:.25,ease:'none',immediateRender:false}},a);
   tl.fromTo(id+' .a span,'+id+' .b span',{{yPercent:110}},{{yPercent:0,duration:.6,ease:IN,stagger:.08,immediateRender:false}},a);
   tl.fromTo(id+' .thread',{{scaleX:0}},{{scaleX:1,duration:.5,ease:MOVE,immediateRender:false}},a+.3);
-  tl.set(id,{{opacity:0}},a+d);}}
+  tl.to(id,{{opacity:0,duration:.25,ease:'none'}},a+d);}}
 gsap.set(['#ctaw','#end'],{{opacity:0}});
-/* Ouverture typographique au-dessus de la tête (v4) : pas de carte, pas de @ */
-gsap.set('#topic',{{opacity:0}});
-tl.fromTo('#hook .l span',{{yPercent:110}},{{yPercent:0,duration:.7,ease:IN,stagger:.12,immediateRender:false}},0.05);
-tl.fromTo('#hook .rule',{{scaleX:0}},{{scaleX:1,duration:.6,ease:MOVE,immediateRender:false}},0.45);
-tl.fromTo('#vw',{{scale:1.0}},{{scale:1.04,duration:2.6,ease:'none',immediateRender:false}},0);
-tl.to('#hook .l span',{{yPercent:-110,duration:.4,ease:OUT,stagger:.05}},2.3);
-tl.to('#hook .rule',{{scaleX:0,transformOrigin:'100% 50%',duration:.35,ease:OUT}},2.3);
-tl.fromTo('#topic',{{opacity:0,y:10}},{{opacity:1,y:0,duration:.5,ease:IN,immediateRender:false}},2.75);
-tl.set('#vw',{{scale:1.0}},2.6);
+/* Ouverture v5 : coup de zoom arrière + accroche visuelle, titre tenu {hook_until:.1f} s puis disparu (pas de @, pas de barre) */
+tl.fromTo('#vw',{{scale:1.16}},{{scale:1.0,duration:.6,ease:'expo.out',immediateRender:false}},0);
+tl.fromTo('#hook .l span',{{yPercent:110}},{{yPercent:0,duration:.7,ease:IN,stagger:.12,immediateRender:false}},0.15);
+tl.fromTo('#hook .rule',{{scaleX:0}},{{scaleX:1,duration:.6,ease:MOVE,immediateRender:false}},0.55);
+tl.to('#hook .l span',{{yPercent:-110,duration:.4,ease:OUT,stagger:.05}},{hook_until-0.15:.3f});
+tl.to('#hook .rule',{{scaleX:0,transformOrigin:'100% 50%',duration:.35,ease:OUT}},{hook_until-0.15:.3f});
+{vf_js}
 {''.join(zoom_js)}
 {''.join(fl_js)}
 {choc_js}
 {''.join(ov_js)}
-/* Barre de progression : où on en est dans la vidéo */
-tl.to('#prog',{{opacity:1,duration:.4}},2.9);
-tl.fromTo('#prog i',{{scaleX:0}},{{scaleX:1,duration:{T_END:.3f},ease:'none',immediateRender:false}},0);
-tl.to('#prog',{{opacity:0,duration:.3}},{T_END:.3f});
 {''.join(cap_js)}
 {inserts_js}
 /* CTA : barre de recherche dans les 2,6 dernières secondes de parole, puis carte de fin */
