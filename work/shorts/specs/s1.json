@@ -137,5 +137,9 @@
    }
   }
  ],
- "vhook": "viewfinder"
+ "vhook": "viewfinder",
+ "act": [
+  "À toi de jouer.",
+  "Filme ta prochaine séance."
+ ]
 }

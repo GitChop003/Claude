@@ -278,6 +278,9 @@ def main(spec_path, words_path, out_dir):
     # taille des cartes assombries : chaque ligne tient sur une ligne dans 868 px
     fa = int(min(80, min([868 / (0.56 * len(f["a"])) for f in flash] or [80])))
     fb = int(min(70, min([800 / (0.55 * len(f["b"])) for f in flash] or [70])))
+    # Fin : une phrase de passage à l'acte propre à chaque vidéo (pas de @ à l'écran)
+    act = sp.get("act", ["À toi de jouer.", "Commence aujourd'hui."])
+    ea = int(min(52, 868 / (0.55 * len(act[0])))); eb = int(min(84, 868 / (0.56 * len(act[1]))))
     cta = sp["cta"]; T_END = W["dur"]
     obj = sp.get("objection")
     topic_html = (f'<div id="objection" style="opacity:1"><b>OBJECTION :</b> « {esc(obj)} »</div>' if obj else
@@ -319,7 +322,14 @@ def main(spec_path, words_path, out_dir):
 #vf .rec{{position:absolute;right:164px;top:292px;display:flex;align-items:center;gap:12px;font:700 28px Montserrat;letter-spacing:.08em;color:#fff;text-shadow:0 1px 8px rgba(10,18,32,.45)}}
 #vf .rec b{{width:16px;height:16px;border-radius:50%;background:var(--cyan);display:block}}
 #vf .rec span{{font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:.04em;opacity:.9}}
-#end{{background:rgba(10,18,32,.0)}}
+/* Fin v5 : passage à l'acte sur écran assombri, sous le visage (plus de @the_process.io) */
+#end{{display:block;background:none}}
+#end .in{{position:absolute;left:72px;right:140px;top:1110px}}
+#end .a,#end .b{{overflow:hidden}}
+#end .a span,#end .b span{{display:block}}
+#end .a{{font:600 {ea}px/1.15 Montserrat;color:rgba(255,255,255,.88)}}
+#end .b{{font:900 {eb}px/1.1 Montserrat;letter-spacing:-.02em;color:#fff;margin-top:6px}}
+#end .thread{{height:5px;width:140px;border-radius:3px;background:var(--cyan);margin-top:24px;transform-origin:0 50%}}
 #root{{--cap-y:1408px}}
 #hookbg,#sig{{display:none}}
 /* Ouvertures typographiques sur le plan (v4) */
@@ -395,7 +405,6 @@ def main(spec_path, words_path, out_dir):
 {vf_html}
   <div id="hookbg"></div>
   <div id="hook"><div class="l"><span>{esc(hook[0])}</span></div><div class="l c"><span>{esc(hook[1])}</span></div><div class="rule"></div></div>
-  <div id="sig"><svg viewBox="0 0 32 32" fill="none"><rect id="sigr" x="2.5" y="2.5" width="27" height="27" rx="8" stroke="#fff" stroke-width="2.6"/><circle id="sigc" cx="16" cy="16" r="6.2" stroke="#fff" stroke-width="2.6"/><circle id="sigd" cx="23.6" cy="8.4" r="1.8" fill="#fff"/></svg><span>@the_process.io</span></div>
   <div id="fsbg"></div>
   {choc_html}
   {''.join(ov_html)}
@@ -405,7 +414,7 @@ def main(spec_path, words_path, out_dir):
     <div class="glass white" id="cta"><svg class="s" viewBox="0 0 40 40" fill="none" stroke="#001F3F" stroke-width="4" stroke-linecap="round"><circle cx="17" cy="17" r="11"/><path d="M25 25l9 9"/></svg>
       <div class="q"><span id="ctat"></span><span class="cur"></span></div>
       <div class="go"><svg viewBox="0 0 42 42" fill="none" stroke="#001F3F" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21h22M22 11l10 10-10 10"/></svg></div></div></div>
-  <div id="end"><svg viewBox="0 0 32 32" fill="none"><rect x="2.5" y="2.5" width="27" height="27" rx="8" stroke="#fff" stroke-width="2"/><circle cx="16" cy="16" r="6.2" stroke="#fff" stroke-width="2"/><circle cx="23.6" cy="8.4" r="1.6" fill="#00D9FF"/></svg><div class="h">@the_process.io</div></div>
+  <div id="end"><div class="in"><div class="a"><span>{esc(act[0])}</span></div><div class="b"><span>{esc(act[1])}</span></div><div class="thread"></div></div></div>
   {reveal_html}
 </div>
 <script>
@@ -444,7 +453,9 @@ tl.to('#cta .go',{{scale:.88,duration:.12}},{T_END+0.4:.3f});tl.to('#cta .go',{{
 tl.to('#ctaw',{{opacity:0,duration:D_OUT,ease:OUT}},{T_END+TAIL-1.35:.3f});
 tl.to('#dim',{{opacity:.74,duration:.4,ease:IN}},{T_END+TAIL-1.35:.3f});
 tl.to(['#topic','#objection'].filter(s=>$(s)),{{opacity:0,duration:.3}},{T_END+TAIL-1.35:.3f});
-tl.fromTo('#end',{{opacity:0,y:16}},{{opacity:1,y:0,duration:D_IN,ease:IN,immediateRender:false}},{T_END+TAIL-1.25:.3f});
+tl.set('#end',{{opacity:1}},{T_END+TAIL-1.25:.3f});
+tl.fromTo('#end .a span,#end .b span',{{yPercent:110}},{{yPercent:0,duration:.55,ease:IN,stagger:.12,immediateRender:false}},{T_END+TAIL-1.25:.3f});
+tl.fromTo('#end .thread',{{scaleX:0}},{{scaleX:1,duration:.5,ease:MOVE,immediateRender:false}},{T_END+TAIL-0.95:.3f});
 window.__timelines=window.__timelines||{{}};window.__timelines["main"]=tl;tl.seek(0);
 </script></body></html>"""
     os.makedirs(f"{out_dir}/assets", exist_ok=True)

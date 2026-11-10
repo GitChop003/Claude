@@ -31,7 +31,7 @@ Réglages hérités des échanges avec la production (novembre 2026). Ils compl�
 ## Retours de Bognin et de la production (8 novembre, v4)
 - **Ouvertures** : plus jamais la carte plein écran à fond blanc en ouverture. Ouvertures **typographiques sur le plan**, variées d'une vidéo à l'autre (texte géant, mot unique, citation, empilement, machine à écrire…), jamais deux fois la même d'affilée.
 - **Ne jamais cacher le visage** : tout élément graphique se place **sous le visage** (bande basse), les sous-titres juste en dessous, au-dessus de la zone masquée par Instagram. Position du visage **mesurée** sur chaque vidéo. Si un élément ne tient pas sous le visage, il passe en **superposition plein écran**.
-- **Pas de @the_process.io permanent** : seulement sur la carte de fin.
+- **Pas de @the_process.io permanent** (v5 : retiré aussi de la carte de fin, remplacé par un passage à l'acte).
 - **Le moins chargé possible** : pas d'étiquettes ni de bandeaux en verre. On joue sur la **typographie** (tailles, graisses, contraste fin/gras) plutôt que sur des cadres. 3 à 4 moments graphiques par vidéo maximum.
 - **Mise en page mesurée** : haut (y ≈ 300–560) pour l'ouverture au-dessus de la tête puis le sujet en petit texte ; bande sous le visage (y ≈ 1170–1395) pour les cartes, tuiles, mot choc et CTA ; sous-titres sur une ligne à y ≈ 1408 (dans la zone 4:5 et au-dessus du masque Instagram).
 - **Énumérations** : une formule différente pour chaque vidéo d'un même lot (tuiles d'icônes, mot géant, empilement en marge, mots barrés, numérotation, liste à cases…).
@@ -43,7 +43,8 @@ Réglages hérités des échanges avec la production (novembre 2026). Ils compl�
 - **Assombrissement de l'écran** : remplace la carte blanche plein écran pour le moment clé (méthode, question, phrase choc). Le visage reste visible derrière, le texte se place sous le visage.
 - **Varier les types de montage** d'une vidéo à l'autre (accroche visuelle, ouverture, formule d'énumération, moment assombri), à partir du modèle s1.
 - **Son** : la dernière phrase doit s'entendre. Pas de `loudnorm` dynamique en bout de chaîne (son tampon de 3 s coupait la fin) : gain fixe mesuré + limiteur, et contrôle automatique de la fin à chaque découpe.
-- Toujours proscrit : début tout blanc, @the_process.io permanent, barre de progression, éléments devant le visage.
+- **Fin** : plus de @the_process.io, même sur la carte de fin. Quand l'écran s'assombrit, une phrase de **passage à l'acte** propre à la vidéo (s1 : « À toi de jouer. / Filme ta prochaine séance. »), sous le visage.
+- Toujours proscrit : début tout blanc, @the_process.io (y compris à la fin), barre de progression, éléments devant le visage.
 
 ## Livraison
 - Par short : 9:16 (version légère de livraison), 4:5 LinkedIn, couvertures 9:16 et 4:5, titres, 2 accroches alternatives, légende, mot-clé de CTA proposé (à valider par Bognin).
