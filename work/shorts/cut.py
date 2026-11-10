@@ -198,7 +198,7 @@ def main(spec_path, rt_dir, rush_dir, out_dir, grade):
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", vraw, "-i", music, "-filter_complex",
                     f"[0:a]volume={g:.2f}dB[vx];[1:a]atrim=0:{T:.3f},asetpts=PTS-STARTPTS,aformat=channel_layouts=stereo,"
                     f"afade=t=in:d=1.2,afade=t=out:st={T-2.2:.3f}:d=2.2[mx];"
-                    f"[vx][mx]amix=inputs=2:normalize=0:duration=first,apad=pad_dur=1,alimiter=limit=0.89:latency=1,atrim=0:{T:.3f}[ao]",
+                    f"[vx][mx]amix=inputs=2:normalize=0:duration=first,apad=pad_dur=1,alimiter=limit=0.89:latency=1:level=0,atrim=0:{T:.3f}[ao]",
                     "-map", "[ao]", "-ar", "48000", "-c:a", "pcm_s16le", mix], check=True)
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", f"{tmp}/list.txt", "-i", mix,
                     "-filter_complex", f"[0:v]tpad=stop_mode=clone:stop_duration={TAIL}[vo]", "-map", "[vo]", "-map", "1:a", "-t", f"{T:.3f}",
