@@ -10,7 +10,9 @@ Lire aussi : `videos/shorts/DIRECTIVES.md` (toutes les règles de montage, à re
 ## État (27 novembre 2026)
 - 11 shorts v5 rendus : `videos/shorts/sN/renders/*_reel_v5_livraison.mp4`.
 - **Référence validée par Bognin : s1 SÉANCE v4** (commit `f77f1ea`, `videos/shorts/s1/index.html` de ce commit) : titre en haut au-dessus de la tête, sobre, sans viseur REC.
-- **Demande en cours** : appliquer le préréglage de s1 v4 à DEUX autres shorts, puis livrer les 3 vidéos dans un artefact de validation où Parfait commente (lecteur, « commenter à cet instant », statut par vidéo, historique des versions ; commentaires en base partagée ; vidéos de relecture 720p ≈ 5 Mo).
+- **Fait le 27 nov.** : s2 SILENCE v6 et s3 LÉGITIME v6 montés au préréglage s1 v4 (specs `"preset":"s1v4"`, titre en haut classique, pas d'accroche gadget, LÉGITIME dans la bande au lieu de derrière la tête). Reflet vert corrigé dans `grade.txt`. Artefact de validation : https://claude.ai/artifact/USDsWhdFeWPERaVBk76AsY (source `videos/shorts/validation/`, commentaires en base `comments`, statuts `status`).
+- Rushes : dossier Dropbox « osmo » (22 Go, zip à la volée) : https://www.dropbox.com/scl/fo/ipbxnlrtwzzoxt98ozw1u/AHVcPkKoTldcWyPW70dMVAU?rlkey=ncnc4dldekof4qj9mp7tu5uo3&dl=1 — extraire seulement les rushes utiles en flux (fichiers stockés sans compression).
+- **Demande initiale** : appliquer le préréglage de s1 v4 à DEUX autres shorts, puis livrer les 3 vidéos dans un artefact de validation où Parfait commente (lecteur, « commenter à cet instant », statut par vidéo, historique des versions ; commentaires en base partagée ; vidéos de relecture 720p ≈ 5 Mo).
 - À corriger aussi : reflet vert des LED sur la peau (menton/cou) ; s6 compte à rebours « 60 jours avant 2027 » devenu faux ; relecture complète des sous-titres ; couvertures sans animation ; fichiers 4:5 > 50 Mo ; police Callum Slanted manquante (Montserrat italique en attendant).
 
 ## Pipeline (`work/shorts/`)
