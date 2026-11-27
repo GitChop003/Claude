@@ -1,0 +1,156 @@
+<title>Validation shorts The Process</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,700;0,800;0,900;1,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: a review room between the editor and the client
+   IDEA a screening table: three phones side by side, notes pinned to timecodes
+   PICTURE the three shorts themselves, played large in 9:16
+   COLOUR paper ground, ink text, deep cyan for actions, bright cyan for the playhead
+   TYPE Montserrat (brand) for titles, Inter for notes
+   LAYOUT laptop: three columns of player + notes; phone: one short at a time, stacked */
+:root{color-scheme:light dark;--bg:light-dark(#F3F4F7,#0A1220);--card:light-dark(#FFFFFF,#111C2E);--ink:light-dark(#0A1220,#EEF2F6);--soft:light-dark(#5B6474,#9AA6B6);--line:light-dark(#DCE0E7,#24324A);--act:light-dark(#006F84,#00D9FF);--actink:light-dark(#FFFFFF,#0A1220);--tint:light-dark(#DDF4F8,#0E3340);--ok:light-dark(#11734B,#4FD69C);--fix:light-dark(#A33A1E,#FF8A6B)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,system-ui,sans-serif;overflow-x:clip}
+.band{padding-block:28px 48px;padding-left:max(4vw,16px,env(safe-area-inset-left,0px));padding-right:max(4vw,16px,env(safe-area-inset-right,0px));max-width:1320px;margin:0 auto}
+header h1{font:800 clamp(28px,3.4vw,40px)/1.05 Montserrat,sans-serif;letter-spacing:-.02em;margin:0 0 8px}
+header p{margin:0;color:var(--soft);max-width:70ch}
+#who{margin-top:10px;font-size:13px;color:var(--soft)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:26px}
+.short{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:12px}
+.top{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.top h2{font:800 20px/1.1 Montserrat,sans-serif;margin:0;letter-spacing:-.01em}
+.top small{color:var(--soft);font-size:13px;white-space:nowrap}
+.stage{position:relative;aspect-ratio:9/16;border-radius:12px;overflow:hidden;background:#000;max-height:72vh;margin:0 auto;width:100%}
+.stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+.ref{position:absolute;left:10px;top:10px;background:var(--act);color:var(--actink);font:700 12px Montserrat;padding:4px 9px;border-radius:20px}
+.vers{display:flex;flex-wrap:wrap;gap:6px}
+.vers button{font:600 13px Inter;border:1px solid var(--line);background:none;color:var(--ink);border-radius:20px;padding:6px 11px;cursor:pointer;min-height:34px}
+.vers button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.vers button:disabled{opacity:.45;cursor:default}
+.note{font-size:13px;color:var(--soft);margin:-4px 0 0}
+.status{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.status button{font:600 13px Inter;border:1px solid var(--line);background:none;color:var(--ink);border-radius:10px;padding:9px 4px;cursor:pointer;min-height:40px}
+.status button[data-s=ok][aria-pressed=true]{background:var(--ok);border-color:var(--ok);color:var(--actink)}
+.status button[data-s=fix][aria-pressed=true]{background:var(--fix);border-color:var(--fix);color:var(--actink)}
+.status button[data-s=wait][aria-pressed=true]{background:var(--tint);border-color:var(--act)}
+.compose{display:flex;flex-direction:column;gap:8px}
+.compose textarea{font:16px/1.4 Inter;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px;min-height:64px;resize:vertical;width:100%}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.at{font:700 14px Montserrat;color:var(--act);white-space:nowrap;font-variant-numeric:tabular-nums}
+.send{margin-left:auto;font:700 14px Montserrat;background:var(--act);color:var(--actink);border:0;border-radius:10px;padding:10px 16px;cursor:pointer;min-height:42px}
+.send:disabled{opacity:.5;cursor:default}
+.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.list li{border-top:1px solid var(--line);padding-top:8px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 10px}
+.list .tc{font:700 13px Montserrat;color:var(--act);background:var(--tint);border:0;border-radius:8px;padding:4px 8px;cursor:pointer;height:28px;font-variant-numeric:tabular-nums}
+.list .tx{white-space:pre-wrap;overflow-wrap:anywhere}
+.list .meta{grid-column:2;font-size:12px;color:var(--soft);display:flex;gap:10px}
+.list .meta button{font:inherit;color:var(--soft);background:none;border:0;padding:0;text-decoration:underline;cursor:pointer}
+.empty{color:var(--soft);font-size:13px;border-top:1px solid var(--line);padding-top:8px}
+.msg{font-size:13px;color:var(--fix)}
+@media(max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.grid{grid-template-columns:minmax(0,1fr)}.stage{max-height:78vh}}
+</style>
+
+<div class="band">
+<header>
+  <h1>Validation des shorts</h1>
+  <p>Trois vidéos à relire : s1 SÉANCE v4, la référence que tu as validée, puis s2 et s3 montés avec ce même préréglage (titre en haut au-dessus de la tête, sobre, sans viseur REC). Mets la vidéo en pause à l'endroit voulu, écris ton commentaire : il est rattaché à cet instant. Indique ensuite un statut par vidéo.</p>
+  <div id="who">Connexion aux commentaires…</div>
+</header>
+<div class="grid" id="grid"></div>
+</div>
+
+<script>
+{
+const SHORTS=[
+ {id:"s1",name:"SÉANCE",title:"Filme tes séances",ref:true,versions:[
+   {v:"v4",date:"8 nov.",file:"review/s1_v4.mp4",note:"Référence validée par Parfait."},
+   {v:"v5",date:"10 nov.",file:null,note:"Variante avec viseur REC, écartée."}]},
+ {id:"s2",name:"SILENCE",title:"Ils regardent en silence",versions:[
+   {v:"v6",date:"27 nov.",file:"review/s2_v6.mp4",note:"Préréglage s1 v4 appliqué, reflet vert de la peau corrigé."},
+   {v:"v5",date:"10 nov.",file:"review/s2_v5.mp4",note:"Version précédente (notification sous le menton)."}]},
+ {id:"s3",name:"LÉGITIME",title:"Tu es qui, toi, pour dire ça ?",versions:[
+   {v:"v6",date:"27 nov.",file:"review/s3_v6.mp4",note:"Préréglage s1 v4 appliqué, reflet vert de la peau corrigé."},
+   {v:"v5",date:"10 nov.",file:"review/s3_v5.mp4",note:"Version précédente (brouillon tapé, mot derrière la tête)."}]}
+];
+const STATES=[["wait","À revoir"],["ok","Validé"],["fix","À corriger"]];
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt=t=>{t=Math.max(0,t||0);const m=Math.floor(t/60),s=Math.floor(t%60);return m+":"+String(s).padStart(2,"0")};
+const ui={};let db=null,user=null,me=null,canWrite=true,comments=[],status={},names={};
+const grid=document.getElementById("grid"),who=document.getElementById("who");
+
+grid.innerHTML=SHORTS.map(S=>`<section class="short" id="${S.id}">
+  <div class="top"><h2>${S.id} ${esc(S.name)}</h2><small>${esc(S.title)}</small></div>
+  <div class="stage"><video id="v-${S.id}" controls playsinline preload="metadata"></video>${S.ref?'<span class="ref">Référence</span>':''}</div>
+  <div class="vers" role="group" aria-label="Versions">${S.versions.map((x,i)=>`<button data-i="${i}" ${x.file?"":"disabled"} aria-pressed="${i===0}">${x.v} · ${x.date}</button>`).join("")}</div>
+  <p class="note" id="n-${S.id}"></p>
+  <div class="status" role="group" aria-label="Statut">${STATES.map(([k,l])=>`<button data-s="${k}" aria-pressed="false">${l}</button>`).join("")}</div>
+  <div class="compose"><textarea id="t-${S.id}" placeholder="Ton commentaire sur ce moment…"></textarea>
+    <div class="row"><span class="at" id="a-${S.id}">à 0:00</span><button class="send" id="b-${S.id}">Commenter à cet instant</button></div>
+    <div class="msg" id="m-${S.id}" hidden></div></div>
+  <ul class="list" id="l-${S.id}"></ul>
+</section>`).join("");
+
+SHORTS.forEach(S=>{
+  const v=document.getElementById("v-"+S.id),u={S,v,cur:0};ui[S.id]=u;
+  const pick=i=>{u.cur=i;const x=S.versions[i];v.src=x.file;document.getElementById("n-"+S.id).textContent=x.note;
+    document.querySelectorAll(`#${S.id} .vers button`).forEach(b=>b.setAttribute("aria-pressed",String(+b.dataset.i===i)));renderList(S.id)};
+  document.querySelectorAll(`#${S.id} .vers button`).forEach(b=>b.onclick=()=>pick(+b.dataset.i));
+  const at=document.getElementById("a-"+S.id);
+  v.addEventListener("timeupdate",()=>at.textContent="à "+fmt(v.currentTime));
+  document.getElementById("t-"+S.id).addEventListener("focus",()=>v.pause());
+  document.getElementById("b-"+S.id).onclick=()=>addComment(S.id);
+  document.querySelectorAll(`#${S.id} .status button`).forEach(b=>b.onclick=()=>setStatus(S.id,b.dataset.s));
+  pick(0);
+});
+
+function renderList(id){
+  const u=ui[id],ver=u.S.versions[u.cur].v,el=document.getElementById("l-"+id);
+  const mine=comments.filter(c=>c.short===id&&c.version===ver).sort((a,b)=>a.t-b.t);
+  if(!mine.length){el.innerHTML=`<li class="empty">Aucun commentaire sur la ${esc(ver)} pour l'instant.</li>`;return}
+  el.innerHTML=mine.map(c=>`<li><button class="tc" data-t="${+c.t||0}">${fmt(c.t)}</button><div class="tx">${esc(c.text)}</div>
+    <div class="meta"><span>${esc(names[c.author]||"Quelqu'un")} · ${esc(new Date(c.at).toLocaleString("fr-FR",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"}))}</span>${me&&c.author===me?`<button data-del="${esc(c.id)}">Supprimer</button>`:""}</div></li>`).join("");
+  el.querySelectorAll(".tc").forEach(b=>b.onclick=()=>{u.v.currentTime=+b.dataset.t;u.v.pause();u.v.scrollIntoView({block:"nearest",behavior:"smooth"})});
+  el.querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>db.doc("comments/"+b.dataset.del).delete().catch(()=>{}));
+}
+function renderStatus(){SHORTS.forEach(S=>{const s=(status[S.id]||{}).state||"wait";
+  document.querySelectorAll(`#${S.id} .status button`).forEach(b=>{b.setAttribute("aria-pressed",String(b.dataset.s===s));b.disabled=!db||!canWrite})})}
+function lock(why){canWrite=false;SHORTS.forEach(S=>{document.getElementById("b-"+S.id).disabled=true;document.getElementById("t-"+S.id).disabled=true});who.textContent=why;renderStatus()}
+function say(id,t){const m=document.getElementById("m-"+id);m.textContent=t;m.hidden=!t}
+
+async function addComment(id){
+  const u=ui[id],ta=document.getElementById("t-"+id),text=ta.value.trim();
+  if(!text){say(id,"Écris d'abord ton commentaire.");return}
+  if(!db){say(id,"Les commentaires ne sont pas joignables pour l'instant.");return}
+  const b=document.getElementById("b-"+id);b.disabled=true;say(id,"");
+  try{await db.collection("comments").add({short:id,version:u.S.versions[u.cur].v,t:Math.round(u.v.currentTime*10)/10,text:text.slice(0,2000),author:me,at:new Date().toISOString()});ta.value=""}
+  catch(e){say(id,e&&e.code==="invalid_argument"?"Tu as un accès en lecture seule : demande à Patrick de te passer en contributeur.":"Envoi impossible, réessaie dans un instant.")}
+  b.disabled=!canWrite;
+}
+async function setStatus(id,s){
+  if(!db||!canWrite)return;const prev=status[id];status[id]={state:s};renderStatus();
+  try{await db.doc("status/"+id).set({state:s,by:me,at:new Date().toISOString()})}catch(e){status[id]=prev;renderStatus();say(id,"Statut non enregistré.")}
+}
+async function resolveNames(){
+  if(!user)return;const ids=[...new Set(comments.map(c=>c.author).filter(Boolean))];if(!ids.length)return;
+  try{const ps=await user.profiles(ids);ids.forEach(i=>names[i]=(ps[i]&&ps[i].name)||"Quelqu'un")}catch(e){}
+  SHORTS.forEach(S=>renderList(S.id));
+}
+
+renderStatus();
+(async()=>{
+  db=await claude.use("db");user=await claude.use("user");
+  if(!db){lock("Commentaires indisponibles dans cette vue : ouvre la page connecté à claude.ai.");return}
+  me=user?await user.id():null;
+  if(user){const c=await user.can("data.write");if(c===false){lock("Tu peux regarder et lire les commentaires ; pour en écrire, il faut un accès contributeur.");}}
+  if(canWrite)who.textContent="Connecté : tes commentaires et statuts sont partagés avec l'équipe.";
+  renderStatus();
+  const timer=setTimeout(()=>{who.textContent="Les commentaires mettent du temps à charger…"},10000);
+  db.collection("comments").onSnapshot(s=>{clearTimeout(timer);comments=s.docs.map(d=>({id:d.id,...d.data()}));SHORTS.forEach(S=>renderList(S.id));resolveNames()},
+    ()=>{clearTimeout(timer);who.textContent="Commentaires indisponibles pour le moment."});
+  db.collection("status").onSnapshot(s=>{status={};s.docs.forEach(d=>status[d.id]=d.data());renderStatus()},()=>{});
+})();
+}
+</script>

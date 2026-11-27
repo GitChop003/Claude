@@ -119,13 +119,8 @@
   ]
  ],
  "cta": "LÉGITIME",
- "vhook": {
-  "style": "typing",
-  "label": "Brouillon",
-  "text": "Je suis coach et je peux t'aider à"
- },
  "opening": "top",
- "hook_style": "quote",
+ "hook_style": "classic",
  "enum": [
   {
    "t": {
@@ -160,7 +155,7 @@
    "word": "légitime"
   },
   "text": "LÉGITIME",
-  "behind": true,
+  "behind": false,
   "d": 1.7
  },
  "flash": [
@@ -179,5 +174,6 @@
  "act": [
   "Ton brouillon attend.",
   "Publie-le aujourd'hui."
- ]
+ ],
+ "preset": "s1v4"
 }

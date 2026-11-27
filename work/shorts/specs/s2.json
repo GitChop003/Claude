@@ -97,14 +97,8 @@
  "reveal": {
   "word": "silence,"
  },
- "vhook": {
-  "style": "notif",
-  "t1": "Messages",
-  "t2": "Aucun nouveau message",
-  "where": "band"
- },
- "opening": "band",
- "hook_style": "inverse",
+ "opening": "top",
+ "hook_style": "classic",
  "enum": [
   {
    "t": {
@@ -172,5 +166,6 @@
  "act": [
   "Ils te regardent déjà.",
   "Continue de publier."
- ]
+ ],
+ "preset": "s1v4"
 }
